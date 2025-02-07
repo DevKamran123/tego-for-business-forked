@@ -1,0 +1,129 @@
+@use "../main.scss" as *;
+
+.homeCont {
+    // &_business {
+    //     height: toRem(356);
+    //     background-image: url("/src/assets/images/bridge.png");
+    //     background-size: cover;
+    //     background-repeat: repeat;
+    //     backdrop-filter: blur;
+    //     border: 1px solid red;
+
+    &_business {
+        position: relative;
+        height: toRem(356);
+        overflow: hidden; // Prevents blur bleeding outside container
+
+        // Approach 1: Using pseudo-element (RECOMMENDED)
+        &::before {
+            content: '';
+            position: absolute;
+            top: -10px; // Compensate for blur edges
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background-image: url("/src/assets/images/bridge.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: repeat;
+            filter: blur(4px);
+            z-index: 1;
+        }
+
+        &_writeup {
+            position: relative;
+            z-index: 2;
+            margin: toRem(100) 0px toRem(84) toRem(261);
+            font-family: $font-roboto;
+
+            &_title {
+                font-size: toRem(45);
+                font-weight: 800;
+                line-height: toRem(52.73);
+                text-align: left;     
+                color: $primary-color;              
+            }
+
+            &_content {
+                font-size: toRem(18);
+                font-weight: 500;
+                line-height: toRem(21.09);
+                text-align: left;     
+                color: $black;    
+                margin-top: toRem(20);
+            }
+
+            &_see {
+                @include flexbox(row, toRem(8));
+                align-items: center;
+                justify-content: center;
+                width: toRem(170);
+                height: toRem(54);
+                color: $white;
+                background-color: #3B3D8F;
+                font-size: toRem(16);
+                font-weight: 500;
+                line-height: toRem(18.75);
+                margin-top: toRem(24);  
+                cursor: pointer;
+
+                &_image {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    svg {
+                        width: toRem(13.33);
+                        height: toRem(12.96);
+                    }
+                }
+            }
+        }
+    }
+
+    &_safety {
+        background-color: $white;
+        padding: toRem(121) toRem(112) toRem(140) toRem(112);
+        font-family: $font-roboto;
+
+        &_title {
+            font-size: toRem(35);
+            font-weight: 500;
+            line-height: toRem(41.02);
+            text-align: left;
+        }
+
+        &_layout {
+            @include flexbox(row, toRem(67));
+            margin-top: toRem(57);
+        }
+    }
+
+    &_app {
+        background-color: $secondary-blue;
+        height: toRem(580);
+        padding: toRem(121) toRem(122) toRem(121) toRem(122);
+        font-family: $font-roboto;
+
+        &_cont {
+            @include flexbox(column, toRem(42));
+
+            &_title {
+                color: $white;
+                font-size: toRem(40);
+                font-weight: 500;
+                line-height: toRem(46.88);              
+            }
+
+            &_layout {
+                @include flexbox(row, toRem(95));
+            }
+        }
+    }
+
+    &_moreInfo {
+        @include flexbox(row, toRem(31.6));
+        
+        padding: toRem(191) toRem(152);
+    }
+}

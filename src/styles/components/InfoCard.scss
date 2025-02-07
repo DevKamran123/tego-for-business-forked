@@ -1,0 +1,40 @@
+@use "../main.scss" as *;
+
+.infocardCont {
+    font-family: $font-plus-jakarta;
+
+    img {
+        width: toRem(40);
+        height: toRem(40);
+    }
+
+    &_title {
+        margin-top: toRem(20);
+        font-size: toRem(23);
+        font-weight: 500;
+        line-height: toRem(28.98);
+        text-align: left;
+    }
+
+    &_text {
+        font-size: toRem(22);
+        font-weight: 400;
+        line-height: torem(30.95);
+        text-align: left;
+        margin-top: toRem(13);
+        color: $text-color;
+    }
+
+    &_learn {
+        margin-top: toRem(24);
+        font-size: toRem(16);
+        font-weight: 500;
+        line-height: toRem(22.51);
+        width: toRem(86);
+        text-align: left;
+        cursor: pointer;
+
+        border-bottom: toRem(1) dashed $black;
+        padding-bottom: toRem(3);
+    }
+}
