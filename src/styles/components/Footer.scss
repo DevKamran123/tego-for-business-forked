@@ -1,0 +1,159 @@
+@use "../main.scss" as *;
+
+.footerCont {
+    @include flexbox(row, toRem(0));
+    height: toRem(800);
+    width: 100vw;
+    position: relative;
+
+    background-image: url("/src/assets/images/footerBackground.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: cover;
+
+    &_social {
+        margin-left: toRem(142);
+        margin-top: toRem(373);
+        width: toRem(212);
+        // border: 1px solid green;
+        flex-shrink: 0;
+        color: $white;
+
+        &_layout {
+            &_icons {
+                @include flexbox(row, toRem(24));
+
+                img {
+                    width: toRem(40);
+                    height: toRem(40);
+                    cursor: pointer;
+                }
+            }
+
+            &_locate {
+                @include flexbox(row, toRem(0));
+                justify-content: space-between;
+                margin-top: toRem(27);
+
+                &_lang, &_place {
+                    @include flexbox(row, toRem(5));
+                    align-items: center;
+                }
+
+            }
+
+            &_help {
+                font-family: $font-roboto;
+                font-size: toRem(22);
+                font-weight: 400;
+                line-height: toRem(30.95);
+                text-align: left;
+                margin-top: toRem(33);
+                cursor: pointer;
+            }
+        }
+    }
+
+    &_company, &_product, &_citizenship {
+        @include flexbox(column, toRem(34));
+        margin-top: toRem(182);
+        font-family: $font-plus-jakarta;
+        color: $white;
+
+
+        &_title {
+            font-size: toRem(28);
+            font-weight: 500;
+            // line-height: toRem(37.8);
+            flex-shrink: 0;     
+        }
+
+        &_text {
+            @include flexbox(column, toRem(10));
+            font-size: toRem(20);
+            font-weight: 400;
+            line-height: toRem(30.95);
+
+            div {
+                cursor: pointer;
+            }
+
+        }
+    }
+
+    &_company {
+        margin-left: toRem(189);
+        width: toRem(122);
+        // border: 1px solid green;
+
+    }
+
+    &_product {
+        margin-left: toRem(220);
+        width: toRem(220);
+        // border: 1px solid green;
+        flex-shrink: 0;
+
+    }
+
+    &_citizenship {
+        margin-left: toRem(107);
+        // margin-right: toRem(308);
+        width: toRem(250);
+        // border: 1px solid green;
+        flex-shrink: 0;
+    }
+
+    &_lastInfo {
+        position: absolute;
+        right: toRem(100);
+        bottom: toRem(189);
+        width: toRem(294);
+        height: toRem(89);
+        // border: 1px solid yellow;
+
+        &_download {
+            @include flexbox(row, toRem(0));
+            justify-content: space-between;
+
+            &_google {
+                width: toRem(135);
+                height: toRem(40);
+                cursor: pointer;
+            }
+
+            &_apple {
+                width: toRem(119.7);
+                height: toRem(40);
+                cursor: pointer;
+            }
+        }
+
+        &_links {
+            margin-top: toRem(28);
+            @include flexbox(row, toRem(0));
+            justify-content: space-between;
+            font-family: $font-roboto;
+            font-size: toRem(15);
+            font-weight: 400;
+            line-height: toRem(21.1);
+            color: $white;
+
+            div {
+                cursor: pointer;
+            }
+        }
+    }
+
+
+    &_secBackground {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background-image: url("/src/assets/images/secBackground.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: toRem(120);
+    }
+}

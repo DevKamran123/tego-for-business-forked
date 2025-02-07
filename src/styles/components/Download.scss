@@ -1,0 +1,43 @@
+@use "../main.scss" as *;
+
+.download {
+    width: toRem(700);
+    height: toRem(250);
+    border-radius: toRem(15);
+    background-color: $white;
+
+    @include flexbox(row, toRem(25));
+    align-items: center;
+    padding: toRem(0) toRem(36);
+    cursor: pointer;
+
+    img {
+        width: toRem(180);
+        height: toRem(180);
+    }
+
+    &_text {
+        font-size: toRem(30);
+        font-weight: 500;
+        line-height: toRem(38.67);  
+        width: toRem(361);   
+        color: $secondary-blue;    
+    }
+
+    &_next {
+        width: toRem(50);
+        height: toRem(50);
+        border-radius: 100%;
+        background-color: $secondary-blue;
+
+        @include flexbox(row, 0px);
+        align-items: center;
+        justify-content: center;
+
+        svg {
+            width: toRem(12.03);
+            height: toRem(21);
+        }
+    }
+
+}

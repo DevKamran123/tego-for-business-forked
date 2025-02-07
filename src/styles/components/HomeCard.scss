@@ -1,0 +1,58 @@
+@use "../main.scss" as *;
+
+.homecardCont {
+    width: toRem(750);
+    max-width: toRem(750);
+    height: auto;
+
+    &_image {
+        width: toRem(720);
+        height: toRem(480);
+        // border: 1PX solid red;
+        border-radius: toRem(11);
+
+        img {
+            width: toRem(720);
+            height: toRem(480);
+            border-radius: toRem(11);
+
+            // border: 1px solid blue; 
+        }
+    }
+
+    &_textLayout {
+        font-family: $font-roboto;
+
+        &_title {
+            font-size: toRem(30);
+            font-weight: 500;
+            line-height: toRem(35.16);
+            text-align: left;  
+            margin-top: toRem(50);        
+        }
+
+        &_content {
+            font-size: toRem(21);
+            font-weight: 400;
+            line-height: toRem(30.95);
+            margin-top: toRem(25); 
+            width: toRem(720);
+            // max-width: toRem(720);
+            color: $secondary-black   
+        }
+
+        &_additional {
+            @include flexbox(row, toRem(38));
+            align-items: center;
+            margin-top: toRem(24);
+
+            &_text {
+                font-size: toRem(16);
+                font-weight: 500;
+                line-height: toRem(22.51);      
+                padding-bottom: toRem(3);
+                border-bottom: toRem(1) dashed $black;         
+            }
+        }
+    }
+}

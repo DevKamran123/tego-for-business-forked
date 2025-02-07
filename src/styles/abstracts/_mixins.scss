@@ -1,0 +1,155 @@
+@use 'sass:map';
+@import './breakpoints.scss';
+
+// Breakpoint definitions
+$breakpoints: (
+  phone: 600px,
+  tablet: 1024px,
+  monitor: 1600px,
+);
+
+// Mixin for media queries
+@mixin media($breakpoint) {
+  @media (max-width: map.get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+
+// Function to convert px to rem
+@function toRem($px) {
+  @return calc($px / 16) * 1rem  * 0.833333;
+}
+
+// Mixin for flexbox utility classes
+@mixin flexbox($direction, $gap) {
+  display: flex;
+  flex-direction: $direction;
+  gap: $gap;
+}
+
+// Generate utility classes
+@for $i from 0 through 100 {
+  .width-#{$i} {
+    width: ($i) * 1% !important;
+  }
+  .flex-col-#{$i} {
+    @include flexbox(column, toRem($i));
+  }
+  .flex-row-#{$i} {
+    @include flexbox(row, toRem($i));
+  }
+  .m-#{$i} {
+    margin: toRem($i) !important;
+  }
+  .p-#{$i} {
+    padding: toRem($i) !important;
+  }
+}
+
+@each $value in (flex-start, flex-end, center, space-between, space-around) {
+  .justify-#{$value} {
+    justify-content: $value;
+  }
+}
+
+@each $value in (flex-start, flex-end, center, baseline, stretch) {
+  .align-#{$value} {
+    align-items: $value;
+  }
+}
+
+@each $value
+  in (primary-green, secondary-color, tint-green, text-color, muted-text-color)
+{
+  .bg-#{$value} {
+    background-color: var(--#{$value}) !important;
+  }
+  .text-#{$value} {
+    color: var(--#{$value}) !important;
+  }
+}
+
+@each $direction in (top, right, bottom, left, inline, block) {
+  @for $i from 0 through 100 {
+    .m-#{$direction}-#{$i} {
+      margin-#{$direction}: toRem($i) !important;
+    }
+    .p-#{$direction}-#{$i} {
+      padding-#{$direction}: toRem($i) !important;
+    }
+  }
+}
+
+@each $value in (nowrap, wrap, wrap-reverse) {
+  .flex-wrap-#{$value} {
+    flex-wrap: $value;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.block {
+  display: block;
+}
+
+// Generate responsive utility classes
+@each $breakpoint, $prefix in (phone: sm, tablet: md, monitor: xl) {
+  @include media($breakpoint) {
+    @for $i from 0 through 100 {
+      .#{$prefix}\:flex-col-#{$i} {
+        @include flexbox(column, toRem($i));
+      }
+      .#{$prefix}\:flex-row-#{$i} {
+        @include flexbox(row, toRem($i));
+      }
+      .#{$prefix}\:m-#{$i} {
+        margin: toRem($i) !important;
+      }
+      .#{$prefix}\:p-#{$i} {
+        padding: toRem($i) !important;
+      }
+    }
+    @for $i from 1 through 100 {
+      .#{$prefix}\:width-#{$i} {
+        width: ($i) * 1% !important;
+      }
+    }
+    @each $value in (flex-start, flex-end, center, space-between, space-around)
+    {
+      .#{$prefix}\:justify-#{$value} {
+        justify-content: $value;
+      }
+    }
+    @each $value in (flex-start, flex-end, center, baseline, stretch) {
+      .#{$prefix}\:align-#{$value} {
+        align-items: $value;
+      }
+    }
+    @each $direction in (top, right, bottom, left, inline, block) {
+      @for $i from 0 through 100 {
+        .#{$prefix}\:m-#{$direction}-#{$i} {
+          margin-#{$direction}: toRem($i) !important;
+        }
+        .#{$prefix}\:p-#{$direction}-#{$i} {
+          padding-#{$direction}: toRem($i) !important;
+        }
+      }
+    }
+    @each $value in (nowrap, wrap, wrap-reverse) {
+      .#{$prefix}\:flex-wrap-#{$value} {
+        flex-wrap: $value !important;
+      }
+    }
+    .#{$prefix}\:hidden {
+      display: none !important;
+    }
+    .#{$prefix}\:block {
+      display: block !important;
+    }
+    .#{$prefix}\:width-fit {
+      width: fit-content !important;
+    }
+  }
+}
