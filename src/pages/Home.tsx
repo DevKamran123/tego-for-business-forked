@@ -91,8 +91,8 @@ const Home: React.FC = () => {
           </div>
 
           <div className='homeCont_app_cont_layout'>
-            <Download />
-            <Download />
+            <Download text='Download the Driver app'/>
+            <Download text='Download the Rider app' />
           </div>
         </div>
       </div>

@@ -83,7 +83,7 @@
 
     &_safety {
         background-color: $white;
-        padding: toRem(121) toRem(112) toRem(140) toRem(112);
+        padding: toRem(105) toRem(112) toRem(130) toRem(112);
         font-family: $font-roboto;
 
         &_title {
@@ -94,8 +94,8 @@
         }
 
         &_layout {
-            @include flexbox(row, toRem(67));
-            margin-top: toRem(57);
+            @include flexbox(row, toRem(77));
+            margin-top: toRem(40);
         }
     }
 
