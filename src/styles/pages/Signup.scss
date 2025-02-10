@@ -54,7 +54,7 @@
     }
 
     &_main {
-        margin: auto auto;
+        margin: 0px auto;
         height: 100vh;
         overflow-y: scroll;
         padding: toRem(145) 0px toRem(308) 0px;
@@ -191,7 +191,7 @@
                         width: toRem(623);
                         height: toRem(60);
                         font-weight: 500;
-                        font-size: toRem(24);
+                        font-size: toRem(20);
                         line-height: toRem(30.24);
                         letter-spacing: 0%;
                         color: $white;
@@ -228,6 +228,10 @@
                     justify-content: space-between;
                     align-items: center;
                     margin-top: toRem(38);
+                }
+
+                &_fake {
+                    color: $white;
                 }
             }
         }

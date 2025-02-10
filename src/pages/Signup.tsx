@@ -96,6 +96,8 @@ export default function Signup() {
                         <div className="signupCont_main_content_register_allPlatforms">
                             {authBoxes.map((details)=>(<AuthCards details={details} key={details.text}/>))}
                         </div>
+
+                        <div className="signupCont_main_content_register_fake">Hello</div>
                     </div>
                 </div>
             </div>
