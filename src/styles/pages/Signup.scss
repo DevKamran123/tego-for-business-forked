@@ -1,10 +1,12 @@
 @use "../main.scss" as *;
 
 .signupCont {
-    border: 1px solid red;
+    // border: 1px solid red;
     @include flexbox(row, 0px);
+    height: 100%;
 
     &_side {
+        
         @include flexbox(row, 0px);
         align-items: center;
         justify-content: center;
@@ -15,11 +17,15 @@
         object-fit: contain;
 
         width: toRem(642);
-        height: toRem(1056);
+        // height: toRem(1056);
         // height: 100vh;
-        // height: auto;
+        height: auto;
         // max-height: toRem(1268);
         z-index: 1;
+
+        @include media("<=tablet") {
+            display: none;
+        }
 
         &_text {
             font-family: $font-plus-jakarta;
@@ -43,13 +49,16 @@
             top: 0;
             left: 0;
             z-index: 2;
-            border: 1px solid green;
             background: linear-gradient(180deg, #3E4095 0%, rgba(62, 64, 149, 0.45) 58.91%);
         }
     }
 
     &_main {
         margin: auto auto;
+        height: 100vh;
+        overflow-y: scroll;
+        padding: toRem(145) 0px toRem(308) 0px;
+
         &_content {
             // border: 1px solid green;
 
@@ -140,6 +149,7 @@
             &_register {
                 margin-top: toRem(54);
                 font-family: $font-plus-jakarta;
+                color: $light-gray;
                 form {
                     @include flexbox(column, toRem(0));
                     align-items: start;
@@ -188,6 +198,36 @@
                         background-color: $secondary-color;
                         margin-top: toRem(17);
                     }
+                }
+
+                &_alternative {
+                    font-weight: 400;
+                    font-size: toRem(16);
+                    line-height: toRem(20.16);
+                    letter-spacing: 0%;
+                    text-align: center;     
+                    margin-top: toRem(17);  
+                    color: $light-gray;    
+                    
+                    span {
+                        font-weight: 700;
+                        cursor: pointer;
+                    }
+                }
+
+                &_or {
+                    font-weight: 400;
+                    font-size: toRem(20);
+                    line-height: toRem(25.2);
+                    margin-top: toRem(20);       
+                    text-align: center;      
+                }
+
+                &_allPlatforms {
+                    @include flexbox(row, 0px);
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-top: toRem(38);
                 }
             }
         }

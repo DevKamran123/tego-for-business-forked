@@ -4,6 +4,27 @@ import personal from "../assets/svgs/personal";
 import enterprise from "../assets/svgs/enterprise";
 import { useState } from "react";
 import CheckBox from "../components/Checkbox";
+import AuthCards from "../components/AuthCards";
+
+import keyIcon from "../assets/svgs/keyIcon.svg";
+import googleIcon from "../assets/svgs/googleIcon.svg";
+import microsoftIcon from "../assets/svgs/microsoftIcon.svg";
+
+const authBoxes = [
+    {
+        image: keyIcon,
+        text: "SSO"
+    },
+    {
+        image: googleIcon,
+        text: "Google"
+    },
+    {
+        image: microsoftIcon,
+        text: "Microsoft"
+    },
+]
+
 
 export default function Signup() {
     const [activeTab, setActiveTab] = useState("enterprise");
@@ -63,6 +84,18 @@ export default function Signup() {
                             <CheckBox label="Accept Terms of Service and Privacy Policy"/>
                             <button>Get started</button>
                         </form>
+
+                        <div className="signupCont_main_content_register_alternative">
+                            Already have an account? <span>Login</span>
+                        </div>
+                        
+                        <div className="signupCont_main_content_register_or">
+                            Or
+                        </div>
+
+                        <div className="signupCont_main_content_register_allPlatforms">
+                            {authBoxes.map((details)=>(<AuthCards details={details} key={details.text}/>))}
+                        </div>
                     </div>
                 </div>
             </div>
