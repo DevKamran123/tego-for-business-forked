@@ -1,0 +1,146 @@
+@use "/src/styles/main.scss" as *;
+
+.confirmsignupCont {
+    @include flexbox(row, 0px);
+    height: 100%;
+
+    &_side {
+        
+        @include flexbox(row, 0px);
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        background-image: url("/src/assets/images/bgAuth.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        object-fit: contain;
+
+        width: toRem(642);
+        // height: toRem(1056);
+        // height: 100vh;
+        height: auto;
+        // max-height: toRem(1268);
+        z-index: 1;
+
+        @include media("<=tablet") {
+            display: none;
+        }
+
+        &_text {
+            font-family: $font-plus-jakarta;
+            font-weight: 800;
+            font-size: toRem(45.8);
+            line-height: toRem(57.5);
+            letter-spacing: 0%;      
+            color: $white;     
+            z-index: 77;  
+            width: toRem(424);
+            justify-self: center;
+
+            &_catchphrase {
+                margin-bottom: toRem(300);
+            }
+
+            &_alert {
+                align-self: start;
+            }
+        }
+
+
+
+        &_bg {
+            position: absolute;
+            width: toRem(642);
+            // height: toRem(1056);
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            background: linear-gradient(180deg, #3E4095 0%, rgba(62, 64, 149, 0.45) 58.91%);
+        }
+    }
+
+    &_main {
+        margin: 0px auto;
+        height: 100vh;
+        overflow-y: scroll;
+        padding: toRem(145) 0px toRem(308) 0px;
+
+        &_content {
+            // border: 1px solid green;
+
+            &_title {
+                font-family: $font-plus-jakarta;
+                font-weight: 500;
+                font-size: toRem(33.3);
+                line-height: toRem(42);
+                letter-spacing: 0%;
+                text-align: start;
+                width: toRem(360);
+            }
+
+
+            &_register {
+                margin-top: toRem(54);
+                font-family: $font-plus-jakarta;
+                color: $light-gray;
+
+                form {
+                    @include flexbox(column, toRem(0));
+                    align-items: start;
+                    // width: 100%;
+
+                    label {
+                        font-weight: 400;
+                        font-size: toRem(15);
+                        line-height: toRem(18);
+                        letter-spacing: 0%;  
+                        color: $light-gray;                         
+                    }
+
+                    .input_text {
+                        width: toRem(758);
+                        height: toRem(62);
+                        outline: none;
+                        border: toRem(1) solid $light-gray;
+                        margin-top: toRem(10);
+
+                        font-weight: 400;
+                        font-size: toRem(20);
+                        line-height: toRem(25.2);
+                        letter-spacing: 0%;
+                        color: $text-color;
+                        padding-left: toRem(34);
+                        padding-right: toRem(34);
+                        margin-bottom: toRem(55);
+
+                        &::placeholder {
+                            font-weight: 400;
+                            font-size: toRem(20);
+                            line-height: toRem(25.2);
+                            letter-spacing: 0%;
+                            color: #DBDBDB;
+                        }
+                    }
+
+
+                    .confirmsignupCont_main_content_register_nomail {
+                        font-weight: 300;
+                        font-size: toRem(20);
+                        line-height: toRem(25.2);
+                        letter-spacing: 0%;    
+                        width: toRem(758); 
+                        color: $light-black;               
+                    }
+    
+                    .confirmsignupCont_main_content_register_actions {
+                        display: inline-block;
+                        @include flex(start, center, toRem(185));
+                        margin-top: toRem(232);
+                    }
+                }
+            }
+        }
+    }
+    
+}

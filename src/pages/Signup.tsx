@@ -9,6 +9,7 @@ import AuthCards from "../components/AuthCards";
 import keyIcon from "../assets/svgs/keyIcon.svg";
 import googleIcon from "../assets/svgs/googleIcon.svg";
 import microsoftIcon from "../assets/svgs/microsoftIcon.svg";
+import { useNavigate } from "react-router-dom";
 
 const authBoxes = [
     {
@@ -27,6 +28,7 @@ const authBoxes = [
 
 
 export default function Signup() {
+    const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState("enterprise");
 
     return (
@@ -82,7 +84,7 @@ export default function Signup() {
                             <label htmlFor="email">Company email</label>
                             <input type="text" id="email" className="input_text" placeholder="Enter your email"/>
                             <CheckBox label="Accept Terms of Service and Privacy Policy"/>
-                            <button>Get started</button>
+                            <button onClick={()=>navigate("/confirm-signup")}>Get started</button>
                         </form>
 
                         <div className="signupCont_main_content_register_alternative">
