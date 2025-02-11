@@ -1,0 +1,143 @@
+@use "../../main.scss" as *;
+
+.parentItem {
+  // Styles for the parent menu item container
+  display: flex;
+  align-items: center;
+  background-color: transparent; // Default background color
+  // height: toRem(70);
+  padding: toRem(16);
+  gap: toRem(12);
+  border-radius: 0 toRem(15) toRem(15) 0;
+  opacity: 1;
+  margin: toRem(4) 0;
+}
+
+.activeParentItem,
+.item.active {
+  border-radius: 0 toRem(15) toRem(15) 0;
+  background-color: $secondary-color; // Active parent item background color
+}
+
+.childItem {
+  // Styles for the child menu item container
+  padding-left: toRem(45); // Adjust as needed for indentation
+  display: none; // Hide child items by default
+  font-size: toRem(14);
+  font-weight: 400;
+  line-height: toRem(20);
+  text-align: left;
+  color: $white;
+}
+
+.activeChildItem {
+  padding-left: toRem(-30);
+  color: $white; // Active child item color
+  font-size: toRem(14);
+  font-weight: 400;
+  line-height: toRem(20);
+  text-align: left;
+}
+
+.activeChildCircle {
+  width: toRem(12);
+  height: toRem(12);
+  border-radius: 50%;
+  background-color: $secondary-color; // Active child item circle color
+  margin-right: toRem(10);
+  display: none; // Hide active child circle by default
+}
+
+.item {
+  // Styles for each individual sidebar item
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: toRem(70);
+  padding: toRem(16);
+  gap: toRem(8);
+  border-radius: toRem(5);
+  opacity: 0px;
+  margin: toRem(8) 0;
+  text-decoration: none;
+  * {
+    flex-shrink: 0;
+  }
+  &.collapsed{
+    padding: 0;
+    justify-content: center;
+  }
+
+  img{
+    height: 30px;
+    aspect-ratio: 1/1;
+  }
+}
+
+.menuTitle {
+  flex: 1;
+  cursor: pointer;
+  color: $white; // Default text color
+  font-size: toRem(24);
+  font-weight: 400;
+  line-height: toRem(30);
+  text-align: left;
+  text-wrap: nowrap;
+  text-decoration: none !important;
+  display: flex;
+  align-items: center;
+
+  span{
+    line-height: 0em;
+  }
+}
+
+.activeMenuTitle {
+  color: $white;
+}
+
+.submenu {
+  // Styles for the submenu container
+  display: flex;
+  flex-direction: column; // Arrange children vertically
+}
+
+.chevronIcon {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  margin-left: auto; // Push chevron icon to the right
+}
+
+.activeChevron path {
+  fill: $white; /* Change to whatever color you prefer for active state */
+}
+
+// Animation for rotated chevron icon
+.rotated {
+  transform: rotate(180deg);
+}
+
+.open .childItem {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: toRem(12) toRem(16);
+  display: block; // Show child items when parent menu is open
+}
+
+.childItem a{
+  text-decoration: none;
+  color: $white;
+}
+
+.active .activeChildCircle {
+  display: inline-block; // Show active child circle when child is active
+}
+
+.logout{
+  border-radius: 5px;
+  background: $secondary-color;
+  color: white!important;
+
+  .menuTitle{
+    color: white!important;
+  }
+}
