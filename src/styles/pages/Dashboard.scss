@@ -1,0 +1,29 @@
+@use "/src/styles/main.scss" as *;
+
+.dashboard {
+    // &_header {
+
+    // }
+
+    &_title {
+        font-family: $font-plus-jakarta;
+        font-weight: 500;
+        font-size: toRem(28);
+        line-height: toRem(35.28);
+        letter-spacing: 0%;
+        color: #000000;
+    }
+
+    &_actions {
+        display: grid;
+        grid-template-columns: toRem(559) toRem(870);
+        row-gap: toRem(40);
+        margin-top: toRem(20);
+
+        &_location {
+            width: toRem(559);
+            height: toRem(537);
+            border: 1px solid $secondary-blue;
+        }
+    }
+}

@@ -7,6 +7,7 @@ import Login from "../pages/Login";
 import ProtectedRoute from "./ProtectedRoute";
 import DashboardLayout from "../components/layouts/DashboardLayout";
 import LogoutHandler from "../components/LogoutHandler";
+import Dashboard from "../pages/Dashboard";
 
 const AppRoutes = () => {
   return (
@@ -24,7 +25,7 @@ const AppRoutes = () => {
             <ProtectedRoute>
               <DashboardLayout>
                 <Routes>
-                  <Route path="/" element={<div>Dashboard</div>} />
+                  <Route path="/" element={<Dashboard />} />
                 </Routes>
               </DashboardLayout>
             </ProtectedRoute>
