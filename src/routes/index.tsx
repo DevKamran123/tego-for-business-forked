@@ -4,6 +4,9 @@ import Signup from "../pages/Signup";
 import ConfirmSignup from "../pages/ConfirmSignup";
 import CreatePassword from "../pages/CreatePassword";
 import Login from "../pages/Login";
+import ProtectedRoute from "./ProtectedRoute";
+import DashboardLayout from "../components/layouts/DashboardLayout";
+import LogoutHandler from "../components/LogoutHandler";
 
 const AppRoutes = () => {
   return (
@@ -14,6 +17,19 @@ const AppRoutes = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/confirm-signup" element={<ConfirmSignup />} />
         <Route path="/create-password" element={<CreatePassword />} />
+        <Route path="logout" element={<LogoutHandler />} />
+        <Route
+          path="/dashboard/*"
+          element={
+            <ProtectedRoute>
+              <DashboardLayout>
+                <Routes>
+                  <Route path="/" element={<div>Dashboard</div>} />
+                </Routes>
+              </DashboardLayout>
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </Router>
   );
