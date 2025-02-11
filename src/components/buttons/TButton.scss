@@ -1,0 +1,39 @@
+@use "../../styles/main.scss" as *;
+
+.t-button {
+  border-radius: 0;
+
+  font-size: toRem(20);
+  font-weight: 500;
+  line-height: toRem(30);
+  text-align: center;
+  padding: toRem(15) toRem(20);
+  height: fit-content;
+  min-width: toRem(300);
+
+  &-primary {
+    background-color: $primary-color;
+    color: $white;
+    border: none!important;
+
+    &:hover {
+      background-color: $primary-color!important;
+    }
+  }
+
+  &-secondary {
+    background-color: $secondary-color;
+    color: $white;
+    border: none!important;
+    
+    &:hover {
+      background-color: darken(#AF2E2F, 20%)!important;
+      color: $white !important;
+    }
+  }
+
+  &-outline {
+    background-color: $white;
+    color: $primary-color;
+  }
+}
