@@ -28,7 +28,7 @@ export default function Header() {
                     </div>
                     <div className="headerCont_auth_lang_symbol">EN</div>
                 </div>
-                <div className="headerCont_auth_login">Log In</div>
+                <div className="headerCont_auth_login" onClick={() => navigate("/login")}>Log In</div>
                 <div className="headerCont_auth_signup" onClick={()=>navigate("/signup")}>Sign up</div>
             </div>
         </div>
