@@ -1,0 +1,14 @@
+@use "/src/styles/main.scss" as *;
+
+.authMessage {
+    @include flex(start, center, toRem(20));
+
+    &_text {
+        font-family: $font-plus-jakarta;
+        font-weight: 400;
+        font-size: toRem(20);
+        line-height: toRem(26);
+        letter-spacing: 0%;
+        width: toRem(320);        
+    }
+}

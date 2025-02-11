@@ -1,7 +1,9 @@
 import "../styles/components/Header.scss";
 import globe from "../assets/images/globe.png";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
+    const navigate = useNavigate();
     return (
         <div className="headerCont">
             <div className="headerCont_logo">
@@ -27,7 +29,7 @@ export default function Header() {
                     <div className="headerCont_auth_lang_symbol">EN</div>
                 </div>
                 <div className="headerCont_auth_login">Log In</div>
-                <div className="headerCont_auth_signup">Sign up</div>
+                <div className="headerCont_auth_signup" onClick={()=>navigate("/signup")}>Sign up</div>
             </div>
         </div>
     )

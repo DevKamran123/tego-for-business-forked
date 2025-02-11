@@ -51,7 +51,7 @@ export default function Footer() {
                     <div>Our offerings</div>
                     <div>Newsroom</div>
                     <div>Investors</div>
-                    <div>blog</div>
+                    <div>Blog</div>
                     <div>Careers</div>
                     <div>AI</div>
                     <div>Gift Cards</div>

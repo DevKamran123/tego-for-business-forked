@@ -1,0 +1,80 @@
+@use '/src/styles/main.scss' as *;
+
+.checkboxWrapper input[type='checkbox'] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: toRem(20);
+  height: toRem(20);
+  // border-radius: toRem(2);  Review ths
+  border: toRem(1) solid $light-gray; //And this also
+  border-radius: toRem(4);
+  outline: none;
+  cursor: pointer;
+}
+
+.checkAuth {
+  border: toRem(1) solid rgba(0, 0, 0, 0.35) !important;
+}
+
+.checkboxWrapper__label {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: toRem(10);
+
+  //   @include media('<=phone-tab') {
+  //     gap: toRem(8);
+  //   }
+
+  &__text {
+    font-family: $font-plus-jakarta;
+    font-size: toRem(16);
+    font-weight: 400;
+    line-height: toRem(20/15);
+    text-align: left;
+    color: $light-gray;
+
+    // @include media('<=phone-tab') {
+    //   width: 100%;
+    //   font-size: toRem(16);
+    // }
+
+    &_textAuth {
+      font-family: $font-plus-jakarta;
+      font-size: toRem(12);
+      font-weight: 400;
+      line-height: auto;
+      color: rgba(0, 0, 0, 0.65);
+      margin-top: toRem(-9);
+
+      align-self: center;
+
+    //   @include media('<=tablet') {
+    //     line-height: toRem(16.5);
+    //   }
+    //   @include media('<=phone-tab') {
+    //     font-size: toRem(11);
+    //     line-height: toRem(15);
+    //   }
+    }
+  }
+}
+
+.checkboxWrapper input.checked {
+  background-color: $secondary-blue;
+  position: relative;
+}
+
+.checkboxWrapper input.checked::before {
+  content: '';
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  background-image: url('data:image/svg+xml,%3Csvg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M4 8L6 10L12 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/%3E%3C/svg%3E');
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  position: absolute;
+  left: toRem(-0.5);
+  top: toRem(0.5);
+}

@@ -1,7 +1,6 @@
 import "../styles/components/InfoCard.scss";
 
 interface InfoCardProps {
-
     info: {
         text: string;
         title: string;

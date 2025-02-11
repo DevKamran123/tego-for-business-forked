@@ -15,17 +15,17 @@
         margin-left: toRem(142);
         margin-top: toRem(373);
         width: toRem(212);
-        // border: 1px solid green;
         flex-shrink: 0;
         color: $white;
+        font-family: $font-roboto;
 
         &_layout {
             &_icons {
                 @include flexbox(row, toRem(24));
 
                 img {
-                    width: toRem(40);
-                    height: toRem(40);
+                    width: toRem(38);
+                    height: toRem(38);
                     cursor: pointer;
                 }
             }
@@ -33,18 +33,26 @@
             &_locate {
                 @include flexbox(row, toRem(0));
                 justify-content: space-between;
+                align-items: center;
                 margin-top: toRem(27);
+                font-size: toRem(19);
 
                 &_lang, &_place {
                     @include flexbox(row, toRem(5));
                     align-items: center;
+
+                    img {
+                        width: toRem(17);
+                        height: toRem(17);
+                    }
                 }
+
 
             }
 
             &_help {
                 font-family: $font-roboto;
-                font-size: toRem(22);
+                font-size: toRem(19);
                 font-weight: 400;
                 line-height: toRem(30.95);
                 text-align: left;
@@ -62,7 +70,7 @@
 
 
         &_title {
-            font-size: toRem(28);
+            font-size: toRem(27);
             font-weight: 500;
             // line-height: toRem(37.8);
             flex-shrink: 0;     
@@ -70,7 +78,7 @@
 
         &_text {
             @include flexbox(column, toRem(10));
-            font-size: toRem(20);
+            font-size: toRem(19);
             font-weight: 400;
             line-height: toRem(30.95);
 
@@ -83,7 +91,7 @@
 
     &_company {
         margin-left: toRem(189);
-        width: toRem(122);
+        width: toRem(132);
         // border: 1px solid green;
 
     }

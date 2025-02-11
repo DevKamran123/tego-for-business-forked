@@ -2,15 +2,19 @@ import "../styles/components/Download.scss";
 
 import appLogo from "../assets/images/appLogo.png";
 
-export default function Download() {
+interface DownloadProps {
+    text: string;
+}
+
+export default function Download({text}: DownloadProps) {
     return (
         <div className="download">
             <div className="download_appLogo">
-                <img src={appLogo} alt="" />
+                <img src={appLogo} alt="applogo" />
             </div>
 
             <div className="download_text">
-                Download the Driver app
+                {text}
             </div>
 
             <div className="download_next">

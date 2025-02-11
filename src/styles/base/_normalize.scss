@@ -15,32 +15,31 @@ html {
   }
 }
 body {
-  font-family: "Plus Jakarta Sans", sans-serif;
+  // font-family: $dm-sans;
   overflow-x: hidden;
   background-color: #ffffff;
 }
 h1,
 h2,
 h3,
-h4,
-h5,
-h6,
-p {
-  margin: 0 !important;
+h4 {
+  font-family: $font-plus-jakarta;
 }
-
-// p {
-//   font-size: toRem(22);
-//   font-weight: 400;
-//   line-height: 2.2rem;
-//   @include media('<=phone-tab') {
-//     font-size: toRem(18);
-//     line-height: 2rem;
-//   }
-// }
+a,
+p {
+  color: $primary-color;
+  font-size: toRem(22);
+  font-weight: 400;
+  line-height: 2.2rem;
+  @include media('<=phone-tab') {
+    font-size: toRem(18);
+    line-height: 2rem;
+  }
+}
 section {
   width: 100%;
 }
+
 button {
   outline: none;
   font-family: inherit;
@@ -52,10 +51,10 @@ a {
   text-decoration: none;
 }
 
-// img {
-//   -webkit-user-drag: none;
-//   user-select: none;
-// }
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
 input,
 textarea,
 select {

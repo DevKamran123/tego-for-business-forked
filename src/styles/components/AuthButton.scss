@@ -1,0 +1,24 @@
+@use "/src/styles/main.scss" as *;
+
+.authbutton {
+    font-family: $font-plus-jakarta;
+    width: toRem(290);
+    height: toRem(71);
+    font-weight: 500;
+    font-size: toRem(24);
+    line-height: toRem(30.4);
+    letter-spacing: 0%;
+
+}
+
+.authprimary {
+    border: toRem(1) solid $light-gray;
+    color: $secondary-blue;
+    background-color: $white;
+}
+
+.authsecondary {
+    border: toRem(1) solid $secondary-color;
+    color: $white;
+    background-color: $secondary-color;
+}
