@@ -1,12 +1,15 @@
 import "../styles/components/Header.scss";
-import globe from "../assets/images/globe.png";
 import { useNavigate } from "react-router-dom";
+
+import globe from "../assets/images/globe.png";
+import rideTegoLogo from "../assets/images/rideTegoLogo.png";
 
 export default function Header() {
     const navigate = useNavigate();
     return (
         <div className="headerCont">
             <div className="headerCont_logo">
+                <img src={rideTegoLogo} alt="logo" />
                 RideTEGO
             </div>
             <div className="headerCont_details">
