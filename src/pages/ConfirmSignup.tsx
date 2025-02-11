@@ -35,8 +35,8 @@ export default function ConfirmSignup() {
                             </div>
 
                             <div className="confirmsignupCont_main_content_register_actions">
-                                <AuthButton text="Back to sign up" color="primary" action="signup"/>
-                                <AuthButton text="Get Started" color="secondary" action="password"/>
+                                <AuthButton text="Back to sign up" color="primary" action="/signup"/>
+                                <AuthButton text="Get Started" color="secondary" action="/create-password"/>
                             </div>
                         </form>
                     </div>

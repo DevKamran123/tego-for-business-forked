@@ -13,7 +13,7 @@ export default function AuthButton({text, color, action}: AuthButtonProps) {
     return (
         <button 
             className={`authbutton ${color==="primary"? "authprimary": "authsecondary"}`}
-            onClick={()=>navigate(`/${action}`)}
+            onClick={()=>navigate(action)}
         >
             {text}
         </button>
