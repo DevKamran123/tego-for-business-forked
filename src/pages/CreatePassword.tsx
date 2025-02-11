@@ -5,6 +5,7 @@ import "../styles/pages/CreatePassword.scss";
 import lines from "../assets/images/lines.png";
 import eye from "../assets/svgs/eye.svg";
 import { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 export default function CreatePassword() {
     const [showPassword, setShowPassword] = useState("password");
@@ -59,7 +60,11 @@ export default function CreatePassword() {
                             <label htmlFor="password">Your password</label>
                             <div className="createPassword_main_content_register_field">
                                 <input type={showPassword} id="password" className="input_text" placeholder="Write unique password" />
-                                <img src={eye} alt="" onClick={()=>setShowPassword("text")}/>
+                                {showPassword === 'password' ? (
+                                    <FaEye onClick={() => setShowPassword('text')} className='eye'/>
+                                    ) : (
+                                    <FaEyeSlash onClick={() => setShowPassword('password')} className='eye'/>
+                                )}
                             </div>
 
                             <div className="dashedlines">
