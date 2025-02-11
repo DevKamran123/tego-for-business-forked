@@ -3,8 +3,12 @@ import AuthMessage from "../components/AuthMessage";
 import "../styles/pages/CreatePassword.scss";
 
 import lines from "../assets/images/lines.png";
+import eye from "../assets/svgs/eye.svg";
+import { useState } from "react";
 
 export default function CreatePassword() {
+    const [showPassword, setShowPassword] = useState("password");
+
     return (
         <div className="createPassword">
             <div className="createPassword_side">
@@ -53,7 +57,10 @@ export default function CreatePassword() {
                     <div className="createPassword_main_content_register">
                         <form>
                             <label htmlFor="password">Your password</label>
-                            <input type="email" id="password" className="input_text" placeholder="Write unique password"/>
+                            <div className="createPassword_main_content_register_field">
+                                <input type={showPassword} id="password" className="input_text" placeholder="Write unique password" />
+                                <img src={eye} alt="" onClick={()=>setShowPassword("text")}/>
+                            </div>
 
                             <div className="dashedlines">
                                 <img src={lines} alt="line deco" />

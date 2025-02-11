@@ -9,12 +9,18 @@
     background-color: transparent;
 
     &_logo {
+        @include flex(start, center, toRem(15));
         font-family: $font-plus-jakarta;
         font-size: toRem(30);
         font-weight: 800;
         line-height: toRem(37.8);
         text-align: left; 
-        color: $white;      
+        color: $white;  
+        
+        img {
+            width: toRem(46);
+            height: toRem(46);
+        }
     }
 
     &_details {
