@@ -66,6 +66,10 @@
         overflow-y: scroll;
         padding: toRem(145) 0px toRem(308) 0px;
 
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+        backface-visibility: hidden; 
+
         &_content {
             // border: 1px solid green;
 
@@ -129,7 +133,8 @@
                         line-height: toRem(25.2);
                         letter-spacing: 0%;    
                         width: toRem(758); 
-                        color: $light-black;               
+                        color: $light-black;   
+                        margin-top: toRem(50);            
                     }
     
                     .confirmsignupCont_main_content_register_actions {
