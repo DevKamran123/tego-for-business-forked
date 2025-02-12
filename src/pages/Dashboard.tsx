@@ -1,5 +1,7 @@
-// import BookRideForm from "../components/BookRideForm";
+import BookRideForm from "../components/BookRideForm";
 import DashboardHeader from "../components/DashboardHeader";
+import TotalCard from "../components/TotalCard";
+import { totalCardItems } from "../data/dashboard";
 import "../styles/pages/Dashboard.scss";
 
 export default function Dashboard() {
@@ -14,10 +16,22 @@ export default function Dashboard() {
 
             <div className="dashboard_actions">
                 <div className="dashboard_actions_location">
-                    {/* <BookRideForm /> */}
+                    <BookRideForm />
                 </div>
                 <div className="dashboard_actions_activities">
-                    
+                    <div className="dashboard_actions_activities_total">
+                        {totalCardItems.map(
+                            (items)=>(<TotalCard items={items} key={items.text}/>)
+                        )}
+                    </div>
+                    <div className="dashboard_actions_activities_plan">
+                        <div className="dashboard_actions_activities_plan_title">
+                            Plan a ride
+                        </div>
+                        <div className="dashboard_actions_activities_plan_layout">
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
