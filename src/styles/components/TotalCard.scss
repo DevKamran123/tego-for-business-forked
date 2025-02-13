@@ -3,15 +3,15 @@
 .totalCard {
     @include flex-center();
     flex-direction: column;
-    width: toRem(255);
-    height: toRem(149);
+    width: toRem(265);
+    height: toRem(169);
     background-color: $white;
     border-radius: toRem(20);
     color: #373737;
     font-family: $font-plus-jakarta;
 
     &_title {
-        @include flex(start, center, toRem(10));
+        @include flex(start, center, toRem(14));
         // border: 1px solid red;
 
         img {
@@ -22,7 +22,7 @@
 
         &_text {
             font-weight: 500;
-            font-size: toRem(14);
+            font-size: toRem(15);
             line-height: toRem(16);
             letter-spacing: 0%;                
         }
@@ -30,7 +30,7 @@
 
     &_count {
         font-weight: 800;
-        font-size: toRem(46);
+        font-size: toRem(55);
         line-height: toRem(69.3);
         letter-spacing: 0%;     
     }

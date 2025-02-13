@@ -1,5 +1,6 @@
 import BookRideForm from "../components/BookRideForm";
 import DashboardHeader from "../components/DashboardHeader";
+import HistoryCard from "../components/HistoryCard";
 import TotalCard from "../components/TotalCard";
 import { totalCardItems } from "../data/dashboard";
 import "../styles/pages/Dashboard.scss";
@@ -33,6 +34,13 @@ export default function Dashboard() {
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div className="dashboard_history">
+                <div className="dashboard_history_title">
+                    Recent History
+                </div>
+                <HistoryCard />
             </div>
         </div>
     )

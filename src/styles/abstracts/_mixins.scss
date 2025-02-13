@@ -36,7 +36,7 @@
 }
 
 @function toRem($value) {
-  $remValue: (calc($value / 16 * 0.83333)) + rem;
+  $remValue: (calc($value / 16 * 0.783333)) + rem;
   @return $remValue;
 }
 
