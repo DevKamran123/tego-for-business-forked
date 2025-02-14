@@ -8,6 +8,11 @@
     border-radius: toRem(20);
     padding: toRem(27) toRem(59) toRem(27) toRem(42);
     font-family: $font-plus-jakarta;
+    
+    &:hover {
+        cursor: pointer;
+        background-color: #ffffffaf;
+    }
 
     img {
         width: toRem(72.07);
@@ -46,7 +51,7 @@
             &_pickup, &_destination {
                 @include flex_col(toRem(8));
                 align-items: end;
-                
+
                 &_main {
                     font-weight: 500;
                     font-size: toRem(31.17);

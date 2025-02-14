@@ -2,7 +2,7 @@ import BookRideForm from "../components/BookRideForm";
 import DashboardHeader from "../components/DashboardHeader";
 import HistoryCard from "../components/HistoryCard";
 import TotalCard from "../components/TotalCard";
-import { totalCardItems } from "../data/dashboard";
+import { deliveryDetails, totalCardItems } from "../data/dashboard";
 import "../styles/pages/Dashboard.scss";
 
 export default function Dashboard() {
@@ -40,7 +40,7 @@ export default function Dashboard() {
                 <div className="dashboard_history_title">
                     Recent History
                 </div>
-                <HistoryCard />
+                <HistoryCard deliveryDetails={deliveryDetails}/>
             </div>
         </div>
     )

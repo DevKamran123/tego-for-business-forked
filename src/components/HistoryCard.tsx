@@ -1,15 +1,38 @@
 import "../styles/components/HistoryCard.scss";
 import toFrom from "../assets/images/toFrom.png";
+import { DeliveryDetails } from "../data/dashboard";
+import useRideStore from "../store/RideStore";
+import { useNavigate } from "react-router-dom";
 
-export default function HistoryCard() {
+interface HistoryCardProps {
+    deliveryDetails: DeliveryDetails
+}
+
+export default function HistoryCard({deliveryDetails}: HistoryCardProps) {
+    const setCurrentId = useRideStore((state)=>state.setCurrentId);
+    const navigate = useNavigate();
+
+    const {
+        pickupAddress,
+        couponApplied,
+        destinationAddress,
+        distanceInKm,
+        id,
+    } = deliveryDetails;
+
+    function action() {
+        setCurrentId(id);
+        navigate(`/dashboard/rides/${id}`);
+    }
+
     return (
-        <div className="historycard">
+        <div className="historycard" onClick={action}>
             <img src={toFrom} alt="to and fro" />
             <div className="historycard_layout">
                 <div className="historycard_layout_address">
                     <div className="historycard_layout_address_pickup">
                         <div className="historycard_layout_address_pickup_main">
-                            235 Palm Street, Detroit
+                            {pickupAddress}
                         </div>
                         <div className="historycard_layout_address_pickup_sub">
                             Pickup point
@@ -18,7 +41,7 @@ export default function HistoryCard() {
 
                     <div className="historycard_layout_address_destination">
                         <div className="historycard_layout_address_destination_main">
-                            35 Main street, Detroit
+                            {destinationAddress}
                         </div>
                         <div className="historycard_layout_address_destination_sub">
                             Destination
@@ -32,7 +55,7 @@ export default function HistoryCard() {
                             Payment
                         </div>
                         <div className="historycard_layout_other_pickup_main">
-                            Coupon
+                            {couponApplied}
                         </div>
                     </div>
 
@@ -41,7 +64,7 @@ export default function HistoryCard() {
                             Distance
                         </div>
                         <div className="historycard_layout_other_destination_main">
-                            15km
+                            {distanceInKm}km
                         </div>
                     </div>
                 </div>

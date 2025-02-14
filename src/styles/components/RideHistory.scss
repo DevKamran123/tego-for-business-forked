@@ -1,0 +1,62 @@
+// Details.scss
+
+@use "/src/styles/main.scss" as *;
+
+.ridehistory {
+    font-family: $font-plus-jakarta;
+
+    &_container {
+        margin-top: toRem(22);
+    }
+    &_details-wrapper {
+        position: relative;
+        margin-top: toRem(47);
+        // margin-bottom: toRem(39);
+        
+        &_details-button {
+            width: toRem(178);
+            height: toRem(66);
+            background: #F2F3F8;
+            border-radius: toRem(25);
+            border: toRem(0.75) solid $light-gray;
+            font-size: toRem(20);
+            font-weight: 400;
+            color: black;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 2;
+                
+            
+          &:hover {
+            background: #f5f5f5;
+          }
+          
+          &.active {
+            background: #f0f0f0;
+            border-color: #d0d0d0;
+          }
+        }
+      
+        // Horizontal line
+        &::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 0;
+          right: 0;
+          height: toRem(0.5);
+          background-color: $light-gray;
+          z-index: 1;
+        }
+      
+        .details-content {
+          margin-top: 16px;
+          padding: 16px;
+          border: 1px solid #e0e0e0;
+          border-radius: 8px;
+          background: white;
+        }
+    }
+}

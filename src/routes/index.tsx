@@ -8,6 +8,8 @@ import ProtectedRoute from "./ProtectedRoute";
 import DashboardLayout from "../components/layouts/DashboardLayout";
 import LogoutHandler from "../components/LogoutHandler";
 import Dashboard from "../pages/Dashboard";
+import Rides from "../pages/Rides";
+import RideHistory from "../components/RideHistory";
 
 const AppRoutes = () => {
   return (
@@ -26,6 +28,8 @@ const AppRoutes = () => {
               <DashboardLayout>
                 <Routes>
                   <Route path="/" element={<Dashboard />} />
+                  <Route path="/rides" element={<Rides />} />
+                  <Route path="/rides/:rideId" element={<RideHistory />} />
                 </Routes>
               </DashboardLayout>
             </ProtectedRoute>

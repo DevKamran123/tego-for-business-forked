@@ -21,3 +21,52 @@ export const totalCardItems = [
         total: 120
     },
 ]
+
+
+
+export interface DeliveryDetails {
+    id: number;
+    pickupAddress: string;
+    couponApplied: string;
+    destinationAddress: string;
+    distanceInKm: number;
+}
+
+export const deliveryDetails: DeliveryDetails = {
+    pickupAddress: "235 Palm Street, Detroit",
+    couponApplied: "Coupon",
+    destinationAddress: "35 Main street, Detroit",
+    distanceInKm: 15,
+    id: Math.random(),
+};
+
+export const deliveryData: DeliveryDetails[] = [
+    {
+        pickupAddress: "235 Palm Street, Detroit",
+        couponApplied: "Coupon",
+        destinationAddress: "35 Main street, Detroit",
+        distanceInKm: 15,
+        id: Math.random(),
+    },
+    {
+        pickupAddress: "235 Palm Street, Hudson",
+        couponApplied: "Coupon",
+        destinationAddress: "35 Main street, Hudson",
+        distanceInKm: 15,
+        id: Math.random(),
+    },
+    {
+        pickupAddress: "235 Palm Street, Hertfordshire",
+        couponApplied: "Coupon",
+        destinationAddress: "35 Main street, Hertfordshire",
+        distanceInKm: 15,
+        id: Math.random(),
+    },
+    {
+        pickupAddress: "235 Palm Street, Detroit",
+        couponApplied: "Coupon",
+        destinationAddress: "35 Main street, Detroit",
+        distanceInKm: 15,
+        id: Math.random(),
+    },
+]
