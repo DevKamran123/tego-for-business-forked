@@ -30,6 +30,8 @@ export interface DeliveryDetails {
     couponApplied: string;
     destinationAddress: string;
     distanceInKm: number;
+    date?: string;
+    passenger?: number;
 }
 
 export const deliveryDetails: DeliveryDetails = {
@@ -38,6 +40,8 @@ export const deliveryDetails: DeliveryDetails = {
     destinationAddress: "35 Main street, Detroit",
     distanceInKm: 15,
     id: Math.random(),
+    date: "05-11-2025",
+    passenger: 6,
 };
 
 export const deliveryData: DeliveryDetails[] = [
@@ -47,6 +51,8 @@ export const deliveryData: DeliveryDetails[] = [
         destinationAddress: "35 Main street, Detroit",
         distanceInKm: 15,
         id: Math.random(),
+        date: "05-11-2025",
+        passenger: 6,
     },
     {
         pickupAddress: "235 Palm Street, Hudson",
@@ -54,6 +60,8 @@ export const deliveryData: DeliveryDetails[] = [
         destinationAddress: "35 Main street, Hudson",
         distanceInKm: 15,
         id: Math.random(),
+        date: "05-11-2025",
+        passenger: 6,
     },
     {
         pickupAddress: "235 Palm Street, Hertfordshire",
@@ -61,6 +69,8 @@ export const deliveryData: DeliveryDetails[] = [
         destinationAddress: "35 Main street, Hertfordshire",
         distanceInKm: 15,
         id: Math.random(),
+        date: "05-11-2025",
+        passenger: 6,
     },
     {
         pickupAddress: "235 Palm Street, Detroit",
@@ -68,5 +78,7 @@ export const deliveryData: DeliveryDetails[] = [
         destinationAddress: "35 Main street, Detroit",
         distanceInKm: 15,
         id: Math.random(),
+        date: "05-11-2025",
+        passenger: 6,
     },
 ]

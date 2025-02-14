@@ -14,8 +14,8 @@
         // margin-bottom: toRem(39);
         
         &_details-button {
-            width: toRem(178);
-            height: toRem(66);
+            // width: toRem(178);
+            // height: toRem(66);
             background: #F2F3F8;
             border-radius: toRem(25);
             border: toRem(0.75) solid $light-gray;
@@ -27,6 +27,7 @@
             text-transform: uppercase;
             position: relative;
             z-index: 2;
+            padding: toRem(20.5) toRem(51.5);
                 
             
           &:hover {
@@ -58,5 +59,10 @@
           border-radius: 8px;
           background: white;
         }
+    }
+
+    &_detailsCard {
+        margin-top: toRem(39);
+        @include flex_col(toRem(10));
     }
 }

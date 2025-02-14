@@ -9,6 +9,7 @@ interface HistoryCardProps {
 }
 
 export default function HistoryCard({deliveryDetails}: HistoryCardProps) {
+    const activeTab = useRideStore((state)=>state.activeTab);
     const setCurrentId = useRideStore((state)=>state.setCurrentId);
     const navigate = useNavigate();
 
@@ -17,6 +18,8 @@ export default function HistoryCard({deliveryDetails}: HistoryCardProps) {
         couponApplied,
         destinationAddress,
         distanceInKm,
+        passenger,
+        date,
         id,
     } = deliveryDetails;
 
@@ -48,6 +51,29 @@ export default function HistoryCard({deliveryDetails}: HistoryCardProps) {
                         </div>
                     </div>
                 </div>
+
+                
+                {activeTab==="planned-rides" &&
+                <div className="historycard_layout_optional">
+                    <div className="historycard_layout_optional_pickup">
+                        <div className="historycard_layout_optional_pickup_sub">
+                            Date
+                        </div>
+                        <div className="historycard_layout_optional_pickup_main">
+                            {date}
+                        </div>
+                    </div>
+
+                    <div className="historycard_layout_optional_destination">
+                        <div className="historycard_layout_optional_destination_sub">
+                            Number of Passengers
+                        </div>
+                        <div className="historycard_layout_optional_destination_main">
+                            {passenger}
+                        </div>
+                    </div>
+                </div>}
+
 
                 <div className="historycard_layout_other">
                     <div className="historycard_layout_other_pickup">

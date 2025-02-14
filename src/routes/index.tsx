@@ -10,8 +10,13 @@ import LogoutHandler from "../components/LogoutHandler";
 import Dashboard from "../pages/Dashboard";
 import Rides from "../pages/Rides";
 import RideHistory from "../components/RideHistory";
+import useRideStore from "../store/RideStore";
+import PlannedRides from "../components/PlannedRides";
+
 
 const AppRoutes = () => {
+  const activeTab = useRideStore((state)=>state.activeTab);
+
   return (
     <Router>
       <Routes>
@@ -29,7 +34,7 @@ const AppRoutes = () => {
                 <Routes>
                   <Route path="/" element={<Dashboard />} />
                   <Route path="/rides" element={<Rides />} />
-                  <Route path="/rides/:rideId" element={<RideHistory />} />
+                  <Route path="/rides/:rideId" element={activeTab==="ride-history" ? <RideHistory />: <PlannedRides />} />
                 </Routes>
               </DashboardLayout>
             </ProtectedRoute>

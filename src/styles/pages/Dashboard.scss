@@ -20,10 +20,10 @@
         margin-top: toRem(20);
         // border-radius: toRem(20);
 
-        &_location {
-            // width: toRem(465.8);
-            // height: toRem(447.5);
-        }
+        // &_location {
+        //     // width: toRem(465.8);
+        //     // height: toRem(447.5);
+        // }
 
         &_activities {
             @include flex_col(toRem(40));

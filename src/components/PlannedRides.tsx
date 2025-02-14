@@ -5,10 +5,10 @@ import HistoryCard from "./HistoryCard";
 
 import "../styles/components/RideHistory.scss";
 import GoBackRides from "./GoBackRides";
-import DetailsCardDriver from "./DetailsCardDriver";
+import DetailsCardPassenger from "./DetailsCardRider";
 
 
-export default function RideHistory() {
+export default function PlannedRides() {
     const currentId = useRideStore((state)=>state.currentId);
 
     const selectedDelivery = deliveryData.find((deliveryDetails)=> deliveryDetails.id===currentId);
@@ -18,7 +18,7 @@ export default function RideHistory() {
     return (
         <div className="ridehistory">
             <DashboardHeader />
-            <GoBackRides text="Ride History"/>
+            <GoBackRides text="Planned ride details"/>
             <div className="ridehistory_container">
                 <HistoryCard deliveryDetails={selectedDelivery as DeliveryDetails} />
             </div>
@@ -26,11 +26,18 @@ export default function RideHistory() {
                 <button 
                     className={`ridehistory_details-wrapper_details-button`}
                 >
-                    DETAILS
+                    Passenger list
                 </button>
             </div>
             <div className="ridehistory_detailsCard">
-                <DetailsCardDriver />
+                <DetailsCardPassenger />
+                <DetailsCardPassenger />
+                <DetailsCardPassenger />
+                <DetailsCardPassenger />
+                <DetailsCardPassenger />
+                <DetailsCardPassenger />
+                <DetailsCardPassenger />
+                <DetailsCardPassenger />
             </div>
         </div>
     )

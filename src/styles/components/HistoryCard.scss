@@ -45,7 +45,7 @@
             }
         }
 
-        &_other {
+        &_other, &_optional {
             @include flex_col(toRem(56));
 
             &_pickup, &_destination {
@@ -65,6 +65,13 @@
                     letter-spacing: 0%;  
                     color: $light-gray;                  
                 }
+            }
+        }
+
+        &_optional {
+            &_pickup, &_destination {
+                @include flex_col(toRem(8));
+                align-items: center;
             }
         }
     }
