@@ -1,0 +1,80 @@
+@use "/src/styles/main.scss" as *;
+
+.couponCard {
+    height: toRem(180.08);
+    width: toRem(397);
+    border-radius: toRem(16.37);
+    background-color: white;
+
+    &_top {
+        @include flex(start, center, 0px);
+        background-color: $secondary-blue;
+        border-top-left-radius: toRem(16.37);
+        border-top-right-radius: toRem(16.37);
+        height: toRem(76.13);
+        font-weight: 600;
+        font-size: toRem(16.37);
+        line-height: toRem(20.63);
+        letter-spacing: 0%;
+        padding-left: toRem(24.56);
+        color: $white;
+        text-transform: uppercase;
+    }
+
+    &_bottom {
+        @include flex(start, end, toRem(102.15));
+        padding: toRem(13.87) toRem(24.5) toRem(24.66) toRem(28);
+
+        &_bonus {
+            @include flex_col(toRem(10.64));
+
+            color: $light-black;     
+            &_percent {
+                font-weight: 800;
+                font-size: toRem(32.74);
+                line-height: toRem(41.26);
+                letter-spacing: 0%;
+                
+                span {
+                    font-weight: 800;
+                    font-size: toRem(16.37);
+                    line-height: toRem(20.63);
+                    letter-spacing: 0%;
+                }
+            }
+
+            &_validity {
+                font-weight: 400;
+                font-size: toRem(11.82);
+                line-height: toRem(12.38);
+                letter-spacing: 0%;                
+            }
+
+        }
+
+        &_refferal {
+            @include flex_col(toRem(10.64));
+
+            &_code {
+                font-weight: 800;
+                font-size: toRem(16.37);
+                line-height: toRem(20.63);
+                letter-spacing: 0%;
+            }  
+
+            &_copy {
+                @include flex(start, center, toRem(10));
+                font-weight: 400;
+                font-size: toRem(12.89);
+                line-height: toRem(16.24);   
+                color: #3E409573;
+
+                img {
+                    width: toRem(9.33);
+                    height: toRem(10.94);
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

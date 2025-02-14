@@ -4,7 +4,8 @@
     @include flex(start, center, toRem(31.08));
     padding: toRem(21) toRem(59) toRem(15) toRem(26);
     height: toRem(80);
-    width: toRem(1469);
+    width: 100%;
+    // width: toRem(1469);
     background-color: $white;
     border-radius: toRem(20);
     
