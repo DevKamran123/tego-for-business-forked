@@ -31,7 +31,7 @@
         &_text {
             font-family: $font-plus-jakarta;
             font-weight: 800;
-            font-size: toRem(70.7);
+            font-size: toRem(63);
             line-height: toRem(89.1);
             letter-spacing: 0%;      
             color: $white;     
@@ -50,7 +50,8 @@
             top: 0;
             left: 0;
             z-index: 2;
-            background: linear-gradient(180deg, #3E4095 0%, rgba(62, 64, 149, 0.45) 58.91%);
+            background: linear-gradient(180deg, #3e4095 0%, #292a6173 100%);
+            // background: linear-gradient(180deg, #3E4095 0%, rgba(62, 64, 149, 0.45) 58.91%);
         }
     }
 

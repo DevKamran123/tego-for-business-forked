@@ -1,0 +1,20 @@
+@use "/src/styles/main.scss" as *;
+
+.gobackrides {
+    @include flex(start, center, toRem(10));
+    cursor: pointer;
+
+    img {
+        width: toRem(25);
+        height: toRem(25);
+        align-self: center;
+    }
+
+    &_title {
+        font-weight: 500;
+        font-size: toRem(28);
+        line-height: toRem(35.28);
+        letter-spacing: 0%;
+        color: #000000;
+    }
+}

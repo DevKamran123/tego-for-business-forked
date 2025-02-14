@@ -3,7 +3,6 @@ import AuthMessage from "../components/AuthMessage";
 import "../styles/pages/CreatePassword.scss";
 
 import lines from "../assets/images/lines.png";
-import eye from "../assets/svgs/eye.svg";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 

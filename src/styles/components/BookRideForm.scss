@@ -1,0 +1,65 @@
+@use "../main.scss" as *;
+
+.bookrideformCont {
+    width: toRem(559);
+    height: toRem(537);
+    background-image: url("/src/assets/images/brBg.png");
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+    font-family: $font-plus-jakarta;
+    color: $white;
+
+    form {
+        @include flexbox(column, toRem(17));
+        align-items: center;
+        padding: toRem(75) toRem(0) toRem(0) toRem(0);
+
+        input, button {
+            width: toRem(459);
+            border-radius: toRem(20);
+            outline: none;
+            border: none;
+        }
+
+        input {
+            border: toRem(1) solid rgba(255, 255, 255, 0.38);
+            background-color: rgba(255, 255, 255, 0.11);
+            height: toRem(71.29);
+            padding-left: toRem(35);
+            font-size: toRem(20.58);
+            font-weight: 400;
+            line-height: toRem(25.2);
+
+            &::placeholder {
+                color: $white;
+            }
+        }
+
+        .bookrideformCont_order, .bookrideformCont_book {
+            font-size: toRem(24);
+            font-weight: 400;
+            line-height: toRem(25.2);
+            height: toRem(90);
+        }
+
+        .bookrideformCont_order {
+            margin-top: toRem(18);
+            border: toRem(1) solid rgba(255, 255, 255, 0.01);
+            background-color: $secondary-color;
+        }
+
+        .bookrideformCont_book {
+            margin-top: toRem(0);
+            border: toRem(1) solid #D9D9D9;
+            background-color: transparent;
+        }
+
+        .bookrideformCont_text {
+            font-size: toRem(13);
+            font-weight: 400;
+            line-height: toRem(16.38);
+            text-align: center;           
+        }
+    }
+}

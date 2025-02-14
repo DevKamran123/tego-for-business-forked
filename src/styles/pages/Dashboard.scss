@@ -1,0 +1,68 @@
+@use "/src/styles/main.scss" as *;
+
+.dashboard {
+    // &_header {
+
+    // }
+    font-family: $font-plus-jakarta;
+    &_title {
+        font-weight: 500;
+        font-size: toRem(28);
+        line-height: toRem(35.28);
+        letter-spacing: 0%;
+        color: #000000;
+    }
+
+    &_actions {
+        display: grid;
+        grid-template-columns: toRem(559) toRem(870);
+        column-gap: toRem(40);
+        margin-top: toRem(20);
+        // border-radius: toRem(20);
+
+        // &_location {
+        //     // width: toRem(465.8);
+        //     // height: toRem(447.5);
+        // }
+
+        &_activities {
+            @include flex_col(toRem(40));
+            justify-content: start;
+            align-items: start;
+
+            &_total {
+                @include flex(space-between, center, toRem(37));
+            }
+
+            &_plan {
+                &_title {
+                    font-weight: 500;
+                    font-size: toRem(28);
+                    line-height: toRem(35.8);
+                    letter-spacing: 0%;                    
+                }
+
+                &_layout {
+                    width: toRem(870);
+                    height: toRem(279);
+                    background-color: $white;
+                    border-radius: toRem(20);
+                    margin-top: toRem(13);
+                }
+            }
+        }
+    }
+
+    &_history {
+        margin-top: toRem(47);
+
+        &_title {
+            font-weight: 500;
+            font-size: toRem(28);
+            line-height: toRem(35.28);
+            letter-spacing: 0%;
+            color: #000000;
+            margin-bottom: toRem(22);
+        }
+    }
+}

@@ -88,7 +88,7 @@ export default function Signup() {
                         </form>
 
                         <div className="signupCont_main_content_register_alternative">
-                            Already have an account? <span>Login</span>
+                            Already have an account? <span onClick={()=>navigate("/login")}>Login</span>
                         </div>
                         
                         <div className="signupCont_main_content_register_or">
