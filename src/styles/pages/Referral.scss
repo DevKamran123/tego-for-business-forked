@@ -1,0 +1,44 @@
+@use "/src/styles/main.scss" as *;
+
+.referral {
+    // border: 1px solid red;
+    width: 100%;
+    font-family: $font-plus-jakarta;
+
+    &_title {
+        font-weight: 500;
+        font-size: toRem(28);
+        line-height: toRem(35.28);
+        letter-spacing: 0%;
+    }
+
+    &_top {
+        @include flex(center, center, toRem(0));
+        width: 100%;
+        background-color: $white;
+        padding-top: toRem(33);
+        padding-bottom: toRem(37.59);
+        border-radius: toRem(20);
+        margin-top: toRem(23);
+
+        &_layout {
+            width: toRem(836.67);
+
+            &_total {
+                @include flex(space-between, center, toRem(0));
+
+            }
+
+             &_ref {
+            margin-top: toRem(44.88);
+
+            &_text {
+            font-weight: 400;
+            font-size: toRem(12.81);
+            line-height: toRem(14.88);
+            letter-spacing: 0%;
+            }
+        }
+        }
+    }
+}

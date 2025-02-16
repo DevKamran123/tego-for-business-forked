@@ -1,0 +1,9 @@
+@use "/src/styles/main.scss" as *;
+
+
+.total {
+    width: toRem(390.55);
+    height: toRem(133.07);
+    background-color: $secondary-gray;
+    border-radius: toRem(15.75);
+}

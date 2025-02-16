@@ -6,6 +6,7 @@ import "../styles/pages/Coupon.scss";
 export default function Coupon() {
     const activeTab = useCouponStore((state)=>state.activeTab);
     const setActiveTab = useCouponStore((state)=>state.setActiveTab);
+
     return (
         <div className="coupon">
                     <DashboardHeader />
