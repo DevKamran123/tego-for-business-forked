@@ -1,0 +1,41 @@
+@use "/src/styles/main.scss" as *;
+
+.referralTable {
+    font-family: $font-plus-jakarta;
+    font-weight: 600;
+    font-size: toRem(16);
+    line-height: toRem(20.16);
+    letter-spacing: 0%;
+    color: $light-gray;
+    
+    &_title {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        padding: toRem(25) toRem(28);
+
+        &_last{
+            margin-left: toRem(90);
+        }
+    }
+
+    &_content {
+        font-weight: 600;
+        font-size: toRem(20);
+        line-height: toRem(25.2);
+        letter-spacing: 0%;    
+        color: $secondary-black;    
+        background-color: $secondary-gray;
+        border-radius: toRem(15);
+        margin-bottom: toRem(7);
+    }
+}
+
+.referralCard {
+    &_points {
+        @include flex(start, center, toRem(3));
+    }
+
+    &_persons {
+        @include flex(start, center, toRem(10));
+    }
+}

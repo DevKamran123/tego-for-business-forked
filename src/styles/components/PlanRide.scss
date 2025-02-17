@@ -1,0 +1,86 @@
+@use "/src/styles/main.scss" as *;
+
+.planRide {
+    @include flex(start, end, toRem(22));
+    width: toRem(870);
+    height: toRem(279);
+    background-color: $white;
+    border-radius: toRem(20);
+    padding: toRem(37) toRem(24) toRem(30) toRem(38.22);
+
+    &_date {
+        width: toRem(240);
+        height: toRem(203.03);
+        border: toRem(1) solid $light-gray;
+        border-radius: toRem(20.49);
+        flex-shrink: 0;
+
+        &_top {
+            height: toRem(94.02);
+            border-bottom: 1px solid $light-gray;
+            padding: toRem(11.71) toRem(8.78) toRem(5.85) toRem(17.56);
+
+            &_select {
+                font-family: Plus Jakarta Sans;
+                font-weight: 500;
+                font-size: 10.24px;
+                line-height: 14.63px;
+                letter-spacing: 0.07px;    
+                margin-bottom: toRem(26.34);                 
+            }
+
+            label {
+                font-family: Plus Jakarta Sans;
+                font-weight: 400;
+                font-size: 23.41px;
+                line-height: 29.27px;
+                letter-spacing: 0px;               
+            }
+        }
+    }
+
+    &_place {
+        // width: 100%;
+        height: toRem(203.03);
+        border-radius: toRem(20.49);
+        display: grid;
+        grid-template-columns: toRem(277) toRem(277);
+        column-gap: toRem(16);
+        row-gap: toRem(17);
+
+        &_cont {
+            height: toRem(70);
+            label {
+                font-family: $font-plus-jakarta;
+                font-weight: 400;
+                font-size: toRem(14);
+                line-height: toRem(15.12);
+                letter-spacing: 0%;     
+                color: $light-black;       
+                margin-bottom: toRem(4);
+            }
+    
+            input, button {
+                width: toRem(260);
+                height: toRem(60);
+                border-radius: toRem(20);
+            }
+
+            button {
+                margin-top: toRem(23);
+                color: $white;
+                background-color: $secondary-color;
+                font-size: toRem(15);
+            }
+        }
+    }
+
+    .input-error {
+        color: $secondary-color;
+        font-size: toRem(14);
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        margin-top: 5px !important;
+      }
+}

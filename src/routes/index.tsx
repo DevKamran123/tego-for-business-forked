@@ -12,6 +12,8 @@ import Rides from "../pages/Rides";
 import RideHistory from "../components/RideHistory";
 import useRideStore from "../store/RideStore";
 import PlannedRides from "../components/PlannedRides";
+import Coupon from "../pages/Coupon";
+import Referral from "../pages/Referral";
 
 
 const AppRoutes = () => {
@@ -35,6 +37,8 @@ const AppRoutes = () => {
                   <Route path="/" element={<Dashboard />} />
                   <Route path="/rides" element={<Rides />} />
                   <Route path="/rides/:rideId" element={activeTab==="ride-history" ? <RideHistory />: <PlannedRides />} />
+                  <Route path="/referral-code" element={<Referral />} />
+                  <Route path="/coupons" element={<Coupon />} />
                 </Routes>
               </DashboardLayout>
             </ProtectedRoute>

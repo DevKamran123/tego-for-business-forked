@@ -1,0 +1,133 @@
+@use "/src/styles/main.scss" as *;
+
+.referral {
+    // border: 1px solid red;
+    width: 100%;
+    font-family: $font-plus-jakarta;
+
+    &_title {
+        font-weight: 500;
+        font-size: toRem(28);
+        line-height: toRem(35.28);
+        letter-spacing: 0%;
+    }
+
+    &_top {
+        @include flex(center, center, toRem(0));
+        width: 100%;
+        background-color: $white;
+        padding-top: toRem(33);
+        padding-bottom: toRem(37.59);
+        border-radius: toRem(20);
+        margin-top: toRem(23);
+
+        &_layout {
+            width: toRem(836.67);
+
+            &_total {
+                @include flex(space-between, center, toRem(0));
+
+            }
+
+             &_ref {
+            margin-top: toRem(44.88);
+
+            &_text {
+            font-weight: 400;
+            font-size: toRem(12.81);
+            line-height: toRem(14.88);
+            letter-spacing: 0%;
+            }
+
+            &_bonus {
+                @include flex(start, center, toRem(2));
+                margin-top: toRem(11.77);
+                font-weight: 400;
+                font-size: toRem(12.81);
+                line-height: toRem(14.88);
+                letter-spacing: 0%;
+                color: $light-gray;
+
+                span {
+                    font-weight: 800;
+                }
+
+                img {
+                    width: toRem(12.21);
+                    height: toRem(10.75);
+                }
+            }
+
+            &_container {
+                @include flex(space-between, end, toRem(0));
+                margin-top: toRem(7.87);
+
+                &_sep {
+                    width: toRem(618.1);
+                    height: toRem(48.82);
+                    @include flex(space-between, center, toRem(0));
+                    border: toRem(0.39) solid $light-gray;
+                    border-radius: toRem(11.81);  
+                    padding-left: toRem(15.75);
+                    padding-right: toRem(20.73);
+
+                    &_link {
+                        font-weight: 400;
+                        font-size: toRem(15.75);
+                        line-height: toRem(19.84);
+                        letter-spacing: 0%;                        
+                    }
+
+                    &_copy {
+                        @include flex(start, center, toRem(10));
+                        background-color: $secondary-gray;
+                        color: $secondary-blue;
+                        padding: toRem(7.32) toRem(19.83);
+                        border-radius: toRem(11.81);
+                        cursor: pointer;
+
+                        div {
+                            font-weight: 400;
+                            font-size: toRem(15.75);
+                            line-height: toRem(19.84);
+                            letter-spacing: 0%;                            
+                        }
+
+                        img {
+                            width: toRem(15.75);
+                            height: toRem(15.75);
+                        }
+                    }
+                }
+
+                button {
+                    // padding: toRem(14.41) toRem(65.23);
+                    height: toRem(48.82);
+                    width: toRem(183.43);
+                    background-color: $secondary-color;
+                    border-radius: toRem(11.81);
+                    color: $white;
+                }
+            }
+        }
+        }
+    }
+
+    &_bottom {
+        width: 100%;
+        border-radius: toRem(20);
+        background-color: $white;
+        margin-top: toRem(45);
+        padding: toRem(31) toRem(85) toRem(62) toRem(60);
+
+        &_title {
+            padding-left: toRem(9);
+            font-weight: 600;
+            font-size: toRem(24);
+            line-height: toRem(30.24);
+            letter-spacing: 0%;
+            color: $secondary-black;
+            margin-bottom: toRem(45);
+        }
+    }
+}

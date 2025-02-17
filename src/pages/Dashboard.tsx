@@ -1,6 +1,7 @@
 import BookRideForm from "../components/BookRideForm";
 import DashboardHeader from "../components/DashboardHeader";
 import HistoryCard from "../components/HistoryCard";
+import PlanRide from "../components/PlanRide";
 import TotalCard from "../components/TotalCard";
 import { deliveryDetails, totalCardItems } from "../data/dashboard";
 import "../styles/pages/Dashboard.scss";
@@ -30,7 +31,7 @@ export default function Dashboard() {
                             Plan a ride
                         </div>
                         <div className="dashboard_actions_activities_plan_layout">
-
+                            <PlanRide />
                         </div>
                     </div>
                 </div>
