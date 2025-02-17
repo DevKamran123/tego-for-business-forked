@@ -9,7 +9,7 @@ export default function ReferralCard() {
             <div>Martin Lawrence</div>
             <div className="referralCard_persons">
                 <img src={smallPeople} alt="referral" />
-                <div>0</div>
+                <div>2</div>
             </div>
             <div className="referralTable_title_last">
                 <div className="referralCard_points">
