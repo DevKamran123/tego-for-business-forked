@@ -6,6 +6,7 @@ import copy from "../assets/icons/copy.svg";
 import smallBag from "../assets/icons/smallBag.png";
 import mediumBag from "../assets/icons/mediumBag.png";
 import people from "../assets/icons/people.png";
+import ReferralTable from "../components/ReferralTable";
 
 
 export default function Referral() {
@@ -64,6 +65,7 @@ export default function Referral() {
                 <div className="referral_bottom_title">
                     My referrals
                 </div>
+                <ReferralTable />
             </div>
         </div>
     )
