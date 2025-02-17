@@ -2,8 +2,42 @@
 
 
 .total {
+    @include flex(start, start, toRem(19));
     width: toRem(390.55);
     height: toRem(133.07);
     background-color: $secondary-gray;
     border-radius: toRem(15.75);
+    font-family: $font-plus-jakarta;
+    color: $secondary-black;
+    padding-top: toRem(32);
+    padding-left: toRem(45);
+
+    &_image {
+        width: toRem(66.14);
+        height: toRem(66.14);
+        // border: 1px solid red;
+
+        img {
+            width: toRem(66.14);
+            height: toRem(66.14);
+        }
+    }
+
+    &_text {
+        @include flex_col(toRem(10));
+
+        &_title {
+            font-weight: 500;
+            font-size: toRem(15.75);
+            line-height: toRem(19.84);
+            letter-spacing: 0%;
+        }
+
+        &_value {
+            font-weight: 800;
+            font-size: toRem(37.79);
+            line-height: toRem(47.62);
+            letter-spacing: 0%;            
+        }
+    }
 }
