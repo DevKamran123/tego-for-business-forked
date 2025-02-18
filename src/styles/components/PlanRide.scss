@@ -7,6 +7,7 @@
     background-color: $white;
     border-radius: toRem(20);
     padding: toRem(37) toRem(24) toRem(30) toRem(38.22);
+    font-family: $font-plus-jakarta;
 
     &_date {
         width: toRem(240);
@@ -18,25 +19,145 @@
         &_top {
             height: toRem(94.02);
             border-bottom: 1px solid $light-gray;
-            padding: toRem(11.71) toRem(8.78) toRem(5.85) toRem(17.56);
+            padding: toRem(11.71) toRem(17.56) toRem(5.85) toRem(17.56);
 
             &_select {
                 font-family: Plus Jakarta Sans;
                 font-weight: 500;
-                font-size: 10.24px;
-                line-height: 14.63px;
+                font-size: toRem(12.24);
+                line-height: toRem(14.63);
                 letter-spacing: 0.07px;    
-                margin-bottom: toRem(26.34);                 
+                margin-bottom: toRem(26.34);    
+                color: #49454F;             
+            }
+
+            &_layout {
+                @include flex(space-between, center, toRem(0));
+
+                img {
+                    width: toRem(17.56);
+                    height: toRem(17.56);
+                }
+
+                div {
+                    font-family: Plus Jakarta Sans;
+                    font-weight: 400;
+                    font-size: toRem(23.41);
+                    line-height: toRem(29.27);
+                    letter-spacing: 0px;       
+                    color: #1D1B20;             
+                }
             }
 
             label {
                 font-family: Plus Jakarta Sans;
                 font-weight: 400;
-                font-size: 23.41px;
-                line-height: 29.27px;
+                font-size: toRem(23.41);
+                line-height: toRem(29.27);
                 letter-spacing: 0px;               
             }
         }
+
+        // &_bottom {
+            
+        // }
+
+        &_bottom {
+            // Style the overall date picker wrapper
+            padding: toRem(13.17) toRem(17.56);
+
+
+            .ant-picker {
+              width: 100%;
+              border: 2.2px solid #3E4095;
+              border-radius: toRem(2.93);
+              padding: 8px 12px;
+              
+              // Remove the calendar icon
+              .ant-picker-suffix {
+                display: none;
+              }
+              
+              // Style the input inside date picker
+              .ant-picker-input {
+                input {
+                  font-size: 14px;
+                  color: #333;
+                  
+                  &::placeholder {
+                    color: #999;
+                  }
+                }
+              }
+            }
+      
+            // Style the dropdown calendar panel
+            .ant-picker-dropdown {
+              .ant-picker-panel-container {
+                background: #fff;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+                
+                .ant-picker-panel {
+                  // Style the header (month/year selector)
+                  .ant-picker-header {
+                    border-bottom: 1px solid #f0f0f0;
+                    
+                    button {
+                      color: #666;
+                      
+                      &:hover {
+                        color: #1890ff;
+                      }
+                    }
+                    
+                    .ant-picker-header-view {
+                      color: #333;
+                      font-weight: 500;
+                    }
+                  }
+                  
+                  // Style the calendar cells
+                  .ant-picker-body {
+                    .ant-picker-cell {
+                      &-in-view {
+                        color: #333;
+                      }
+                      
+                      &-selected .ant-picker-cell-inner {
+                        background: #1890ff;
+                        color: #fff;
+                      }
+                      
+                      &:hover .ant-picker-cell-inner {
+                        background: #e6f7ff;
+                      }
+                      
+                      &-disabled {
+                        opacity: 0.3;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            &_actions {
+                @include flex(end, center, toRem(10));
+                margin-top: toRem(12);
+                font-family: Plus Jakarta Sans;
+                font-weight: 500;
+                font-size: toRem(12.24);
+                line-height: toRem(14.63);
+                letter-spacing: 0.07px;
+                text-align: center;
+                color: #3E4095;
+
+                div {
+                    cursor: pointer;
+                }
+            }
+        }
+
     }
 
     &_place {
@@ -44,7 +165,8 @@
         height: toRem(203.03);
         border-radius: toRem(20.49);
         display: grid;
-        grid-template-columns: toRem(277) toRem(277);
+        // grid-template-columns: toRem(277) toRem(277);
+        grid-template-columns: auto auto;
         column-gap: toRem(16);
         row-gap: toRem(17);
 
@@ -57,17 +179,21 @@
                 line-height: toRem(15.12);
                 letter-spacing: 0%;     
                 color: $light-black;       
-                margin-bottom: toRem(4);
+                // margin-bottom: toRem(6);
             }
     
             input, button {
-                width: toRem(260);
+                width: toRem(265);
                 height: toRem(60);
                 border-radius: toRem(20);
             }
 
+            input {
+                margin-top: toRem(5);
+            }
+
             button {
-                margin-top: toRem(23);
+                margin-top: toRem(28);
                 color: $white;
                 background-color: $secondary-color;
                 font-size: toRem(15);
