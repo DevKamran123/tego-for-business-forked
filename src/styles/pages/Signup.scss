@@ -157,15 +157,22 @@
                 font-family: $font-plus-jakarta;
                 color: $light-gray;
                 form {
-                    @include flexbox(column, toRem(0));
+                    @include flexbox(column, toRem(7));
                     align-items: start;
 
-                    label {
+                    .field-cont {
+                        // border: 1px solid red;
+                        height: toRem(130);
+                        position: relative;
+                    }
+
+                    .input-label {
                         font-weight: 400;
                         font-size: toRem(20);
                         line-height: toRem(25);
                         letter-spacing: 0%;  
-                        color: $light-gray;                         
+                        color: $light-gray;  
+                        display: block;                     
                     }
 
                     .input_text {
@@ -191,6 +198,17 @@
                             letter-spacing: 0%;
                             color: #DBDBDB;
                         }
+                    }
+
+                    .input-error {
+                        position: absolute;
+                        bottom: toRem(-12);
+                        color: $secondary-color;
+                        font-size: toRem(16);
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: normal;
+                        margin-top: 5px !important;
                     }
 
                     button {
@@ -239,3 +257,4 @@
         }
     }
 }
+

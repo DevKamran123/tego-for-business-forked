@@ -5,11 +5,15 @@ import enterprise from "../assets/svgs/enterprise";
 import { useState } from "react";
 import CheckBox from "../components/Checkbox";
 import AuthCards from "../components/AuthCards";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import * as Yup from "yup";
 
 import keyIcon from "../assets/svgs/keyIcon.svg";
 import googleIcon from "../assets/svgs/googleIcon.svg";
 import microsoftIcon from "../assets/svgs/microsoftIcon.svg";
 import { useNavigate } from "react-router-dom";
+import { Input, InputProps } from "antd";
+import TButton from "../components/buttons/TButton";
 
 const authBoxes = [
     {
@@ -25,6 +29,18 @@ const authBoxes = [
         text: "Microsoft"
     },
 ]
+
+const SignupSchema = Yup.object().shape({
+  email: Yup.string()
+    .matches(
+      /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+      "Enter a valid email address"
+    )
+    .required("Email address is required"),
+  firstName: Yup.string().required("First name is required"),
+  lastName: Yup.string().required("Last name is required"),
+});
+
 
 
 export default function Signup() {
@@ -80,12 +96,96 @@ export default function Signup() {
                     </div>
 
                     <div className="signupCont_main_content_register">
-                        <form>
-                            <label htmlFor="email">Company email</label>
-                            <input type="text" id="email" className="input_text" placeholder="Enter your email"/>
-                            <CheckBox label="Accept Terms of Service and Privacy Policy"/>
-                            <button onClick={()=>navigate("/confirm-signup")}>Get started</button>
-                        </form>
+
+                        <Formik
+                            initialValues={{ email: "", firstName: "", lastName: "" }}
+                            validationSchema={SignupSchema}
+                            onSubmit={(values) => {
+                            console.log(values);
+                            // localStorage.setItem("token", "123456");
+                            // setSession(JSON.stringify({ ...values }));
+                            navigate("/confirm-signup");
+                            }}
+                        >
+                            {({ isSubmitting, isValid }) => (
+                            <Form className="standard-form">
+                                <div className="field-cont">
+                                    <label htmlFor="firstName" className="input-label">First Name</label>
+                                    <Field name="firstName">
+                                        {({ field }: { field: InputProps }) => (
+                                        
+                                        <Input
+                                            {...field}
+                                            type="text" 
+                                            id="firstName" 
+                                            className="input_text" 
+                                            placeholder="Enter your first name"
+                                        />
+                                        )}
+                                    </Field>
+                                    <ErrorMessage
+                                        name="firstName"
+                                        component="p"
+                                        className="input-error"
+                                    />
+                                </div>
+                                <div className="field-cont">
+                                    <label htmlFor="lastName" className="input-label">Last Name</label>
+                                    <Field name="lastName">
+                                        {({ field }: { field: InputProps }) => (
+                                        
+                                        <Input
+                                            {...field}
+                                            type="text" 
+                                            id="lastName" 
+                                            className="input_text" 
+                                            placeholder="Enter your last name"
+                                        />
+                                        )}
+                                    </Field>
+                                    <ErrorMessage
+                                        name="lastName"
+                                        component="p"
+                                        className="input-error"
+                                    />
+                                </div>
+
+                                <div className="field-cont">
+                                    <label htmlFor="email" className="input-label">Company email</label>
+                                    <Field name="email">
+                                        {({ field }: { field: InputProps }) => (
+                                        
+                                        <Input
+                                            {...field}
+                                            type="text" 
+                                            id="email" 
+                                            className="input_text" 
+                                            placeholder="Enter your email"
+                                        />
+                                        )}
+                                    </Field>
+                                    <ErrorMessage
+                                        name="email"
+                                        component="p"
+                                        className="input-error"
+                                    />
+                                </div>
+                                {/* <div> */}
+                                    <CheckBox label="Accept Terms of Service and Privacy Policy"/>
+                                {/* </div> */}
+                                
+
+                                <TButton
+                                htmlType="submit"
+                                disabled={isSubmitting || !isValid}
+                                loading={isSubmitting}
+                                tvariant="secondary"
+                                >
+                                    Get started
+                                </TButton>
+                            </Form>
+                            )}
+                        </Formik>
 
                         <div className="signupCont_main_content_register_alternative">
                             Already have an account? <span onClick={()=>navigate("/login")}>Login</span>
