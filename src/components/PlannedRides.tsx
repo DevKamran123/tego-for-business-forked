@@ -1,11 +1,10 @@
 import { deliveryData, DeliveryDetails } from "../data/dashboard";
 import useRideStore from "../store/RideStore";
 import DashboardHeader from "./DashboardHeader";
-import HistoryCard from "./HistoryCard";
-
 import "../styles/components/RideHistory.scss";
 import GoBackRides from "./GoBackRides";
 import DetailsCardPassenger from "./DetailsCardRider";
+import PlannedRidesCard from "./PlannedRidesCard";
 
 
 export default function PlannedRides() {
@@ -20,7 +19,7 @@ export default function PlannedRides() {
             <DashboardHeader />
             <GoBackRides text="Planned ride details"/>
             <div className="ridehistory_container">
-                <HistoryCard deliveryDetails={selectedDelivery as DeliveryDetails} />
+                <PlannedRidesCard deliveryDetails={selectedDelivery as DeliveryDetails} />
             </div>
             <div className="ridehistory_details-wrapper">
                 <button 

@@ -100,6 +100,10 @@ const Login: React.FC = () => {
                 >
                   Login
                 </TButton>
+
+                <div className="signupCont_main_content_register_alternative">
+                  Don't have an account? <span onClick={()=>navigate("/signup")}>Signup</span>
+                </div>
               </Form>
             )}
           </Formik>

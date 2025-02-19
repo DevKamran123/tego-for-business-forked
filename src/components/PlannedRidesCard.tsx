@@ -4,12 +4,11 @@ import { DeliveryDetails } from "../data/dashboard";
 import useRideStore from "../store/RideStore";
 import { useNavigate } from "react-router-dom";
 
-interface HistoryCardProps {
+interface PlannedRidesCardProps {
     deliveryDetails: DeliveryDetails
 }
 
-export default function HistoryCard({deliveryDetails}: HistoryCardProps) {
-    const activeTab = useRideStore((state)=>state.activeTab);
+export default function PlannedRidesCard({deliveryDetails}: PlannedRidesCardProps) {
     const setCurrentId = useRideStore((state)=>state.setCurrentId);
     const navigate = useNavigate();
 
@@ -34,26 +33,24 @@ export default function HistoryCard({deliveryDetails}: HistoryCardProps) {
             <div className="historycard_layout">
                 <div className="historycard_layout_address">
                     <div className="historycard_layout_address_pickup">
-                        <div className="historycard_layout_address_pickup_main">
-                            {pickupAddress}
-                        </div>
                         <div className="historycard_layout_address_pickup_sub">
                             Pickup point
+                        </div>
+                        <div className="historycard_layout_address_pickup_main">
+                            {pickupAddress}
                         </div>
                     </div>
 
                     <div className="historycard_layout_address_destination">
-                        <div className="historycard_layout_address_destination_main">
-                            {destinationAddress}
-                        </div>
                         <div className="historycard_layout_address_destination_sub">
                             Destination
+                        </div>
+                        <div className="historycard_layout_address_destination_main">
+                            {destinationAddress}
                         </div>
                     </div>
                 </div>
 
-                
-                {activeTab==="planned-rides" &&
                 <div className="historycard_layout_optional">
                     <div className="historycard_layout_optional_pickup">
                         <div className="historycard_layout_optional_pickup_sub">
@@ -72,7 +69,7 @@ export default function HistoryCard({deliveryDetails}: HistoryCardProps) {
                             {passenger}
                         </div>
                     </div>
-                </div>}
+                </div>
 
 
                 <div className="historycard_layout_other">

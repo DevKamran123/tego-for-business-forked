@@ -2,6 +2,7 @@ import "../styles/components/CouponCard.scss";
 import copy from "../assets/icons/copy.svg";
 // import { generateReferralLink } from "../utils/dashboard";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 export default function CouponCard() {
 
@@ -12,9 +13,9 @@ export default function CouponCard() {
     try {
         // await navigator.clipboard.writeText(referralLink);
         await navigator.clipboard.writeText("Retr2356Go");
-        alert("copied");
+        toast.success("copied");
         setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
+        setTimeout(() => setCopied(false), 3000);
         console.log(copied);
     } catch (err) {
         console.error('Failed to copy:', err);
