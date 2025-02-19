@@ -22,28 +22,15 @@ const LoginSchema = Yup.object().shape({
 
 export default function PlanRide() {
     const [selectedDate, setSelectedDate] = useState<Dayjs | null>(null);
-    const [tempDate, setTempDate] = useState<Dayjs | null>(null);
-    const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
     const handleDateChange = (date: Dayjs | null) => {
-        setTempDate(date);
         setSelectedDate(date);
     };
 
-    const handleOk = () => {
-        setSelectedDate(tempDate);
-        setIsCalendarOpen(false);
-    };
-
     const handleCancel = () => {
-        setTempDate(null);
         setSelectedDate(null);
     };
 
-    const handleFocus = () => {
-        setIsCalendarOpen(true);
-        // Add any additional focus handling logic here
-    };
 
     return (
         <Formik
@@ -78,8 +65,6 @@ export default function PlanRide() {
                                 maxDate={currentDate.add(3, 'year')}
                                 value={selectedDate}
                                 onChange={handleDateChange}
-                                onFocus={handleFocus} // Add focus handler
-                                open={isCalendarOpen} // Control calendar visibility
                                 allowClear={false}
                                 style={{ width: '100%' }}
                             />
@@ -94,12 +79,6 @@ export default function PlanRide() {
                                 className="planRide_date_bottom_actions_cancel"
                             >
                                 Cancel
-                            </div>
-                            <div 
-                                onClick={handleOk}
-                                className="planRide_date_bottom_actions_ok"
-                            >
-                                Ok
                             </div>
                         </div>
                     </div>
