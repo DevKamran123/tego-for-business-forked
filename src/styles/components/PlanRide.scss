@@ -24,7 +24,7 @@
             &_select {
                 font-family: Plus Jakarta Sans;
                 font-weight: 500;
-                font-size: toRem(12.24);
+                font-size: toRem(13.24);
                 line-height: toRem(14.63);
                 letter-spacing: 0.07px;    
                 margin-bottom: toRem(26.34);    
@@ -71,7 +71,7 @@
               width: 100%;
               border: 2.2px solid #3E4095;
               border-radius: toRem(2.93);
-              padding: 8px 12px;
+              padding: 8px toRem(11);
               
               // Remove the calendar icon
               .ant-picker-suffix {
@@ -146,11 +146,11 @@
             }
 
             &_actions {
-                @include flex(end, center, toRem(10));
+                @include flex(end, center, toRem(12));
                 margin-top: toRem(12);
                 font-family: Plus Jakarta Sans;
                 font-weight: 500;
-                font-size: toRem(12.24);
+                font-size: toRem(14.24);
                 line-height: toRem(14.63);
                 letter-spacing: 0.07px;
                 text-align: center;
@@ -158,6 +158,10 @@
 
                 div {
                     cursor: pointer;
+
+                    &:hover {
+                      opacity: 75%;
+                    }
                 }
             }
         }
@@ -213,4 +217,24 @@
         line-height: normal;
         margin-top: 5px !important;
       }
+}
+
+.dateContainer {
+position: relative;
+  .lab {
+    @include flex-center();
+    position: absolute;
+    top: toRem(-8);
+    left: toRem(10);
+    width: toRem(31.85);
+    height: toRem(17);
+    background-color: #F2F3F8;
+    font-weight: 400;
+    font-size: toRem(12.78);
+    line-height: toRem(11.71);
+    letter-spacing: 0.29px;
+    color: #3E4095;
+    text-align: center;
+
+  }
 }

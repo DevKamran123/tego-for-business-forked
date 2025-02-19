@@ -68,19 +68,25 @@ export default function PlanRide() {
                         </label>
                     </div>
                     <div className="planRide_date_bottom">
-                        <DatePicker
-                            required
-                            placeholder="mm/dd/yy"
-                            format={dateFormat}
-                            minDate={currentDate}
-                            maxDate={currentDate.add(3, 'year')}
-                            value={selectedDate}
-                            onChange={handleDateChange}
-                            onFocus={handleFocus} // Add focus handler
-                            open={isCalendarOpen} // Control calendar visibility
-                            allowClear={false}
-                            style={{ width: '100%' }}
-                        />
+                        <div className="dateContainer">
+
+                            <DatePicker
+                                required
+                                placeholder="mm/dd/yy"
+                                format={dateFormat}
+                                minDate={currentDate}
+                                maxDate={currentDate.add(3, 'year')}
+                                value={selectedDate}
+                                onChange={handleDateChange}
+                                onFocus={handleFocus} // Add focus handler
+                                open={isCalendarOpen} // Control calendar visibility
+                                allowClear={false}
+                                style={{ width: '100%' }}
+                            />
+                            <div className="lab">
+                                Date
+                            </div>
+                        </div>
 
                         <div className="planRide_date_bottom_actions">
                             <div 
