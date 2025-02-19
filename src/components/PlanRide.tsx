@@ -3,9 +3,10 @@ import "../styles/components/PlanRide.scss";
 import { TInput } from "./styled";
 import * as Yup from "yup";
 import { DatePicker, InputProps } from "antd";
-import dayjs from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import calendar from "../assets/icons/calendar.png";
+import { useState } from "react";
 
 dayjs.extend(customParseFormat);
 
@@ -20,6 +21,30 @@ const LoginSchema = Yup.object().shape({
 });
 
 export default function PlanRide() {
+    const [selectedDate, setSelectedDate] = useState<Dayjs | null>(null);
+    const [tempDate, setTempDate] = useState<Dayjs | null>(null);
+    const [isCalendarOpen, setIsCalendarOpen] = useState(false);
+
+    const handleDateChange = (date: Dayjs | null) => {
+        setTempDate(date);
+        setSelectedDate(date);
+    };
+
+    const handleOk = () => {
+        setSelectedDate(tempDate);
+        setIsCalendarOpen(false);
+    };
+
+    const handleCancel = () => {
+        setTempDate(null);
+        setSelectedDate(null);
+    };
+
+    const handleFocus = () => {
+        setIsCalendarOpen(true);
+        // Add any additional focus handling logic here
+    };
+
     return (
         <Formik
         initialValues={{ location: "", destination: "", passengers:"" }}
@@ -44,17 +69,32 @@ export default function PlanRide() {
                     </div>
                     <div className="planRide_date_bottom">
                         <DatePicker
-                            // defaultValue={currentDate}
+                            required
                             placeholder="mm/dd/yy"
                             format={dateFormat}
-                            minDate={currentDate} // Set minimum date to current date
-                            maxDate={currentDate.add(3, 'year')} // Optional: set maximum date to 1 year from now
-                            // style={{ width: '100%', color: 'blue' }} // Make date picker full width
+                            minDate={currentDate}
+                            maxDate={currentDate.add(3, 'year')}
+                            value={selectedDate}
+                            onChange={handleDateChange}
+                            onFocus={handleFocus} // Add focus handler
+                            open={isCalendarOpen} // Control calendar visibility
+                            allowClear={false}
+                            style={{ width: '100%' }}
                         />
 
                         <div className="planRide_date_bottom_actions">
-                            <div>Cancel</div>
-                            <div>Ok</div>
+                            <div 
+                                onClick={handleCancel}
+                                className="planRide_date_bottom_actions_cancel"
+                            >
+                                Cancel
+                            </div>
+                            <div 
+                                onClick={handleOk}
+                                className="planRide_date_bottom_actions_ok"
+                            >
+                                Ok
+                            </div>
                         </div>
                     </div>
                 </div>
