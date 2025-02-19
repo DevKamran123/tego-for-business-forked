@@ -7,6 +7,7 @@ import smallBag from "../assets/icons/smallBag.png";
 import mediumBag from "../assets/icons/mediumBag.png";
 import people from "../assets/icons/people.png";
 import ReferralTable from "../components/ReferralTable";
+import toast from "react-hot-toast";
 
 
 export default function Referral() {
@@ -15,9 +16,9 @@ export default function Referral() {
         const handleCopy = async () => {
         try {
             await navigator.clipboard.writeText("RideTEGO.ng/ref=129834765");
-            alert("copied");
+            toast.success("copied");
             setCopied(true);
-            setTimeout(() => setCopied(false), 2000);
+            setTimeout(() => setCopied(false), 3000);
             console.log(copied);
         } catch (err) {
             console.error('Failed to copy:', err);
@@ -46,7 +47,7 @@ export default function Referral() {
                                 </div>
                                 <div className="referral_top_layout_ref_container_sep_copy" onClick={handleCopy}>
                                     <div>
-                                        Copy link
+                                        {copied? "Copied" : "Copy link"}
                                     </div>
                                     <img src={copy} alt="copy"/>
                                 </div>
