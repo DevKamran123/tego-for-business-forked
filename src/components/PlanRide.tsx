@@ -50,7 +50,7 @@ export default function PlanRide() {
         initialValues={{ location: "", destination: "", passengers:"" }}
         validationSchema={LoginSchema}
         onSubmit={(values) => {
-            console.log(values);
+            console.log({...values, selectedDate});
         }}
         >
             <Form className="planRide">
