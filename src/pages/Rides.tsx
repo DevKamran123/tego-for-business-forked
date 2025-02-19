@@ -1,5 +1,6 @@
 import DashboardHeader from "../components/DashboardHeader"
-import HistoryCard from "../components/HistoryCard";
+import PlannedRidesCard from "../components/PlannedRidesCard";
+import RideHistoryCard from "../components/RideHistoryCard";
 import { deliveryData } from "../data/dashboard";
 import useRideStore from "../store/RideStore"
 import "../styles/pages/Rides.scss"
@@ -26,11 +27,19 @@ export default function Rides() {
                 </div>
             </div>
 
+            {activeTab==="ride-history" && 
             <div className="rides_allHistory">
                 {deliveryData.map((deliveryDetails)=> (
-                    <HistoryCard deliveryDetails={deliveryDetails} key={deliveryDetails.id}/>
+                    <RideHistoryCard deliveryDetails={deliveryDetails} key={deliveryDetails.id}/>
                 ))}
-            </div>
+            </div>}
+
+            {activeTab==="planned-rides" && 
+            <div className="rides_allHistory">
+                {deliveryData.map((deliveryDetails)=> (
+                    <PlannedRidesCard deliveryDetails={deliveryDetails} key={deliveryDetails.id}/>
+                ))}
+            </div>}
         </div>
     )
 }
