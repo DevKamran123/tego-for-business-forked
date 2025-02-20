@@ -83,7 +83,7 @@
 
     &_safety {
         background-color: $white;
-        padding: toRem(105) toRem(112) toRem(130) toRem(112);
+        padding: toRem(105) toRem(152) toRem(130) toRem(152);
         font-family: $font-roboto;
 
         &_title {
@@ -94,7 +94,8 @@
         }
 
         &_layout {
-            @include flexbox(row, toRem(77));
+            @include flexbox(row, toRem(0));
+            justify-content: space-between;
             margin-top: toRem(40);
         }
     }
@@ -102,7 +103,7 @@
     &_app {
         background-color: $secondary-blue;
         height: toRem(580);
-        padding: toRem(121) toRem(122) toRem(121) toRem(122);
+        padding: toRem(121) toRem(142) toRem(121) toRem(142);
         font-family: $font-roboto;
 
         &_cont {
@@ -116,14 +117,13 @@
             }
 
             &_layout {
-                @include flexbox(row, toRem(95));
+                @include flex(space-between, center, toRem(0));
             }
         }
     }
 
     &_moreInfo {
-        @include flexbox(row, toRem(31.6));
-        
+        @include flex(space-between, center, toRem(0));
         padding: toRem(191) toRem(152);
     }
 }

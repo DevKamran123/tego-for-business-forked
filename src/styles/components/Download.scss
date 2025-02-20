@@ -1,7 +1,7 @@
 @use "../main.scss" as *;
 
 .download {
-    width: toRem(700);
+    width: toRem(750);
     height: toRem(250);
     border-radius: toRem(15);
     background-color: $white;
@@ -12,12 +12,12 @@
     cursor: pointer;
 
     img {
-        width: toRem(180);
-        height: toRem(180);
+        width: toRem(188);
+        height: toRem(188);
     }
 
     &_text {
-        font-size: toRem(30);
+        font-size: toRem(33);
         font-weight: 500;
         line-height: toRem(38.67);  
         width: toRem(361);   
@@ -25,10 +25,11 @@
     }
 
     &_next {
-        width: toRem(50);
-        height: toRem(50);
+        width: toRem(55);
+        height: toRem(54);
         border-radius: 100%;
         background-color: $secondary-blue;
+        margin-left: toRem(12);
 
         @include flexbox(row, 0px);
         align-items: center;

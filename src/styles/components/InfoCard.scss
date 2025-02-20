@@ -23,6 +23,8 @@
         text-align: left;
         margin-top: toRem(13);
         color: $text-color;
+        width: toRem(509);
+        max-width: toRem(509);
     }
 
     &_learn {
