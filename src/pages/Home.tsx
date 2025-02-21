@@ -26,7 +26,7 @@ const cardData = [
     text: "The app is available in thousands of cities worldwide, so you can request a ride even when you’re far from home.",
     image: road,
     link1: "View All Cities",
-    link2: ","
+    link2: ""
   }
 ]
 

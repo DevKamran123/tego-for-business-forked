@@ -12,7 +12,7 @@ import keyIcon from "../assets/svgs/keyIcon.svg";
 import googleIcon from "../assets/svgs/googleIcon.svg";
 import microsoftIcon from "../assets/svgs/microsoftIcon.svg";
 import { useNavigate } from "react-router-dom";
-import { Input, InputProps } from "antd";
+import { Input, InputProps, Divider } from "antd";
 import TButton from "../components/buttons/TButton";
 
 const authBoxes = [
@@ -191,9 +191,9 @@ export default function Signup() {
                             Already have an account? <span onClick={()=>navigate("/login")}>Login</span>
                         </div>
                         
-                        <div className="signupCont_main_content_register_or">
-                            Or
-                        </div>
+                        {/* <div className="signupCont_main_content_register_or"> */}
+                        <Divider plain className="signupCont_main_content_register_or" style={{color: "#A6A6A6", fontSize: "1.1rem"}}>Or</Divider>
+                        {/* </div> */}
 
                         <div className="signupCont_main_content_register_allPlatforms">
                             {authBoxes.map((details)=>(<AuthCards details={details} key={details.text}/>))}

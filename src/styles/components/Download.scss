@@ -1,19 +1,29 @@
 @use "../main.scss" as *;
 
 .download {
+    @include flexbox(row, toRem(25));
+    align-items: center;
+    padding: toRem(0) toRem(36);
+    cursor: pointer;
     width: toRem(750);
     height: toRem(250);
     border-radius: toRem(15);
     background-color: $white;
 
-    @include flexbox(row, toRem(25));
-    align-items: center;
-    padding: toRem(0) toRem(36);
-    cursor: pointer;
+    @include media("<=phone-tab") {
+        width: toRem(520);
+        gap: toRem(14);
+        height: toRem(200);
+    }
 
     img {
         width: toRem(188);
         height: toRem(188);
+
+        @include media("<=phone-tab") {
+            width: toRem(140);
+            height: toRem(140);
+        }
     }
 
     &_text {
@@ -21,23 +31,38 @@
         font-weight: 500;
         line-height: toRem(38.67);  
         width: toRem(361);   
-        color: $secondary-blue;    
+        color: $secondary-blue;
+        
+        @include media("<=phone-tab") {
+            font-size: toRem(21);
+            width: toRem(255);
+            // border: 1px solid red;
+        }
     }
 
     &_next {
+        @include flex-center();
         width: toRem(55);
         height: toRem(54);
         border-radius: 100%;
         background-color: $secondary-blue;
         margin-left: toRem(12);
 
-        @include flexbox(row, 0px);
-        align-items: center;
-        justify-content: center;
+        @include media("<=phone-tab") {
+            width: toRem(45);
+            height: toRem(44);
+            margin-left: toRem(0);
+        }
+
 
         svg {
             width: toRem(12.03);
             height: toRem(21);
+
+            @include media("<=phone-tab") {
+                width: toRem(10.03);
+                height: toRem(15);
+            }
         }
     }
 
