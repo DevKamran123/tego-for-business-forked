@@ -4,13 +4,19 @@ import { useNavigate } from "react-router-dom";
 import globe from "../assets/images/globe.png";
 import rideTegoLogo from "../assets/images/rideTegoLogo.png";
 import menu from "../assets/icons/menu.png";
+import useMenuStore from "../store/MenuStore";
 
 export default function Header() {
     const navigate = useNavigate();
+    const toggleMenu = useMenuStore((state)=>state.toggleMenu);
+    const isOpen = useMenuStore((state)=>state.isOpen);
+
     return (
         <>
             <div className="responsiveHeader">
-                <div className="responsiveHeader_menu">
+                <div className={`responsiveHeader_menu ${isOpen? "open" : "normal"}`}
+                    onClick={()=>toggleMenu()}
+                >
                     <img src={menu} alt="menu" />
                 </div>
                 <div className="responsiveHeader_logo">

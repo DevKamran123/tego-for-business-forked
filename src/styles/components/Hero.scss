@@ -33,18 +33,30 @@
         &_layout {
             @include flexbox(column, toRem(27));
             align-items: center;
-            margin-top: toRem(84);
+            position: relative;
 
             @include media("<=tablet") {
-                    gap: toRem(0);
-                }
-
+                gap: toRem(0);
+                // margin-top: toRem(60);
+        }
+            
             &_welcome {
                 font-family: $font-plus-jakarta;
                 font-size: toRem(84.89);
                 font-weight: 800;
                 line-height: toRem(106.96);  
                 text-align: center;  
+
+                margin-top: toRem(84);
+
+                @include media("<=tablet") {
+                        margin-top: toRem(60);
+                }
+
+                @include media("<=phone-tab") {
+                        margin-top: toRem(20);
+                }
+
                 
                 @include media("<=tablet") {
                     text-align: center;

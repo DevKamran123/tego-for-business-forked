@@ -166,11 +166,6 @@
         &:hover {
             cursor: pointer;
         }
-
-        .open {
-            transform: rotate(-90deg);
-            transition: all ease-in 0.3s;
-        }
         
 
         @include media("<=phone-tab") {
@@ -188,6 +183,17 @@
                 height: toRem(55);
             }
         }
+    }
+
+    .open {
+        transform: rotate(-90deg);
+        transition: all ease-in 0.3s;
+    }
+
+    .normal {
+        transform: rotate(0deg);
+        transition: all ease-in 0.3s;
+
     }
 
 

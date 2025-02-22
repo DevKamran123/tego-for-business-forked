@@ -2,6 +2,7 @@ import React from 'react'
 import "../styles/components/Hero.scss";
 import Header from './Header';
 import PickupForm from './PickupForm';
+import Homesidebar from './HomeSidebar';
 
 const Hero: React.FC = () => {
   return (
@@ -10,8 +11,8 @@ const Hero: React.FC = () => {
       </div>
       <div className='heroCont_content'>
         <Header />
-
         <div className='heroCont_content_layout'>
+        <Homesidebar />
           <div className='heroCont_content_layout_welcome'>
             Welcome to RideTEGO
           </div>

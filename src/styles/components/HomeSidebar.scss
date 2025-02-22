@@ -1,0 +1,88 @@
+@use "/src/styles/main.scss" as *;
+
+
+
+.custom-sidebar {
+    &.ant-drawer {
+      .ant-drawer-content-wrapper {
+        width: toRem(400) !important;
+        height: toRem(1050);
+
+        @include media("<=phone-tab") {
+            height: toRem(1000);
+            width: toRem(320) !important;
+
+        }
+      }
+      
+      .ant-drawer-content {
+        background-color: rgb(61, 62, 134) !important;
+      }
+  
+      .ant-drawer-wrapper-body {
+        background-color: rgb(61, 62, 134) !important;
+      }
+  
+      .ant-drawer-body {
+        padding: 24px;
+        color: #fff;
+        background-color: rgb(61, 62, 134) !important;
+      }
+  
+      .ant-drawer-close {
+        color: #fff;
+        transition: color 0.2s ease;
+        
+        &:hover {
+          color: rgba(255, 255, 255, 0.8);
+          background: none;
+        }
+      }
+    }
+  }
+  
+  // Ensure styles work in both light and dark themes
+  [data-theme='dark'] .custom-sidebar,
+  [data-theme='light'] .custom-sidebar {
+    &.ant-drawer .ant-drawer-content {
+      background-color: rgb(61, 62, 134) !important;
+    }
+  }
+
+
+  .sidebar {
+    &-wrapper {
+      position: relative;
+    }
+  
+    &-trigger {
+      background: none;
+      border: none;
+      padding: 0.5rem;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+  
+      img {
+        width: 24px;
+        height: 24px;
+        display: block;
+      }
+  
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  
+    &-content {
+      color: #fff;
+      
+      p {
+        margin-bottom: 1rem;
+        
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+  
