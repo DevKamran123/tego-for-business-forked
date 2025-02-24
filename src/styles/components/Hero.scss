@@ -11,6 +11,10 @@
     object-fit: fill;
     color: $white;
 
+    @include media("<=phone-tab") {
+        height: toRem(1100);
+    }
+
     &_overlay {
         position: absolute;
         top: 0;
@@ -29,21 +33,54 @@
         &_layout {
             @include flexbox(column, toRem(27));
             align-items: center;
-            margin-top: toRem(84);
+            position: relative;
 
+            @include media("<=tablet") {
+                gap: toRem(0);
+                // margin-top: toRem(60);
+        }
+            
             &_welcome {
                 font-family: $font-plus-jakarta;
                 font-size: toRem(84.89);
                 font-weight: 800;
                 line-height: toRem(106.96);  
-                text-align: center;        
+                text-align: center;  
+
+                margin-top: toRem(84);
+
+                @include media("<=tablet") {
+                        margin-top: toRem(60);
+                }
+
+                @include media("<=phone-tab") {
+                        margin-top: toRem(20);
+                }
+
+                
+                @include media("<=tablet") {
+                    text-align: center;
+                    font-size: toRem(47.57);
+                    gap: toRem(10);
+                }
+
+                @include media("<=phone-tab") {
+                    width: toRem(530);
+                    max-width: toRem(530);
+                    font-size: toRem(40.57);
+                }
             }
     
             &_ad {
                 font-family: $font-plus-jakarta;
                 font-size: toRem(36);
                 font-weight: 500;
-                line-height: toRem(45.36);          
+                line-height: toRem(45.36);   
+                
+                @include media("<=tablet") {
+                    text-align: center;
+                    font-size: toRem(20.17);
+                }
             }
         }
     }

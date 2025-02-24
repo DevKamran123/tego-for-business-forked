@@ -85,8 +85,9 @@
               // Style the input inside date picker
               .ant-picker-input {
                 input {
-                  font-size: 14px;
+                  font-size: toRem(16);
                   color: #333;
+                  height: toRem(20);
                   
                   &::placeholder {
                     color: #999;

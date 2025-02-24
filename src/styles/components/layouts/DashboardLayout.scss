@@ -36,7 +36,7 @@
 
   .dashboard_body_wrapper {
     display: grid;
-    grid-template-columns: 280px 1fr !important;
+    grid-template-columns: toRem(334) 1fr !important;
     // background-color: $white-2;
     // padding-right: toRem(20);
     // padding-block: toRem(20);
@@ -45,9 +45,9 @@
     height: 100dvh;
     transition: all 0.3s ease;
 
-    @media screen and (max-width: 1024px) {
-      grid-template-columns: 150px 1fr !important;
-    }
+    // @media screen and (max-width: 1024px) {
+    //   grid-template-columns: toRem(150) 1fr !important;
+    // }
 
     @include media("<=tablet") {
       grid-template-columns: 1fr !important;
@@ -92,7 +92,7 @@
           justify-content: space-between;
           align-items: center;
           padding-inline: toRem(20);
-          gap: 20px;
+          gap: toRem(20);
         }
 
         .logo {
@@ -178,7 +178,7 @@
     }
 
     &.collapsed {
-      grid-template-columns: 100px 1fr !important;
+      grid-template-columns: toRem(100) 1fr !important;
 
       .sidebar .logo_wrapper h1 {
         position: absolute;

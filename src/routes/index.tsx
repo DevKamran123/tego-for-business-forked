@@ -1,58 +1,75 @@
+import { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "../pages/Home";
-import Signup from "../pages/Signup";
-import ConfirmSignup from "../pages/ConfirmSignup";
-import CreatePassword from "../pages/CreatePassword";
-import Login from "../pages/Login";
+import { Toaster } from "react-hot-toast";
+import useRideStore from "../store/RideStore";
 import ProtectedRoute from "./ProtectedRoute";
 import DashboardLayout from "../components/layouts/DashboardLayout";
-import LogoutHandler from "../components/LogoutHandler";
-import Dashboard from "../pages/Dashboard";
-import Rides from "../pages/Rides";
-import RideHistory from "../components/RideHistory";
-import useRideStore from "../store/RideStore";
-import PlannedRides from "../components/PlannedRides";
-import Coupon from "../pages/Coupon";
-import Referral from "../pages/Referral";
-import { Toaster } from "react-hot-toast";
+import PageNotFound from "../components/PageNotFound";
+import Loader from "../components/Loader";
 
+// Lazy load all components
+const Home = lazy(() => import("../pages/Home"));
+const Signup = lazy(() => import("../pages/Signup"));
+const ConfirmSignup = lazy(() => import("../pages/ConfirmSignup"));
+const CreatePassword = lazy(() => import("../pages/CreatePassword"));
+const Login = lazy(() => import("../pages/Login"));
+const LogoutHandler = lazy(() => import("../components/LogoutHandler"));
+const Dashboard = lazy(() => import("../pages/Dashboard"));
+const Rides = lazy(() => import("../pages/Rides"));
+const RideHistory = lazy(() => import("../components/RideHistory"));
+const PlannedRides = lazy(() => import("../components/PlannedRides"));
+const Coupon = lazy(() => import("../pages/Coupon"));
+const Referral = lazy(() => import("../pages/Referral"));
 
 const AppRoutes = () => {
-  const activeTab = useRideStore((state)=>state.activeTab);
+  const activeTab = useRideStore((state) => state.activeTab);
 
   return (
     <>
       <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/confirm-signup" element={<ConfirmSignup />} />
-          <Route path="/create-password" element={<CreatePassword />} />
-          <Route path="logout" element={<LogoutHandler />} />
-          <Route
-            path="/dashboard/*"
-            element={
-              <ProtectedRoute>
-                <DashboardLayout>
-                  <Routes>
-                    <Route path="/" element={<Dashboard />} />
-                    <Route path="/rides" element={<Rides />} />
-                    <Route path="/rides/:rideId" element={activeTab==="ride-history" ? <RideHistory />: <PlannedRides />} />
-                    <Route path="/referral-code" element={<Referral />} />
-                    <Route path="/coupons" element={<Coupon />} />
-                  </Routes>
-                </DashboardLayout>
-              </ProtectedRoute>
-            }
-          />
-        </Routes>
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="*" element={<PageNotFound />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/confirm-signup" element={<ConfirmSignup />} />
+            <Route path="/create-password" element={<CreatePassword />} />
+            <Route path="logout" element={<LogoutHandler />} />
+            <Route
+              path="/dashboard/*"
+              element={
+                <ProtectedRoute>
+                  <DashboardLayout>
+                    <Routes>
+                      <Route path="/" element={<Dashboard />} />
+                      <Route path="/rides" element={<Rides />} />
+                      <Route
+                        path="/rides/:rideId"
+                        element={
+                          activeTab === "ride-history" ? (
+                            <RideHistory />
+                          ) : (
+                            <PlannedRides />
+                          )
+                        }
+                      />
+                      <Route path="/referral-code" element={<Referral />} />
+                      <Route path="/coupons" element={<Coupon />} />
+                      <Route path="*" element={<PageNotFound />} />
+                    </Routes>
+                  </DashboardLayout>
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </Suspense>
       </Router>
 
-      <Toaster 
+      <Toaster
         position="top-center"
         gutter={12}
-        containerStyle={{margin: "8px"}}
+        containerStyle={{ margin: "8px" }}
         toastOptions={{
           success: {
             duration: 3000,
@@ -65,7 +82,7 @@ const AppRoutes = () => {
             maxWidth: "500px",
             padding: "16px 24px",
             backgroundColor: "var(--color-grey-0)",
-            color: "var(--color-grey-700)"
+            color: "var(--color-grey-700)",
           },
         }}
       />

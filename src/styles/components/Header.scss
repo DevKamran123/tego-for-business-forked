@@ -8,6 +8,11 @@
     color: $white;
     background-color: transparent;
 
+
+    @include media("<=tablet") {
+        display: none;
+    }
+
     &_logo {
         @include flex(start, center, toRem(15));
         font-family: $font-plus-jakarta;
@@ -134,6 +139,87 @@
                 font-size: toRem(15);
                 transition: all 0.4s ease-in;
             }
+        }
+    }
+}
+
+.responsiveHeader {
+    @include flex-center();
+    height: toRem(100);
+    position: relative;
+    color: $white;
+    background-color: transparent;
+
+    @include media(">=tablet") {
+        display: none;
+    }
+
+    &_menu {
+        @include flex-center();
+        width: toRem(65);
+        height: toRem(65);
+        justify-self: start;
+        position: absolute;
+        left: toRem(50);
+        align-self: center;
+
+        &:hover {
+            cursor: pointer;
+        }
+        
+
+        @include media("<=phone-tab") {
+            left: toRem(25);
+            width: toRem(55);
+            height: toRem(55);
+        }
+
+        img {
+            width: toRem(65);
+            height: toRem(65);
+
+            @include media("<=phone-tab") {
+                width: toRem(55);
+                height: toRem(55);
+            }
+        }
+    }
+
+    .open {
+        transform: rotate(-90deg);
+        transition: all ease-in 0.3s;
+    }
+
+    .normal {
+        transform: rotate(0deg);
+        transition: all ease-in 0.3s;
+
+    }
+
+
+     &_logo {
+        @include flex(start, center, toRem(15));
+        font-family: $font-plus-jakarta;
+        font-size: toRem(30);
+        font-weight: 800;
+        line-height: toRem(37.8);
+        text-align: left; 
+        color: $white;  
+        align-self: center;
+
+        @include media("<=phone-tab") {
+            font-size: toRem(25);
+        }
+        
+        img {
+            width: toRem(46);
+            height: toRem(46);
+
+            @include media("<=phone-tab") {
+                width: toRem(42);
+                height: toRem(42);
+            }
+            
         }
     }
 }

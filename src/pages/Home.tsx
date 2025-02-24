@@ -11,6 +11,7 @@ import aboutUs from "../assets/svgs/aboutUs.svg";
 import newsroom from "../assets/svgs/newsroom.svg";
 import home from "../assets/svgs/home.svg";
 import Footer from '../components/Footer';
+import Homesidebar from '../components/HomeSidebar';
 
 const cardData = [
   {
@@ -26,7 +27,7 @@ const cardData = [
     text: "The app is available in thousands of cities worldwide, so you can request a ride even when you’re far from home.",
     image: road,
     link1: "View All Cities",
-    link2: ","
+    link2: ""
   }
 ]
 
@@ -55,7 +56,6 @@ const Home: React.FC = () => {
   return (
     <div className='homeCont'>
       <Hero />
-
       <div className='homeCont_business'>
         <div className='homeCont_business_writeup'>
           <div className='homeCont_business_writeup_title'>

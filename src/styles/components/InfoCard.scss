@@ -3,6 +3,11 @@
 .infocardCont {
     font-family: $font-plus-jakarta;
 
+    @include media("<=tablet") {
+        @include flex-center();
+        flex-direction: column;
+    }
+
     img {
         width: toRem(40);
         height: toRem(40);
@@ -23,6 +28,19 @@
         text-align: left;
         margin-top: toRem(13);
         color: $text-color;
+        width: toRem(509);
+        max-width: toRem(509);
+
+        @include media("<=tablet") {
+            text-align: center;
+            width: toRem(490);
+            max-width: toRem(490);
+        }
+
+        @include media("<=phone-tab") {
+            width: toRem(490);
+            max-width: toRem(490);
+        }
     }
 
     &_learn {

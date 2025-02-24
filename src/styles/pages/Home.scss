@@ -1,18 +1,16 @@
 @use "../main.scss" as *;
 
 .homeCont {
-    // &_business {
-    //     height: toRem(356);
-    //     background-image: url("/src/assets/images/bridge.png");
-    //     background-size: cover;
-    //     background-repeat: repeat;
-    //     backdrop-filter: blur;
-    //     border: 1px solid red;
+    overflow-x: hidden;
 
     &_business {
         position: relative;
         height: toRem(356);
         overflow: hidden; // Prevents blur bleeding outside container
+
+        @include media("<=tablet") {
+            @include flex-center();
+        }
 
         // Approach 1: Using pseudo-element (RECOMMENDED)
         &::before {
@@ -36,12 +34,23 @@
             margin: toRem(100) 0px toRem(84) toRem(261);
             font-family: $font-roboto;
 
+            @include media("<=tablet") {
+                @include flex-center();
+                flex-direction: column;
+                margin: toRem(100) toRem(0) toRem(84) toRem(0);
+            }
+    
+
             &_title {
                 font-size: toRem(45);
                 font-weight: 800;
                 line-height: toRem(52.73);
                 text-align: left;     
-                color: $primary-color;              
+                color: $primary-color;
+                
+                @include media("<=tablet") {
+                    text-align: center;
+                }
             }
 
             &_content {
@@ -51,6 +60,14 @@
                 text-align: left;     
                 color: #2A3033;    
                 margin-top: toRem(20);
+
+                @include media("<=tablet") {
+                    text-align: center;
+                }
+
+                @include media("<=phone-tab") {
+                    width: toRem(527);
+                }
             }
 
             &_see {
@@ -83,27 +100,65 @@
 
     &_safety {
         background-color: $white;
-        padding: toRem(105) toRem(112) toRem(130) toRem(112);
+        padding: toRem(105) toRem(152) toRem(130) toRem(152);
         font-family: $font-roboto;
+
+        @include media("<=tablet") {
+            @include flex-center();
+            flex-direction: column;
+            padding: toRem(105) toRem(0) toRem(130) toRem(0);
+        }
+
+        @include media("<=phone-tab") {
+            padding: toRem(75) toRem(0) toRem(90) toRem(0);
+        }
 
         &_title {
             font-size: toRem(35);
             font-weight: 500;
             line-height: toRem(41.02);
             text-align: left;
+
+            @include media("<=phone-tab") {
+                font-size: toRem(30);
+            }
         }
 
         &_layout {
-            @include flexbox(row, toRem(77));
+            @include flexbox(row, toRem(0));
+            justify-content: space-between;
             margin-top: toRem(40);
+
+            
+            @include media("<=tablet") {
+                @include flex-center();
+                flex-direction: column;
+                gap: toRem(133);
+            }
+
+            @include media("<=phone-tab") {
+                gap: toRem(100);
+            }
         }
     }
 
     &_app {
         background-color: $secondary-blue;
         height: toRem(580);
-        padding: toRem(121) toRem(122) toRem(121) toRem(122);
+        padding: toRem(121) toRem(142) toRem(121) toRem(142);
         font-family: $font-roboto;
+
+        @include media("<=tablet") {
+            height: auto;
+        }
+
+        @include media("<=tablet") {
+            padding: toRem(101) toRem(0) toRem(101) toRem(0);
+        }
+
+        @include media("<=phone-tab") {
+            padding: toRem(60) toRem(0) toRem(90) toRem(0);
+        }
 
         &_cont {
             @include flexbox(column, toRem(42));
@@ -112,18 +167,38 @@
                 color: $white;
                 font-size: toRem(40);
                 font-weight: 500;
-                line-height: toRem(46.88);              
+                line-height: toRem(46.88); 
+                
+                 @include media("<=tablet") {
+                    text-align: center;
+                }
+                
+                @include media("<=phone-tab") {
+                    font-size: toRem(30);
+                    line-height: auto;
+                }
             }
 
             &_layout {
-                @include flexbox(row, toRem(95));
+                @include flex(space-between, center, toRem(0));
+
+                @include media("<=tablet") {
+                    @include flex-center();
+                    flex-direction: column;
+                    gap: toRem(30);
+                }
             }
         }
     }
 
     &_moreInfo {
-        @include flexbox(row, toRem(31.6));
-        
+        @include flex(space-between, center, toRem(0));
         padding: toRem(191) toRem(152);
+
+        @include media("<=tablet") {
+            @include flex-center();
+            flex-direction: column;
+            gap: toRem(140);
+        }
     }
 }

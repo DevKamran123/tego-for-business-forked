@@ -28,9 +28,10 @@ export default function HomeCard({data}: HomeCardProps) {
                     <div className="homecardCont_textLayout_additional_text">
                         {link1}
                     </div>
+                    {link2 &&
                     <div className="homecardCont_textLayout_additional_text">
                         {link2}
-                    </div>
+                    </div>}
                 </div>
             </div>
         </div>
