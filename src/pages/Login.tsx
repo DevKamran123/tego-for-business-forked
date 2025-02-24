@@ -39,7 +39,7 @@ const Login: React.FC = () => {
         </div>
       </div>
       <div className="login_content">
-        <img src="favicon.svg" alt="" className="login_logo" />
+        {/* <img src="favicon.svg" alt="" className="login_logo" /> */}
         <h2 className="login_header">Sign In</h2>
         <div className="login_form_wrapper">
           <Formik
@@ -101,7 +101,7 @@ const Login: React.FC = () => {
                   Login
                 </TButton>
 
-                <div className="signupCont_main_content_register_alternative">
+                <div className="login_alternative">
                   Don't have an account? <span onClick={()=>navigate("/signup")}>Signup</span>
                 </div>
               </Form>

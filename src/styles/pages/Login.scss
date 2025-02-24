@@ -99,7 +99,22 @@
 
   &_form_wrapper {
     width: 100%;
-    max-width: toRem(500);
+    max-width: toRem(623);
     height: fit-content;
+  }
+
+}
+
+.login_alternative {
+  font-weight: 400;
+  font-size: toRem(16);
+  line-height: toRem(20.16);
+  letter-spacing: 0%;
+  text-align: center;      
+  color: $light-gray;    
+  
+  span {
+      font-weight: 700;
+      cursor: pointer;
   }
 }
