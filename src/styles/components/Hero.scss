@@ -13,6 +13,7 @@
 
     @include media("<=phone-tab") {
         height: toRem(1100);
+        background-image: url("/src/assets/images/backgroundHeroMobile.png");
     }
 
     &_overlay {

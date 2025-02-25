@@ -11,6 +11,7 @@ import * as Yup from "yup";
 import keyIcon from "../assets/svgs/keyIcon.svg";
 import googleIcon from "../assets/svgs/googleIcon.svg";
 import microsoftIcon from "../assets/svgs/microsoftIcon.svg";
+import rideTegoLogo from "../assets/images/rideTegoLogo.png";
 import { useNavigate } from "react-router-dom";
 import { Input, InputProps, Divider } from "antd";
 import TButton from "../components/buttons/TButton";
@@ -42,7 +43,6 @@ const SignupSchema = Yup.object().shape({
 });
 
 
-
 export default function Signup() {
     const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState("enterprise");
@@ -55,7 +55,18 @@ export default function Signup() {
                 </div>
                 <div className="signupCont_side_bg"></div>
             </div>
+
+
             <div className="signupCont_main">
+                <div className="signupCont_main_head">
+                    <div className="signupCont_main_head_logo">
+                        <img src={rideTegoLogo} alt="logo" />
+                        RideTEGO
+                    </div>
+                    <div className="signupCont_main_head_text">
+                        Welcome to RideTEGO
+                    </div>
+                </div>
                 <div className="signupCont_main_content">
                     <div className="signupCont_main_content_title">
                         Sign up
@@ -170,9 +181,9 @@ export default function Signup() {
                                         className="input-error"
                                     />
                                 </div>
-                                {/* <div> */}
+                                <div className="isCheck">
                                     <CheckBox label="Accept Terms of Service and Privacy Policy"/>
-                                {/* </div> */}
+                                </div>
                                 
 
                                 <TButton
