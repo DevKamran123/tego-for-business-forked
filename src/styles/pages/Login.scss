@@ -8,6 +8,11 @@
 
     @include media("<=tablet") {
       grid-template-columns: 1fr;
+      height: 70dvh;
+    }
+
+    @include media("<=phone-tab") {
+      height: 75dvh;
     }
 
     .standard-form {
@@ -74,7 +79,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: toRem(40);
+    padding-bottom: toRem(40);
+
+    @include media("<=tablet") {
+      height: auto;
+      padding-bottom: toRem(0);
+      justify-content: start;
+    }
+    
+    
   }
 
   &_logo{
@@ -94,11 +107,14 @@
     @include media("<=tablet") {
       font-size: toRem(36);
       line-height: toRem(48);
+      margin-top: toRem(70);
+      padding-bottom: toRem(20);
     }
   }
 
   &_form_wrapper {
     width: 100%;
+    padding: 0px toRem(40);
     max-width: toRem(623);
     height: fit-content;
   }
@@ -116,5 +132,76 @@
   span {
       font-weight: 700;
       cursor: pointer;
+  }
+}
+
+
+
+.login-head {
+  @include flexbox(column, toRem(50));
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-image: url("/src/assets/images/bgAuth.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  object-fit: contain;
+  width: 100vw;
+  height: toRem(280);
+  position: relative;
+
+  &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(180deg, #3e4095 0%, #292a6173 100%);
+      z-index: 1;
+  }
+
+  @include media(">=tablet") {
+      display: none;
+  }
+
+  &_logo {
+      @include flex(start, center, toRem(15));
+      font-family: $font-plus-jakarta;
+      font-size: toRem(25);
+      font-weight: 800;
+      line-height: toRem(30.8);
+      text-align: left; 
+      color: $white;
+      z-index: 2;  
+      
+      img {
+          width: toRem(46);
+          height: toRem(46);
+      }
+
+      @include media("<=phone-tab") {
+          font-size: toRem(21);
+
+          img {
+              width: toRem(38);
+              height: toRem(38);
+          }
+      }
+  }
+
+  &_text {
+      font-family: $font-plus-jakarta;
+      font-weight: 700;
+      font-size: toRem(44);
+      line-height: toRem(80.64);
+      letter-spacing: 0%;
+      text-align: center;   
+      color: $white;   
+      z-index: 2;   
+      
+      @include media("<=phone-tab") {
+          font-size: toRem(38);
+      }
   }
 }
