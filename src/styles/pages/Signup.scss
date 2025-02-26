@@ -65,8 +65,91 @@
         -webkit-transform: translateZ(0);
         backface-visibility: hidden;
 
+        @include media("<=tablet") {
+            padding: 0px;
+        }
+
+        &_head {
+            @include flexbox(column, toRem(50));
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background-image: url("/src/assets/images/bgAuth.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            object-fit: contain;
+            width: 100vw;
+            height: toRem(280);
+            position: relative;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(180deg, #3e4095 0%, #292a6173 100%);
+                z-index: 1;
+            }
+
+            @include media(">=tablet") {
+                display: none;
+            }
+
+            &_logo {
+                @include flex(start, center, toRem(15));
+                font-family: $font-plus-jakarta;
+                font-size: toRem(25);
+                font-weight: 800;
+                line-height: toRem(30.8);
+                text-align: left; 
+                color: $white;
+                z-index: 2;  
+                
+                img {
+                    width: toRem(46);
+                    height: toRem(46);
+                }
+
+                @include media("<=phone-tab") {
+                    font-size: toRem(21);
+
+                    img {
+                        width: toRem(38);
+                        height: toRem(38);
+                    }
+                }
+            }
+
+            &_text {
+                font-family: $font-plus-jakarta;
+                font-weight: 700;
+                font-size: toRem(44);
+                line-height: toRem(80.64);
+                letter-spacing: 0%;
+                text-align: center;   
+                color: $white;   
+                z-index: 2;   
+                
+                @include media("<=phone-tab") {
+                    font-size: toRem(38);
+                }
+            }
+        }
+
         &_content {
-            // border: 1px solid green;
+            padding: toRem(0) toRem(30) toRem(200) toRem(30);
+
+            @include media("<=tablet") {
+                @include flex_col(0px);
+                align-items: center;
+                padding-top: toRem(80);  
+            }
+
+            @include media("<=phone-tab") {
+                padding-top: toRem(60);  
+            }
 
             &_title {
                 font-family: $font-plus-jakarta;
@@ -81,6 +164,14 @@
                 @include flexbox(row, toRem(20));
                 margin-top: toRem(38);
 
+                @include media("<=tablet") {
+                    margin-top: toRem(80);
+                }
+
+                @include media("<=phone-tab") {
+                    margin-top: toRem(60);  
+                }
+
                 &_one {
                     @include flexbox(column, toRem(20));
                     align-items: center;
@@ -90,6 +181,15 @@
                     position: relative;
                     border: 0.5px solid $light-gray;
                     cursor: pointer;
+
+                    @include media("<=tablet") {
+                        width: toRem(330);
+                    }
+
+                    @include media("<=phone-tab") {
+                        width: toRem(235);
+                        height: toRem(180);
+                    }
 
                     &_selected {
                         border: 0.5px solid $secondary-blue;
@@ -124,6 +224,10 @@
                         line-height: toRem(25.2);
                         letter-spacing: 0%;    
                         color: $light-black; 
+
+                        @include media("<=phone-tab") {
+                            font-size: toRem(17);
+                        }
                         
                         &_selected {
                             color: $secondary-blue
@@ -160,10 +264,33 @@
                     @include flexbox(column, toRem(7));
                     align-items: start;
 
+                    
                     .field-cont {
                         // border: 1px solid red;
-                        height: toRem(130);
+                        height: auto;
                         position: relative;
+                        margin-bottom: toRem(30);
+
+                        @include media("<=tablet") {
+                            height: auto;
+                            margin: auto auto;
+                            margin-bottom: toRem(20);
+                        }
+                    }
+                    
+                    .isCheck {
+                        margin-top: toRem(-10);
+
+                        @include media("<=tablet") {
+                            margin-top: toRem(0);
+                        }
+
+                        @include media("<=phone-tab") {
+                            @include flex-center();
+                            width: 100%;
+                            text-align: center;
+                            // margin-top: toRem(20);
+                        }
                     }
 
                     .input-label {
@@ -189,7 +316,7 @@
                         color: $text-color;
                         padding-left: toRem(34);
                         padding-right: toRem(34);
-                        margin-bottom: toRem(55);
+                        // margin-bottom: toRem(55);
 
                         &::placeholder {
                             font-weight: 400;
@@ -198,17 +325,27 @@
                             letter-spacing: 0%;
                             color: #DBDBDB;
                         }
+
+                        @include media("<=tablet") {
+                            width: toRem(680);
+                            height: toRem(80);
+                        }
+
+                        @include media("<=phone-tab") {
+                            width: toRem(487);
+                            height: toRem(70);
+                        }
                     }
 
                     .input-error {
                         position: absolute;
-                        bottom: toRem(-12);
+                        // bottom: toRem(-12);
                         color: $secondary-color;
                         font-size: toRem(16);
                         font-style: normal;
                         font-weight: 400;
                         line-height: normal;
-                        margin-top: 5px !important;
+                        margin-top: toRem(4) !important;
                     }
 
                     button {
@@ -221,6 +358,18 @@
                         color: $white;
                         background-color: $secondary-color;
                         margin-top: toRem(17);
+
+                        @include media("<=tablet") {
+                            width: toRem(680);
+                            height: toRem(80);
+                        }
+
+                        @include media("<=phone-tab") {
+                            width: toRem(487);
+                            height: toRem(70);
+                            margin: auto auto;
+                            margin-top: toRem(17);
+                        }
                     }
                 }
 
@@ -252,6 +401,12 @@
                     justify-content: space-between;
                     align-items: center;
                     margin-top: toRem(38);
+                    
+                    @include media("<=phone-tab") {
+                        @include flex-center();
+                        flex-direction: column;
+                        gap: toRem(25);
+                    }
                 }
             }
         }

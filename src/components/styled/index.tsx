@@ -102,6 +102,10 @@ export const TInputLabel = styled.label`
   line-height: normal;
   margin-bottom: 10px;
   display: inline-block;
+
+  @media (max-width: 865px) {
+    font-size: 16px;
+  }
 `;
 
 export const TCheckbox = styled(Checkbox)`
@@ -137,5 +141,9 @@ export const TCheckbox = styled(Checkbox)`
   label.ant-checkbox-wrapper {
     align-items: center !important;
     display: flex;
+  }
+
+  @media (max-width: 865px) {
+    font-size: 14px;
   }
 `;

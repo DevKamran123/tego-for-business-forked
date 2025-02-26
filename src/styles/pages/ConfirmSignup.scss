@@ -64,14 +64,29 @@
         margin: 0px auto;
         height: 100vh;
         overflow-y: scroll;
-        padding: toRem(145) 0px toRem(308) 0px;
-
+        padding: toRem(145) 0px toRem(200) 0px;
         transform: translateZ(0);
         -webkit-transform: translateZ(0);
         backface-visibility: hidden; 
 
+        @include media(">=tablet") {
+            margin: auto auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            // margin-top: toRem(110);
+        }
+
+        @include media("<=tablet") {
+            padding-top: toRem(0);
+        }
+
         &_content {
             // border: 1px solid green;
+
+            @include media(">=tablet") {
+                margin-top: toRem(100);
+            }
 
             &_title {
                 font-family: $font-plus-jakarta;
@@ -81,6 +96,20 @@
                 letter-spacing: 0%;
                 text-align: start;
                 width: toRem(360);
+
+
+                @include media("<=tablet") {
+                    font-size: toRem(36);
+                    text-align: center;
+                    width: toRem(680);
+                    margin: auto auto;
+                    margin-top: toRem(170);
+                }
+
+                @include media("<=phone-tab") {
+                    font-size: toRem(25);
+                    width: toRem(487);
+                }
             }
 
 
@@ -94,12 +123,25 @@
                     align-items: start;
                     // width: 100%;
 
+                    @include media("<=tablet") {
+                        align-items: center;
+                    }
+
                     label {
                         font-weight: 400;
                         font-size: toRem(15);
                         line-height: toRem(18);
                         letter-spacing: 0%;  
-                        color: $light-gray;                         
+                        color: $light-gray;
+                        text-align: start;
+
+                        @include media("<=tablet") {
+                            width: toRem(680);
+                        }
+
+                        @include media("<=phone-tab") {
+                            width: toRem(487);
+                        }
                     }
 
                     .input_text {
@@ -124,6 +166,16 @@
                             letter-spacing: 0%;
                             color: #DBDBDB;
                         }
+
+                        @include media("<=tablet") {
+                            width: toRem(680);
+                            height: toRem(80);
+                        }
+
+                        @include media("<=phone-tab") {
+                            width: toRem(487);
+                            height: toRem(70);
+                        }
                     }
 
 
@@ -134,17 +186,39 @@
                         letter-spacing: 0%;    
                         width: toRem(758); 
                         color: $light-black;   
-                        margin-top: toRem(50);            
+                        margin-top: toRem(50);
+                        
+                        @include media("<=tablet") {
+                            font-size: toRem(18);
+                            text-align: center;
+                            width: toRem(680);
+                            margin: auto auto;
+                            margin-top: toRem(50);
+                        }
+        
+                        @include media("<=phone-tab") {
+                            font-size: toRem(15);
+                            width: toRem(487);
+                        }
                     }
     
                     .confirmsignupCont_main_content_register_actions {
                         display: inline-block;
                         @include flex(start, center, toRem(185));
                         margin-top: toRem(232);
+
+                        @include media("<=tablet") {
+                            @include flex_col(toRem(30));
+                            align-items: center;
+                        }
+
+                        @include media("<=phone-tab") {
+                            gap: toRem(20);
+                            margin-top: toRem(180);
+                        }
                     }
                 }
             }
         }
     }
-    
 }
