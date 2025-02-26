@@ -9,6 +9,19 @@
     line-height: toRem(30.4);
     letter-spacing: 0%;
 
+    @include media("<=tablet") {
+        width: toRem(680);
+        height: toRem(80);
+    }
+
+    @include media("<=phone-tab") {
+        font-size: toRem(20);
+        width: toRem(487);
+        height: toRem(70);
+        margin: auto auto;
+        margin-top: toRem(17);
+    }
+
 }
 
 .authprimary {

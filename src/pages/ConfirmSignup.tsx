@@ -1,5 +1,6 @@
 
 import AuthButton from "../components/AuthButton";
+import AuthHead from "../components/AuthHead";
 import AuthMessage from "../components/AuthMessage";
 import "../styles/pages/ConfirmSignup.scss";
 
@@ -20,6 +21,7 @@ export default function ConfirmSignup() {
                 <div className="confirmsignupCont_side_bg"></div>
             </div>
             <div className="confirmsignupCont_main">
+                <AuthHead text="Please confirm the validity of your email address" subText="We need your email for security reasons and to keep technical comminication."/>
                 <div className="confirmsignupCont_main_content">
                     <div className="confirmsignupCont_main_content_title">
                         Check your email for a verification link

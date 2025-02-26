@@ -181,6 +181,7 @@ export default function Signup() {
                                         className="input-error"
                                     />
                                 </div>
+                                
                                 <div className="isCheck">
                                     <CheckBox label="Accept Terms of Service and Privacy Policy"/>
                                 </div>
