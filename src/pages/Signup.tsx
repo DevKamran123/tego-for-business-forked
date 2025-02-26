@@ -15,6 +15,7 @@ import rideTegoLogo from "../assets/images/rideTegoLogo.png";
 import { useNavigate } from "react-router-dom";
 import { Input, InputProps, Divider } from "antd";
 import TButton from "../components/buttons/TButton";
+import { useMediaQuery } from "react-responsive";
 
 const authBoxes = [
     {
@@ -46,6 +47,7 @@ const SignupSchema = Yup.object().shape({
 export default function Signup() {
     const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState("enterprise");
+    const isMobileView = useMediaQuery({ maxWidth: 865 });
 
     return (
         <div className="signupCont">
@@ -204,7 +206,7 @@ export default function Signup() {
                         </div>
                         
                         {/* <div className="signupCont_main_content_register_or"> */}
-                        <Divider plain className="signupCont_main_content_register_or" style={{color: "#A6A6A6", fontSize: "1.1rem"}}>Or</Divider>
+                        <Divider plain className="signupCont_main_content_register_or" style={{color: "#A6A6A6", fontSize: isMobileView ? "0.8rem" : "1rem"}}>Or</Divider>
                         {/* </div> */}
 
                         <div className="signupCont_main_content_register_allPlatforms">

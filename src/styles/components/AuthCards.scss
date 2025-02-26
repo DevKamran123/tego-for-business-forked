@@ -6,6 +6,11 @@
     cursor: pointer;
     border: toRem(0.8) solid $light-gray;
 
+    @include media("<=tablet") {
+        width: toRem(200);
+        height: toRem(95);
+    }
+
     @include media("<=phone-tab") {
         width: toRem(487);
         height: toRem(70);
