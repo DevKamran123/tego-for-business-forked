@@ -7,6 +7,7 @@ import TotalCard from "../components/TotalCard";
 import { deliveryDetails, totalCardItems } from "../data/dashboard";
 import "../styles/pages/Dashboard.scss";
 import Hero from "../components/Hero";
+import DashboardHero from "../components/DashboardHero";
 
 
 export default function Dashboard() {
@@ -22,9 +23,9 @@ export default function Dashboard() {
             </div>
 
             <div className="dashboard_actions">
-                {isMobile && <Hero />}
+                {isMobile && <DashboardHero />}
                 <div className="dashboard_actions_location">
-                    <BookRideForm />
+                    {<BookRideForm />}
                 </div>
                 <div className="dashboard_actions_activities">
                     <div className="dashboard_actions_activities_total">

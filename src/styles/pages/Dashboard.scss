@@ -33,8 +33,6 @@
             @include flex-center();
             flex-direction: column;
             margin-top: toRem(0);
-
-            // background-color: $white;
         }
 
         &_location {
@@ -52,9 +50,6 @@
             @include media("<=tablet") {
                 @include flex-center();
                 flex-direction: column;
-                // width: 100vw;
-                
-                border: 1px solid red;
             }
 
             &_total {
@@ -107,7 +102,6 @@
                     @include media("<=phone-tab") {
                         font-size: toRem(30);
                         margin-bottom: toRem(0);
-
                     }
                 }
 
@@ -125,6 +119,18 @@
 
     &_history {
         margin-top: toRem(47);
+        
+        @include media("<=tablet") {
+            width: 100vw;
+            @include flex-center();
+            flex-direction: column;
+            background-color: white;
+            padding: toRem(100) toRem(60) toRem(200) toRem(60);
+        }
+
+        @include media("<=phone-tab") {
+            padding: toRem(100) toRem(30) toRem(200) toRem(30);
+        }
 
         &_title {
             font-weight: 500;
@@ -133,6 +139,10 @@
             letter-spacing: 0%;
             color: #000000;
             margin-bottom: toRem(22);
+
+            @include media("<=tablet") {
+                margin-bottom: toRem(50);
+            }
         }
     }
 }
