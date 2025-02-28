@@ -29,6 +29,7 @@ export default function CreatePassword() {
             </div>
             <div className="createPassword_main">
                 <AuthHead text="Create a password" subText="We need your email for security reasons and to keep technical comminication."/>
+
                 <div className="createPassword_main_content">
                     <div className="createPassword_main_content_title">
                         Create a password
@@ -59,9 +60,9 @@ export default function CreatePassword() {
                             </div>
 
 
-                            <label htmlFor="password">Your password</label>
+                            <label htmlFor="password">Confirm password</label>
                             <div className="createPassword_main_content_register_field">
-                                <input type={showPassword} id="password" className="input_text" placeholder="Write unique password" />
+                                <input type={showPassword} id="password" className="input_text" placeholder="Rewrite unique password" />
                                 {showPassword === 'password' ? (
                                     <FaEye onClick={() => setShowPassword('text')} className='eye'/>
                                     ) : (

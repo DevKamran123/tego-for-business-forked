@@ -9,6 +9,13 @@
     padding: toRem(37) toRem(24) toRem(30) toRem(38.22);
     font-family: $font-plus-jakarta;
 
+    @include media("<=tablet") {
+      @include flex-center();
+      flex-direction: column;
+      width: auto;
+      height: auto;
+  }
+
     &_date {
         width: toRem(240);
         height: toRem(203.03);
@@ -16,10 +23,30 @@
         border-radius: toRem(20.49);
         flex-shrink: 0;
 
+        @include media("<=tablet") {
+          width: toRem(660);
+          height: toRem(537);
+        }
+
+        @include media("<=phone-tab") {
+          width: toRem(400);
+          height: toRem(330);
+        }
+
         &_top {
             height: toRem(94.02);
             border-bottom: 1px solid $light-gray;
             padding: toRem(11.71) toRem(17.56) toRem(5.85) toRem(17.56);
+
+            @include media("<=tablet") {
+              padding: toRem(41) toRem(47) toRem(16) toRem(47);
+              height: toRem(228);
+            }
+
+            @include media("<=phone-tab") {
+              padding: toRem(18.71) toRem(23.56) toRem(9.85) toRem(23.56);
+              height: toRem(120);
+            }
 
             &_select {
                 font-family: Plus Jakarta Sans;
@@ -28,15 +55,40 @@
                 line-height: toRem(14.63);
                 letter-spacing: 0.07px;    
                 margin-bottom: toRem(26.34);    
-                color: #49454F;             
+                color: #49454F;     
+                
+                @include media("<=tablet") {
+                  font-size: toRem(27);
+                  margin-bottom: toRem(80);
+                }
+
+                @include media("<=phone-tab") {
+                  font-size: toRem(17);
+                  margin-bottom: toRem(40);
+                }
             }
 
             &_layout {
                 @include flex(space-between, center, toRem(0));
 
+                @include media("<=tablet") {
+                  // @include flex-center();
+                  // flex-direction: column;
+              }
+
                 img {
                     width: toRem(17.56);
                     height: toRem(17.56);
+
+                    @include media("<=tablet") {
+                      width: toRem(34.81);
+                      height: toRem(38.66);
+                    }
+
+                    @include media("<=phone-tab") {
+                      width: toRem(24.81);
+                      height: toRem(28.66);
+                    }
                 }
 
                 div {
@@ -45,7 +97,15 @@
                     font-size: toRem(23.41);
                     line-height: toRem(29.27);
                     letter-spacing: 0px;       
-                    color: #1D1B20;             
+                    color: #1D1B20;   
+                    
+                    @include media("<=tablet") {
+                      font-size: toRem(52);
+                    }
+
+                    @include media("<=phone-tab") {
+                      font-size: toRem(30);
+                    }
                 }
             }
 
@@ -65,6 +125,15 @@
         &_bottom {
             // Style the overall date picker wrapper
             padding: toRem(13.17) toRem(17.56);
+
+
+            @include media("<=tablet") {
+              padding: toRem(35) toRem(47);
+            }
+
+            @include media("<=phone-tab") {
+              padding: toRem(35) toRem(23.56);
+            }
 
 
             .ant-picker {
@@ -91,6 +160,26 @@
                   
                   &::placeholder {
                     color: #999;
+
+                    @include media("<=tablet") {
+                      font-size: toRem(41);
+                    }
+
+                    @include media("<=phone-tab") {
+                      font-size: toRem(23);
+                    }
+                  }
+                  
+                  @include media("<=tablet") {
+                    font-size: toRem(41);
+                    height: toRem(108);
+                    padding-left: toRem(20);
+                  }
+
+                  @include media("<=phone-tab") {
+                    font-size: toRem(23);
+                    height: toRem(55);
+                    padding-left: toRem(10);
                   }
                 }
               }
@@ -157,6 +246,16 @@
                 text-align: center;
                 color: #3E4095;
 
+                @include media("<=tablet") {
+                  margin-top: toRem(50);
+                  font-size: toRem(30);
+                }
+
+                @include media("<=phone-tab") {
+                  margin-top: toRem(40);
+                  font-size: toRem(21);
+                }
+
                 div {
                     cursor: pointer;
 
@@ -179,15 +278,53 @@
         column-gap: toRem(16);
         row-gap: toRem(17);
 
+        @include media("<=tablet") {
+          grid-template-columns: none;
+          @include flex-center();
+          flex-direction: column;
+          height: auto;
+          width: 100%;
+          margin-top: toRem(70);
+          gap: toRem(50);
+
+          // border: 1px solid green;
+        }
+
+        @include media("<=tablet") {
+          margin-top: toRem(60);
+          gap: toRem(35);
+        }
+
         &_cont {
             height: toRem(70);
+
+            @include media("<=tablet") {
+              height: auto;
+              width: 100%;
+              @include flex-col(toRem(15));
+            }
+
+            @include media("<=phone-tab") {
+              gap: toRem(10);
+            }
+
+
+
             label {
                 font-family: $font-plus-jakarta;
                 font-weight: 400;
                 font-size: toRem(14);
                 line-height: toRem(15.12);
                 letter-spacing: 0%;     
-                color: $light-black;       
+                color: $light-black;  
+                
+                @include media("<=tablet") {
+                  font-size: toRem(32);
+                }
+
+                @include media("<=phone-tab") {
+                  font-size: toRem(22);
+                }
                 // margin-bottom: toRem(6);
             }
     
@@ -195,10 +332,30 @@
                 width: toRem(265);
                 height: toRem(60);
                 border-radius: toRem(20);
+
+                @include media("<=tablet") {
+                  width: 100%;
+                  height: toRem(120);
+                  font-size: toRem(30);
+                }
+
+                @include media("<=phone-tab") {
+                  height: toRem(85);
+                  font-size: toRem(22);
+                  border-radius: toRem(10);
+                }
             }
 
             input {
                 margin-top: toRem(5);
+
+                @include media("<=tablet") {
+                  margin-top: toRem(9);
+                }
+
+                @include media("<=tablet") {
+                  margin-top: toRem(9);
+                }
             }
 
             button {
@@ -206,6 +363,14 @@
                 color: $white;
                 background-color: $secondary-color;
                 font-size: toRem(15);
+
+                @include media("<=tablet") {
+                  font-size: toRem(30);
+                }
+
+                @include media("<=phone-tab") {
+                  font-size: toRem(22);
+                }
             }
         }
     }
@@ -216,8 +381,17 @@
         font-style: normal;
         font-weight: 400;
         line-height: normal;
-        margin-top: 5px !important;
+        // margin-top: 5px !important;
+
+        @include media("<=tablet") {
+          font-size: toRem(27);
+        }
+
+        @include media("<=phone-tab") {
+          font-size: toRem(20);
+        }
       }
+
 }
 
 .dateContainer {
@@ -237,5 +411,23 @@ position: relative;
     color: #3E4095;
     text-align: center;
 
+
+    @include media("<=tablet") {
+      font-size: toRem(23);
+      width: toRem(66);
+      height: toRem(31);
+      left: toRem(30);
+      top: toRem(-15);
+      background-color: white;
+    }
+
+    @include media("<=phone-tab") {
+      font-size: toRem(19);
+      width: toRem(56);
+      height: toRem(31);
+      left: toRem(20);
+      top: toRem(-15);
+      background-color: white;
+    }
   }
 }

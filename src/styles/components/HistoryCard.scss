@@ -10,6 +10,7 @@
     border-radius: toRem(20);
     padding: toRem(27) toRem(59) toRem(27) toRem(42);
     font-family: $font-plus-jakarta;
+
     
     &:hover {
         cursor: pointer;
@@ -37,7 +38,11 @@
                     font-weight: 500;
                     font-size: toRem(31.17);
                     line-height: toRem(39.27);
-                    letter-spacing: 0%;                    
+                    letter-spacing: 0%;  
+                    
+                    @include media("<=phone-tab") {
+                        font-size: toRem(20);
+                    }
                 }
                 &_sub {
                     font-weight: 500;
