@@ -3,6 +3,10 @@
 .dashboardHeader {
     @include flex(end, center, toRem(32));
 
+    @include media("<=tablet") {
+        display: none;
+    }
+
     img {
         width: toRem(38);
         height: toRem(38);

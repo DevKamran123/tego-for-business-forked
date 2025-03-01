@@ -6,7 +6,6 @@ import RecentHistory from "../components/RecentHistory";
 import TotalCard from "../components/TotalCard";
 import { deliveryDetails, totalCardItems } from "../data/dashboard";
 import "../styles/pages/Dashboard.scss";
-import Hero from "../components/Hero";
 import DashboardHero from "../components/DashboardHero";
 
 

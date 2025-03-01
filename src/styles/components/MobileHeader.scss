@@ -2,10 +2,11 @@
 
 .mobileHeader {
     @include flex-center();
-    height: toRem(100);
+    height: toRem(130);
     position: relative;
     color: $white;
-    background-color: transparent;
+    background-color: #3E4095;
+    border: 1px solid #3E4095;
 
     @include media(">=tablet") {
         display: none;
@@ -13,10 +14,10 @@
     
 
     justify-content: space-between;
-    margin: auto toRem(50);
+    // padding: auto toRem(50);
 
     @include media("<=phone-tab") {
-        margin: auto toRem(30);
+        height: toRem(100);
     }
 
     &_menu {
@@ -38,6 +39,7 @@
         height: toRem(65);
         justify-self: start;
         align-self: center;
+        margin-left: toRem(50);
 
         &:hover {
             cursor: pointer;
@@ -48,6 +50,8 @@
             left: toRem(25);
             width: toRem(55);
             height: toRem(55);
+
+            margin-left: toRem(30);
         }
 
         img {
@@ -107,9 +111,11 @@
     &_layout {
         @include flex(start, center, toRem(27));
         justify-self: end;
+        margin-right: toRem(50);
 
         @include media("<=phone-tab") {
             gap: toRem(20);
+            margin-right: toRem(30);
         }
 
         img {

@@ -1,5 +1,6 @@
 import CouponCard from "../components/CouponCard";
 import DashboardHeader from "../components/DashboardHeader";
+import MobileHeader from "../components/MobileHeader";
 import useCouponStore from "../store/Coupon";
 import "../styles/pages/Coupon.scss";
 
@@ -10,6 +11,9 @@ export default function Coupon() {
     return (
         <div className="coupon">
                     <DashboardHeader />
+                    <div>
+                        <MobileHeader />
+                    </div>
                     <div className="coupon_title">
                         Coupons
                     </div>
