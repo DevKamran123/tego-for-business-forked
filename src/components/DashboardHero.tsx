@@ -4,6 +4,7 @@ import Header from './Header';
 import Homesidebar from './HomeSidebar';
 import OrderRide from './OrderRide';
 import MobileHeader from './MobileHeader';
+import MobileSidebar from './MobileSiebar';
 
 const DashboardHero: React.FC = () => {
   return (
@@ -13,7 +14,7 @@ const DashboardHero: React.FC = () => {
       <div className='dashboardHero_content'>
         <MobileHeader />
         <div className='dashboardHero_content_layout'>
-        <Homesidebar />
+          <MobileSidebar />
           <div className='dashboardHero_content_layout_welcome'>
             Book a ride
           </div>
