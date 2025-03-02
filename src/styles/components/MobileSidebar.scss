@@ -22,4 +22,6 @@
     &_active {
     transform: translateX(0); /* Slide in when active */
   }
+
+  overflow-y: auto;
 }

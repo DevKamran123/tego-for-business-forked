@@ -10,6 +10,12 @@
     justify-content: space-between;
     padding-block: toRem(0);
 
+    overflow-y: scroll;
+
+    @include media("<=tablet") {
+      justify-content: start;
+    }
+
 
     .logo {
       &_wrapper {
@@ -58,5 +64,16 @@
         color: $white;
         margin: 0;
       }
+
+      @include media("<=tablet") {
+        @include flex(start, center, 0px);
+        margin-top: toRem(200);
+        padding-bottom: toRem(50);
+
+        @media (min-height: 700px) {
+          margin-top: toRem(450);
+        }
+      }
+
     }
 }
