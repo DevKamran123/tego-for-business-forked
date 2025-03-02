@@ -1,5 +1,15 @@
 @use "/src/styles/main.scss" as *;
 
+
+.headerPlacement {
+    height: toRem(130);
+    width: 100vw;
+
+    @include media("<=phone-tab") {
+        height: toRem(100);
+    }
+}
+
 .mobileHeader {
     @include flex-center();
     height: toRem(130);
@@ -7,6 +17,13 @@
     color: $white;
     background-color: #3E4095;
     border: 1px solid #3E4095;
+
+    //im addinfd this new stuff
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    z-index: 100;
 
     @include media(">=tablet") {
         display: none;
@@ -144,3 +161,4 @@
 
 
 }
+

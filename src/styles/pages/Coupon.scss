@@ -47,6 +47,8 @@
         @include media("<=tablet") {
             @include flex-center();
             padding-left: 0px;
+            margin-top: toRem(0);
+            padding-top: toRem(36);
         }
     }
 

@@ -8,20 +8,23 @@ export default function MobileHeader() {
     const toggleMenu = useMenuStore((state)=>state.toggleMenu);
     const isOpen = useMenuStore((state)=>state.isOpen);
     return (
-        <div className="mobileHeader">
-            <div className={`mobileHeader_menu ${isOpen? "open" : "normal"}`}
-                onClick={()=>toggleMenu()}
-            >
-                <img src={menu} alt="menu" />
+        <>
+            <div className="headerPlacement"></div>
+            <div className="mobileHeader">
+                <div className={`mobileHeader_menu ${isOpen? "open" : "normal"}`}
+                    onClick={()=>toggleMenu()}
+                >
+                    <img src={menu} alt="menu" />
+                </div>
+                <div className="mobileHeader_logo">
+                    <img src={rideTegoLogo} alt="logo" />
+                    RideTEGO
+                </div>
+                <div className="mobileHeader_layout">
+                    <img src={notification} alt="bell" />
+                    <div></div>
+                </div>
             </div>
-            <div className="mobileHeader_logo">
-                <img src={rideTegoLogo} alt="logo" />
-                RideTEGO
-            </div>
-            <div className="mobileHeader_layout">
-                <img src={notification} alt="bell" />
-                <div></div>
-            </div>
-        </div>
+        </>
     )
 }

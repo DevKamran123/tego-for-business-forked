@@ -1,27 +1,14 @@
-import { Drawer } from "antd";
 import useMenuStore from "../store/MenuStore";
 import "../styles/components/HomeSidebar.scss";
+import "../styles/components/MobileSidebar.scss";
 import SidebarContent from "./SidebarContent";
 
-interface MenuState {
-  isOpen: boolean;
-}
-
 const MobileSidebar: React.FC = () => {
-  const isOpen = useMenuStore((state: MenuState) => state.isOpen);
+  const isOpen = useMenuStore((state) => state.isOpen);
 
   return (
-    <div>
-      <Drawer
-        placement="left"
-        closable={false}
-        open={isOpen}
-        mask={false}
-        rootClassName="custom-sidebar"
-        getContainer={false}
-      >
-        <SidebarContent />
-      </Drawer>
+    <div className={`mobileSidebar ${isOpen ? "mobileSidebar_active" : ""}`}>
+      <SidebarContent />
     </div>
   );
 };

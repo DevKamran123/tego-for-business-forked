@@ -1,4 +1,6 @@
 import DashboardHeader from "../components/DashboardHeader"
+import MobileHeader from "../components/MobileHeader";
+import MobileSidebar from "../components/MobileSiebar";
 import PlannedRidesCard from "../components/PlannedRidesCard";
 import RideHistoryCard from "../components/RideHistoryCard";
 import { deliveryData } from "../data/dashboard";
@@ -12,34 +14,39 @@ export default function Rides() {
     return (
         <div className="rides">
             <DashboardHeader />
-            <div className="rides_tabs">
-                <div 
-                    className={activeTab==="ride-history" ? "rides_tabs_active": ""}
-                    onClick={()=>setActiveTab("ride-history")}
-                >
-                    Ride History
+            <MobileHeader />
+
+            <div style={{position: "relative"}}>
+                <MobileSidebar />
+                <div className="rides_tabs">
+                    <div 
+                        className={activeTab==="ride-history" ? "rides_tabs_active": ""}
+                        onClick={()=>setActiveTab("ride-history")}
+                    >
+                        Ride History
+                    </div>
+                    <div 
+                        className={activeTab==="planned-rides" ? "rides_tabs_active": ""}
+                        onClick={()=>setActiveTab("planned-rides")}
+                    >
+                        Planned Rides
+                    </div>
                 </div>
-                <div 
-                    className={activeTab==="planned-rides" ? "rides_tabs_active": ""}
-                    onClick={()=>setActiveTab("planned-rides")}
-                >
-                    Planned Rides
-                </div>
+
+                {activeTab==="ride-history" && 
+                <div className="rides_allHistory">
+                    {deliveryData.map((deliveryDetails)=> (
+                        <RideHistoryCard deliveryDetails={deliveryDetails} key={deliveryDetails.id}/>
+                    ))}
+                </div>}
+
+                {activeTab==="planned-rides" && 
+                <div className="rides_allHistory">
+                    {deliveryData.map((deliveryDetails)=> (
+                        <PlannedRidesCard deliveryDetails={deliveryDetails} key={deliveryDetails.id}/>
+                    ))}
+                </div>}
             </div>
-
-            {activeTab==="ride-history" && 
-            <div className="rides_allHistory">
-                {deliveryData.map((deliveryDetails)=> (
-                    <RideHistoryCard deliveryDetails={deliveryDetails} key={deliveryDetails.id}/>
-                ))}
-            </div>}
-
-            {activeTab==="planned-rides" && 
-            <div className="rides_allHistory">
-                {deliveryData.map((deliveryDetails)=> (
-                    <PlannedRidesCard deliveryDetails={deliveryDetails} key={deliveryDetails.id}/>
-                ))}
-            </div>}
         </div>
     )
 }

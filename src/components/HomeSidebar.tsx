@@ -41,7 +41,7 @@ const HomeSidebar: React.FC = () => {
   const selectedLabel = selectedItem?.label;
 
   return (
-    <div className="sidebar">
+    <div className="homeSidebar">
       <Drawer
         placement="left"
         closable={false}
@@ -50,8 +50,8 @@ const HomeSidebar: React.FC = () => {
         rootClassName="custom-sidebar"
         getContainer={false}
       >
-        <div className="sidebar-content">
-          <div className="sidebar-content_links">
+        <div className="homeSidebar-content">
+          <div className="homeSidebar-content_links">
               <Dropdown
                 menu={{
                   items,
@@ -74,21 +74,21 @@ const HomeSidebar: React.FC = () => {
               <div>About Us</div>
           </div>
 
-          <div className="sidebar-content_auth">
-            <div className="sidebar-content_auth_lang">
-                <div className="sidebar-content_auth_lang_image">
+          <div className="homeSidebar-content_auth">
+            <div className="homeSidebar-content_auth_lang">
+                <div className="homeSidebar-content_auth_lang_image">
                     <img src={globe} alt="globe" />
                 </div>
                 <div className="sidebar-content_auth_lang_symbol">EN</div>
             </div>
             <div 
-              className="sidebar-content_auth_login" 
+              className="homeSidebar-content_auth_login" 
               onClick={() => navigate("/login")}
             >
               Log In
             </div>
             <div 
-              className="sidebar-content_auth_signup" 
+              className="homeSidebar-content_auth_signup" 
               onClick={() => navigate("/signup")}
             >
               Sign up

@@ -1,0 +1,25 @@
+@use "/src/styles/main.scss" as *;
+
+.mobileSidebar {
+    @include vh-minus(toRem(130));
+    width: toRem(400);
+    background-color: $primary-color;
+    position: absolute;
+    position: fixed;
+    top: toRem(130);
+    // top: 0;
+    left: 0;
+    padding-top: toRem(30);
+    padding-bottom: toRem(80);
+    transition: transform 0.3s ease;
+    transform: translateX(-100%); /* Initially hide sidebar off-screen */
+
+    @include media("<=phone-tab") {
+        top: toRem(100);
+        @include vh-minus(toRem(100));
+    }
+
+    &_active {
+    transform: translateX(0); /* Slide in when active */
+  }
+}
