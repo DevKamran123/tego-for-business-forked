@@ -88,6 +88,17 @@
 
                     span {
                         font-weight: 800;
+
+                        @include media("<=tablet") {
+                            margin-left: toRem(4);
+                        }
+
+                        @include media("<=phone-tab") {
+                            font-weight: 700;
+                            font-size: toRem(18);
+                            margin-left: toRem(3);
+                        }
+    
                     }
 
                     img {
@@ -97,6 +108,7 @@
                         @include media("<=tablet") {
                             width: toRem(22.21);
                             height: toRem(19.75);
+                            margin-right: toRem(4);
                         }
 
                         @include media("<=phone-tab") {

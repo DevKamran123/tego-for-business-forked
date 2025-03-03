@@ -25,16 +25,24 @@ const items: MenuItem[] = [
 
 interface MenuState {
   isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
 }
 
 const HomeSidebar: React.FC = () => {
   const navigate = useNavigate();
   const isOpen = useMenuStore((state: MenuState) => state.isOpen);
   const [selectedKey, setSelectedKey] = useState<string>('1');
+  const { setIsOpen: showSidebar } = useMenuStore((state) => state as MenuState);
 
   // Type the menu click handler properly
   const handleMenuClick = (key: string): void => {
     setSelectedKey(key);
+  };
+
+  // Handle auth button clicks
+  const handleAuthButtonClick = (path: string): void => {
+    showSidebar(false); // Close the sidebar
+    navigate(path);
   };
 
   const selectedItem: any = items.find(item => item?.key === selectedKey);
@@ -83,13 +91,13 @@ const HomeSidebar: React.FC = () => {
             </div>
             <div 
               className="homeSidebar-content_auth_login" 
-              onClick={() => navigate("/login")}
+              onClick={() => handleAuthButtonClick("/login")}
             >
               Log In
             </div>
             <div 
               className="homeSidebar-content_auth_signup" 
-              onClick={() => navigate("/signup")}
+              onClick={() => handleAuthButtonClick("/signup")}
             >
               Sign up
             </div>

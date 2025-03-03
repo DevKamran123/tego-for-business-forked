@@ -5,6 +5,7 @@ import { useSidenavContext } from "./SidenavProvider";
 import useAppStore from "../../../store/AppStore";
 import { Chevron } from "../../icons/Chevron";
 import Stack from "../../stack/Stack";
+import useMenuStore from "../../../store/MenuStore";
 
 interface LinkItem {
   TITLE: string;
@@ -28,6 +29,7 @@ const SidebarItems: React.FC<SidebarItemsProps> = ({ links }) => {
   const [openMenus, setOpenMenus] = useState<string[]>([]);
   const [activeItem, setActiveItem] = useState<string | null>(null);
   const {setShowMobileMenu, sideBarOpen} = useAppStore((state) => state);
+  const {setIsOpen: showSidebar} = useMenuStore((state)=>state)
 
   useEffect(() => {
     // Set the active item based on the current location
@@ -54,9 +56,14 @@ const SidebarItems: React.FC<SidebarItemsProps> = ({ links }) => {
   };
 
   const handleLinkClick = (slug: string) => {
+    setTimeout(() => {
+      showSidebar(false);
+    }, 200); // 3000 milliseconds = 3 seconds
+    
     setActiveItem(slug);
     setOpen(false); // Close the sidebar
     setShowMobileMenu(false); // Close the mobile menu
+
   };
 
   const renderSidebarItem = (link: LinkItem) => {

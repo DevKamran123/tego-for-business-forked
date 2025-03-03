@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Hero from '../components/Hero';
 import "../styles/pages/Home.scss";
 import HomeCard from '../components/HomeCard';
@@ -11,7 +11,7 @@ import aboutUs from "../assets/svgs/aboutUs.svg";
 import newsroom from "../assets/svgs/newsroom.svg";
 import home from "../assets/svgs/home.svg";
 import Footer from '../components/Footer';
-import Homesidebar from '../components/HomeSidebar';
+import useMenuStore from '../store/MenuStore';
 
 const cardData = [
   {
@@ -53,6 +53,12 @@ const infoCard = [
 ]
 
 const Home: React.FC = () => {
+  const { setIsOpen: showSidebar } = useMenuStore((state) => state);
+
+  useEffect(()=> {
+    showSidebar(false);
+  }, []);
+
   return (
     <div className='homeCont'>
       <Hero />
