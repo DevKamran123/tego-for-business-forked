@@ -11,33 +11,83 @@
     color: $secondary-black;
     padding-top: toRem(32);
     padding-left: toRem(45);
+    
+    @include media("<=tablet") {
+        width: toRem(395);
+        height: toRem(196);
+        gap: toRem(35);
+        align-items: center;
+        padding-top: 0px;
+    }
+
+
+    @include media("<=phone-tab") {
+        width: toRem(240);
+        height: toRem(136);
+        padding-left: toRem(25);
+        gap: toRem(20);
+    }
 
     &_image {
         width: toRem(66.14);
         height: toRem(66.14);
-        // border: 1px solid red;
+        
+        @include media("<=phone-tab") {
+            width: toRem(46.14);
+            height: toRem(46.14);
+        }
 
         img {
             width: toRem(66.14);
             height: toRem(66.14);
+
+            @include media("<=phone-tab") {
+                width: toRem(46.14);
+                height: toRem(46.14);
+            }
         }
     }
 
     &_text {
         @include flex_col(toRem(10));
 
+        @include media("<=tablet") {
+            gap: toRem(25);
+        }
+
+        @include media("<=phone-tab") {
+            gap: toRem(10);
+        }
+
         &_title {
             font-weight: 500;
             font-size: toRem(15.75);
             line-height: toRem(19.84);
             letter-spacing: 0%;
+
+            @include media("<=tablet") {
+                font-size: toRem(24);
+            }
+
+            @include media("<=phone-tab") {
+                font-size: toRem(14);
+            }
+            
         }
 
         &_value {
             font-weight: 800;
             font-size: toRem(37.79);
             line-height: toRem(47.62);
-            letter-spacing: 0%;            
+            letter-spacing: 0%; 
+            
+            @include media("<=tablet") {
+                font-size: toRem(50);
+            }
+
+            @include media("<=phone-tab") {
+                font-size: toRem(38);
+            }
         }
     }
 }

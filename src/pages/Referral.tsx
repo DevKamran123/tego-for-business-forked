@@ -8,6 +8,8 @@ import mediumBag from "../assets/icons/mediumBag.png";
 import people from "../assets/icons/people.png";
 import ReferralTable from "../components/ReferralTable";
 import toast from "react-hot-toast";
+import MobileHeader from "../components/MobileHeader";
+import MobileSidebar from "../components/MobileSiebar";
 
 
 export default function Referral() {
@@ -27,6 +29,8 @@ export default function Referral() {
     return (
         <div className="referral">
             <DashboardHeader />
+            <MobileHeader />
+            <MobileSidebar />
             <div className="referral_title">
                 Referral
             </div>

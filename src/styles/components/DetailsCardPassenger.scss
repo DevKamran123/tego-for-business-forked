@@ -8,7 +8,13 @@
     // width: toRem(1469);
     background-color: $white;
     border-radius: toRem(20);
-    
+
+    @include media("<=tablet") {
+        border: toRem(1) solid $special-gray;
+        height: toRem(90);
+        padding-bottom: toRem(24);
+      }
+
 
 
     &_image {

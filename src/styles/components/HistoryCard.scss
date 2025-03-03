@@ -12,7 +12,7 @@
     font-family: $font-plus-jakarta;
 
     @include media("<=tablet") {
-        border: 1px solid $light-gray;
+        border: toRem(1) solid $special-gray;
         gap: toRem(25);
         padding-left: torem(20);
     }

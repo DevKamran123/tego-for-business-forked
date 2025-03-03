@@ -10,7 +10,7 @@
     border-radius: toRem(20);
 
     @include media("<=tablet") {
-      border: toRem(1) solid $light-gray;
+      border: toRem(1) solid $special-gray;
     }
 
     @include media("<=tablet") {

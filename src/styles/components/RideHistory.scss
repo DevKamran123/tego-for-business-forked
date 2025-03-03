@@ -21,11 +21,8 @@
     &_details-wrapper {
         position: relative;
         margin-top: toRem(47);
-        // margin-bottom: toRem(39);
         
         &_details-button {
-            // width: toRem(178);
-            // height: toRem(66);
             background: #F2F3F8;
             border-radius: toRem(25);
             border: toRem(0.75) solid $light-gray;
@@ -75,5 +72,9 @@
     &_detailsCard {
         margin-top: toRem(39);
         @include flex_col(toRem(10));
+
+        @include media("<=tablet") {
+          gap: toRem(17);
+        }
     }
 }
