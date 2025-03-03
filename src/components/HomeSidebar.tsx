@@ -5,6 +5,7 @@ import { useState } from "react";
 import useMenuStore from "../store/MenuStore";
 import globe from "../assets/images/globe.png";
 import "../styles/components/HomeSidebar.scss";
+import "../styles/components/MobileSidebar.scss";
 
 // Define proper types for menu items
 type MenuItem = Required<MenuProps>['items'][number];
@@ -49,63 +50,57 @@ const HomeSidebar: React.FC = () => {
   const selectedLabel = selectedItem?.label;
 
   return (
-    <div className="homeSidebar">
-      <Drawer
-        placement="left"
-        closable={false}
-        open={isOpen}
-        mask={false}
-        rootClassName="custom-sidebar"
-        getContainer={false}
-      >
-        <div className="homeSidebar-content">
-          <div className="homeSidebar-content_links">
-              <Dropdown
-                menu={{
-                  items,
-                  selectable: true,
-                  defaultSelectedKeys: [selectedKey],
-                  onClick: ({ key }) => handleMenuClick(key.toString()),
-                }}
-                trigger={['click']}
-              >
-                <Typography.Link className="custom-dropdown-trigger">
-                  <Space>
-                    {selectedLabel}
-                    <DownOutlined />
-                  </Space>
-                </Typography.Link>
-              </Dropdown>
-              <div>Drive</div>
-              <div>Ride</div>
-              <div>Contact Us</div>
-              <div>About Us</div>
-          </div>
+    <div className={`mobileSidebar ${isOpen ? "mobileSidebar_active" : ""}`}>
 
-          <div className="homeSidebar-content_auth">
-            <div className="homeSidebar-content_auth_lang">
-                <div className="homeSidebar-content_auth_lang_image">
-                    <img src={globe} alt="globe" />
-                </div>
-                <div className="sidebar-content_auth_lang_symbol">EN</div>
+      <div className="homeSidebar">
+          <div className="homeSidebar-content">
+            <div className="homeSidebar-content_links">
+                <Dropdown
+                  menu={{
+                    items,
+                    selectable: true,
+                    defaultSelectedKeys: [selectedKey],
+                    onClick: ({ key }) => handleMenuClick(key.toString()),
+                  }}
+                  trigger={['click']}
+                >
+                  <Typography.Link className="custom-dropdown-trigger">
+                    <Space>
+                      {selectedLabel}
+                      <DownOutlined />
+                    </Space>
+                  </Typography.Link>
+                </Dropdown>
+                <div>Drive</div>
+                <div>Ride</div>
+                <div>Contact Us</div>
+                <div>About Us</div>
             </div>
-            <div 
-              className="homeSidebar-content_auth_login" 
-              onClick={() => handleAuthButtonClick("/login")}
-            >
-              Log In
-            </div>
-            <div 
-              className="homeSidebar-content_auth_signup" 
-              onClick={() => handleAuthButtonClick("/signup")}
-            >
-              Sign up
+  
+            <div className="homeSidebar-content_auth">
+              <div className="homeSidebar-content_auth_lang">
+                  <div className="homeSidebar-content_auth_lang_image">
+                      <img src={globe} alt="globe" />
+                  </div>
+                  <div className="sidebar-content_auth_lang_symbol">EN</div>
+              </div>
+              <div 
+                className="homeSidebar-content_auth_login" 
+                onClick={() => handleAuthButtonClick("/login")}
+              >
+                Log In
+              </div>
+              <div 
+                className="homeSidebar-content_auth_signup" 
+                onClick={() => handleAuthButtonClick("/signup")}
+              >
+                Sign up
+              </div>
             </div>
           </div>
-        </div>
-      </Drawer>
-    </div>
-  );
+      </div>
+      </div>
+  )
 };
 
 export default HomeSidebar;

@@ -4,6 +4,10 @@
 
     @include media("<=tablet") {
         background-color: $white;
+
+        @include media("<=tablet") {
+            height: 110%;
+        }
     }
 
     &_tabs {
@@ -46,7 +50,7 @@
             @include flex-center();
             flex-direction: column;
             background-color: white;
-            padding: toRem(100) toRem(50) toRem(100) toRem(50);
+            padding: toRem(0) toRem(50) toRem(100) toRem(50);
         }
 
         @include media("<=phone-tab") {

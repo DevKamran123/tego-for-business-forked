@@ -6,13 +6,13 @@
     font-family: $font-plus-jakarta;
     
     @include media("<=tablet") {
-      height: 100%;
+      height: 140%;
       background-color: $white;
-      padding: toRem(80) toRem(50);
+      padding: toRem(50) toRem(50);
     }
 
     @include media("<=phone-tab") {
-      padding: toRem(50) toRem(25);
+      padding: toRem(30) toRem(25);
     }
 
     &_container {
@@ -33,8 +33,18 @@
             transition: all 0.2s ease;
             text-transform: uppercase;
             position: relative;
-            z-index: 2;
+            z-index: 1;
             padding: toRem(20.5) toRem(51.5);
+
+            @include media("<=tablet") {
+              @include flex-center();
+              margin: auto auto;
+            }
+
+            @include media("<=phone-tab") {
+              font-size: toRem(16);
+              padding: toRem(12) toRem(20);
+            }
                 
             
           &:hover {
@@ -57,7 +67,7 @@
           height: toRem(0.5);
           width: 100%;
           background-color: $light-gray;
-          z-index: 1;
+          z-index: 0;
         }
       
         .details-content {

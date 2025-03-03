@@ -105,28 +105,36 @@
 }
 
 .homeSidebar {
-    &-wrapper {
-      position: relative;
-      padding: toRem(90);
+    padding-left: toRem(60);
+    padding-top: toRem(40);
+
+    @include media("<=phone-tab") {
+      padding-left: toRem(40);
+      padding-top: toRem(10);
     }
+
+    // &-wrapper {
+    //   position: relative;
+    //   padding: toRem(90);
+    // }
   
-    &-trigger {
-      background: none;
-      border: none;
-      padding: 0.5rem;
-      cursor: pointer;
-      transition: opacity 0.2s ease;
+    // &-trigger {
+    //   background: none;
+    //   border: none;
+    //   padding: 0.5rem;
+    //   cursor: pointer;
+    //   transition: opacity 0.2s ease;
   
-      img {
-        width: 24px;
-        height: 24px;
-        display: block;
-      }
+    //   img {
+    //     width: 24px;
+    //     height: 24px;
+    //     display: block;
+    //   }
   
-      &:hover {
-        opacity: 0.8;
-      }
-    }
+    //   &:hover {
+    //     opacity: 0.8;
+    //   }
+    // }
   
     &-content {
       color: #fff;
@@ -134,16 +142,16 @@
       height: 100%;
       justify-content: space-between;
 
-      @include media("<=phone-tab") {
+      @include media("<=tablet") {
         justify-content: start;
-        gap: toRem(235);
+        gap: toRem(300);
       }
 
       &_links {
-        @include flex_col(toRem(53));
+        @include flex_col(toRem(65));
         font-family: $font-roboto;
         font-weight: 400;
-        font-size: toRem(28);
+        font-size: toRem(35);
         line-height: toRem(32.81);
         letter-spacing: 0%;  
         
@@ -162,15 +170,16 @@
       }
 
       &_auth {
-        @include flexbox(column, toRem(30));
+        @include flexbox(column, toRem(40));
         font-family: $font-roboto;
-        font-size: toRem(20);
+        font-size: toRem(27);
         font-weight: 400;
         line-height: toRem(17.89);
         text-align: left;
 
         @include media("<=phone-tab") {
           font-size: toRem(17);
+          gap: toRem(30);
         }
 
         &_lang {

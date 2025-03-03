@@ -29,7 +29,7 @@ const SidebarItems: React.FC<SidebarItemsProps> = ({ links }) => {
   const [openMenus, setOpenMenus] = useState<string[]>([]);
   const [activeItem, setActiveItem] = useState<string | null>(null);
   const {setShowMobileMenu, sideBarOpen} = useAppStore((state) => state);
-  const {setIsOpen: showSidebar} = useMenuStore((state)=>state)
+  const {setIsOpen: showSidebar} = useMenuStore((state)=>state);
 
   useEffect(() => {
     // Set the active item based on the current location
@@ -58,8 +58,8 @@ const SidebarItems: React.FC<SidebarItemsProps> = ({ links }) => {
   const handleLinkClick = (slug: string) => {
     setTimeout(() => {
       showSidebar(false);
-    }, 200); // 3000 milliseconds = 3 seconds
-    
+    }, 100); // 3000 milliseconds = 3 seconds
+
     setActiveItem(slug);
     setOpen(false); // Close the sidebar
     setShowMobileMenu(false); // Close the mobile menu

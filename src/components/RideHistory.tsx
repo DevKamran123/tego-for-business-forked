@@ -6,6 +6,8 @@ import "../styles/components/RideHistory.scss";
 import GoBackRides from "./GoBackRides";
 import DetailsCardDriver from "./DetailsCardDriver";
 import RideHistoryCard from "./RideHistoryCard";
+import MobileHeader from "./MobileHeader";
+import MobileSidebar from "./MobileSiebar";
 
 
 export default function RideHistory() {
@@ -18,6 +20,8 @@ export default function RideHistory() {
     return (
         <div className="ridehistory">
             <DashboardHeader />
+            <MobileHeader />
+            <MobileSidebar />
             <GoBackRides text="Ride History"/>
             <div className="ridehistory_container">
                 <RideHistoryCard deliveryDetails={selectedDelivery as DeliveryDetails} />

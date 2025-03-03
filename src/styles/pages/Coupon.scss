@@ -5,6 +5,7 @@
 
     @include media("<=tablet") {
         background-color: $white;
+        padding-bottom: toRem(70);
     }
 
     &_title {
@@ -73,6 +74,7 @@
             flex-direction: column;
             padding-left: 0px;
             column-gap: auto;
+            margin-top: toRem(40);
         }
     }
 }

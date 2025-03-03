@@ -23,7 +23,8 @@ export default function Header() {
                     <img src={rideTegoLogo} alt="logo" />
                     RideTEGO
                 </div>
-            </div>  
+            </div>
+            <div className="responsivePlaceholder"></div>  
             <div className="headerCont">
                 <div className="headerCont_logo">
                     <img src={rideTegoLogo} alt="logo" />

@@ -7,11 +7,12 @@
 
     @include media("<=tablet") {
         background-color: $white;
-        height: 100vh;
+        height: 110%;
     }
 
     @include media("<=phone-tab") {
         padding: toRem(0) toRem(25);
+        // padding-bottom: toRem(100);
     }
 
     &_title {

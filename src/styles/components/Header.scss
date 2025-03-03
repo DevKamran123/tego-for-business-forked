@@ -143,15 +143,41 @@
     }
 }
 
-.responsiveHeader {
-    @include flex-center();
-    height: toRem(100);
-    position: relative;
-    color: $white;
+.responsivePlaceholder {
+    height: toRem(130);
     background-color: transparent;
+    width: 100vw;
+    z-index: 9999;
 
     @include media(">=tablet") {
         display: none;
+    }
+
+    @include media("<=phone-tab") {
+        height: toRem(100);
+    }
+
+}
+
+.responsiveHeader {
+    @include flex-center();
+    height: toRem(130);
+    position: relative;
+    color: $white;
+    background-color: $primary-color;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    z-index: 999999;
+
+    @include media(">=tablet") {
+        display: none;
+    }
+
+    @include media("<=phone-tab") {
+        height: toRem(100);
     }
 
     &_menu {

@@ -157,6 +157,7 @@
 
       @include media("<=tablet") {
         padding: toRem(0);
+        // background-color: white;
       }
 
       .db_wrapper {
