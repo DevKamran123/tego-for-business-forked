@@ -4,6 +4,16 @@
 
 .ridehistory {
     font-family: $font-plus-jakarta;
+    
+    @include media("<=tablet") {
+      height: 100%;
+      background-color: $white;
+      padding: toRem(80) toRem(50);
+    }
+
+    @include media("<=phone-tab") {
+      padding: toRem(50) toRem(25);
+    }
 
     &_container {
         margin-top: toRem(22);

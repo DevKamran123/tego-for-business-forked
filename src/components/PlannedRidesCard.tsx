@@ -63,7 +63,7 @@ export default function PlannedRidesCard({deliveryDetails}: PlannedRidesCardProp
 
                     <div className="historycard_layout_optional_destination">
                         <div className="historycard_layout_optional_destination_sub">
-                            Number of Passengers
+                            Passengers
                         </div>
                         <div className="historycard_layout_optional_destination_main">
                             {passenger}

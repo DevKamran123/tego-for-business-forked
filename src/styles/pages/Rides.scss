@@ -46,11 +46,11 @@
             @include flex-center();
             flex-direction: column;
             background-color: white;
-            padding: toRem(100) toRem(60) toRem(100) toRem(60);
+            padding: toRem(100) toRem(50) toRem(100) toRem(50);
         }
 
         @include media("<=phone-tab") {
-            padding: toRem(0) toRem(30) toRem(80) toRem(30);
+            padding: toRem(0) toRem(20) toRem(80) toRem(20);
         }
     }
 }

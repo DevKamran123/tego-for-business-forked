@@ -5,6 +5,10 @@
     height: toRem(130);
     width: 100vw;
 
+    @include media(">=tablet") {
+        display: none;
+    }
+
     @include media("<=phone-tab") {
         height: toRem(100);
     }
