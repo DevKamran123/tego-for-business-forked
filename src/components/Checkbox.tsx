@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '../styles/components/CheckBox.scss';
+import '../styles/components/Checkbox.scss';
 
 interface CheckBoxProps {
   label: string;
