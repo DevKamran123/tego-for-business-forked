@@ -1,5 +1,5 @@
 # First stage: Build the application
-FROM node:18-alpine AS build-stage
+FROM node:20-alpine AS build-stage
 WORKDIR /app
 
 # Build arguments for VITE environment variables
