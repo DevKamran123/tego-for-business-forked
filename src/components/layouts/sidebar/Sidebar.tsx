@@ -7,6 +7,7 @@ import { DASHBOARD_LINKS } from "../../../routes/links";
 import Stack from "../../stack/Stack";
 import { MdLogout } from "react-icons/md";
 import { Link } from "react-router-dom";
+import "../../../styles/components/layouts/DashboardLayout.scss"
 
 const Sidebar: React.FC = () => {
   const { sideBarOpen, setSideBarOpen } = useAppStore((state) => state);

@@ -51,7 +51,9 @@
 
     @include media("<=tablet") {
       grid-template-columns: 1fr !important;
-      padding-inline: toRem(20);
+
+      
+      // padding-inline: toRem(20);
     }
 
     .sidebar_wrapper {
@@ -152,6 +154,11 @@
       height: 100dvh;
       overflow-x: hidden;
       overflow-y: auto;
+
+      @include media("<=tablet") {
+        padding: toRem(0);
+        // background-color: white;
+      }
 
       .db_wrapper {
         height: 100%;

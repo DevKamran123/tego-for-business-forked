@@ -4,10 +4,23 @@
     @include flex(start, center, toRem(10));
     cursor: pointer;
 
+    @include media("<=tablet") {
+        margin-bottom: toRem(35);
+    }
+
+    @include media("<=phone-tab") {
+        margin-bottom: toRem(10);    
+    }
+
     img {
         width: toRem(25);
         height: toRem(25);
         align-self: center;
+
+        @include media("<=phone-tab") {
+            width: toRem(21);
+            height: toRem(21);
+        }
     }
 
     &_title {
@@ -16,5 +29,9 @@
         line-height: toRem(35.28);
         letter-spacing: 0%;
         color: #000000;
+
+        @include media("<=phone-tab") {
+            font-size: toRem(22);
+        }
     }
 }

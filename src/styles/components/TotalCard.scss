@@ -10,21 +10,61 @@
     color: #373737;
     font-family: $font-plus-jakarta;
 
+    @include media("<=tablet") {
+        width: toRem(750);
+        height: toRem(500);
+        border: toRem(1) solid $light-gray;
+        border-radius: toRem(40);
+        gap: toRem(75);
+    }
+
+    @include media("<=phone-tab") {
+        width: toRem(450);
+        height: toRem(300);
+        gap: toRem(20);
+    }
+
     &_title {
         @include flex(start, center, toRem(14));
+
+        @include media("<=tablet") {
+            gap: toRem(20);
+        }
+
+        @include media("<=phone-tab") {
+            gap: toRem(15);
+        }
         // border: 1px solid red;
 
         img {
             width: toRem(35);
             height: toRem(35);
             align-self: center;
+
+            @include media("<=tablet") {
+                width: toRem(73);
+                height: toRem(64);
+            }
+
+            @include media("<=phone-tab") {
+                width: toRem(52);
+                height: toRem(43);
+            }
         }
 
         &_text {
             font-weight: 500;
             font-size: toRem(15);
             line-height: toRem(16);
-            letter-spacing: 0%;                
+            letter-spacing: 0%;   
+            
+            @include media("<=tablet") {
+                font-size: toRem(40);
+            }
+
+            @include media("<=phone-tab") {
+                font-size: toRem(25);
+            }
         }
     }
 
@@ -32,6 +72,14 @@
         font-weight: 800;
         font-size: toRem(55);
         line-height: toRem(69.3);
-        letter-spacing: 0%;     
+        letter-spacing: 0%;
+        
+        @include media("<=tablet") {
+            font-size: toRem(150);
+        }
+
+        @include media("<=phone-tab") {
+            font-size: toRem(75);
+        }
     }
 }

@@ -5,8 +5,8 @@ import smallCoupon from "../assets/icons/smallCoupon.png";
 export default function ReferralCard() {
     return (
         <div className="referralTable_title referralTable_content">
-            <div>23.02, 09:45</div>
-            <div>Martin Lawrence</div>
+            <div className="referralCard_date">23.02, 09:45</div>
+            <div className="referralCard_users">Martin Lawrence</div>
             <div className="referralCard_persons">
                 <img src={smallPeople} alt="referral" />
                 <div>2</div>

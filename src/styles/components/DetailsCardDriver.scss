@@ -8,6 +8,15 @@
     width: 100%;
     background-color: $white;
     border-radius: toRem(20);
+
+    @include media("<=tablet") {
+      border: toRem(1) solid $special-gray;
+    }
+
+    @include media("<=tablet") {
+      padding: toRem(21) toRem(20) toRem(15) toRem(20);
+      gap: toRem(20);
+    }
     
 
 
@@ -17,6 +26,11 @@
         border-radius: 50%;
         background: rgba(62, 64, 149, 0.45);
         flex-shrink: 0;
+
+        @include media("<=phone-tab") {
+            width: toRem(60);
+            height: toRem(60);
+        }
     }
 
     &_layout {
@@ -31,16 +45,24 @@
                 font-weight: 500;
                 font-size: toRem(31.17);
                 line-height: toRem(39.27);
-                letter-spacing: 0%;                
+                letter-spacing: 0%;     
+                
+                @include media("<=phone-tab") {
+                    font-size: toRem(19);
+                }
             }
 
             &_role {
                 font-family: Plus Jakarta Sans;
                 font-weight: 500;
-                font-size: 19.48px;
-                line-height: 24.54px;
+                font-size: toRem(19.48);
+                line-height: toRem(24.54);
                 letter-spacing: 0%;   
-                color: $light-gray;                 
+                color: $light-gray;  
+                
+                @include media("<=phone-tab") {
+                    font-size: toRem(17);
+                }
             }
         }
 
@@ -48,12 +70,20 @@
         &_car {
             @include flex_col(toRem(8));
 
+            @include media("<=tablet") {
+                justify-self: end;
+            }
+
             &_type {
                 font-family: Plus Jakarta Sans;
                 font-weight: 500;
                 font-size: toRem(31.17);
                 line-height: toRem(39.27);
-                letter-spacing: 0%;                
+                letter-spacing: 0%;  
+                
+                @include media("<=phone-tab") {
+                    font-size: toRem(19);
+                }
             }
 
             &_number {
@@ -62,7 +92,16 @@
                 font-size: toRem(19.48);
                 line-height: toRem(24.54);
                 letter-spacing: 0%;    
-                color: $light-gray;                   
+                color: $light-gray;   
+
+                 @include media("<=tablet") {
+                align-self: end;
+            }
+
+                
+                @include media("<=phone-tab") {
+                    font-size: toRem(17);
+                }
             }
         }
     }

@@ -8,7 +8,17 @@
     // width: toRem(1469);
     background-color: $white;
     border-radius: toRem(20);
-    
+
+    @include media("<=tablet") {
+        border: toRem(1) solid $special-gray;
+        height: toRem(90);
+        padding-bottom: toRem(24);
+    }
+
+    @include media("<=phone-tab") {
+        gap: toRem(20);
+    }
+
 
 
     &_image {
@@ -17,6 +27,11 @@
         border-radius: 50%;
         background: rgba(62, 64, 149, 0.45);
         flex-shrink: 0;
+
+        @include media("<=phone-tab") {
+            width: toRem(45.83);
+            height: toRem(45.83);
+        }
     }
 
     &_layout {
@@ -31,7 +46,11 @@
                 font-weight: 500;
                 font-size: toRem(20);
                 line-height: toRem(25.2);
-                letter-spacing: 0%;                
+                letter-spacing: 0%;   
+                
+                @include media("<=phone-tab") {
+                    font-size: toRem(18);
+                }
             }
 
             &_role {
@@ -40,7 +59,11 @@
                 font-size: toRem(15);
                 line-height: toRem(18.5);
                 letter-spacing: 0%;   
-                color: $light-gray;                 
+                color: $light-gray;
+                
+                @include media("<=phone-tab") {
+                    font-size: toRem(14);
+                }
             }
         }
 

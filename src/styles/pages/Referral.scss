@@ -5,11 +5,25 @@
     width: 100%;
     font-family: $font-plus-jakarta;
 
+    @include media("<=tablet") {
+        background-color: $white;
+        height: 110%;
+    }
+
+    @include media("<=phone-tab") {
+        padding: toRem(0) toRem(25);
+        // padding-bottom: toRem(100);
+    }
+
     &_title {
         font-weight: 500;
         font-size: toRem(28);
         line-height: toRem(35.28);
         letter-spacing: 0%;
+
+        @include media("<=tablet") {
+            display: none;
+        }
     }
 
     &_top {
@@ -23,93 +37,203 @@
 
         &_layout {
             width: toRem(836.67);
+            
+            @include media("<=phone-tab") {
+                width: 100%;
+            }
+
 
             &_total {
                 @include flex(space-between, center, toRem(0));
-
             }
 
-             &_ref {
-            margin-top: toRem(44.88);
+            &_ref {
+                margin-top: toRem(44.88);
 
-            &_text {
-            font-weight: 400;
-            font-size: toRem(12.81);
-            line-height: toRem(14.88);
-            letter-spacing: 0%;
-            }
-
-            &_bonus {
-                @include flex(start, center, toRem(2));
-                margin-top: toRem(11.77);
+                &_text {
                 font-weight: 400;
                 font-size: toRem(12.81);
                 line-height: toRem(14.88);
                 letter-spacing: 0%;
-                color: $light-gray;
 
-                span {
-                    font-weight: 800;
+                @include media("<=tablet") {
+                    font-size: toRem(20);
+                    margin-bottom: toRem(20);
                 }
 
-                img {
-                    width: toRem(12.21);
-                    height: toRem(10.75);
+                @include media("<=phone-tab") {
+                    font-size: toRem(15);
+                    margin-bottom: toRem(10);
                 }
-            }
 
-            &_container {
-                @include flex(space-between, end, toRem(0));
-                margin-top: toRem(7.87);
+                }
 
-                &_sep {
-                    width: toRem(618.1);
-                    height: toRem(48.82);
-                    @include flex(space-between, center, toRem(0));
-                    border: toRem(0.39) solid $light-gray;
-                    border-radius: toRem(11.81);  
-                    padding-left: toRem(15.75);
-                    padding-right: toRem(20.73);
+                &_bonus {
+                    @include flex(start, center, toRem(2));
+                    margin-top: toRem(11.77);
+                    font-weight: 400;
+                    font-size: toRem(12.81);
+                    line-height: toRem(14.88);
+                    letter-spacing: 0%;
+                    color: $light-gray;
 
-                    &_link {
-                        font-weight: 400;
-                        font-size: toRem(15.75);
-                        line-height: toRem(19.84);
-                        letter-spacing: 0%;                        
+                    @include media("<=tablet") {
+                        font-size: toRem(25);
+                        margin-top: toRem(20);
                     }
 
-                    &_copy {
-                        @include flex(start, center, toRem(10));
-                        background-color: $secondary-gray;
-                        color: $secondary-blue;
-                        padding: toRem(7.32) toRem(19.83);
-                        border-radius: toRem(11.81);
-                        cursor: pointer;
+                    @include media("<=phone-tab") {
+                        font-size: toRem(19);
+                        margin-top: toRem(15);
+                    }
 
-                        div {
+                    span {
+                        font-weight: 800;
+
+                        @include media("<=tablet") {
+                            margin-left: toRem(4);
+                        }
+
+                        @include media("<=phone-tab") {
+                            font-weight: 700;
+                            font-size: toRem(18);
+                            margin-left: toRem(3);
+                        }
+    
+                    }
+
+                    img {
+                        width: toRem(12.21);
+                        height: toRem(10.75);
+
+                        @include media("<=tablet") {
+                            width: toRem(22.21);
+                            height: toRem(19.75);
+                            margin-right: toRem(4);
+                        }
+
+                        @include media("<=phone-tab") {
+                            width: toRem(18.21);
+                            height: toRem(16.75);
+                        }
+                    }
+                }
+
+                &_container {
+                    @include flex(space-between, end, toRem(0));
+                    margin-top: toRem(7.87);
+
+                    &_sep {
+                        width: toRem(618.1);
+                        height: toRem(48.82);
+                        @include flex(space-between, center, toRem(0));
+                        border: toRem(0.39) solid $light-gray;
+                        border-radius: toRem(11.81);  
+                        padding-left: toRem(15.75);
+                        padding-right: toRem(20.73);
+
+                        @include media("<=tablet") {
+                            height: toRem(80);
+                        }
+
+                        @include media("<=phone-tab") {
+                            height: toRem(70);
+                            width: toRem(370);
+                            gap: toRem(20);
+                            padding-right: toRem(13);
+                        }
+
+                        &_link {
                             font-weight: 400;
                             font-size: toRem(15.75);
                             line-height: toRem(19.84);
-                            letter-spacing: 0%;                            
+                            letter-spacing: 0%;   
+                            
+                            @include media("<=tablet") {
+                                font-size: toRem(25);
+                            }
+
+                            @include media("<=phone-tab") {
+                                font-size: toRem(18);
+                                // width: toRem(240);
+                                max-width: toRem(240);
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                            }
                         }
 
-                        img {
-                            width: toRem(15.75);
-                            height: toRem(15.75);
+                        &_copy {
+                            @include flex(start, center, toRem(10));
+                            background-color: $secondary-gray;
+                            color: $secondary-blue;
+                            padding: toRem(7.32) toRem(19.83);
+                            border-radius: toRem(11.81);
+                            cursor: pointer;
+
+                            @include media("<=tablet") {
+                                padding: toRem(15.32) toRem(22.83);
+                            }
+
+                            @include media("<=phone-tab") {
+                                padding: toRem(15.32) toRem(12.83);
+                                flex-shrink: 0;
+                            }
+
+                            div {
+                                font-weight: 400;
+                                font-size: toRem(15.75);
+                                line-height: toRem(19.84);
+                                letter-spacing: 0%; 
+                                
+                                @include media("<=tablet") {
+                                    font-size: toRem(23);
+                                }
+
+                                @include media("<=phone-tab") {
+                                    font-size: toRem(15);
+                                }
+                            }
+
+                            img {
+                                width: toRem(15.75);
+                                height: toRem(15.75);
+
+                                @include media("<=tablet") {
+                                    width: toRem(20.75);
+                                    height: toRem(20.75);
+                                }
+
+                                @include media("<=phone-tab") {
+                                    width: toRem(16.75);
+                                    height: toRem(16.75);
+                                }
+                            }
+                        }
+                    }
+
+                    button {
+                        // padding: toRem(14.41) toRem(65.23);
+                        height: toRem(48.82);
+                        width: toRem(183.43);
+                        background-color: $secondary-color;
+                        border-radius: toRem(11.81);
+                        color: $white;
+
+                        @include media("<=tablet") {
+                            height: toRem(77);
+                            font-size: toRem(24);
+                            text-transform: uppercase;
+                        }
+
+                        @include media("<=phone-tab") {
+                            height: toRem(67);
+                            font-size: toRem(18);
+                            width: toRem(120);
                         }
                     }
                 }
-
-                button {
-                    // padding: toRem(14.41) toRem(65.23);
-                    height: toRem(48.82);
-                    width: toRem(183.43);
-                    background-color: $secondary-color;
-                    border-radius: toRem(11.81);
-                    color: $white;
-                }
             }
-        }
         }
     }
 
@@ -120,6 +244,10 @@
         margin-top: toRem(45);
         padding: toRem(31) toRem(85) toRem(62) toRem(60);
 
+        @include media("<=phone-tab") {
+            padding: 0px 0px;
+        }
+
         &_title {
             padding-left: toRem(9);
             font-weight: 600;
@@ -128,6 +256,12 @@
             letter-spacing: 0%;
             color: $secondary-black;
             margin-bottom: toRem(45);
+
+            @include media("<=phone-tab") {
+                margin-bottom: toRem(5);
+                font-size: toRem(22);
+            }
         }
+
     }
 }

@@ -10,6 +10,17 @@
     border-radius: toRem(20);
     padding: toRem(27) toRem(59) toRem(27) toRem(42);
     font-family: $font-plus-jakarta;
+
+    @include media("<=tablet") {
+        border: toRem(1) solid $special-gray;
+        gap: toRem(25);
+        padding-left: torem(20);
+    }
+
+    @include media("<=phone-tab") {
+        padding: toRem(20) toRem(24) toRem(20) toRem(12);
+        gap: toRem(13);
+    }
     
     &:hover {
         cursor: pointer;
@@ -19,32 +30,68 @@
     img {
         width: toRem(72.07);
         height: toRem(179.29);
+
+        @include media("<=phone-tab") {
+            width: toRem(62.07);
+            height: toRem(159.29);
+        }
     }
 
     &_layout {
+        @include flex(space-between, start, toRem(0));
         width: 100%;
         height: 100%;
-        @include flex(space-between, start, toRem(0));
         
         &_address {
             @include flex_col(toRem(53));
             width: toRem(450);
-            overflow-x: auto;
+
+            @include media("<=tablet") {
+                width: auto;
+            }
+
+            @include media("<=phone-tab") {
+                gap: toRem(42);
+            }
 
             &_pickup, &_destination {
                 @include flex_col(toRem(12));
+
+                @include media("<=phone-tab") {
+                    gap: toRem(3);
+                }
+                
                 &_main {
                     font-weight: 500;
                     font-size: toRem(31.17);
                     line-height: toRem(39.27);
-                    letter-spacing: 0%;                    
+                    letter-spacing: 0%;  
+
+                    @include media("<=tablet") {
+                        font-size: toRem(25);
+                        line-height: auto;
+                    }
+                    
+                    @include media("<=phone-tab") {
+                        font-size: toRem(14.5);
+                        line-height: auto;
+                        max-width: toRem(170);
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
                 }
                 &_sub {
                     font-weight: 500;
                     font-size: toRem(19.48);
                     line-height: toRem(24.54);
                     letter-spacing: 0%;  
-                    color: $light-gray;                  
+                    color: $light-gray; 
+                    
+                    @include media("<=phone-tab") {
+                        font-size: toRem(13);
+                        line-height: auto
+                    }
                 }
             }
         }
@@ -52,22 +99,45 @@
         &_other, &_optional {
             @include flex_col(toRem(56));
 
+            @include media("<=phone-tab") {
+                gap: toRem(45);
+            }
+
             &_pickup, &_destination {
                 @include flex_col(toRem(8));
                 align-items: end;
+
+                @include media("<=phone-tab") {
+                    gap: toRem(3);
+                }
 
                 &_main {
                     font-weight: 500;
                     font-size: toRem(31.17);
                     line-height: toRem(39.27);
-                    letter-spacing: 0%;                    
+                    letter-spacing: 0%; 
+
+                    @include media("<=tablet") {
+                        font-size: toRem(25);
+                        line-height: auto;
+                    }
+                    
+                    @include media("<=phone-tab") {
+                        font-size: toRem(15);
+                        line-height: auto;
+                    }
                 }
                 &_sub {
                     font-weight: 500;
                     font-size: toRem(19.48);
                     line-height: toRem(24.54);
                     letter-spacing: 0%;  
-                    color: $light-gray;                  
+                    color: $light-gray; 
+                    
+                    @include media("<=phone-tab") {
+                        font-size: toRem(13);
+                        line-height: auto;
+                    }
                 }
             }
         }
@@ -77,6 +147,14 @@
                 @include flex_col(toRem(8));
                 align-items: center;
                 padding-right: toRem(180);
+
+                @include media("<=tablet") {
+                    padding-right: toRem(7);
+                }
+
+                @include media("<=phone-tab") {
+                    gap: toRem(3);
+                }
             }
         }
     }

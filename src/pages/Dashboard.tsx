@@ -1,3 +1,4 @@
+import { useMediaQuery } from "react-responsive";
 import BookRideForm from "../components/BookRideForm";
 import DashboardHeader from "../components/DashboardHeader";
 import PlanRide from "../components/PlanRide";
@@ -5,8 +6,12 @@ import RecentHistory from "../components/RecentHistory";
 import TotalCard from "../components/TotalCard";
 import { deliveryDetails, totalCardItems } from "../data/dashboard";
 import "../styles/pages/Dashboard.scss";
+import DashboardHero from "../components/DashboardHero";
+
 
 export default function Dashboard() {
+    const isMobile = useMediaQuery({maxWidth: 862});
+    
     return (
         <div className="dashboard">
             <div className="dashboard_header">
@@ -17,8 +22,9 @@ export default function Dashboard() {
             </div>
 
             <div className="dashboard_actions">
+                {isMobile && <DashboardHero />}
                 <div className="dashboard_actions_location">
-                    <BookRideForm />
+                    {<BookRideForm />}
                 </div>
                 <div className="dashboard_actions_activities">
                     <div className="dashboard_actions_activities_total">

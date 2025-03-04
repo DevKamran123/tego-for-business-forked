@@ -35,6 +35,10 @@
   align-items: center;
 }
 
+@mixin vh-minus($subtract, $property: height) {
+  #{$property}: calc(100vh - #{$subtract});
+}
+
 @function toRem($value) {
   // $remValue: (calc($value / 16 * 0.783333)) + rem;
   $remValue: (calc($value / 16 * 0.763333)) + rem;

@@ -4,6 +4,16 @@
 
 .ridehistory {
     font-family: $font-plus-jakarta;
+    
+    @include media("<=tablet") {
+      height: 140%;
+      background-color: $white;
+      padding: toRem(50) toRem(50);
+    }
+
+    @include media("<=phone-tab") {
+      padding: toRem(30) toRem(25);
+    }
 
     &_container {
         margin-top: toRem(22);
@@ -11,11 +21,8 @@
     &_details-wrapper {
         position: relative;
         margin-top: toRem(47);
-        // margin-bottom: toRem(39);
         
         &_details-button {
-            // width: toRem(178);
-            // height: toRem(66);
             background: #F2F3F8;
             border-radius: toRem(25);
             border: toRem(0.75) solid $light-gray;
@@ -26,8 +33,18 @@
             transition: all 0.2s ease;
             text-transform: uppercase;
             position: relative;
-            z-index: 2;
+            z-index: 1;
             padding: toRem(20.5) toRem(51.5);
+
+            @include media("<=tablet") {
+              @include flex-center();
+              margin: auto auto;
+            }
+
+            @include media("<=phone-tab") {
+              font-size: toRem(16);
+              padding: toRem(12) toRem(20);
+            }
                 
             
           &:hover {
@@ -50,7 +67,7 @@
           height: toRem(0.5);
           width: 100%;
           background-color: $light-gray;
-          z-index: 1;
+          z-index: 0;
         }
       
         .details-content {
@@ -65,5 +82,9 @@
     &_detailsCard {
         margin-top: toRem(39);
         @include flex_col(toRem(10));
+
+        @include media("<=tablet") {
+          gap: toRem(17);
+        }
     }
 }

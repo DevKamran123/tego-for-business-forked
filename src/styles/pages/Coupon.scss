@@ -3,12 +3,23 @@
 .coupon {
     font-family: $font-plus-jakarta;
 
+    @include media("<=tablet") {
+        background-color: $white;
+        padding-bottom: toRem(70);
+    }
+
     &_title {
     font-weight: 500;
     font-size: toRem(28);
     line-height: toRem(35.28);
     letter-spacing: 0%;
     margin-bottom: toRem(50);
+
+    @include media("<=tablet") {
+        display: none;
+    }
+
+
     }
     &_tabs {
         @include flex(start, center, toRem(59));
@@ -33,6 +44,13 @@
             font-size: toRem(28);
             line-height: toRem(35.28);
         }
+
+        @include media("<=tablet") {
+            @include flex-center();
+            padding-left: 0px;
+            margin-top: toRem(0);
+            padding-top: toRem(36);
+        }
     }
 
     &_layout {
@@ -42,5 +60,21 @@
         gap: auto;
         row-gap: toRem(53);
         padding-left: toRem(78);
+
+        @include media("<=tablet") {
+            grid-template-columns: auto auto;
+            padding-left: 0px;
+            justify-self: center;
+            column-gap: toRem(40);
+        }
+
+        @include media("<=phone-tab") {
+            grid-template-columns: auto;
+            @include flex-center();
+            flex-direction: column;
+            padding-left: 0px;
+            column-gap: auto;
+            margin-top: toRem(40);
+        }
     }
 }
