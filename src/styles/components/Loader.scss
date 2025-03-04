@@ -1,0 +1,48 @@
+@use '/src/styles/main.scss' as *;
+
+.loader {
+  display: flex;
+  flex-direction: column;
+
+  &__rest {
+    height: calc(90vh - toRem(113));
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.auth {
+      height: 100vh;
+    }
+
+    &__shape {
+      width: toRem(40);
+      height: toRem(40);
+      color: $black;
+      background: linear-gradient(currentColor 0 0),
+        linear-gradient(currentColor 0 0), linear-gradient(currentColor 0 0),
+        linear-gradient(currentColor 0 0);
+      background-size: toRem(21) toRem(21);
+      background-repeat: no-repeat;
+      animation: sh5 1.5s infinite cubic-bezier(0.3, 1, 0, 1);
+    }
+    @keyframes sh5 {
+      0% {
+        background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+      }
+      33% {
+        background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+        width: toRem(60);
+        height: toRem(60);
+      }
+      66% {
+        background-position: 100% 0, 100% 100%, 0 100%, 0 0;
+        width: toRem(60);
+        height: toRem(60);
+      }
+      100% {
+        background-position: 100% 0, 100% 100%, 0 100%, 0 0;
+      }
+    }
+  }
+}

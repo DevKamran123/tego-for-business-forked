@@ -1,0 +1,101 @@
+@use "/src/styles/main.scss" as *;
+
+.authHead {
+    @include flexbox(column, toRem(40));
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-image: url("/src/assets/images/bgAuth.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: contain;
+    width: 100vw;
+    // height: toRem(280);
+    height: auto;
+    position: relative;
+    padding: toRem(50) toRem(30) toRem(40) toRem(30);
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(180deg, #3e4095 0%, #292a6173 100%);
+        z-index: 1;
+    }
+
+    @include media(">=tablet") {
+        display: none;
+    }
+
+    &_logo {
+        @include flex(start, center, toRem(15));
+        font-family: $font-plus-jakarta;
+        font-size: toRem(25);
+        font-weight: 800;
+        line-height: toRem(30.8);
+        text-align: left; 
+        color: $white;
+        z-index: 2;  
+        
+        img {
+            width: toRem(46);
+            height: toRem(46);
+        }
+
+        @include media("<=phone-tab") {
+            font-size: toRem(21);
+
+            img {
+                width: toRem(38);
+                height: toRem(38);
+            }
+        }
+    }
+
+    &_text {
+        font-family: $font-plus-jakarta;
+        font-weight: 500;
+        font-size: toRem(44);
+        letter-spacing: 0%;
+        text-align: center;   
+        color: $white;   
+        z-index: 2;   
+        
+        @include media("<=phone-tab") {
+            font-size: toRem(32);
+            line-height: toRem(29);
+            max-width: toRem(580);
+        }
+    }
+
+    &_subText {
+        display: flex;
+        gap: toRem(8);
+        align-items: center;
+        font-family: $font-plus-jakarta;
+        font-weight: 400;
+        font-size: toRem(14);
+        line-height: toRem(20.16);
+        letter-spacing: 0%;
+        text-align: center; 
+        color: $white;     
+        z-index: 2; 
+        
+        @include media("<=phone-tab") {
+            font-size: toRem(12);
+        }
+
+        img {
+            width: toRem(22);
+            height: toRem(22);
+
+            @include media("<=phone-tab") {
+                width: toRem(17);
+                height: toRem(17)
+            }
+        }
+    }
+}

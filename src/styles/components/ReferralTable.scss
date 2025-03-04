@@ -1,0 +1,99 @@
+@use "/src/styles/main.scss" as *;
+
+.referralTable {
+    font-family: $font-plus-jakarta;
+    font-weight: 600;
+    font-size: toRem(16);
+    line-height: toRem(20.16);
+    letter-spacing: 0%;
+    color: $light-gray;
+
+    @include media("<=phone-tab") {
+        font-size: toRem(14);
+    }
+    
+    &_title {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        padding: toRem(25) toRem(28);
+
+
+        @include media("<=phone-tab") {
+            // grid-template-columns: 1.5fr 1.5fr 1fr 1fr;
+            justify-items: center;
+        }
+
+        &_first{
+                @include media("<=phone-tab") {
+                justify-self: start;
+                text-align: start;
+            }
+        }
+        
+
+        &_last{
+            margin-left: toRem(90);
+
+            @include media("<=phone-tab") {
+                margin-left: toRem(0);
+                justify-self: end;
+                align-self: center;
+                text-align: end;
+            }
+        }
+    }
+
+    &_content {
+        font-weight: 600;
+        font-size: toRem(20);
+        line-height: toRem(25.2);
+        letter-spacing: 0%;    
+        color: $secondary-black;    
+        background-color: $secondary-gray;
+        border-radius: toRem(15);
+        margin-bottom: toRem(7);
+
+        @include media("<=phone-tab") {
+            font-size: toRem(16);
+            // @include flex(space-between, center, toRem(0));
+        }
+    }
+}
+
+.referralCard {
+
+    &_date {
+        @include media("<=phone-tab") {
+            @include flex(center, center, toRem(0));
+            // border: 1px solid red;
+            
+            // justify-self: center;
+        }
+    }
+
+    &_users {
+        @include media("<=phone-tab") {
+            // @include flex(center, center, toRem(0));
+            // border: 1px solid red;
+            text-align: center;
+            // justify-self: center;
+        }
+    }
+    &_points {
+        @include flex(start, center, toRem(3));
+
+        @include media("<=phone-tab") {
+            justify-content: center;
+            align-self: center;
+        }
+    }
+
+    &_persons {
+        @include flex(start, center, toRem(10));
+        // margin-left: toRem(20);
+
+        @include media("<=tablet") {
+            justify-content: center;
+        }
+    }
+}

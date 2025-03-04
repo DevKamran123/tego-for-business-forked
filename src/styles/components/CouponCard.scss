@@ -1,0 +1,125 @@
+@use "/src/styles/main.scss" as *;
+
+.couponCard {
+    height: toRem(180.08);
+    width: toRem(397);
+    border-radius: toRem(16.37);
+    background-color: white;
+    
+
+    @include media("<=tablet") {
+        box-shadow: 0 toRem(4) toRem(12) rgba(0, 0, 0, 0.1);
+        width: toRem(435);
+        height: toRem(210);
+    }
+
+    @include media("<=phone-tab") {
+        height: toRem(180.08);
+        width: toRem(397);
+    }
+
+    &_top {
+        @include flex(start, center, 0px);
+        background-color: $secondary-blue;
+        border-top-left-radius: toRem(16.37);
+        border-top-right-radius: toRem(16.37);
+        height: toRem(76.13);
+        font-weight: 600;
+        font-size: toRem(16.37);
+        line-height: toRem(20.63);
+        letter-spacing: 0%;
+        padding-left: toRem(24.56);
+        color: $white;
+        text-transform: uppercase;
+
+        @media screen and (min-width: 500px) and (max-width: 865px) {
+            font-size: toRem(19);
+        }
+    }
+
+    &_bottom {
+        @include flex(start, end, toRem(102.15));
+        padding: toRem(13.87) toRem(24.5) toRem(24.66) toRem(28);
+
+        @media screen and (min-width: 500px) and (max-width: 865px) {
+            padding: toRem(20) toRem(30) toRem(22.66) toRem(30);
+            justify-content: space-between;
+            gap: 0px;
+        }
+
+        &_bonus {
+            @include flex_col(toRem(10.64));
+
+            color: $light-black;     
+            &_percent {
+                font-weight: 800;
+                font-size: toRem(32.74);
+                line-height: toRem(41.26);
+                letter-spacing: 0%;
+                
+                span {
+                    font-weight: 800;
+                    font-size: toRem(16.37);
+                    line-height: toRem(20.63);
+                    letter-spacing: 0%;
+
+                    @media screen and (min-width: 500px) and (max-width: 865px) {
+                        font-size: toRem(20);
+                    }
+                }
+            }
+
+            &_validity {
+                font-weight: 400;
+                font-size: toRem(11.82);
+                line-height: toRem(12.38);
+                letter-spacing: 0%;      
+                
+                @media screen and (min-width: 500px) and (max-width: 865px) {
+                    font-size: toRem(16);
+                }
+            }
+
+        }
+
+        &_refferal {
+            @include flex_col(toRem(10.64));
+
+            &_code {
+                font-weight: 800;
+                font-size: toRem(16.37);
+                line-height: toRem(20.63);
+                letter-spacing: 0%;
+
+                @media screen and (min-width: 500px) and (max-width: 865px) {
+                    font-size: toRem(20);
+                }
+            }  
+
+            &_copy {
+                @include flex(start, center, toRem(10));
+                font-weight: 400;
+                font-size: toRem(12.89);
+                line-height: toRem(16.24);   
+                color: #3E409573;
+
+                @media screen and (min-width: 500px) and (max-width: 865px) {
+                    font-size: toRem(19);
+                    gap: toRem(17);
+                }
+
+                img {
+                    width: toRem(11.33);
+                    height: toRem(12.94);
+                    cursor: pointer;
+
+                    @media screen and (min-width: 500px) and (max-width: 865px) {
+                        width: toRem(18);
+                        height: toRem(20);
+                        @include flex-center();
+                    }
+                }
+            }
+        }
+    }
+}

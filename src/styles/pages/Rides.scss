@@ -1,0 +1,60 @@
+@use "/src/styles/main.scss" as *;
+
+.rides {
+
+    @include media("<=tablet") {
+        background-color: $white;
+
+        @include media("<=tablet") {
+            height: 110%;
+        }
+    }
+
+    &_tabs {
+        @include flex(start, center, toRem(59));
+        font-family: $font-plus-jakarta;
+        font-weight: 400;
+        font-size: toRem(24);
+        line-height: toRem(30.28);
+        letter-spacing: 0%;
+        margin-top: toRem(36);
+        color: $light-gray;
+        padding-bottom: toRem(24);
+        border-bottom: toRem(1) solid $light-gray;
+
+        div {
+            cursor: pointer;
+        }
+
+        &_active {
+            color: black;
+            font-style: 500;
+            font-size: toRem(28);
+            line-height: toRem(35.28);
+        }
+
+        @include media("<=tablet") {
+            @include flex-center();
+            padding-left: 0px;
+            margin-top: toRem(0);
+            padding-top: toRem(36);
+        }
+    }
+
+    &_allHistory {
+        @include flex_col(toRem(28));
+        margin-top: toRem(63);
+
+        @include media("<=tablet") {
+            width: 100vw;
+            @include flex-center();
+            flex-direction: column;
+            background-color: white;
+            padding: toRem(0) toRem(50) toRem(100) toRem(50);
+        }
+
+        @include media("<=phone-tab") {
+            padding: toRem(0) toRem(20) toRem(80) toRem(20);
+        }
+    }
+}

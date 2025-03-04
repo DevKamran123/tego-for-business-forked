@@ -2,21 +2,35 @@ import { create } from "zustand";
 import Cookies from "js-cookie";
 
 interface AppState {
-  user: string | null;
-  setUser: (user: string) => void;
-  clearUser: () => void;
+  session: string | null;
+  setSession: (session: string) => void;
+  sideBarOpen: boolean;
+  setSideBarOpen: (open: boolean) => void;
+  showMobileMenu: boolean;
+  setShowMobileMenu: (showMobileMenu: boolean) => void;
 }
 
 const useAppStore = create<AppState>((set) => ({
-  user: Cookies.get("user") || null,
-  setUser: (user: string) => {
-    Cookies.set("user", user);
-    set({ user });
+  session: Cookies.get("session") || null,
+  setSession: (session: string) => {
+    Cookies.set("session", session);
+    set({ session });
   },
-  clearUser: () => {
-    Cookies.remove("user");
-    set({ user: null });
+  sideBarOpen: true,
+  setSideBarOpen: (open: boolean) => {
+    set({ sideBarOpen: open });
   },
+  showMobileMenu: false,
+  setShowMobileMenu: (showMobileMenu) => set({ showMobileMenu: showMobileMenu }),
+  // user: Cookies.get("user") || null,
+  // setUser: (user: string) => {
+  //   Cookies.set("user", user);
+  //   set({ user });
+  // },
+  // clearUser: () => {
+  //   Cookies.remove("user");
+  //   set({ user: null });
+  // },
 }));
 
 export default useAppStore;

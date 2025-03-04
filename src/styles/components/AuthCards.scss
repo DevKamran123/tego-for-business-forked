@@ -1,0 +1,35 @@
+@use "/src/styles/main.scss" as *;
+
+.authcardsCont {
+    width: toRem(181.3);
+    height: toRem(92.2);
+    cursor: pointer;
+    border: toRem(0.8) solid $light-gray;
+
+    @include media("<=tablet") {
+        width: toRem(200);
+        height: toRem(95);
+    }
+
+    @include media("<=phone-tab") {
+        width: toRem(487);
+        height: toRem(70);
+        margin: auto auto;
+    }
+
+    @include flexbox(row, toRem(15));
+    justify-content: center;
+    align-items: center;
+
+    img {
+        width: toRem(34);
+        height: toRem(34);
+    }
+
+    &_text {
+        font-family: $font-plus-jakarta;
+        font-weight: 700;
+        font-size: toRem(20);
+        line-height: toRem(25.2);           
+    }
+}

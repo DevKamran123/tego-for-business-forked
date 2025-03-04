@@ -1,0 +1,21 @@
+@use "/src/styles/main.scss" as *;
+
+.dashboardHeader {
+    @include flex(end, center, toRem(32));
+
+    @include media("<=tablet") {
+        display: none;
+    }
+
+    img {
+        width: toRem(38);
+        height: toRem(38);
+    }
+
+    &_circle {
+    width: toRem(61);
+    height: toRem(61);
+    background-color: #E7E7E7;
+    border-radius: 50%;
+    }
+}

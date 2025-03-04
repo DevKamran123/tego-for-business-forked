@@ -1,4 +1,4 @@
-@use "mixins";
+@use "../abstracts/mixins";
 html,
 * {
   padding: 0;
@@ -21,4 +21,5 @@ p {
 button {
   box-shadow: none !important;
   outline: none !important;
+  cursor: pointer;
 }

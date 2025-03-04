@@ -1,0 +1,415 @@
+@use "../main.scss" as *;
+
+.signupCont {
+    // border: 1px solid red;
+    @include flexbox(row, 0px);
+    height: 100%;
+
+    &_side {
+        
+        @include flexbox(row, 0px);
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        background-image: url("/src/assets/images/bgAuth.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        object-fit: contain;
+        // aspect-ratio: 9/6;
+
+        width: toRem(642);
+        // height: toRem(1056);
+        // height: 100vh;
+        height: auto;
+        // max-height: toRem(1268);
+        z-index: 1;
+
+        @include media("<=tablet") {
+            display: none;
+        }
+
+        &_text {
+            font-family: $font-plus-jakarta;
+            font-weight: 800;
+            font-size: toRem(63);
+            line-height: toRem(89.1);
+            letter-spacing: 0%;      
+            color: $white;     
+            z-index: 77;  
+            width: toRem(432);
+            justify-self: center;
+        }
+
+
+
+        &_bg {
+            position: absolute;
+            width: toRem(642);
+            // height: toRem(1056);
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            background: linear-gradient(180deg, #3e4095 0%, #292a6173 100%);
+            // background: linear-gradient(180deg, #3E4095 0%, rgba(62, 64, 149, 0.45) 58.91%);
+        }
+    }
+
+    &_main {
+        margin: 0px auto;
+        height: 100vh;
+        overflow-y: scroll;
+        padding: toRem(145) 0px toRem(200) 0px;
+
+        transform: translateZ(0);
+        -webkit-transform: translateZ(0);
+        backface-visibility: hidden;
+
+        @include media("<=tablet") {
+            padding: 0px;
+        }
+
+        &_head {
+            @include flexbox(column, toRem(50));
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background-image: url("/src/assets/images/bgAuth.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            object-fit: contain;
+            width: 100vw;
+            height: toRem(280);
+            position: relative;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(180deg, #3e4095 0%, #292a6173 100%);
+                z-index: 1;
+            }
+
+            @include media(">=tablet") {
+                display: none;
+            }
+
+            &_logo {
+                @include flex(start, center, toRem(15));
+                font-family: $font-plus-jakarta;
+                font-size: toRem(25);
+                font-weight: 800;
+                line-height: toRem(30.8);
+                text-align: left; 
+                color: $white;
+                z-index: 2;  
+                
+                img {
+                    width: toRem(46);
+                    height: toRem(46);
+                }
+
+                @include media("<=phone-tab") {
+                    font-size: toRem(21);
+
+                    img {
+                        width: toRem(38);
+                        height: toRem(38);
+                    }
+                }
+            }
+
+            &_text {
+                font-family: $font-plus-jakarta;
+                font-weight: 700;
+                font-size: toRem(44);
+                line-height: toRem(80.64);
+                letter-spacing: 0%;
+                text-align: center;   
+                color: $white;   
+                z-index: 2;   
+                
+                @include media("<=phone-tab") {
+                    font-size: toRem(38);
+                }
+            }
+        }
+
+        &_content {
+            padding: toRem(0) toRem(30) toRem(200) toRem(30);
+
+            @include media("<=tablet") {
+                @include flex_col(0px);
+                align-items: center;
+                padding-top: toRem(80);  
+            }
+
+            @include media("<=phone-tab") {
+                padding-top: toRem(60);  
+            }
+
+            &_title {
+                font-family: $font-plus-jakarta;
+                font-weight: 700;
+                font-size: toRem(40);
+                line-height: toRem(50.4);
+                letter-spacing: 0%;
+                text-align: center;
+            }
+
+            &_option {
+                @include flexbox(row, toRem(20));
+                margin-top: toRem(38);
+
+                @include media("<=tablet") {
+                    margin-top: toRem(80);
+                }
+
+                @include media("<=phone-tab") {
+                    margin-top: toRem(60);  
+                }
+
+                &_one {
+                    @include flexbox(column, toRem(20));
+                    align-items: center;
+                    justify-content: center;
+                    width: toRem(303);
+                    height: toRem(199);
+                    position: relative;
+                    border: 0.5px solid $light-gray;
+                    cursor: pointer;
+
+                    @include media("<=tablet") {
+                        width: toRem(330);
+                    }
+
+                    @include media("<=phone-tab") {
+                        width: toRem(235);
+                        height: toRem(180);
+                    }
+
+                    &_selected {
+                        border: 0.5px solid $secondary-blue;
+                    }
+
+                    &_image {
+                        @include flexbox(row, 0px);
+                        align-items: center;
+                        justify-content: center;
+                        background-color:#F5F5F5;
+                        width: toRem(74.76);
+                        height: toRem(74.76);
+                        border-radius: 50%;
+                        color: #292D32;
+
+
+                        &_selected {
+                            background-color: #E7E7F9;
+                            color: $secondary-blue;
+                        }
+
+                        svg {
+                            width: toRem(38.45);
+                            height: toRem(38.45);
+                        }
+                    }
+
+                    &_text {
+                        font-family: $font-plus-jakarta;
+                        font-weight: 500;
+                        font-size: toRem(20);
+                        line-height: toRem(25.2);
+                        letter-spacing: 0%;    
+                        color: $light-black; 
+
+                        @include media("<=phone-tab") {
+                            font-size: toRem(17);
+                        }
+                        
+                        &_selected {
+                            color: $secondary-blue
+                        }
+                    }
+
+                    &_checked {
+                        @include flexbox(row, 0px);
+                        align-items: center;
+                        justify-content: center;
+                        position: absolute;
+                        top: toRem(15);
+                        right: toRem(17);
+                        width: toRem(24);
+                        height: toRem(24);
+                        border-radius: 50%;
+                        background-color: #3E4095;
+
+                        svg {
+                            margin: auto auto;
+                            width: toRem(17.74);
+                            height: toRem(13.53);
+                        }
+                    }
+                }
+                
+            }
+
+            &_register {
+                margin-top: toRem(54);
+                font-family: $font-plus-jakarta;
+                color: $light-gray;
+                form {
+                    @include flexbox(column, toRem(7));
+                    align-items: start;
+
+                    
+                    .field-cont {
+                        // border: 1px solid red;
+                        height: auto;
+                        position: relative;
+                        margin-bottom: toRem(30);
+
+                        @include media("<=tablet") {
+                            height: auto;
+                            margin: auto auto;
+                            margin-bottom: toRem(20);
+                        }
+                    }
+                    
+                    .isCheck {
+                        margin-top: toRem(-10);
+
+                        @include media("<=tablet") {
+                            margin-top: toRem(0);
+                        }
+
+                        @include media("<=phone-tab") {
+                            @include flex-center();
+                            width: 100%;
+                            text-align: center;
+                            // margin-top: toRem(20);
+                        }
+                    }
+
+                    .input-label {
+                        font-weight: 400;
+                        font-size: toRem(20);
+                        line-height: toRem(25);
+                        letter-spacing: 0%;  
+                        color: $light-gray;  
+                        display: block;                     
+                    }
+
+                    .input_text {
+                        width: toRem(623);
+                        height: toRem(62);
+                        outline: none;
+                        border: toRem(1) solid $light-gray;
+                        margin-top: toRem(10);
+
+                        font-weight: 400;
+                        font-size: toRem(20);
+                        line-height: toRem(25.2);
+                        letter-spacing: 0%;
+                        color: $text-color;
+                        padding-left: toRem(34);
+                        padding-right: toRem(34);
+                        // margin-bottom: toRem(55);
+
+                        &::placeholder {
+                            font-weight: 400;
+                            font-size: toRem(20);
+                            line-height: toRem(25.2);
+                            letter-spacing: 0%;
+                            color: #DBDBDB;
+                        }
+
+                        @include media("<=tablet") {
+                            width: toRem(680);
+                            height: toRem(80);
+                        }
+
+                        @include media("<=phone-tab") {
+                            width: toRem(487);
+                            height: toRem(70);
+                        }
+                    }
+
+                    .input-error {
+                        position: absolute;
+                        // bottom: toRem(-12);
+                        color: $secondary-color;
+                        font-size: toRem(16);
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: normal;
+                        margin-top: toRem(4) !important;
+                    }
+
+                    button {
+                        width: toRem(623);
+                        height: toRem(60);
+                        font-weight: 500;
+                        font-size: toRem(20);
+                        line-height: toRem(30.24);
+                        letter-spacing: 0%;
+                        color: $white;
+                        background-color: $secondary-color;
+                        margin-top: toRem(17);
+
+                        @include media("<=tablet") {
+                            width: toRem(680);
+                            height: toRem(80);
+                        }
+
+                        @include media("<=phone-tab") {
+                            width: toRem(487);
+                            height: toRem(70);
+                            margin: auto auto;
+                            margin-top: toRem(17);
+                        }
+                    }
+                }
+
+                &_alternative {
+                    font-weight: 400;
+                    font-size: toRem(16);
+                    line-height: toRem(20.16);
+                    letter-spacing: 0%;
+                    text-align: center;     
+                    margin-top: toRem(17);  
+                    color: $light-gray;    
+                    
+                    span {
+                        font-weight: 700;
+                        cursor: pointer;
+                    }
+                }
+
+                &_or {
+                    font-weight: 400;
+                    font-size: toRem(20);
+                    line-height: toRem(25.2);
+                    margin-top: toRem(20);       
+                    text-align: center;      
+                }
+
+                &_allPlatforms {
+                    @include flexbox(row, 0px);
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-top: toRem(38);
+                    
+                    @include media("<=phone-tab") {
+                        @include flex-center();
+                        flex-direction: column;
+                        gap: toRem(25);
+                    }
+                }
+            }
+        }
+    }
+}
+

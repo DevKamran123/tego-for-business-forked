@@ -1,0 +1,47 @@
+
+@import './breakpoints.scss';
+
+
+
+// Function to convert px to rem
+// @function toRem($px) {
+//   @return calc($px / 16) * 1rem  * 0.833333;
+// }
+
+// Mixin for flexbox utility classes
+@mixin flexbox($direction, $gap) {
+  display: flex;
+  flex-direction: $direction;
+  gap: $gap;
+}
+
+
+@mixin flex($jc, $ai, $gap) {
+  display: flex;
+  justify-content: $jc;
+  align-items: $ai;
+  gap: $gap;
+}
+
+@mixin flex_col($gap) {
+  flex-direction: column;
+  display: flex;
+  gap: $gap;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin vh-minus($subtract, $property: height) {
+  #{$property}: calc(100vh - #{$subtract});
+}
+
+@function toRem($value) {
+  // $remValue: (calc($value / 16 * 0.783333)) + rem;
+  $remValue: (calc($value / 16 * 0.763333)) + rem;
+  @return $remValue;
+}
+

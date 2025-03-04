@@ -1,0 +1,220 @@
+@use "/src/styles/main.scss" as *;
+
+.custom-sidebar {
+    &.ant-drawer {
+      .ant-drawer-content-wrapper {
+        width: toRem(400) !important;
+        height: toRem(1050);
+
+        @include media("<=phone-tab") {
+            height: toRem(1000);
+            width: toRem(320) !important;
+        }
+      }
+      
+      .ant-drawer-content {
+        background-color: rgb(61, 62, 134) !important;
+      }
+  
+      .ant-drawer-wrapper-body {
+        background-color: rgb(61, 62, 134) !important;
+      }
+  
+      .ant-drawer-body {
+        padding: toRem(84) toRem(0) toRem(69) toRem(32);
+        color: #fff;
+        background-color: rgb(61, 62, 134) !important;
+
+        @include media("<=phone-tab") {
+          padding-top: toRem(75);
+          padding-bottom: toRem(58);
+        }
+      }
+  
+      .ant-drawer-close {
+        color: #fff;
+        transition: color 0.2s ease;
+        
+        &:hover {
+          color: rgba(255, 255, 255, 0.8);
+          background: none;
+        }
+      }
+    }
+}
+  
+// Ensure styles work in both light and dark themes
+[data-theme='dark'] .custom-sidebar,
+[data-theme='light'] .custom-sidebar {
+    &.ant-drawer .ant-drawer-content {
+      background-color: rgb(61, 62, 134) !important;
+    }
+}
+
+// Custom dropdown styles
+.custom-dropdown-trigger {
+  font-family: $font-roboto !important;
+  font-weight: 400 !important;
+  font-size: toRem(28) !important;
+  line-height: toRem(32.81) !important;
+  color: #fff !important;
+  
+  @include media("<=phone-tab") {
+    font-size: toRem(22) !important;
+    line-height: toRem(28.81) !important;
+  }
+
+  &:hover {
+    opacity: 80%;
+  }
+
+  .anticon {
+    font-size: toRem(16);
+    margin-left: toRem(8);
+  }
+}
+
+// Dropdown menu styles
+.ant-dropdown {
+  .ant-dropdown-menu {
+    background-color: rgb(61, 62, 134);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    
+    .ant-dropdown-menu-item {
+      font-family: $font-roboto;
+      font-weight: 400;
+      font-size: toRem(28);
+      line-height: toRem(32.81);
+      color: #fff;
+      padding: toRem(12) toRem(20);
+
+      @include media("<=phone-tab") {
+        font-size: toRem(22);
+        line-height: toRem(28.81);
+      }
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      &-selected {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+    }
+  }
+}
+
+.homeSidebar {
+    padding-left: toRem(60);
+    padding-top: toRem(40);
+
+    @include media("<=phone-tab") {
+      padding-left: toRem(40);
+      padding-top: toRem(10);
+    }
+
+    // &-wrapper {
+    //   position: relative;
+    //   padding: toRem(90);
+    // }
+  
+    // &-trigger {
+    //   background: none;
+    //   border: none;
+    //   padding: 0.5rem;
+    //   cursor: pointer;
+    //   transition: opacity 0.2s ease;
+  
+    //   img {
+    //     width: 24px;
+    //     height: 24px;
+    //     display: block;
+    //   }
+  
+    //   &:hover {
+    //     opacity: 0.8;
+    //   }
+    // }
+  
+    &-content {
+      color: #fff;
+      @include flex_col(toRem(0));
+      height: 100%;
+      justify-content: space-between;
+
+      @include media("<=tablet") {
+        justify-content: start;
+        gap: toRem(300);
+      }
+
+      &_links {
+        @include flex_col(toRem(65));
+        font-family: $font-roboto;
+        font-weight: 400;
+        font-size: toRem(35);
+        line-height: toRem(32.81);
+        letter-spacing: 0%;  
+        
+        @include media("<=phone-tab") {
+          font-size: toRem(22);
+          line-height: toRem(28.81);
+          gap: toRem(30);
+        }
+
+        div {
+          cursor: pointer;
+          &:hover {
+            opacity: 80%;
+          }
+        }
+      }
+
+      &_auth {
+        @include flexbox(column, toRem(40));
+        font-family: $font-roboto;
+        font-size: toRem(27);
+        font-weight: 400;
+        line-height: toRem(17.89);
+        text-align: left;
+
+        @include media("<=phone-tab") {
+          font-size: toRem(17);
+          gap: toRem(30);
+        }
+
+        &_lang {
+            @include flexbox("row", toRem(11.1));
+            align-items: center;
+            cursor: pointer;
+
+            &_image {
+                width: toRem(21);
+                height: toRem(21);
+                @include flexbox(row, toRem(0));
+                align-items: center;
+
+                img {
+                    width: toRem(21);
+                    height: toRem(21);
+                }
+            } 
+        }
+
+        &_login {
+            cursor: pointer;
+        }
+
+        &_signup {
+            @include flexbox(row, 0px);
+            align-items: center;
+            justify-content: center;
+            width: toRem(122);
+            height: toRem(47);
+            border-radius: toRem(3.47);       
+            color: $black;
+            background-color: $white;  
+            cursor: pointer;
+        }
+    }
+  }
+}

@@ -1,0 +1,148 @@
+@use "/src/styles/main.scss" as *;
+
+.dashboard {
+    &_header {
+        @include media("<=tablet") {
+            display: none;
+        }
+
+    }
+    font-family: $font-plus-jakarta;
+    &_title {
+        font-weight: 500;
+        font-size: toRem(28);
+        line-height: toRem(35.28);
+        letter-spacing: 0%;
+        color: #000000;
+
+        @include media("<=tablet") {
+            display: none;
+        }
+    }
+
+    &_actions {
+        display: grid;
+        grid-template-columns: toRem(559) toRem(870);
+        column-gap: toRem(40);
+        margin-top: toRem(20);
+        width: 100%;
+        justify-content: space-between;
+            
+        @include media("<=tablet") {
+            grid-template-columns: none;
+            @include flex-center();
+            flex-direction: column;
+            margin-top: toRem(0);
+        }
+
+        &_location {
+            @include media("<=tablet") {
+                display: none
+            }
+        }
+
+
+        &_activities {
+            @include flex_col(toRem(40));
+            justify-content: start;
+            align-items: start;
+
+            @include media("<=tablet") {
+                @include flex-center();
+                flex-direction: column;
+            }
+
+            &_total {
+                @include flex(space-between, center, toRem(37));
+
+                @include media("<=tablet") {
+                    @include flex-center();
+                    flex-direction: column;
+
+                    background-color: $white;
+                    width: 100vw;
+                    gap: toRem(100);
+                    padding: toRem(130) toRem(50);
+                }
+
+                @include media("<=phone-tab") {
+                    padding: toRem(110) toRem(50);
+                    gap: toRem(80);
+                }
+            }
+
+            &_plan {
+
+                @include media("<=tablet") {
+                    margin-top: toRem(40);
+                    padding-top: toRem(90);
+                    padding-bottom: toRem(150);
+                    background-color: $white;
+                    width: 90%;
+                }
+
+                @include media("<=phone-tab") {
+                    padding-top: toRem(50);
+                    padding-bottom: toRem(120);
+                }
+
+                &_title {
+                    font-weight: 500;
+                    font-size: toRem(28);
+                    line-height: toRem(35.8);
+                    letter-spacing: 0%;  
+                    
+                    @include media("<=tablet") {
+                        text-align: center;
+                        font-size: 600;
+                        font-size: toRem(50);
+                        margin-bottom: toRem(35);
+                    }
+
+                    @include media("<=phone-tab") {
+                        font-size: toRem(30);
+                        margin-bottom: toRem(0);
+                    }
+                }
+
+                &_layout {
+                    margin-top: toRem(13);
+
+                    @include media("<=tablet") {
+                        @include flex-center();
+                        flex-direction: column;
+                    }
+                }
+            }
+        }
+    }
+
+    &_history {
+        margin-top: toRem(47);
+        
+        @include media("<=tablet") {
+            width: 100vw;
+            @include flex-center();
+            flex-direction: column;
+            background-color: white;
+            padding: toRem(100) toRem(60) toRem(200) toRem(60);
+        }
+
+        @include media("<=phone-tab") {
+            padding: toRem(100) toRem(30) toRem(200) toRem(30);
+        }
+
+        &_title {
+            font-weight: 500;
+            font-size: toRem(28);
+            line-height: toRem(35.28);
+            letter-spacing: 0%;
+            color: #000000;
+            margin-bottom: toRem(22);
+
+            @include media("<=tablet") {
+                margin-bottom: toRem(50);
+            }
+        }
+    }
+}

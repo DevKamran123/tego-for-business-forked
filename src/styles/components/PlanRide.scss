@@ -1,0 +1,433 @@
+@use "/src/styles/main.scss" as *;
+
+.planRide {
+    @include flex(start, end, toRem(22));
+    width: toRem(870);
+    height: toRem(279);
+    background-color: $white;
+    border-radius: toRem(20);
+    padding: toRem(37) toRem(24) toRem(30) toRem(38.22);
+    font-family: $font-plus-jakarta;
+
+    @include media("<=tablet") {
+      @include flex-center();
+      flex-direction: column;
+      width: auto;
+      height: auto;
+  }
+
+    &_date {
+        width: toRem(240);
+        height: toRem(203.03);
+        border: toRem(1) solid $light-gray;
+        border-radius: toRem(20.49);
+        flex-shrink: 0;
+
+        @include media("<=tablet") {
+          width: toRem(660);
+          height: toRem(537);
+        }
+
+        @include media("<=phone-tab") {
+          width: toRem(400);
+          height: toRem(330);
+        }
+
+        &_top {
+            height: toRem(94.02);
+            border-bottom: 1px solid $light-gray;
+            padding: toRem(11.71) toRem(17.56) toRem(5.85) toRem(17.56);
+
+            @include media("<=tablet") {
+              padding: toRem(41) toRem(47) toRem(16) toRem(47);
+              height: toRem(228);
+            }
+
+            @include media("<=phone-tab") {
+              padding: toRem(18.71) toRem(23.56) toRem(9.85) toRem(23.56);
+              height: toRem(120);
+            }
+
+            &_select {
+                font-family: Plus Jakarta Sans;
+                font-weight: 500;
+                font-size: toRem(13.24);
+                line-height: toRem(14.63);
+                letter-spacing: 0.07px;    
+                margin-bottom: toRem(26.34);    
+                color: #49454F;     
+                
+                @include media("<=tablet") {
+                  font-size: toRem(27);
+                  margin-bottom: toRem(80);
+                }
+
+                @include media("<=phone-tab") {
+                  font-size: toRem(17);
+                  margin-bottom: toRem(40);
+                }
+            }
+
+            &_layout {
+                @include flex(space-between, center, toRem(0));
+
+                @include media("<=tablet") {
+                  // @include flex-center();
+                  // flex-direction: column;
+              }
+
+                img {
+                    width: toRem(17.56);
+                    height: toRem(17.56);
+
+                    @include media("<=tablet") {
+                      width: toRem(34.81);
+                      height: toRem(38.66);
+                    }
+
+                    @include media("<=phone-tab") {
+                      width: toRem(24.81);
+                      height: toRem(28.66);
+                    }
+                }
+
+                div {
+                    font-family: Plus Jakarta Sans;
+                    font-weight: 400;
+                    font-size: toRem(23.41);
+                    line-height: toRem(29.27);
+                    letter-spacing: 0px;       
+                    color: #1D1B20;   
+                    
+                    @include media("<=tablet") {
+                      font-size: toRem(52);
+                    }
+
+                    @include media("<=phone-tab") {
+                      font-size: toRem(30);
+                    }
+                }
+            }
+
+            label {
+                font-family: Plus Jakarta Sans;
+                font-weight: 400;
+                font-size: toRem(23.41);
+                line-height: toRem(29.27);
+                letter-spacing: 0px;               
+            }
+        }
+
+        // &_bottom {
+            
+        // }
+
+        &_bottom {
+            // Style the overall date picker wrapper
+            padding: toRem(13.17) toRem(17.56);
+
+
+            @include media("<=tablet") {
+              padding: toRem(35) toRem(47);
+            }
+
+            @include media("<=phone-tab") {
+              padding: toRem(35) toRem(23.56);
+            }
+
+
+            .ant-picker {
+              width: 100%;
+              border: 2.2px solid #3E4095;
+              border-radius: toRem(2.93);
+              padding: 8px toRem(11);
+              
+              // Remove the calendar icon
+              .ant-picker-suffix {
+                display: none;
+              }
+
+              .ant-picker-clear {
+                display: none;
+              }
+              
+              // Style the input inside date picker
+              .ant-picker-input {
+                input {
+                  font-size: toRem(16);
+                  color: #333;
+                  height: toRem(20);
+                  
+                  &::placeholder {
+                    color: #999;
+
+                    @include media("<=tablet") {
+                      font-size: toRem(41);
+                    }
+
+                    @include media("<=phone-tab") {
+                      font-size: toRem(23);
+                    }
+                  }
+                  
+                  @include media("<=tablet") {
+                    font-size: toRem(41);
+                    height: toRem(108);
+                    padding-left: toRem(20);
+                  }
+
+                  @include media("<=phone-tab") {
+                    font-size: toRem(23);
+                    height: toRem(55);
+                    padding-left: toRem(10);
+                  }
+                }
+              }
+            }
+      
+            // Style the dropdown calendar panel
+            .ant-picker-dropdown {
+              .ant-picker-panel-container {
+                background: #fff;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+                
+                .ant-picker-panel {
+                  // Style the header (month/year selector)
+                  .ant-picker-header {
+                    border-bottom: 1px solid #f0f0f0;
+                    
+                    button {
+                      color: #666;
+                      
+                      &:hover {
+                        color: #1890ff;
+                      }
+                    }
+                    
+                    .ant-picker-header-view {
+                      color: #333;
+                      font-weight: 500;
+                    }
+                  }
+                  
+                  // Style the calendar cells
+                  .ant-picker-body {
+                    .ant-picker-cell {
+                      &-in-view {
+                        color: #333;
+                      }
+                      
+                      &-selected .ant-picker-cell-inner {
+                        background: #1890ff;
+                        color: #fff;
+                      }
+                      
+                      &:hover .ant-picker-cell-inner {
+                        background: #e6f7ff;
+                      }
+                      
+                      &-disabled {
+                        opacity: 0.3;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            &_actions {
+                @include flex(end, center, toRem(12));
+                margin-top: toRem(12);
+                font-family: Plus Jakarta Sans;
+                font-weight: 500;
+                font-size: toRem(14.24);
+                line-height: toRem(14.63);
+                letter-spacing: 0.07px;
+                text-align: center;
+                color: #3E4095;
+
+                @include media("<=tablet") {
+                  margin-top: toRem(50);
+                  font-size: toRem(30);
+                }
+
+                @include media("<=phone-tab") {
+                  margin-top: toRem(40);
+                  font-size: toRem(21);
+                }
+
+                div {
+                    cursor: pointer;
+
+                    &:hover {
+                      opacity: 75%;
+                    }
+                }
+            }
+        }
+
+    }
+
+    &_place {
+        // width: 100%;
+        height: toRem(203.03);
+        border-radius: toRem(20.49);
+        display: grid;
+        // grid-template-columns: toRem(277) toRem(277);
+        grid-template-columns: auto auto;
+        column-gap: toRem(16);
+        row-gap: toRem(17);
+
+        @include media("<=tablet") {
+          grid-template-columns: none;
+          @include flex-center();
+          flex-direction: column;
+          height: auto;
+          width: 100%;
+          margin-top: toRem(70);
+          gap: toRem(50);
+
+          // border: 1px solid green;
+        }
+
+        @include media("<=tablet") {
+          margin-top: toRem(60);
+          gap: toRem(35);
+        }
+
+        &_cont {
+            height: toRem(70);
+
+            @include media("<=tablet") {
+              height: auto;
+              width: 100%;
+              @include flex-col(toRem(15));
+            }
+
+            @include media("<=phone-tab") {
+              gap: toRem(10);
+            }
+
+
+
+            label {
+                font-family: $font-plus-jakarta;
+                font-weight: 400;
+                font-size: toRem(14);
+                line-height: toRem(15.12);
+                letter-spacing: 0%;     
+                color: $light-black;  
+                
+                @include media("<=tablet") {
+                  font-size: toRem(32);
+                }
+
+                @include media("<=phone-tab") {
+                  font-size: toRem(22);
+                }
+                // margin-bottom: toRem(6);
+            }
+    
+            input, button {
+                width: toRem(265);
+                height: toRem(60);
+                border-radius: toRem(20);
+
+                @include media("<=tablet") {
+                  width: 100%;
+                  height: toRem(120);
+                  font-size: toRem(30);
+                }
+
+                @include media("<=phone-tab") {
+                  height: toRem(85);
+                  font-size: toRem(22);
+                  border-radius: toRem(10);
+                }
+            }
+
+            input {
+                margin-top: toRem(5);
+
+                @include media("<=tablet") {
+                  margin-top: toRem(9);
+                }
+
+                @include media("<=tablet") {
+                  margin-top: toRem(9);
+                }
+            }
+
+            button {
+                margin-top: toRem(28);
+                color: $white;
+                background-color: $secondary-color;
+                font-size: toRem(15);
+
+                @include media("<=tablet") {
+                  font-size: toRem(30);
+                }
+
+                @include media("<=phone-tab") {
+                  font-size: toRem(22);
+                }
+            }
+        }
+    }
+
+    .input-error {
+        color: $secondary-color;
+        font-size: toRem(14);
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        // margin-top: 5px !important;
+
+        @include media("<=tablet") {
+          font-size: toRem(27);
+        }
+
+        @include media("<=phone-tab") {
+          font-size: toRem(20);
+        }
+      }
+
+}
+
+.dateContainer {
+position: relative;
+  .lab {
+    @include flex-center();
+    position: absolute;
+    top: toRem(-8);
+    left: toRem(10);
+    width: toRem(31.85);
+    height: toRem(17);
+    background-color: #F2F3F8;
+    font-weight: 400;
+    font-size: toRem(12.78);
+    line-height: toRem(11.71);
+    letter-spacing: 0.29px;
+    color: #3E4095;
+    text-align: center;
+
+
+    @include media("<=tablet") {
+      font-size: toRem(23);
+      width: toRem(66);
+      height: toRem(31);
+      left: toRem(30);
+      top: toRem(-15);
+      background-color: white;
+    }
+
+    @include media("<=phone-tab") {
+      font-size: toRem(19);
+      width: toRem(56);
+      height: toRem(31);
+      left: toRem(20);
+      top: toRem(-15);
+      background-color: white;
+    }
+  }
+}

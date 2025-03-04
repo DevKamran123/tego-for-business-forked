@@ -1,0 +1,58 @@
+@use "../main.scss" as *;
+
+.infocardCont {
+    font-family: $font-plus-jakarta;
+
+    @include media("<=tablet") {
+        @include flex-center();
+        flex-direction: column;
+    }
+
+    img {
+        width: toRem(40);
+        height: toRem(40);
+    }
+
+    &_title {
+        margin-top: toRem(20);
+        font-size: toRem(23);
+        font-weight: 500;
+        line-height: toRem(28.98);
+        text-align: left;
+    }
+
+    &_text {
+        font-size: toRem(22);
+        font-weight: 400;
+        line-height: torem(30.95);
+        text-align: left;
+        margin-top: toRem(13);
+        color: $text-color;
+        width: toRem(509);
+        max-width: toRem(509);
+
+        @include media("<=tablet") {
+            text-align: center;
+            width: toRem(490);
+            max-width: toRem(490);
+        }
+
+        @include media("<=phone-tab") {
+            width: toRem(490);
+            max-width: toRem(490);
+        }
+    }
+
+    &_learn {
+        margin-top: toRem(24);
+        font-size: toRem(16);
+        font-weight: 500;
+        line-height: toRem(22.51);
+        width: toRem(86);
+        text-align: left;
+        cursor: pointer;
+
+        border-bottom: toRem(2.5) dashed $black;
+        padding-bottom: toRem(3);
+    }
+}
