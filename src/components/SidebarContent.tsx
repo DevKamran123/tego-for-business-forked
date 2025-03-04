@@ -1,5 +1,4 @@
 import React from "react";
-import { GoSidebarCollapse } from "react-icons/go";
 import { MdLogout } from "react-icons/md";
 import { Link } from "react-router-dom";
 import useAppStore from "../store/AppStore";
@@ -10,7 +9,7 @@ import Stack from "./stack/Stack";
 import "../styles/components/SidebarContent.scss";
 
 const SidebarContent: React.FC = () => {
-  const { sideBarOpen, setSideBarOpen } = useAppStore((state) => state);
+  const { sideBarOpen } = useAppStore((state) => state);
   // const [localSideBarOpen, setLocalSideBarOpen] = React.useState(sideBarOpen);
   return (
     <div

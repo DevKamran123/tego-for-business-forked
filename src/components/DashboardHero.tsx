@@ -1,7 +1,5 @@
 import React from 'react'
 import "../styles/components/DashboardHero.scss";
-import Header from './Header';
-import Homesidebar from './HomeSidebar';
 import OrderRide from './OrderRide';
 import MobileHeader from './MobileHeader';
 import MobileSidebar from './MobileSiebar';
