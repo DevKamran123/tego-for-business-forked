@@ -13,6 +13,8 @@ import TButton from "../components/buttons/TButton";
 import { useNavigate } from "react-router-dom";
 import useAppStore from "../store/AppStore";
 import rideTegoLogo from "../assets/images/rideTegoLogo.png"
+import { loginUser } from "../lib/auth/login";
+import toast from "react-hot-toast";
 
 const LoginSchema = Yup.object().shape({
   email: Yup.string()
@@ -55,11 +57,15 @@ const Login: React.FC = () => {
             <Formik
               initialValues={{ email: "", password: "" }}
               validationSchema={LoginSchema}
-              onSubmit={(values) => {
-                console.log(values);
-                localStorage.setItem("token", "123456");
-                setSession(JSON.stringify({ ...values }));
-                navigate("/dashboard");
+              onSubmit={async (values) => {
+                const response = await loginUser(values.email, values.password);
+                if (response.success && response.data) {
+                  localStorage.setItem("token", response.data?.accessToken);
+                  setSession(JSON.stringify({ ...values, ...response.data }));
+                  navigate("/dashboard");
+                } else {
+                  toast.error(response.message);
+                }
               }}
             >
               {({ isSubmitting, isValid }) => (
