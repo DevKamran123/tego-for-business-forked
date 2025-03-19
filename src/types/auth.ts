@@ -20,3 +20,16 @@ export type SignupPayload = {
   password: string;
   accountType: 'enterprise' | 'personal';
 }
+
+export type SendOTPPayload = {
+  email: string;
+  otpType: string; //'verification' | 'recovery'
+  type: string; //'user' | 'business'
+}
+
+export type ResetPasswordPayload = {
+  email: string;
+  newPassword: string;
+  token: string;
+  type: 'user' | 'business';
+}
