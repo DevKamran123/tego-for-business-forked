@@ -26,6 +26,10 @@ export default function CreatePasswordText() {
                 <span className="createPassword_side_text_catchphrase_bullet"></span>
                 <span className="createPassword_side_text_catchphrase_text">At least 1 number (0 - 9)</span>
             </div>
+            <div className="createPassword_side_text_catchphrase_requirementItem">
+                <span className="createPassword_side_text_catchphrase_bullet"></span>
+                <span className="createPassword_side_text_catchphrase_text">At least 1 special character (!#@$%)</span>
+            </div>
         </div>
     )
 }
