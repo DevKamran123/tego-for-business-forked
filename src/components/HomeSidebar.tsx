@@ -14,7 +14,7 @@ type MenuItem = Required<MenuProps>['items'][number];
 const items: MenuItem[] = [
   {
     key: '1',
-    label: 'For Enterprise',
+    label: 'Business',
     type: 'item'
   },
   {

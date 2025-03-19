@@ -33,7 +33,7 @@ export default function Header() {
                 <div className="headerCont_details">
                     <div className="headerCont_details_option">
                         <select>
-                            <option>For Enterprise</option>
+                            <option>Business</option>
                             <option>For Users</option>
                         </select>
                     </div>
