@@ -1,10 +1,12 @@
-
+import { useLocation } from "react-router-dom";
 import AuthButton from "../components/AuthButton";
 import AuthHead from "../components/AuthHead";
 import AuthMessage from "../components/AuthMessage";
 import "../styles/pages/ConfirmSignup.scss";
 
 export default function ConfirmSignup() {
+    const location = useLocation();
+    const {email} = location.state || {email: ""};
 
     return (
         <div className="confirmsignupCont">
@@ -30,15 +32,15 @@ export default function ConfirmSignup() {
                     <div className="confirmsignupCont_main_content_register">
                         <form>
                             <label htmlFor="email">Your email</label>
-                            <input type="email" id="email" className="input_text" placeholder="Enter your email"/>
+                            <input type="email" id="email" className="input_text" placeholder="Enter your email" disabled value={email ?? ''}/>
 
                             <div className="confirmsignupCont_main_content_register_nomail">
                                 Didn’t receive the mail? Please check your spam folder or check your email and try to resend the email
                             </div>
 
                             <div className="confirmsignupCont_main_content_register_actions">
-                                <AuthButton text="Back to sign up" color="primary" action="/signup"/>
-                                <AuthButton text="Get Started" color="secondary" action="/create-password"/>
+                                {/* <AuthButton text="Back to sign up" color="primary" action="/signup"/> */}
+                                <AuthButton text="Back to Login" color="secondary" action="/login"/>
                             </div>
                         </form>
                     </div>
