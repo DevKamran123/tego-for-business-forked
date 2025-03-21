@@ -11,9 +11,11 @@
     background-repeat: no-repeat;
     object-fit: cover;
 
+    padding-top: toRem(182);
+
     &_social {
-        margin-left: toRem(152);
-        margin-top: toRem(373);
+        margin-left: toRem(162);
+        // margin-top: toRem(182);
         width: toRem(212);
         flex-shrink: 0;
         color: $white;
@@ -21,11 +23,11 @@
 
         &_layout {
             &_icons {
-                @include flexbox(row, toRem(24));
+                @include flexbox(row, toRem(18));
 
                 img {
-                    width: toRem(38);
-                    height: toRem(38);
+                    width: toRem(28);
+                    height: toRem(28);
                     cursor: pointer;
                 }
             }
@@ -34,7 +36,7 @@
                 @include flexbox(row, toRem(0));
                 justify-content: space-between;
                 align-items: center;
-                margin-top: toRem(27);
+                margin-top: toRem(37);
                 font-size: toRem(19);
 
                 &_lang, &_place {
@@ -56,7 +58,25 @@
                 font-weight: 400;
                 line-height: toRem(30.95);
                 text-align: left;
-                margin-top: toRem(33);
+                margin-top: toRem(43);
+                cursor: pointer;
+            }
+        }
+
+        &_download {
+            @include flexbox(row, toRem(50));
+            justify-content: space-between;
+            margin-top: toRem(180);
+
+            &_google {
+                width: toRem(135);
+                height: toRem(40);
+                cursor: pointer;
+            }
+
+            &_apple {
+                width: toRem(119.7);
+                height: toRem(40);
                 cursor: pointer;
             }
         }
@@ -64,7 +84,7 @@
 
     &_company, &_product, &_citizenship {
         @include flexbox(column, toRem(34));
-        margin-top: toRem(182);
+        // margin-top: toRem(182);
         font-family: $font-plus-jakarta;
         color: $white;
 
@@ -90,14 +110,14 @@
     }
 
     &_company {
-        margin-left: toRem(219);
+        margin-left: toRem(245);
         width: toRem(132);
         // border: 1px solid green;
 
     }
 
     &_product {
-        margin-left: toRem(240);
+        margin-left: toRem(266);
         width: toRem(220);
         // border: 1px solid green;
         flex-shrink: 0;
@@ -105,9 +125,9 @@
     }
 
     &_citizenship {
-        margin-left: toRem(127);
+        margin-left: toRem(135);
         // margin-right: toRem(308);
-        width: toRem(250);
+        // width: toRem(250);
         // border: 1px solid green;
         flex-shrink: 0;
     }
@@ -116,33 +136,16 @@
         position: absolute;
         right: toRem(160);
         bottom: toRem(189);
-        width: toRem(294);
+        width: toRem(394);
         height: toRem(89);
         // border: 1px solid yellow;
-
-        &_download {
-            @include flexbox(row, toRem(0));
-            justify-content: space-between;
-
-            &_google {
-                width: toRem(135);
-                height: toRem(40);
-                cursor: pointer;
-            }
-
-            &_apple {
-                width: toRem(119.7);
-                height: toRem(40);
-                cursor: pointer;
-            }
-        }
 
         &_links {
             margin-top: toRem(28);
             @include flexbox(row, toRem(0));
             justify-content: space-between;
             font-family: $font-roboto;
-            font-size: toRem(15);
+            font-size: toRem(18);
             font-weight: 400;
             line-height: toRem(21.1);
             color: $white;

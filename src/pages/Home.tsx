@@ -16,7 +16,7 @@ import useMenuStore from '../store/MenuStore';
 const cardData = [
   {
     title: "Our Commitment to your safety",
-    text: "With every safety feature and every standard in our Community Guidelines, we're committed to helping to create a safe environment for our users.",
+    text: "Your peace of mind is our priority. With every safety feature and community guideline, we’re creating a secure and worry-free ride experience.",
     image: driver,
     link1: "Read About Our Community Guidelines",
     link2: "See all safety features"
@@ -36,19 +36,19 @@ const infoCard = [
   {
     image: aboutUs,
     title: "About Us",
-    text: "Find out how we started, what drives us, and how we’re igniting opportunity.",
+    text: "Discover our journey, what drives us, and how we’re creating opportunities.",
   },
 
   {
     image: newsroom,
     title: "Newsroom",
-    text: "See announcements about our latest releases, initiatives, and partnerships.",
+    text: "Stay updated with our latest releases, initiatives, and partnerships",
   },
 
   {
     image: home,
-    title: "Global Citizenship",
-    text: "Read about our commitment to making a positive impact in the cities we serve.",
+    title: "Global Commitment",
+    text: "See how we're making a meaningful impact in the communities we serve.",
   }
 ]
 
@@ -83,7 +83,7 @@ const Home: React.FC = () => {
 
       <div className='homeCont_safety'>
         <div className='homeCont_safety_title'>
-          Focus on safety, Wherever you go
+          Safety First, Wherever You Go
         </div>
         <div className='homeCont_safety_layout'>
           {cardData.map((data)=> (<HomeCard data={data} key={data.title}/>))}

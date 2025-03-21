@@ -41,6 +41,11 @@ export default function Footer() {
                         Visit Help Center
                     </div>
                 </div>
+
+                <div className="footerCont_social_download">
+                    <img src={googlestore} alt="google" className="footerCont_social_download_google" />
+                    <img src={applestore} alt="apple" className="footerCont_social_download_apple"/>
+                </div>
             </div>
             <div className="footerCont_company">
                 <div className="footerCont_company_title">
@@ -50,11 +55,8 @@ export default function Footer() {
                     <div>About us</div>
                     <div>Our offerings</div>
                     <div>Newsroom</div>
-                    <div>Investors</div>
                     <div>Blog</div>
                     <div>Careers</div>
-                    <div>AI</div>
-                    <div>Gift Cards</div>
                 </div>
             </div>
             <div className="footerCont_product">
@@ -65,13 +67,12 @@ export default function Footer() {
                     <div>Ride</div>
                     <div>Drive</div>
                     <div>Eat</div>
-                    <div>RideTEGO for Business</div>
-                    <div>RideTEGO Freight</div>
+                    <div>Business</div>
                 </div>
             </div>
             <div className="footerCont_citizenship">
                 <div className="footerCont_citizenship_title">
-                    Global Citizenship
+                    Global Commitment
                 </div>
                 <div className="footerCont_citizenship_text">
                     <div>Safety</div>
@@ -81,10 +82,6 @@ export default function Footer() {
 
 
             <div className="footerCont_lastInfo">
-                <div className="footerCont_lastInfo_download">
-                    <img src={googlestore} alt="google" className="footerCont_lastInfo_download_google" />
-                    <img src={applestore} alt="apple" className="footerCont_lastInfo_download_apple"/>
-                </div>
                 <div className="footerCont_lastInfo_links">
                     <div>Privacy</div>
                     <div>Accessibility</div>

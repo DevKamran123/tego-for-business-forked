@@ -73,8 +73,8 @@ const HomeSidebar: React.FC = () => {
                 </Dropdown>
                 <div>Drive</div>
                 <div>Ride</div>
-                <div>Contact Us</div>
                 <div>About Us</div>
+                <div>Blog</div>
             </div>
   
             <div className="homeSidebar-content_auth">

@@ -40,7 +40,7 @@ export default function Header() {
                     <div className="headerCont_details_content">Ride</div>
                     <div className="headerCont_details_content">Drive</div>
                     <div className="headerCont_details_content">About us</div>
-                    <div className="headerCont_details_content">Contact us</div>
+                    <div className="headerCont_details_content">Blog</div>
                 </div>
                 <div className="headerCont_auth">
                     <div className="headerCont_auth_lang">
