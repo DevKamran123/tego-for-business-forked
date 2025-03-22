@@ -1,16 +1,19 @@
 import "../styles/components/Footer.scss";
-
 import facebook from "../assets/svgs/facebook.svg";
 import instagram from "../assets/svgs/instagram.svg";
 import linkedIn from "../assets/svgs/linkedIn.svg";
 import twitter from "../assets/svgs/twitter.svg";
-
 import globe from "../assets/images/globe.png";
 import location from "../assets/images/location.png";
 import googlestore from '../assets/images/googlestore.png';
 import applestore from '../assets/images/applestore.png';
-;
+import PrivacyTerms from "./PrivacyTerms";
+import { useMediaQuery } from "react-responsive";
+import FooterDownload from "./FooterDownload";
+
 export default function Footer() {
+    const isMobile = useMediaQuery({maxWidth: 865});
+
     return (
         <div className="footerCont">
             <div className="footerCont_social">
@@ -42,52 +45,48 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className="footerCont_social_download">
-                    <img src={googlestore} alt="google" className="footerCont_social_download_google" />
-                    <img src={applestore} alt="apple" className="footerCont_social_download_apple"/>
-                </div>
-            </div>
-            <div className="footerCont_company">
-                <div className="footerCont_company_title">
-                    Company
-                </div>
-                <div className="footerCont_company_text">
-                    <div>About us</div>
-                    <div>Our offerings</div>
-                    <div>Newsroom</div>
-                    <div>Blog</div>
-                    <div>Careers</div>
-                </div>
-            </div>
-            <div className="footerCont_product">
-                <div className="footerCont_product_title">
-                    Product
-                </div>
-                <div className="footerCont_product_text">
-                    <div>Ride</div>
-                    <div>Drive</div>
-                    <div>Eat</div>
-                    <div>Business</div>
-                </div>
-            </div>
-            <div className="footerCont_citizenship">
-                <div className="footerCont_citizenship_title">
-                    Global Commitment
-                </div>
-                <div className="footerCont_citizenship_text">
-                    <div>Safety</div>
-                    <div>Diversity and Inclusion</div>
-                </div>
+                {!isMobile && <FooterDownload />}
             </div>
 
-
-            <div className="footerCont_lastInfo">
-                <div className="footerCont_lastInfo_links">
-                    <div>Privacy</div>
-                    <div>Accessibility</div>
-                    <div>Terms</div>
+            <div className="layout-helper">
+                <div className="footerCont_company">
+                    <div className="footerCont_company_title">
+                        Company
+                    </div>
+                    <div className="footerCont_company_text">
+                        <div>About us</div>
+                        <div>Our offerings</div>
+                        <div>Newsroom</div>
+                        <div>Blog</div>
+                        <div>Careers</div>
+                    </div>
                 </div>
+                <div className="footerCont_product">
+                    <div className="footerCont_product_title">
+                        Product
+                    </div>
+                    <div className="footerCont_product_text">
+                        <div>Ride</div>
+                        <div>Drive</div>
+                        <div>Eat</div>
+                        <div>Business</div>
+                    </div>
+                </div>
+                <div className="footerCont_citizenship">
+                    <div className="footerCont_citizenship_title">
+                        Global Commitment
+                    </div>
+                    <div className="footerCont_citizenship_text">
+                        <div>Safety</div>
+                        <div>Diversity and Inclusion</div>
+                    </div>
+                </div>
+                
+
             </div>
+
+            {isMobile && <FooterDownload />}
+            <PrivacyTerms />
             <div className="footerCont_secBackground"></div>
         </div>
     )
