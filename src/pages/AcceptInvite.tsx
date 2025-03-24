@@ -8,11 +8,13 @@ import CreatePasswordText from "../components/CreatePasswordText";
 import { useMediaQuery } from "react-responsive";
 import { useFormik } from "formik";
 import * as yup from 'yup';
-import { acceptInvite } from "../lib/auth/manage-password";
+import { acceptInvite, verifyInvite } from "../lib/auth/manage-password";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 
 const createPasswordSchema = yup.object().shape({
+    firstName: yup.string(),
+    lastName: yup.string(),
     password: yup
         .string()
         .required('Password is required')
@@ -34,35 +36,56 @@ export default function AcceptInvite() {
     const navigate = useNavigate();
     const [params] = useState(() => new URLSearchParams(window.location.search));
     const email = params.get('email') || '';
-    const token = params.get('token') || '';
-    
-
-    console.log(email, token);
+    const otp = params.get('token') || '';
 
     const formik = useFormik({
         initialValues: {
             password: "",
             confirmPassword: "",
+            firstName: "",
+            lastName: ""
         },
         validationSchema: createPasswordSchema,
         onSubmit: async (values, {setSubmitting}) => {
             setSubmitting(true);
             console.log(values);
-            const response  = await acceptInvite({
-                email,
-                token,
-                newPassword: values.password,
-                type: "enterprise"
-            });
-            console.log(response);
-            if(response.success) {
+            try {
+                // First verify if the invite is valid
+                const verifyResponse = await verifyInvite({
+                    email,
+                    otp
+                });
+                
+                if (!verifyResponse.success) {
+                    toast.error(verifyResponse.message);
+                    setSubmitting(false);
+                    return;
+                }
+                
+                // If verification is successful, proceed with accepting the invite
+                const response = await acceptInvite({
+                    firstName: values.firstName,
+                    lastName: values.lastName,
+                    email,
+                    password: values.password,
+                });
+
+                console.log(response);
+                if(response.success) {
+                    setSubmitting(false);
+                    toast.success(response.message);
+                    navigate('/login');
+                } else {
+                    toast.error(response.message);
+                    setSubmitting(false);
+                }  
+
+
+            } catch (error) {
+                toast.error("An error occurred. Please try again later.");
                 setSubmitting(false);
-                toast.success(response.message);
-                navigate('/login');
-            } else {
-                toast.error(response.message);
-                setSubmitting(false);
-            }  
+                return;
+            }
         },
     });
 
@@ -92,6 +115,12 @@ export default function AcceptInvite() {
 
                     <div className="createPassword_main_content_register">
                         <form>
+                            <label htmlFor="firstName">First Name</label>
+                            <input type="firstName" id="firstName" name="firstName" className="input_text" placeholder="Enter your first name" value={formik.values.firstName} onChange={formik.handleChange}/>
+
+                            <label htmlFor="lastName">Last Name</label>
+                            <input type="lastName" id="lastName" name="lastName" className="input_text" placeholder="Enter your last name" value={formik.values.lastName} onChange={formik.handleChange}/>
+
                             <label htmlFor="password">Your password</label>
                             <div className="createPassword_main_content_register_field">
                                 <input type={showPassword} id="password" name="password" className="input_text" value={formik.values.password} onChange={formik.handleChange} placeholder="Write unique password" />
