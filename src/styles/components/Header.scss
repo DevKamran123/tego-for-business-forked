@@ -127,8 +127,9 @@
             @include flexbox("row", 0px);
             align-items: center;
             justify-content: center;
-            width: toRem(83.27);
-            height: toRem(31.22);
+            // width: toRem(83.27);
+            // height: toRem(31.22);
+            padding: toRem(8) toRem(9);
             border-radius: toRem(3.47);       
             color: $black;
             background-color: $white;  
