@@ -7,6 +7,7 @@ import globe from "../assets/images/globe.png";
 import "../styles/components/HomeSidebar.scss";
 import "../styles/components/MobileSidebar.scss";
 import Cookies from "js-cookie";
+import { useMediaQuery } from "react-responsive";
 
 // Define proper types for menu items
 type MenuItem = Required<MenuProps>['items'][number];
@@ -36,6 +37,7 @@ const HomeSidebar: React.FC = () => {
   const [selectedKey, setSelectedKey] = useState<string>('1');
   const { setIsOpen: showSidebar } = useMenuStore((state) => state as MenuState);
   const session = Cookies.get('session');
+  const isMobile = useMediaQuery({maxWidth: 865});
 
   // Type the menu click handler properly
   const handleMenuClick = (key: string): void => {
@@ -50,6 +52,7 @@ const HomeSidebar: React.FC = () => {
 
   const selectedItem: any = items.find(item => item?.key === selectedKey);
   const selectedLabel = selectedItem?.label;
+  if (!isMobile) showSidebar(false);
 
   return (
     <div className={`mobileSidebar ${isOpen ? "mobileSidebar_active" : ""}`}>
