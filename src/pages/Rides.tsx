@@ -23,13 +23,13 @@ export default function Rides() {
                         className={activeTab==="ride-history" ? "rides_tabs_active": ""}
                         onClick={()=>setActiveTab("ride-history")}
                     >
-                        Ride History
+                        Trip History
                     </div>
                     <div 
                         className={activeTab==="planned-rides" ? "rides_tabs_active": ""}
                         onClick={()=>setActiveTab("planned-rides")}
                     >
-                        Planned Rides
+                        Scheduled Rides
                     </div>
                 </div>
 

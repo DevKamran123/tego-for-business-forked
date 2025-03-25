@@ -6,6 +6,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import DashboardLayout from "../components/layouts/DashboardLayout";
 import PageNotFound from "../components/PageNotFound";
 import Loader from "../components/Loader";
+import AcceptInvite from "../pages/AcceptInvite";
 
 // Lazy load all components
 const Home = lazy(() => import("../pages/Home"));
@@ -35,6 +36,7 @@ const AppRoutes = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/confirm-signup" element={<ConfirmSignup />} />
             <Route path="/create-password" element={<CreatePassword />} />
+            <Route path="/accept-invite" element={<AcceptInvite />} />
             <Route path="logout" element={<LogoutHandler />} />
             <Route
               path="/dashboard/*"
