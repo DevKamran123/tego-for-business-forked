@@ -17,10 +17,10 @@ export default function AuthHead({text, subText}: AuthHeadProps) {
             <div className="authHead_text">
                 {text}
             </div>
-            <div className="authHead_subText">
+            {subText && <div className="authHead_subText">
                 <img src={alert} alt="" />
                 <div>{subText}</div>
-            </div>
+            </div>}
         </div>
     )
 }

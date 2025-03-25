@@ -106,20 +106,24 @@ export default function AcceptInvite() {
                 <div className="createPassword_side_bg"></div>
             </div>
             <div className="createPassword_main">
-                <AuthHead text="Create a password" subText="We need your email for security reasons and to keep technical comminication."/>
+                <AuthHead text="Welcome to RideTego"/>
 
                 <div className="createPassword_main_content">
                     <div className="createPassword_main_content_title">
-                        Create a password
+                        Create account
                     </div>
 
                     <div className="createPassword_main_content_register">
                         <form>
                             <label htmlFor="firstName">First Name</label>
-                            <input type="firstName" id="firstName" name="firstName" className="input_text" placeholder="Enter your first name" value={formik.values.firstName} onChange={formik.handleChange}/>
+                            <div className="first-and-last">
+                                <input type="firstName" id="firstName" name="firstName" className="input_text" placeholder="Enter your first name" value={formik.values.firstName} onChange={formik.handleChange}/>
+                            </div>
 
                             <label htmlFor="lastName">Last Name</label>
-                            <input type="lastName" id="lastName" name="lastName" className="input_text" placeholder="Enter your last name" value={formik.values.lastName} onChange={formik.handleChange}/>
+                            <div className="first-and-last">
+                                <input type="lastName" id="lastName" name="lastName" className="input_text" placeholder="Enter your last name" value={formik.values.lastName} onChange={formik.handleChange}/>
+                            </div>
 
                             <label htmlFor="password">Your password</label>
                             <div className="createPassword_main_content_register_field">
@@ -131,10 +135,6 @@ export default function AcceptInvite() {
                                 )}
                             </div>
                             {formik.errors.password ? <div className="input-error">{formik.errors.password}</div> : null}
-
-                            {/* <div className="dashedlines">
-                                <img src={lines} alt="line deco" />
-                            </div> */}
 
                             <div className="dashedlines">
                                 {formik.values.password && (
@@ -161,7 +161,6 @@ export default function AcceptInvite() {
                                     </>
                                 )}
                             </div>
-
 
                             <label htmlFor="confirmPassword">Confirm password</label>
                             <div className="createPassword_main_content_register_field">
