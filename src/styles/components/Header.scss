@@ -135,11 +135,11 @@
             background-color: $white;  
             cursor: pointer;
 
-            &:hover {
-                height: toRem(32.22);
-                font-size: toRem(15);
-                transition: all 0.4s ease-in;
-            }
+            // &:hover {
+            //     height: toRem(32.22);
+            //     font-size: toRem(15);
+            //     transition: all 0.4s ease-in;
+            // }
         }
     }
 }
