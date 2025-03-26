@@ -82,7 +82,8 @@ export default function AcceptInvite() {
                 }  
 
 
-            } catch (error) {
+            } catch (_) {
+                console.error(_);
                 toast.error("An error occurred. Please try again later.");
                 setSubmitting(false);
                 return;
