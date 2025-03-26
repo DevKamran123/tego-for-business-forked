@@ -32,6 +32,7 @@ const createPasswordSchema = yup.object().shape({
 
 export default function AcceptInvite() {
     const [showPassword, setShowPassword] = useState("password");
+    const [showConfirmPassword, setShowConfirmPassword] = useState("password");
     const isMobile = useMediaQuery({ maxWidth: 865 });
     const navigate = useNavigate();
     const [params] = useState(() => new URLSearchParams(window.location.search));
@@ -164,11 +165,11 @@ export default function AcceptInvite() {
 
                             <label htmlFor="confirmPassword">Confirm password</label>
                             <div className="createPassword_main_content_register_field">
-                                <input type={showPassword} id="confirmPassword" name="confirmPassword" className="input_text" value={formik.values.confirmPassword} onChange={formik.handleChange} placeholder="Rewrite unique password" />
-                                {showPassword === 'password' ? (
-                                    <FaEye onClick={() => setShowPassword('text')} className='eye'/>
+                                <input type={showConfirmPassword} id="confirmPassword" name="confirmPassword" className="input_text" value={formik.values.confirmPassword} onChange={formik.handleChange} placeholder="Rewrite unique password" />
+                                {showConfirmPassword === 'password' ? (
+                                    <FaEye onClick={() => setShowConfirmPassword('text')} className='eye'/>
                                     ) : (
-                                    <FaEyeSlash onClick={() => setShowPassword('password')} className='eye'/>
+                                    <FaEyeSlash onClick={() => setShowConfirmPassword('password')} className='eye'/>
                                 )}
                             </div>
                             {formik.errors.confirmPassword ? <div className="input-error">{formik.errors.confirmPassword}</div> : null}
