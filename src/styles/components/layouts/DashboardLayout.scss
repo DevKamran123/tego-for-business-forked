@@ -132,6 +132,14 @@
           }
         }
 
+        .sidebar-bottom-section {
+          margin-top: auto;
+          padding: 20px 0;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
+
         .logout-wrapper {
           padding-inline: toRem(20);
           cursor: pointer;

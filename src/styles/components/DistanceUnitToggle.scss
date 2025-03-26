@@ -1,0 +1,32 @@
+.distance-unit-toggle {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 4px;
+  gap: 8px;
+  
+  .unit-icon {
+    color: white;
+    font-size: 18px;
+  }
+  
+  .unit-label {
+    color: white;
+    font-size: 12px;
+    margin: 0 2px;
+  }
+
+  &.light-theme {
+    .unit-icon, .unit-label {
+      color: var(--text-color);
+    }
+  }
+  
+  .ant-switch {
+    background-color: rgba(255, 255, 255, 0.3);
+    
+    &.ant-switch-checked {
+      background-color: var(--primary-color);
+    }
+  }
+}
