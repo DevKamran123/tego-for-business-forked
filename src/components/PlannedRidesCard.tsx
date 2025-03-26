@@ -3,6 +3,7 @@ import toFrom from "../assets/images/toFrom.png";
 import { DeliveryDetails } from "../data/dashboard";
 import useRideStore from "../store/RideStore";
 import { useNavigate } from "react-router-dom";
+import { useUnitContext } from "../useUnitContext";
 
 interface PlannedRidesCardProps {
     deliveryDetails: DeliveryDetails
@@ -11,6 +12,7 @@ interface PlannedRidesCardProps {
 export default function PlannedRidesCard({deliveryDetails}: PlannedRidesCardProps) {
     const setCurrentId = useRideStore((state)=>state.setCurrentId);
     const navigate = useNavigate();
+    const { formatDistance } = useUnitContext();
 
     const {
         pickupAddress,
@@ -87,7 +89,7 @@ export default function PlannedRidesCard({deliveryDetails}: PlannedRidesCardProp
                             Distance
                         </div>
                         <div className="historycard_layout_other_destination_main">
-                            {distanceInKm}km
+                            {formatDistance(distanceInKm)}
                         </div>
                     </div>
                 </div>
