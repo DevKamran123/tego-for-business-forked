@@ -34,9 +34,15 @@ export type ResetPasswordPayload = {
   type: 'user' | 'business';
 }
 
-export type AcceptInvitePayload = {
+export type VerifyInvitePayload = {
   email: string;
-  newPassword: string;
-  token: string;
-  type: 'admin' | 'enterprise' | 'enterprise-admin' | 'superadmin';
+  otp: string;
+}
+
+export type AcceptInvitePayload = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  accountType?: 'admin' | 'enterprise' | 'enterprise-admin' | 'superadmin';
 }

@@ -5,11 +5,13 @@ import globe from "../assets/images/globe.png";
 import rideTegoLogo from "../assets/images/rideTegoLogo.png";
 import menu from "../assets/icons/menu.png";
 import useMenuStore from "../store/MenuStore";
+import Cookies from "js-cookie";
 
 export default function Header() {
     const navigate = useNavigate();
     const toggleMenu = useMenuStore((state)=>state.toggleMenu);
     const isOpen = useMenuStore((state)=>state.isOpen);
+    const session = Cookies.get('session');
 
     return (
         <>
@@ -49,8 +51,10 @@ export default function Header() {
                         </div>
                         <div className="headerCont_auth_lang_symbol">EN</div>
                     </div>
-                    <div className="headerCont_auth_login" onClick={() => navigate("/login")}>Log In</div>
-                    <div className="headerCont_auth_signup" onClick={()=>navigate("/signup")}>Sign up</div>
+                    {!session && <div className="headerCont_auth_login" onClick={() => navigate("/login")}>Log In</div>}
+                    {!session && <div className="headerCont_auth_signup" onClick={()=>navigate("/signup")}>Sign up</div>}
+
+                    {session && <div className="headerCont_auth_signup" onClick={()=>navigate("/dashboard")}>Dashbaord</div>}
                 </div>
             </div>
         </>
