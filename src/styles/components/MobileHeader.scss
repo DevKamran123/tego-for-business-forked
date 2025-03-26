@@ -111,6 +111,8 @@
         justify-self: end;
         margin-left: toRem(15);
 
+        cursor: pointer;
+
         @include media("<=phone-tab") {
             font-size: toRem(21);
             margin-left: 0px;

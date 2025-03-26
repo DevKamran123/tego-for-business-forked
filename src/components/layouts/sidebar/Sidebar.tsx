@@ -6,11 +6,12 @@ import SidebarItems from "./SidebarItems";
 import { DASHBOARD_LINKS } from "../../../routes/links";
 import Stack from "../../stack/Stack";
 import { MdLogout } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../../styles/components/layouts/DashboardLayout.scss"
 
 const Sidebar: React.FC = () => {
   const { sideBarOpen, setSideBarOpen } = useAppStore((state) => state);
+  const navigate = useNavigate();
   // const [localSideBarOpen, setLocalSideBarOpen] = React.useState(sideBarOpen);
   return (
     <div
@@ -29,7 +30,7 @@ const Sidebar: React.FC = () => {
       <Stack direction="column" gap={60}>
         <div className="sidebar_header">
           <div className="logo_wrapper">
-            <div className="logo_icon_wrapper">
+            <div className="logo_icon_wrapper" onClick={() => navigate("/")}>
               <img src="favicon.svg" className="logo_icon" alt="logo" />
             </div>
             <h1>RideTego</h1>
