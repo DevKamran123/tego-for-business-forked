@@ -6,19 +6,19 @@ export const totalCardItems = [
     {
         image: ride,
         text: "TOTAL RIDES COMPLETED",
-        total: 14
+        total: 0
     },
 
     {
         image: coupon,
         text: "TOTAL USED COUPONS",
-        total: 4
+        total: 0
     },
 
     {
         image: bag,
         text: "TOTAL REFERRAL POINTS",
-        total: 120
+        total: 0
     },
 ]
 

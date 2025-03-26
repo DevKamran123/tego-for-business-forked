@@ -54,7 +54,7 @@ export default function Header() {
                     {!session && <div className="headerCont_auth_login" onClick={() => navigate("/login")}>Log In</div>}
                     {!session && <div className="headerCont_auth_signup" onClick={()=>navigate("/signup")}>Sign up</div>}
 
-                    {session && <div className="headerCont_auth_signup" onClick={()=>navigate("/dashboard")}>Dashbaord</div>}
+                    {session && <div className="headerCont_auth_signup" onClick={()=>navigate("/dashboard")}>Dashboard</div>}
                 </div>
             </div>
         </>
