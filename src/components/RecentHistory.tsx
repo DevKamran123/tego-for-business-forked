@@ -2,6 +2,7 @@ import "../styles/components/HistoryCard.scss";
 import toFrom from "../assets/images/toFrom.png";
 import { DeliveryDetails } from "../data/dashboard";
 import useRideStore from "../store/RideStore";
+import { useUnitContext } from "../useUnitContext";
 
 interface RecentHistoryProps {
     deliveryDetails: DeliveryDetails
@@ -9,6 +10,7 @@ interface RecentHistoryProps {
 
 export default function RecentHistory({deliveryDetails}: RecentHistoryProps) {
     const activeTab = useRideStore((state)=>state.activeTab);
+    const { formatDistance } = useUnitContext();
 
     const {
         pickupAddress,
@@ -82,7 +84,7 @@ export default function RecentHistory({deliveryDetails}: RecentHistoryProps) {
                             Distance
                         </div>
                         <div className="historycard_layout_other_destination_main">
-                            {distanceInKm}km
+                            {formatDistance(distanceInKm)}
                         </div>
                     </div>
                 </div>

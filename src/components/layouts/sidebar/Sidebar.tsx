@@ -8,6 +8,7 @@ import Stack from "../../stack/Stack";
 import { MdLogout } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import "../../../styles/components/layouts/DashboardLayout.scss"
+import DistanceUnitToggle from "../../units/DistanceUnitToggle";
 
 const Sidebar: React.FC = () => {
   const { sideBarOpen, setSideBarOpen } = useAppStore((state) => state);
@@ -62,6 +63,10 @@ const Sidebar: React.FC = () => {
           </SidenavProvider>
         </div>
       </Stack>
+      <div className="sidebar-bottom-section">
+        <DistanceUnitToggle />
+        {/* ...existing logout button... */}
+      </div>
       <Link to={"/logout"}>
         <Stack gap={8} classnames="logout-wrapper">
           <MdLogout color="#AF2E2F" size={24} />
