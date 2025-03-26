@@ -33,3 +33,10 @@ export type ResetPasswordPayload = {
   token: string;
   type: 'user' | 'business';
 }
+
+export type AcceptInvitePayload = {
+  email: string;
+  newPassword: string;
+  token: string;
+  type: 'admin' | 'enterprise' | 'enterprise-admin' | 'superadmin';
+}

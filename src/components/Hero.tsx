@@ -17,7 +17,7 @@ const Hero: React.FC = () => {
             Welcome to RideTEGO
           </div>
           <div className='heroCont_content_layout_ad'>
-            We take you there. For less
+            We take you there for less
           </div>
           <PickupForm />
         </div>

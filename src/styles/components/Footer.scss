@@ -5,28 +5,49 @@
     height: toRem(800);
     width: 100vw;
     position: relative;
-
     background-image: url("/src/assets/images/footerBackground.png");
     background-size: cover;
     background-repeat: no-repeat;
     object-fit: cover;
+    padding-top: toRem(182);
+
+    @include media("<=tablet") {
+        @include flex-center();
+        flex-direction: column;
+        height: auto;
+        background-image: url("/src/assets/images/mobileFooterbg.png");
+        object-fit: contain;
+        padding: toRem(150) 0px;
+    }
 
     &_social {
-        margin-left: toRem(152);
-        margin-top: toRem(373);
+        margin-left: toRem(162);
         width: toRem(212);
         flex-shrink: 0;
         color: $white;
         font-family: $font-roboto;
 
+        @include media("<=tablet") {
+            margin-left: 0px;
+        }
+    
         &_layout {
             &_icons {
-                @include flexbox(row, toRem(24));
+                @include flexbox(row, toRem(18));
+
+                @include media("<=tablet") {
+                    justify-content: center;
+                }
 
                 img {
-                    width: toRem(38);
-                    height: toRem(38);
+                    width: toRem(28);
+                    height: toRem(28);
                     cursor: pointer;
+
+                    @include media("<=tablet") {
+                        width: toRem(40);
+                        height: toRem(40);
+                    }
                 }
             }
 
@@ -34,8 +55,14 @@
                 @include flexbox(row, toRem(0));
                 justify-content: space-between;
                 align-items: center;
-                margin-top: toRem(27);
+                margin-top: toRem(37);
                 font-size: toRem(19);
+
+                @include media("<=tablet") {
+                    text-align: center;
+                    justify-content: center;
+                    gap: toRem(30);
+                }
 
                 &_lang, &_place {
                     @include flexbox(row, toRem(5));
@@ -47,7 +74,6 @@
                     }
                 }
 
-
             }
 
             &_help {
@@ -56,24 +82,69 @@
                 font-weight: 400;
                 line-height: toRem(30.95);
                 text-align: left;
-                margin-top: toRem(33);
+                margin-top: toRem(43);
                 cursor: pointer;
+
+                @include media("<=tablet") {
+                    text-align: center;
+                    margin-top: toRem(30);
+                }
+            }
+        }
+
+        &_download {
+            @include flexbox(row, toRem(50));
+            justify-content: space-between;
+            margin-top: toRem(180);
+
+            @include media("<=tablet") {
+                justify-content: center;
+                margin-top: toRem(60);
+                gap: toRem(30);
+            }
+
+            &_google {
+                width: toRem(135);
+                height: toRem(40);
+                cursor: pointer;
+
+                @include media("<=tablet") {
+                    width: toRem(150);
+                    height: toRem(52);
+                }
+            }
+
+            &_apple {
+                width: toRem(119.7);
+                height: toRem(40);
+                cursor: pointer;
+
+                @include media("<=tablet") {
+                    width: toRem(140);
+                    height: toRem(52);
+                }
             }
         }
     }
 
     &_company, &_product, &_citizenship {
         @include flexbox(column, toRem(34));
-        margin-top: toRem(182);
+        // margin-top: toRem(182);
         font-family: $font-plus-jakarta;
         color: $white;
-
+        
+        @include media("<=tablet") {
+            margin-top: toRem(72);
+        }
 
         &_title {
             font-size: toRem(27);
             font-weight: 500;
-            // line-height: toRem(37.8);
             flex-shrink: 0;     
+            
+            @include media("<=phone-tab") {
+                font-size: toRem(20);
+            }
         }
 
         &_text {
@@ -81,6 +152,15 @@
             font-size: toRem(19);
             font-weight: 400;
             line-height: toRem(30.95);
+
+            @include media("<=tablet") {
+                font-size: toRem(21);
+            }
+
+            @include media("<=phone-tab") {
+                font-size: toRem(17);
+                line-height: auto;
+            }
 
             div {
                 cursor: pointer;
@@ -90,51 +170,53 @@
     }
 
     &_company {
-        margin-left: toRem(219);
+        margin-left: toRem(245);
         width: toRem(132);
-        // border: 1px solid green;
-
+        @include media("<=tablet") {
+            margin-left: 0px;
+            width: auto;
+        }
     }
 
     &_product {
-        margin-left: toRem(240);
+        margin-left: toRem(266);
         width: toRem(220);
-        // border: 1px solid green;
         flex-shrink: 0;
 
+        @include media("<=tablet") {
+            margin-left: 0px;
+            width: auto;
+        }
+
+        @include media("<=phone-tab") {
+            margin-left: toRem(35);
+        }
     }
 
     &_citizenship {
-        margin-left: toRem(127);
-        // margin-right: toRem(308);
-        width: toRem(250);
-        // border: 1px solid green;
+        margin-left: toRem(135);
         flex-shrink: 0;
+
+        @include media("<=tablet") {
+            margin-left: 0px;
+            width: auto;
+        }
+
+        @include media("<=phone-tab") {
+            margin-left: toRem(10);
+        }
     }
 
     &_lastInfo {
-        position: absolute;
-        right: toRem(160);
-        bottom: toRem(189);
-        width: toRem(294);
-        height: toRem(89);
-        // border: 1px solid yellow;
+        width: toRem(290);
+        margin-top: toRem(38);
 
-        &_download {
-            @include flexbox(row, toRem(0));
-            justify-content: space-between;
-
-            &_google {
-                width: toRem(135);
-                height: toRem(40);
-                cursor: pointer;
-            }
-
-            &_apple {
-                width: toRem(119.7);
-                height: toRem(40);
-                cursor: pointer;
-            }
+        @include media(">=tablet") {
+            position: absolute;
+            right: toRem(160);
+            bottom: toRem(189);
+            width: toRem(394);
+            height: toRem(89);
         }
 
         &_links {
@@ -142,17 +224,20 @@
             @include flexbox(row, toRem(0));
             justify-content: space-between;
             font-family: $font-roboto;
-            font-size: toRem(15);
+            font-size: toRem(17);
             font-weight: 400;
             line-height: toRem(21.1);
             color: $white;
+
+            @include media("<=tablet") {
+                font-size: toRem(17);
+            }
 
             div {
                 cursor: pointer;
             }
         }
     }
-
 
     &_secBackground {
         position: absolute;
@@ -163,5 +248,30 @@
         background-repeat: no-repeat;
         width: 100%;
         height: toRem(120);
+
+        @include media("<=tablet") {
+            background-image: url("/src/assets/images/mobileSecBg.png");
+
+        }
+
+        @include media("<=phone-tab") {
+            height: toRem(85);
+        }
+    }
+
+    .layout-helper {
+        @include flexbox(row, toRem(0));
+
+        @include media("<=tablet") {
+            justify-content: space-between;
+            width: 80vw;
+            padding: 0px toRem(0) 0px toRem(80);
+            position: relative;
+        }
+
+        @include media("<=phone-tab") {
+            width: 100vw;
+            padding: 0px toRem(20) 0px toRem(50);
+        }
     }
 }

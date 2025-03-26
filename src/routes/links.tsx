@@ -27,7 +27,7 @@ export const DASHBOARD_LINKS: LinkItem[] = [
     ICON: () => <img src={DashboardIcon} alt="" />,
   },
   {
-    TITLE: "Rides",
+    TITLE: "Scheduled Rides",
     LINK: "/dashboard/rides",
     SLUG: "rides",
     ISDASHBOARD: true,
