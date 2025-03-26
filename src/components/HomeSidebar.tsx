@@ -52,10 +52,9 @@ const HomeSidebar: React.FC = () => {
 
   const selectedItem: any = items.find(item => item?.key === selectedKey);
   const selectedLabel = selectedItem?.label;
-  if (!isMobile) showSidebar(false);
 
   return (
-    <div className={`mobileSidebar ${isOpen ? "mobileSidebar_active" : ""}`}>
+    <div className={`mobileSidebar ${isOpen && isMobile ? "mobileSidebar_active" : ""}`}>
 
       <div className="homeSidebar">
           <div className="homeSidebar-content">

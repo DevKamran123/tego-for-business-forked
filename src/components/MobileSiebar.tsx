@@ -8,8 +8,6 @@ const MobileSidebar: React.FC = () => {
   const isOpen = useMenuStore((state) => state.isOpen);
   const isMobile = useMediaQuery({maxWidth: 865});
 
-  // if (!isMobile) showSidebar(false);
-
   return (
     <div className={`mobileSidebar ${isOpen && isMobile ? "mobileSidebar_active" : ""}`}>
       <SidebarContent />
