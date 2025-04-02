@@ -179,9 +179,9 @@ export default function AcceptInvite() {
 
                             <div className="createPassword_main_content_register_actions">
                                 <Link to={"/signup"}>
-                                    <AuthButton text="Back to sign up" color="primary"/>
+                                    <AuthButton disabled={formik.isSubmitting} text="Back to sign up" color="primary"/>
                                 </Link>
-                                <AuthButton disabled={!formik.isValid || formik.isSubmitting} onClick={formik.submitForm} text="Next" color="secondary"/>
+                                <AuthButton disabled={!formik.isValid || formik.isSubmitting}  isLoading={formik.isSubmitting} onClick={formik.submitForm} text="Create account" color="secondary"/>
                             </div>
                         </form>
                     </div>
