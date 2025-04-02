@@ -64,7 +64,7 @@ const Sidebar: React.FC = () => {
         </div>
       </Stack>
       <div className="sidebar-bottom-section">
-        <DistanceUnitToggle />
+        <DistanceUnitToggle sideBarOpen={sideBarOpen}/>
         {/* ...existing logout button... */}
       </div>
       <Link to={"/logout"}>

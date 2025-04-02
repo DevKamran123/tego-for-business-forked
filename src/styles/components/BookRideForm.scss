@@ -1,7 +1,8 @@
 @use "../main.scss" as *;
 
 .bookrideformCont {
-    width: toRem(559);
+    width: 100%;
+    border-radius: toRem(20);
     height: toRem(537);
     background-image: url("/src/assets/images/brBg.png");
     background-size: cover;

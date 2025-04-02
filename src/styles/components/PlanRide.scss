@@ -1,8 +1,8 @@
 @use "/src/styles/main.scss" as *;
 
 .planRide {
-    @include flex(start, end, toRem(22));
-    width: toRem(870);
+    @include flex(space-between, end, toRem(22));
+    width: 100%;
     height: toRem(279);
     background-color: $white;
     border-radius: toRem(20);
@@ -117,10 +117,6 @@
                 letter-spacing: 0px;               
             }
         }
-
-        // &_bottom {
-            
-        // }
 
         &_bottom {
             // Style the overall date picker wrapper
@@ -269,14 +265,16 @@
     }
 
     &_place {
-        // width: 100%;
         height: toRem(203.03);
         border-radius: toRem(20.49);
         display: grid;
-        // grid-template-columns: toRem(277) toRem(277);
+  
         grid-template-columns: auto auto;
         column-gap: toRem(16);
         row-gap: toRem(17);
+
+        width: auto;
+        max-width: toRem(620);
 
         @include media("<=tablet") {
           grid-template-columns: none;
@@ -286,8 +284,6 @@
           width: 100%;
           margin-top: toRem(70);
           gap: toRem(50);
-
-          // border: 1px solid green;
         }
 
         @include media("<=tablet") {
@@ -381,7 +377,6 @@
         font-style: normal;
         font-weight: 400;
         line-height: normal;
-        // margin-top: 5px !important;
 
         @include media("<=tablet") {
           font-size: toRem(27);

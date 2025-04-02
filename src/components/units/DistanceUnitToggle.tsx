@@ -6,9 +6,10 @@ import '../../styles/components/DistanceUnitToggle.scss';
 
 interface DistanceUnitToggleProps {
   className?: string;
+  sideBarOpen: boolean;
 }
 
-const DistanceUnitToggle: React.FC<DistanceUnitToggleProps> = ({ className = '' }) => {
+const DistanceUnitToggle: React.FC<DistanceUnitToggleProps> = ({ className = '', sideBarOpen }) => {
   const { distanceUnit, setDistanceUnit, isLoading } = useUnitContext();
 
   const handleToggleChange = (checked: boolean) => {
@@ -23,7 +24,7 @@ const DistanceUnitToggle: React.FC<DistanceUnitToggleProps> = ({ className = '' 
     );
   }
 
-  return (
+  if (sideBarOpen) return (
     <div className={`distance-unit-toggle ${className}`}>
       <MdSpeed className="unit-icon" />
       <span className="unit-label">KM</span>
@@ -34,6 +35,18 @@ const DistanceUnitToggle: React.FC<DistanceUnitToggleProps> = ({ className = '' 
       />
       <span className="unit-label">MI</span>
     </div>
+
+  );
+
+  else return (
+    <div className={`distance-unit-toggle ${className}`}>
+      <Switch 
+        size="small" 
+        checked={distanceUnit === 'mi'} 
+        onChange={handleToggleChange} 
+      />
+    </div>
+
   );
 };
 
