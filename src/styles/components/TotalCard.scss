@@ -3,7 +3,7 @@
 .totalCard {
     @include flex-center();
     flex-direction: column;
-    width: toRem(265);
+    width: toRem(380);
     height: toRem(169);
     background-color: $white;
     border-radius: toRem(20);

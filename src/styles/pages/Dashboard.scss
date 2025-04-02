@@ -22,7 +22,7 @@
 
     &_actions {
         display: grid;
-        grid-template-columns: toRem(559) toRem(870);
+        grid-template-columns: 38% 59%;
         column-gap: toRem(40);
         margin-top: toRem(20);
         width: 100%;
@@ -36,6 +36,7 @@
         }
 
         &_location {
+            width: 100%;
             @include media("<=tablet") {
                 display: none
             }
@@ -46,6 +47,7 @@
             @include flex_col(toRem(40));
             justify-content: start;
             align-items: start;
+            width: 100%;
 
             @include media("<=tablet") {
                 @include flex-center();
@@ -54,6 +56,7 @@
 
             &_total {
                 @include flex(space-between, center, toRem(37));
+                width: 100%;
 
                 @include media("<=tablet") {
                     @include flex-center();
@@ -72,6 +75,7 @@
             }
 
             &_plan {
+                width: 100%;
 
                 @include media("<=tablet") {
                     margin-top: toRem(40);
@@ -107,6 +111,7 @@
 
                 &_layout {
                     margin-top: toRem(13);
+                    width: 100%;
 
                     @include media("<=tablet") {
                         @include flex-center();

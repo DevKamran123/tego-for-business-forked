@@ -1,27 +1,25 @@
 // import { useNavigate } from "react-router-dom";
+import { Spin } from "antd";
 import "../styles/components/AuthButton.scss";
+import { LoadingOutlined } from '@ant-design/icons';
 
 interface AuthButtonProps {
     text: string;
     color: string;
     action?: string;
+    isLoading?: boolean;
+    disabled?: boolean;
 }
 
-export default function AuthButton({text, color, ...props}: AuthButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>) {
-    // const navigate = useNavigate();
-
-    // function goToRoute(e: React.MouseEvent<HTMLButtonElement>, action: string) {
-    //     e.preventDefault();
-    //     navigate(action, { replace: true });
-    // }
+export default function AuthButton({text, color, isLoading, disabled, ...props}: AuthButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>) {
 
     return (
         <button 
             className={`authbutton ${color==="primary"? "authprimary": "authsecondary"}`}
-            // onClick={()=>navigate(action)}
+            disabled={disabled}
             {...props}
         >
-            {text}
+            {isLoading? <Spin indicator={<LoadingOutlined style={{ color: color==="primary" ? 'grey' : 'white' }} spin />} />: text}
         </button>
     )
 }

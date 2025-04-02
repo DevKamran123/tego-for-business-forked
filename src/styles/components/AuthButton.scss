@@ -24,6 +24,12 @@
 
 }
 
+.authbutton, .authprimary {
+    &:disabled {
+        cursor: not-allowed;
+    }
+}
+
 .authprimary {
     border: toRem(1) solid $light-gray;
     color: $secondary-blue;
