@@ -32,7 +32,7 @@ export async function resetPassword(payload: ResetPasswordPayload): Promise<UIRe
 
 export async function verifyInvite(payload: VerifyInvitePayload): Promise<UIResponse> {
   try {
-    const response = await axios.post(`${AUTH_URL}/verify-invitation`, (payload));
+    const response = await axios.post(`${AUTH_URL}/verifyOtp`, (payload));
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error) && error.response) {

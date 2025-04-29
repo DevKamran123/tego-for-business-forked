@@ -37,6 +37,7 @@ export type ResetPasswordPayload = {
 export type VerifyInvitePayload = {
   email: string;
   otp: string;
+  otpType: string; //'verification' | 'recovery'
 }
 
 export type AcceptInvitePayload = {

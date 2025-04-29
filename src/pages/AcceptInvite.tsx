@@ -62,7 +62,7 @@ export default function AcceptInvite() {
         setSubmitting(true);
         try {
             // First verify if the invite is valid
-            const verifyResponse = await verifyInvite({ email, otp });
+            const verifyResponse = await verifyInvite({ email, otp, otpType: 'registration' });
             
             if (!verifyResponse.success) {
                 toast.error(verifyResponse.message);
