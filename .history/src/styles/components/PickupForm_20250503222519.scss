@@ -1,0 +1,194 @@
+@use "../main.scss" as *;
+
+.pickupformCont {
+  // margin-top: toRem(42);
+  // margin-bottom: toRem(150);
+  // width: toRem(996);
+  // height: toRem(577);
+  width: 100%;
+  max-width: toRem(996);
+  margin: 0 auto;
+  padding: toRem(12) toRem(66);
+  background-color: transparent;
+  border: toRem(1) solid red;
+  border-radius: toRem(20);
+  font-family: $font-plus-jakarta;
+  color: $white;
+
+  @include media("<=tablet") {
+    width: toRem(748);
+    height: toem(566);
+  }
+
+  @include media("<=phone-tab") {
+    width: toRem(510);
+  }
+
+  form {
+    @include flexbox(column, toRem(20));
+    align-items: center;
+    // margin: toRem(90) toRem(44) toRem(73) toRem(47);
+    input,
+    // button {
+    //   width: toRem(858);
+    //   height: toRem(69);
+    //   border-radius: toRem(20);
+    //   outline: none;
+    //   border: none;
+
+    //   @include media("<=tablet") {
+    //     width: toRem(533.81);
+    //   }
+
+    //   @include media("<=phone-tab") {
+    //     width: toRem(433.81);
+    //   }
+    // }
+
+    input {
+        width: 100%;
+        border: none;
+        border-radius: toRem(20);
+        outline: none;
+      //   border: toRem(1) solid rgba(43, 43, 43, 0.14);
+      background-color: #f4f4f4;
+      padding: toRem(50) toRem(35);
+      font-size: toRem(20);
+      font-weight: 400;
+      line-height: toRem(25.2);
+      color: $primary-color;
+
+      &::placeholder {
+        color: $primary-color;
+      }
+    }
+
+    // Date-time container styling
+    .date-time-container {
+      display: flex;
+      width: 100%;
+      gap: toRem(20);
+
+      .custom-picker {
+        width: 100%;
+        // height: toRem(69);
+        background-color: #f4f4f4;
+        border-radius: toRem(20);
+        display: flex;
+        align-items: center;
+        padding: toRem(50) toRem(35);
+        position: relative;
+        cursor: pointer;
+        color: $primary-color;
+
+        .picker-icon {
+          font-size: toRem(18);
+          margin-right: toRem(12);
+          color: $primary-color;
+        }
+
+        .picker-text {
+          font-size: toRem(20);
+          font-weight: 400;
+          color: $primary-color;
+        }
+
+        .dropdown-arrow {
+          margin-left: auto;
+          font-size: toRem(12);
+          color: $primary-color;
+        }
+
+        .hidden-picker {
+          position: absolute;
+          opacity: 0;
+          width: 0;
+          height: 0;
+        }
+      }
+
+      .cta_section {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: toRem(20);
+      }
+      button {
+          width: 100%;
+        margin-top: toRem(50);
+        border: toRem(1) solid rgba(255, 255, 255, 0.01);
+        background-color: $secondary-color;
+        font-size: toRem(20);
+        font-weight: 400;
+        line-height: toRem(25.2);
+      }
+    }
+
+
+    .signup-link {
+      width: 100%;
+      text-align: right;
+
+      a {
+        color: $primary-color;
+        text-decoration: underline;
+        font-size: toRem(14);
+      }
+    }
+
+    .pickupformCont_text {
+      font-size: toRem(13);
+      font-weight: 400;
+      line-height: toRem(16.38);
+      text-align: center;
+    }
+  }
+}
+
+// Override ant-design picker dropdown styles
+:global {
+  .ant-picker-dropdown {
+    .ant-picker-panel-container {
+      background-color: #f4f4f4;
+
+      .ant-picker-panel {
+        background: #f4f4f4;
+
+        .ant-picker-header {
+          color: $primary-color;
+
+          button {
+            color: $primary-color;
+          }
+        }
+
+        .ant-picker-content {
+          th,
+          td {
+            color: $primary-color;
+          }
+
+          .ant-picker-cell-in-view {
+            &.ant-picker-cell-selected .ant-picker-cell-inner {
+              background: $secondary-color;
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .ant-picker-time-panel-column {
+    > li.ant-picker-time-panel-cell {
+      .ant-picker-time-panel-cell-inner {
+        color: $primary-color;
+      }
+
+      &.ant-picker-time-panel-cell-selected .ant-picker-time-panel-cell-inner {
+        background: $secondary-color;
+        color: #fff;
+      }
+    }
+  }
+}

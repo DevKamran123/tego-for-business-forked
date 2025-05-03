@@ -1,0 +1,72 @@
+@use "../main.scss" as *;
+
+.pickupformCont {
+    margin-top: toRem(42);
+    margin-bottom: toRem(150);
+    width: toRem(996);
+    height: toRem(495);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: toRem(1) solid rgba(255, 255, 255, 0.13);
+    border-radius: toRem(20);
+    font-family: $font-plus-jakarta;
+    color: $white;
+
+    @include media("<=tablet") {
+        width: toRem(748);
+        height: toem(566);
+    }
+
+    @include media("<=phone-tab") {
+        width: toRem(510);
+    }
+
+    form {
+        @include flexbox(column, toRem(20));
+        align-items: center;
+        margin: toRem(90) toRem(44) toRem(73) toRem(47);
+        input, button {
+            width: toRem(858);
+            height: toRem(69);
+            border-radius: toRem(20);
+            outline: none;
+            border: none;
+
+            @include media("<=tablet") {
+                width: toRem(533.81);
+            }
+
+            @include media("<=phone-tab") {
+                width: toRem(433.81);
+            }
+        }
+
+        input {
+            border: toRem(1) solid rgba(43, 43, 43, 0.14);
+            background-color: rgba(43, 43, 43, 0.13);
+            padding-left: toRem(35);
+            font-size: toRem(20);
+            font-weight: 400;
+            line-height: toRem(25.2);
+
+            &::placeholder {
+                color: $white;
+            }
+        }
+
+        button {
+            margin-top: toRem(50);
+            border: toRem(1) solid rgba(255, 255, 255, 0.01);
+            background-color: $secondary-color;
+            font-size: toRem(20);
+            font-weight: 400;
+            line-height: toRem(25.2);
+        }
+
+        .pickupformCont_text {
+            font-size: toRem(13);
+            font-weight: 400;
+            line-height: toRem(16.38);
+            text-align: center;           
+        }
+    }
+}
