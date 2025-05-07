@@ -1,17 +1,17 @@
-import React, { useEffect } from 'react'
-import Hero from '../components/Hero';
+import React, { useEffect } from "react";
+import Hero from "../components/Hero";
 import "../styles/pages/Home.scss";
-import HomeCard from '../components/HomeCard';
-import InfoCard from '../components/InfoCard';
-import Download from '../components/Download';
+import HomeCard from "../components/HomeCard";
+import InfoCard from "../components/InfoCard";
+import Download from "../components/Download";
 
 import driver from "../assets/images/driver.webp";
 import road from "../assets/images/road.webp";
 import aboutUs from "../assets/svgs/aboutUs.svg";
 import newsroom from "../assets/svgs/newsroom.svg";
 import home from "../assets/svgs/home.svg";
-import Footer from '../components/Footer';
-import useMenuStore from '../store/MenuStore';
+import Footer from "../components/Footer";
+import useMenuStore from "../store/MenuStore";
 
 const cardData = [
   {
@@ -19,7 +19,7 @@ const cardData = [
     text: "Your peace of mind is our priority. With every safety feature and community guideline, we’re creating a secure and worry-free ride experience.",
     image: driver,
     link1: "Read About Our Community Guidelines",
-    link2: "See all safety features"
+    link2: "See all safety features",
   },
 
   {
@@ -27,10 +27,9 @@ const cardData = [
     text: "The app is available in thousands of cities worldwide, so you can request a ride even when you’re far from home.",
     image: road,
     link1: "View All Cities",
-    link2: ""
-  }
-]
-
+    link2: "",
+  },
+];
 
 const infoCard = [
   {
@@ -49,21 +48,22 @@ const infoCard = [
     image: home,
     title: "Global Commitment",
     text: "See how we're making a meaningful impact in the communities we serve.",
-  }
-]
+  },
+];
 
 const Home: React.FC = () => {
   const { setIsOpen: showSidebar } = useMenuStore((state) => state);
 
-  useEffect(()=> {
+  useEffect(() => {
     showSidebar(false);
   }, []);
 
   return (
-    <div className='homeCont'>
+    <div className="homeCont">
       <Hero />
-      <div className='homeCont_business'>
-        <div className='homeCont_business_writeup'>
+      <div className="max-w-screen-xl mx-auto p-5 border-2 border-red-400 bg-purple text-4xl font-bold text-black">
+        test!
+        {/* <div className='homeCont_business_writeup'>
           <div className='homeCont_business_writeup_title'>
             TEGO For Business
           </div>
@@ -78,40 +78,44 @@ const Home: React.FC = () => {
               </svg>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
 
-      <div className='homeCont_safety'>
-        <div className='homeCont_safety_title'>
+      <div className="homeCont_safety">
+        <div className="homeCont_safety_title">
           Safety First, Wherever You Go
         </div>
-        <div className='homeCont_safety_layout'>
-          {cardData.map((data)=> (<HomeCard data={data} key={data.title}/>))}
+        <div className="homeCont_safety_layout">
+          {cardData.map((data) => (
+            <HomeCard data={data} key={data.title} />
+          ))}
         </div>
       </div>
 
-      <div className='homeCont_app'>
-        <div className='homeCont_app_cont'>
-          <div className='homeCont_app_cont_title'>
+      <div className="homeCont_app">
+        <div className="homeCont_app_cont">
+          <div className="homeCont_app_cont_title">
             There’s more to love in the apps
           </div>
 
-          <div className='homeCont_app_cont_layout'>
-            <Download text='Download the Rider app' />
-            <Download text='Download the Driver app'/>
+          <div className="homeCont_app_cont_layout">
+            <Download text="Download the Rider app" />
+            <Download text="Download the Driver app" />
           </div>
         </div>
       </div>
 
-      <div className='homeCont_moreInfo'>
-        {infoCard.map((info)=> (<InfoCard info={info} key={info.title}/>))}
+      <div className="homeCont_moreInfo">
+        {infoCard.map((info) => (
+          <InfoCard info={info} key={info.title} />
+        ))}
       </div>
 
       <div>
         <Footer />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

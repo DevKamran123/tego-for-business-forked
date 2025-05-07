@@ -34,6 +34,15 @@ export default defineConfig({
         swSrc: 'public/service-worker.js', // Ensure this points to the correct directory
         swDest: 'dist/service-worker.js', // Output as JavaScript
       },
+      css: {
+        postcss: './postcss.config.cjs', // Explicit path to config
+        modules: {
+          localsConvention: 'camelCaseOnly',
+        },
+      },
+      optimizeDeps: {
+        include: ['tailwindcss', 'postcss', 'autoprefixer'],
+      },
     }),
   ],
 })
