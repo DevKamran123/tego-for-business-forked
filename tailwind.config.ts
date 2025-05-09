@@ -9,7 +9,6 @@ const config: Config = {
       screens: {},
 
       backgroundImage: {
-        "bg-lines": "url(/images/bg-line.svg)",
         "image-startDrive": "url(/images/bg-image.webp)",
       },
       fontSize: {},
