@@ -38,6 +38,7 @@ export type VerifyInvitePayload = {
   email: string;
   otp: string;
   otpType: string; //'verification' | 'recovery'
+  type: string; //'user' | 'business'
 }
 
 export type AcceptInvitePayload = {
