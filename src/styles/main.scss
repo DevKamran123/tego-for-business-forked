@@ -1,6 +1,9 @@
-@import './abstracts/mixins';
-@import './abstracts/variables';
-@import './abstracts/fonts';
-@import './base/normalize';
-@import './abstracts/breakpoints.scss';
+// @tailwind base;
+// @tailwind components;
+// @tailwind utilities;
 
+@import "./abstracts/mixins";
+@import "./abstracts/variables";
+@import "./abstracts/fonts";
+@import "./base/normalize";
+@import "./abstracts/breakpoints.scss";

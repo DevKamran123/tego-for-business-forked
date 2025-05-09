@@ -1,15 +1,11 @@
 @use "../main.scss" as *;
 
 .heroCont {
-    position: relative;
+    // position: relative;
     width: 100vw;
-    height: toRem(1149);
-    background-image: url("/src/assets/images/heroBackgroundImage.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    object-fit: fill;
-    color: $white;
+    // height: toRem(1149);
+    background-color: $white;
+    color: #38383A;
 
     @include media("<=phone-tab") {
         height: toRem(1100);
