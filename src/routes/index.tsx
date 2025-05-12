@@ -21,6 +21,7 @@ const RideHistory = lazy(() => import("../components/RideHistory"));
 const PlannedRides = lazy(() => import("../components/PlannedRides"));
 const Coupon = lazy(() => import("../pages/Coupon"));
 const Referral = lazy(() => import("../pages/Referral"));
+const Drives = lazy(() => import("../pages/Drives"));
 
 const AppRoutes = () => {
   const activeTab = useRideStore((state) => state.activeTab);
@@ -38,6 +39,7 @@ const AppRoutes = () => {
             <Route path="/create-password" element={<CreatePassword />} />
             <Route path="/accept-invite" element={<AcceptInvite />} />
             <Route path="logout" element={<LogoutHandler />} />
+            <Route path="/drives" element={<Drives />} />
             <Route
               path="/dashboard/*"
               element={

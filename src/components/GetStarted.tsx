@@ -1,4 +1,5 @@
 import BusinessWoman from "../../src/assets/images/business-woman.svg";
+import SectionCTA from "./SectionCTA";
 
 export const GetStartedSection = () => {
   const steps = [
@@ -83,17 +84,7 @@ export const GetStartedSection = () => {
         </div>
 
         {/* Get Started Button */}
-        <div className="flex items-center gap-4">
-          <button className="bg-darkIndigo text-white text-lg px-6 py-3.5 md:px-12 md:py-7 rounded-2xl font-medium">
-            Get Started
-          </button>
-          <a
-            href="#"
-            className="text-darkBluish font-normal underline text-base"
-          >
-            Already have an account? Sign in
-          </a>
-        </div>
+        <SectionCTA />
       </section>
     </main>
   );
