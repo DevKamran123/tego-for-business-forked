@@ -30,7 +30,7 @@ export const DownloadRideTEGO = () => {
         <div className="hidden lg:block w-full lg:w-1/2 px-5 md:px-9 mt-10 lg:-my-2">
           {/* Main phone */}
           <div className="relative">
-            <div className="350px md:w-[400px] w-[450px] xl:w-[532px] overflow-hidden">
+            <div className="w-[350px] md:w-[400px] w-[450px] xl:w-[532px] overflow-hidden">
               <img
                 src={rideTegoAppView}
                 alt="RideTEGO app ride view"
