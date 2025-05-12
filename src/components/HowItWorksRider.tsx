@@ -62,7 +62,7 @@ export const HowItWorksRider = () => {
 
         {/* procedure image */}
         <div className="hidden lg:block relative">
-          <div className="w-450px xl:w-[500px]  2xl:w-[560px]">
+          <div className="w-[450px] xl:w-[500px]  2xl:w-[560px]">
             <img
               src={phoneImage}
               alt="request for ride view"
