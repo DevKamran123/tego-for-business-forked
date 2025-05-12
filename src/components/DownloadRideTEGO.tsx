@@ -7,11 +7,11 @@ export const DownloadRideTEGO = () => {
         {/* Left side - Content */}
         <div className="w-full lg:w-1/2 px-5 py-8 md:px-9 md:py-16 space-y-10">
           <div className="space-y-8">
-            <h2 className="text-3xl lg:text-4xl font-semibold">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold">
               Download RideTEGO App
             </h2>
 
-            <p className="text-base lg:text-xl text-white font-semibold">
+            <p className="text-sm md:text-base lg:text-xl text-white font-semibold">
               RideTEGO is an innovative new entrant into the ride-hailing market
               in East Africa. Operated and owned by Africans for Africans,
               RideTEGO brings local creativity and insights to get improving the
@@ -21,16 +21,16 @@ export const DownloadRideTEGO = () => {
             </p>
           </div>
 
-          <button className="flex items-center justify-center bg-crimsonRed text-white text-lg px-6 py-3 md:px-12 md:py-5 rounded-md font-semibold">
+          <button className="flex items-center justify-center bg-crimsonRed text-white text-base md:text-lg px-6 py-3 md:px-12 md:py-5 rounded-md font-semibold">
             Get Started
           </button>
         </div>
 
         {/* Right side - App Screenshots */}
-        <div className="hidden md:block w-full lg:w-1/2 px-5 md:px-9 mt-10 lg:-my-2">
+        <div className="hidden lg:block w-full lg:w-1/2 px-5 md:px-9 mt-10 lg:-my-2">
           {/* Main phone */}
           <div className="relative">
-            <div className="w-[480px] lg:w-[532px] overflow-hidden">
+            <div className="350px md:w-[400px] w-[450px] xl:w-[532px] overflow-hidden">
               <img
                 src={rideTegoAppView}
                 alt="RideTEGO app ride view"

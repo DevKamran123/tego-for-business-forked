@@ -27,24 +27,22 @@ export const HowItWorksDriver = () => {
   ];
 
   return (
-    <div className="mt-20 lg:mt-11 max-w-[1670px] w-full mx-auto flex flex-col lg:flex-row items-center md:items-start md:justify-between gap-5 md:gap-10">
-      <div className="w-full lg:w-1/2">
-        <div className="size-[250px] bg-darkBluish rounded-full relative mx-auto">
-          <div className="size-[350px] lg:size-[650px] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-            <img
-              src={phoneImage}
-              alt="driver request app ride view"
-              className="w-full"
-            />
-          </div>
+    <div className="mt-20 lg:mt-11 max-w-[1670px] w-full mx-auto flex flex-col md:flex-row items-center md:items-start md:justify-between gap-5 md:gap-10">
+      <div className="w-full md:w-1/2">
+        <div className="md:-mt-10 lg:-mt-14 mx-auto md:mx-0 size-[280px] lg:size-[450px] xl:size-[550px] 2xl:size-[650px]">
+          <img
+            src={phoneImage}
+            alt="driver request app ride view"
+            className="w-full"
+          />
         </div>
       </div>
-      <div className="w-full lg:w-1/2 pt-16">
-        <div className="max-w-[235px] mx-auto md:max-w-full w-full grid md:grid-cols-2 items-center gap-8">
+      <div className="w-full md:w-1/2 pt-4 md:pt-16">
+        <div className="max-w-[235px] mx-auto md:max-w-full w-full grid md:grid-cols-2 items-center gap-6 lg:gap-8">
           {procedures.map((procedure, index) => (
-            <div key={index} className="space-y-6">
-              <div className="bg-darkBluish/15 rounded-3xl p-5 w-fit mx-auto lg:mx-0">
-                <div className="size-[50px] relative">
+            <div key={index} className="space-y-4 md:space-y-6">
+              <div className="bg-darkBluish/15 rounded-xl lg:rounded-3xl p-3 md:p-5 w-fit mx-auto md:mx-0">
+                <div className="size-[25px] md:size-[35px] lg:size-[50px] relative">
                   <img
                     src={procedure.imgSrc}
                     alt={procedure.title}
@@ -53,18 +51,18 @@ export const HowItWorksDriver = () => {
                 </div>
               </div>
 
-              <div className="space-y-3 text-center lg:text-left">
-                <h6 className="text-xl font-semibold text-ashGray">
+              <div className="space-y-2 lg:space-y-3 text-center md:text-left">
+                <h6 className="text-base md:text-lg lg:text-xl font-semibold text-ashGray">
                   {procedure.title}
                 </h6>
-                <p className="text-lg text-lightSilver font-semibold">
+                <p className="text-sm md:text-base lg:text-lg text-lightSilver font-semibold">
                   {procedure.description}
                 </p>
               </div>
             </div>
           ))}
         </div>
-        <div className="mt-12 w-full flex justify-center lg:justify-start">
+        <div className="mt-12 w-full flex justify-center md:justify-start">
           <SectionCTA />
         </div>
       </div>

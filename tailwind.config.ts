@@ -10,6 +10,7 @@ const config: Config = {
 
       backgroundImage: {
         "image-startDrive": "url(/images/bg-image.webp)",
+        "driver-bg-image": "url(/images/driver-hero-bg.webp)",
       },
       fontSize: {},
       colors: {
@@ -25,6 +26,7 @@ const config: Config = {
         softWhite: "#F6F6F6",
         ashGray: "#7D7E80",
         lightSilver: "#B3B3B7",
+        scarletRed: "#B22D30",
       },
 
       keyframes: {},
