@@ -17,16 +17,25 @@ const config: Config = {
         charcoal: "#38383A",
         grayishBlue: "#292D32",
         darkBluish: "#3E4095",
+
+        // red
         darkIndigo: "#3B3D8F",
         crimsonRed: "#AF2E2F",
+        scarletRed: "#B22D30",
+        vividRed: "#EA4335",
+
+        // gray
         fogSilver: "#B0B0B4",
-        slateAsh: "#2C2C2E",
         midGray: "#3E3E40",
         mistGray: "#B0AFB4",
         softWhite: "#F6F6F6",
+        slateAsh: "#2C2C2E",
         ashGray: "#7D7E80",
         lightSilver: "#B3B3B7",
-        scarletRed: "#B22D30",
+        paleSilver: "#D9D9D9",
+        pebbleGray: "#A6A6A6",
+
+        deepMauve: "#49454F",
       },
 
       keyframes: {},
