@@ -63,7 +63,7 @@ const PersonalDashboardSidebar = () => {
   }, [menuItem, location]);
 
   return (
-    <div className="max-w-[16.25rem] lg:max-w-[18rem] w-full min-h-screen bg-dark-blue z-50 bg-[#F8F8F8]">
+    <div className="max-w-[16.25rem] lg:max-w-[18rem] w-full min-h-screen bg-[#F8F8F8] z-50">
       <div className="flex flex-col">
         <div className="pl-5 py-9">
           <div className="flex flex-col gap-5">
