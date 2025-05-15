@@ -7,6 +7,7 @@ import DashboardLayout from "../components/layouts/DashboardLayout";
 import PageNotFound from "../components/PageNotFound";
 import Loader from "../components/Loader";
 import AcceptInvite from "../pages/AcceptInvite";
+import PersonalDashboardLayout from "../components/layouts/PersonalDashboardLayout";
 
 // Lazy load all components
 const Home = lazy(() => import("../pages/Home"));
@@ -22,6 +23,7 @@ const PlannedRides = lazy(() => import("../components/PlannedRides"));
 const Coupon = lazy(() => import("../pages/Coupon"));
 const Referral = lazy(() => import("../pages/Referral"));
 const Drives = lazy(() => import("../pages/Drives"));
+const PersonalWallet = lazy(() => import("../pages/PersonalWallet"));
 
 const AppRoutes = () => {
   const activeTab = useRideStore((state) => state.activeTab);
@@ -64,6 +66,18 @@ const AppRoutes = () => {
                     </Routes>
                   </DashboardLayout>
                 </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/personal/dashboard/*"
+              element={
+                <PersonalDashboardLayout>
+                  <Routes>
+                    <Route path="/wallet" element={<PersonalWallet />} />
+
+                    <Route path="*" element={<PageNotFound />} />
+                  </Routes>
+                </PersonalDashboardLayout>
               }
             />
           </Routes>
