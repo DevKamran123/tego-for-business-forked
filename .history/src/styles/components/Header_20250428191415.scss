@@ -1,0 +1,252 @@
+@use "../main.scss" as *;
+.headerCont {
+    @include flexbox("row", toRem(0));
+    justify-content: space-between;
+    align-items: center;
+    height: toRem(100);
+    margin: auto toRem(162);
+    color: $white;
+    background-color: transparent;
+
+
+    @include media("<=tablet") {
+        display: none;
+    }
+
+    &_logo {
+        @include flex(start, center, toRem(15));
+        font-family: $font-plus-jakarta;
+        font-size: toRem(30);
+        font-weight: 800;
+        line-height: toRem(37.8);
+        text-align: left; 
+        color: $white;  
+        
+        img {
+            width: toRem(46);
+            height: toRem(46);
+        }
+    }
+
+    &_details {
+        @include flexbox("row", toRem(30));
+        justify-content: start;
+        align-items: center;
+        font-family: $font-roboto;
+        font-size: toRem(20);
+        font-weight: 400;
+        line-height: toRem(23.44);
+
+        &_content {
+            cursor: pointer;
+        }
+    
+        &_option {
+            background-color: transparent;
+            position: relative;
+            cursor: pointer;
+    
+            select {
+                background-color: transparent;
+                border: none;
+                appearance: none; // Removes default arrow
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                padding-right: toRem(31); // Space for custom arrow
+                cursor: pointer;
+    
+                // Custom arrow
+                background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+                background-repeat: no-repeat;
+                background-position: right toRem(8) center;
+                background-size: toRem(20);
+    
+                // Style for options
+                option {
+                    background-color: $primary-color;
+                    color: inherit;
+                    padding: toRem(8) toRem(12);
+                }
+    
+                &:focus {
+                    outline: none;
+                }
+    
+                // Remove default Firefox arrow
+                &:-moz-focusring {
+                    color: transparent;
+                    text-shadow: 0 0 0 $white;
+                }
+            }
+    
+            // Style the select dropdown
+            select::-ms-expand {
+                display: none; // Remove default arrow in IE
+            }
+    
+            // Style for the dropdown list
+            &:hover select {
+                outline: none;
+            }
+        }
+    }
+
+    &_auth {
+        @include flexbox("row", toRem(30));
+        justify-content: start;
+        align-items: center;
+        font-family: $font-roboto;
+        font-size: toRem(16);
+        font-weight: 400;
+        line-height: toRem(17.89);
+        text-align: left;
+
+        &_lang {
+            @include flexbox("row", toRem(11.1));
+            align-items: center;
+            cursor: pointer;
+
+            &_image {
+                width: toRem(13.05);
+                height: toRem(13.78);
+                @include flexbox("row", toRem(0));
+                align-items: center;
+
+                img {
+                    width: toRem(13.05);
+                    height: toRem(13.78);
+                }
+            } 
+        }
+
+        &_login {
+            cursor: pointer;
+        }
+
+        &_signup {
+            @include flexbox("row", 0px);
+            align-items: center;
+            justify-content: center;
+            // width: toRem(83.27);
+            // height: toRem(31.22);
+            padding: toRem(8) toRem(9);
+            border-radius: toRem(3.47);       
+            color: $black;
+            background-color: $white;  
+            cursor: pointer;
+
+            // &:hover {
+            //     height: toRem(32.22);
+            //     font-size: toRem(15);
+            //     transition: all 0.4s ease-in;
+            // }
+        }
+    }
+}
+
+.responsivePlaceholder {
+    height: toRem(130);
+    background-color: transparent;
+    width: 100vw;
+    z-index: 9999;
+
+    @include media(">=tablet") {
+        display: none;
+    }
+
+    @include media("<=phone-tab") {
+        height: toRem(100);
+    }
+
+}
+
+.responsiveHeader {
+    @include flex-center();
+    height: toRem(130);
+    position: relative;
+    color: $white;
+    background-color: $primary-color;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    z-index: 999999;
+
+    @include media(">=tablet") {
+        display: none;
+    }
+
+    @include media("<=phone-tab") {
+        height: toRem(100);
+    }
+
+    &_menu {
+        @include flex-center();
+        width: toRem(65);
+        height: toRem(65);
+        justify-self: start;
+        position: absolute;
+        left: toRem(50);
+        align-self: center;
+
+        &:hover {
+            cursor: pointer;
+        }
+        
+
+        @include media("<=phone-tab") {
+            left: toRem(25);
+            width: toRem(55);
+            height: toRem(55);
+        }
+
+        img {
+            width: toRem(65);
+            height: toRem(65);
+
+            @include media("<=phone-tab") {
+                width: toRem(55);
+                height: toRem(55);
+            }
+        }
+    }
+
+    .open {
+        transform: rotate(-90deg);
+        transition: all ease-in 0.3s;
+    }
+
+    .normal {
+        transform: rotate(0deg);
+        transition: all ease-in 0.3s;
+
+    }
+
+
+     &_logo {
+        @include flex(start, center, toRem(15));
+        font-family: $font-plus-jakarta;
+        font-size: toRem(30);
+        font-weight: 800;
+        line-height: toRem(37.8);
+        text-align: left; 
+        color: $white;  
+        align-self: center;
+
+        @include media("<=phone-tab") {
+            font-size: toRem(25);
+        }
+        
+        img {
+            width: toRem(46);
+            height: toRem(46);
+
+            @include media("<=phone-tab") {
+                width: toRem(42);
+                height: toRem(42);
+            }
+            
+        }
+    }
+}

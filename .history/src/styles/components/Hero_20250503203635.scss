@@ -1,0 +1,175 @@
+@use "../main.scss" as *;
+
+.heroCont {
+    // position: relative;
+    width: 100vw;
+    height: toRem(1149);
+    background-color: white;
+    // background-image: url("/src/assets/images/heroBackgroundImage.png");
+    // background-size: cover;
+    // background-repeat: no-repeat;
+    // background-position: center;
+    // object-fit: fill;
+    color: $white;
+
+    @include media("<=phone-tab") {
+        height: toRem(1100);
+        background-image: url("/src/assets/images/backgroundHeroMobile.png");
+    }
+
+    &_overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, #3e4095 0%, #292a6173 100%);
+        // background: linear-gradient(180deg, rgba(62, 64, 149, 1), rgba(62, 64, 149, 0.45));
+        z-index: 1;
+    }
+
+    &_content {
+        position: relative;
+        z-index: 2;
+        // Add your content styles here
+        &_layout {
+            @include flexbox(column, toRem(27));
+            align-items: center;
+            position: relative;
+
+            @include media("<=tablet") {
+                gap: toRem(0);
+                // margin-top: toRem(60);
+        }
+            
+            &_welcome {
+                font-family: $font-plus-jakarta;
+                font-size: toRem(84.89);
+                font-weight: 800;
+                line-height: toRem(106.96);  
+                text-align: center;  
+
+                margin-top: toRem(84);
+
+                @include media("<=tablet") {
+                        margin-top: toRem(60);
+                }
+
+                @include media("<=phone-tab") {
+                        margin-top: toRem(20);
+                }
+
+                
+                @include media("<=tablet") {
+                    text-align: center;
+                    font-size: toRem(47.57);
+                    gap: toRem(10);
+                }
+
+                @include media("<=phone-tab") {
+                    width: toRem(530);
+                    max-width: toRem(530);
+                    font-size: toRem(40.57);
+                }
+            }
+    
+            &_ad {
+                font-family: $font-plus-jakarta;
+                font-size: toRem(36);
+                font-weight: 500;
+                line-height: toRem(45.36);   
+                
+                @include media("<=tablet") {
+                    text-align: center;
+                    font-size: toRem(20.17);
+                }
+            }
+        }
+    }
+}
+// .heroCont {
+//     position: relative;
+//     width: 100vw;
+//     height: toRem(1149);
+//     background-image: url("/src/assets/images/heroBackgroundImage.png");
+//     background-size: cover;
+//     background-repeat: no-repeat;
+//     background-position: center;
+//     object-fit: fill;
+//     color: $white;
+
+//     @include media("<=phone-tab") {
+//         height: toRem(1100);
+//         background-image: url("/src/assets/images/backgroundHeroMobile.png");
+//     }
+
+//     &_overlay {
+//         position: absolute;
+//         top: 0;
+//         left: 0;
+//         width: 100%;
+//         height: 100%;
+//         background: linear-gradient(180deg, #3e4095 0%, #292a6173 100%);
+//         // background: linear-gradient(180deg, rgba(62, 64, 149, 1), rgba(62, 64, 149, 0.45));
+//         z-index: 1;
+//     }
+
+//     &_content {
+//         position: relative;
+//         z-index: 2;
+//         // Add your content styles here
+//         &_layout {
+//             @include flexbox(column, toRem(27));
+//             align-items: center;
+//             position: relative;
+
+//             @include media("<=tablet") {
+//                 gap: toRem(0);
+//                 // margin-top: toRem(60);
+//         }
+            
+//             &_welcome {
+//                 font-family: $font-plus-jakarta;
+//                 font-size: toRem(84.89);
+//                 font-weight: 800;
+//                 line-height: toRem(106.96);  
+//                 text-align: center;  
+
+//                 margin-top: toRem(84);
+
+//                 @include media("<=tablet") {
+//                         margin-top: toRem(60);
+//                 }
+
+//                 @include media("<=phone-tab") {
+//                         margin-top: toRem(20);
+//                 }
+
+                
+//                 @include media("<=tablet") {
+//                     text-align: center;
+//                     font-size: toRem(47.57);
+//                     gap: toRem(10);
+//                 }
+
+//                 @include media("<=phone-tab") {
+//                     width: toRem(530);
+//                     max-width: toRem(530);
+//                     font-size: toRem(40.57);
+//                 }
+//             }
+    
+//             &_ad {
+//                 font-family: $font-plus-jakarta;
+//                 font-size: toRem(36);
+//                 font-weight: 500;
+//                 line-height: toRem(45.36);   
+                
+//                 @include media("<=tablet") {
+//                     text-align: center;
+//                     font-size: toRem(20.17);
+//                 }
+//             }
+//         }
+//     }
+// }

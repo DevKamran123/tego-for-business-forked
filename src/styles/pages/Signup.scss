@@ -1,12 +1,10 @@
 @use "../main.scss" as *;
 
 .signupCont {
-    // border: 1px solid red;
     @include flexbox(row, 0px);
     height: 100%;
 
     &_side {
-        
         @include flexbox(row, 0px);
         align-items: center;
         justify-content: center;
@@ -15,8 +13,6 @@
         background-size: cover;
         background-repeat: no-repeat;
         object-fit: contain;
-        // aspect-ratio: 9/6;
-
         width: toRem(642);
         // height: toRem(1056);
         // height: 100vh;
