@@ -1,13 +1,14 @@
 @use "/src/styles/main.scss" as *;
 
 .dashboard {
+    font-family: $font-plus-jakarta;
+
     &_header {
         @include media("<=tablet") {
             display: none;
         }
 
     }
-    font-family: $font-plus-jakarta;
     &_title {
         font-weight: 500;
         font-size: toRem(28);
