@@ -23,6 +23,9 @@ const PlannedRides = lazy(() => import("../components/PlannedRides"));
 const Coupon = lazy(() => import("../pages/Coupon"));
 const Referral = lazy(() => import("../pages/Referral"));
 const Drives = lazy(() => import("../pages/Drives"));
+const PersonalHome = lazy(() => import("../pages/PersonalHome"));
+const PersonalInfo = lazy(() => import("../pages/PersonalInfo"));
+const EditPersonalInfo = lazy(() => import("../pages/EditPersonalInfo"));
 const PersonalWallet = lazy(() => import("../pages/PersonalWallet"));
 
 const AppRoutes = () => {
@@ -73,6 +76,12 @@ const AppRoutes = () => {
               element={
                 <PersonalDashboardLayout>
                   <Routes>
+                    <Route path="/" element={<PersonalHome />} />
+                    <Route path="/personal-info" element={<PersonalInfo />} />
+                    <Route
+                      path="/personal-info/edit"
+                      element={<EditPersonalInfo />}
+                    />
                     <Route path="/wallet" element={<PersonalWallet />} />
 
                     <Route path="*" element={<PageNotFound />} />

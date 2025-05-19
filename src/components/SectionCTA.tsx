@@ -1,9 +1,9 @@
+import CustomButton from "./buttons/CustomButton";
+
 const SectionCTA = () => {
   return (
     <div className="flex items-center gap-4">
-      <button className="bg-darkIndigo text-white text-sm md:text-base lg:text-lg px-6 py-3.5 md:px-12 md:py-7 rounded-lg md:rounded-xl lg:rounded-2xl font-medium">
-        Get Started
-      </button>
+      <CustomButton size="small">Get Started</CustomButton>
       <a
         href="#"
         className="text-darkBluish font-normal underline text-sm md:text-base"
