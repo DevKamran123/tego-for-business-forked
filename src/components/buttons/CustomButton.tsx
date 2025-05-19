@@ -27,7 +27,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   size = "small",
 }) => {
   const baseClasses =
-    "text-sm md:text-base lg:text-lg px-6 py-3.5 md:px-12 md:py-7 rounded-lg md:rounded-xl lg:rounded-2xl font-medium transition-all duration-200 cursor-pointer";
+    "text-sm md:text-base lg:text-lg px-6 py-3.5 md:px-8 md:py-5 rounded-lg md:rounded-xl lg:rounded-2xl font-medium transition-all duration-200 cursor-pointer";
 
   const variants = {
     primary: "bg-darkIndigo text-white disabled:opacity-50",
@@ -35,7 +35,7 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   };
 
   const sizes = {
-    small: "w-fit",
+    small: "w-fit ",
     full: "w-full flex items-center justify-center",
   };
 

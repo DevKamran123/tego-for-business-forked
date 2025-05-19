@@ -36,7 +36,7 @@ const TransactionHistoryItem = ({
         </div>
       </div>
 
-      <button className="size-5 relative" aria-label="More options">
+      <button className="size-5 relative">
         <img src={moreIcon} alt="more icon" className="w-full" />
       </button>
     </div>

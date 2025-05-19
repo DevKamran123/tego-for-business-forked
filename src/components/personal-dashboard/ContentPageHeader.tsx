@@ -26,7 +26,13 @@ const ContentPageHeader: React.FC<ContentPageHeaderProps> = ({
   };
 
   return (
-    <div className="w-full flex items-center relative py-9">
+    <div
+      className={`w-full flex ${
+        typeof title === "string" && title.trim() !== ""
+          ? "items-center"
+          : "items-start"
+      } relative py-9`}
+    >
       {showBackBtn && (
         <button
           onClick={goBack}
@@ -39,9 +45,7 @@ const ContentPageHeader: React.FC<ContentPageHeaderProps> = ({
       <div className={className}>
         {typeof title === "string" ? (
           <div className="w-full">
-            <h1 className="text-4xl xl:text-5xl font-bold text-grayishBlue">
-              {title}
-            </h1>
+            <h1 className="text-4xl font-bold text-grayishBlue">{title}</h1>
           </div>
         ) : (
           title
