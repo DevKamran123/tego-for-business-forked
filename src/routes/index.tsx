@@ -27,6 +27,7 @@ const PersonalHome = lazy(() => import("../pages/PersonalHome"));
 const PersonalInfo = lazy(() => import("../pages/PersonalInfo"));
 const EditPersonalInfo = lazy(() => import("../pages/EditPersonalInfo"));
 const PersonalWallet = lazy(() => import("../pages/PersonalWallet"));
+const PersonalRide = lazy(() => import("../pages/PersonalRide"));
 
 const AppRoutes = () => {
   const activeTab = useRideStore((state) => state.activeTab);
@@ -71,6 +72,7 @@ const AppRoutes = () => {
                 </ProtectedRoute>
               }
             />
+            <Route path="/personal/ride" element={<PersonalRide />} />
             <Route
               path="/personal/dashboard/*"
               element={
