@@ -6,7 +6,7 @@ interface CustomButtonProps {
   onClick?: () => void;
   isLoading?: boolean;
   disabled?: boolean;
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "outline";
   size?: "small" | "full";
   className?: string;
   type?: "button" | "submit" | "reset";
@@ -27,11 +27,12 @@ const CustomButton: React.FC<CustomButtonProps> = ({
   size = "small",
 }) => {
   const baseClasses =
-    "text-sm md:text-base lg:text-lg px-6 py-3.5 md:px-12 md:py-7 rounded-lg md:rounded-xl lg:rounded-2xl font-medium transition-all duration-200 cursor-pointer";
+    "text-sm md:text-base lg:text-lg px-6 py-3.5 md:px-8 md:py-5 rounded-lg md:rounded-xl lg:rounded-2xl font-medium transition-all duration-200 cursor-pointer";
 
   const variants = {
     primary: "bg-darkIndigo text-white disabled:opacity-50",
     secondary: "bg-crimsonRed text-white disabled:opacity-50",
+    outline: "border border-paleSilver bg-transparent text-white",
   };
 
   const sizes = {

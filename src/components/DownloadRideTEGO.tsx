@@ -1,4 +1,5 @@
 import rideTegoAppView from "../assets/images/phone-2.webp";
+import CustomButton from "./buttons/CustomButton";
 
 export const DownloadRideTEGO = () => {
   return (
@@ -21,9 +22,9 @@ export const DownloadRideTEGO = () => {
             </p>
           </div>
 
-          <button className="flex items-center justify-center bg-crimsonRed text-white text-base md:text-lg px-6 py-3 md:px-12 md:py-5 rounded-md font-semibold">
+          <CustomButton variant="secondary" size="small">
             Get Started
-          </button>
+          </CustomButton>
         </div>
 
         {/* Right side - App Screenshots */}
