@@ -11,6 +11,7 @@ const config: Config = {
       backgroundImage: {
         "image-startDrive": "url(/images/bg-image.webp)",
         "driver-bg-image": "url(/images/driver-hero-bg.webp)",
+        "personal-ride-form": "url(/images/brBg.png)",
       },
       fontSize: {},
       colors: {
@@ -37,6 +38,7 @@ const config: Config = {
         chromeSilk: "#C4C4C4",
 
         deepMauve: "#49454F",
+        midnightInk: "#1C1B1F",
       },
 
       keyframes: {},
