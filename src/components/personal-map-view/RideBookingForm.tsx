@@ -60,7 +60,6 @@ const RideBookingForm: React.FC<RideBookingFormProps> = ({
 
   // Wrapped handlers to update positions
   const handlePickUpSelect = async (address: string) => {
-    await handlePickUpLocation(address);
     const position = await handlePickUpLocation(address);
     if (position) {
       setPickUpPosition(position);
@@ -97,7 +96,7 @@ const RideBookingForm: React.FC<RideBookingFormProps> = ({
   };
 
   return (
-    <div className="max-w-[400px] xl:max-w-[450px] 2xl:max-w-[560px] w-full absolute left-8 top-[30px] z-20 bg-personal-ride-form rounded-2xl bg-cover bg-no-repeat bg-center px-8 py-12 h-fit overflow-hidden overflow-y-auto">
+    <div className="max-w-[400px] xl:max-w-[450px] 2xl:max-w-[560px] w-full absolute left-8 top-[30px] z-20 bg-personal-ride-form rounded-2xl bg-cover bg-no-repeat bg-center px-8 py-12 max-h-fit">
       <div className="w-full flex flex-col space-y-4">
         <h3 className="text-3xl font-bold text-white">Book a ride</h3>
 
