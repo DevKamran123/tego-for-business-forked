@@ -5,7 +5,7 @@ const PersonalHome = () => {
   //  const userinfo
   const user = {
     name: "Daniel Victor",
-    email: "daniel.victor @email.com",
+    email: "daniel.victor@email.com",
   };
 
   return (

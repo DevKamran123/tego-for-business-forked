@@ -1,5 +1,4 @@
-
-@import './breakpoints.scss';
+@use "./breakpoints";
 
 
 
@@ -10,6 +9,7 @@
 
 // Mixin for flexbox utility classes
 @mixin flexbox($direction, $gap) {
+  // Removed & { ... } wrapper to prevent mixed-decls with subsequent declarations in calling files
   display: flex;
   flex-direction: $direction;
   gap: $gap;
@@ -29,14 +29,16 @@
   gap: $gap;
 }
 
-@mixin flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@mixin flex-center($direction: row, $gap: 0) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: center;
+    align-items: center;
+    gap: $gap;
 }
 
-@mixin vh-minus($subtract, $property: height) {
-  #{$property}: calc(100vh - #{$subtract});
+@mixin vh-minus($value) {
+    height: calc(100vh - #{$value});
 }
 
 @function toRem($value) {
