@@ -22,7 +22,10 @@ export default function Header() {
         >
           <img src={menu} alt="menu" />
         </div>
-        <div className="responsiveHeader_logo">
+        <div
+          onClick={() => navigate("/")}
+          className="responsiveHeader_logo cursor-pointer"
+        >
           <img src={rideTegoLogo} alt="logo" />
           RideTEGO
         </div>
@@ -30,13 +33,26 @@ export default function Header() {
       <div className="responsivePlaceholder"></div>
 
       <div className="headerCont">
-        <div className="headerCont_logo">
+        <div
+          onClick={() => navigate("/")}
+          className="headerCont_logo cursor-pointer"
+        >
           <img src={rideTegoLogo} alt="logo" />
           RideTEGO
         </div>
         <div className="headerCont_details">
-          <div className="headerCont_details_content">Ride</div>
-          <div className="headerCont_details_content">Drive</div>
+          <div
+            onClick={() => navigate("/personal/ride")}
+            className="headerCont_details_content"
+          >
+            Ride
+          </div>
+          <div
+            onClick={() => navigate("/drives")}
+            className="headerCont_details_content"
+          >
+            Drive
+          </div>
           <div className="headerCont_details_option">
             <select>
               <option>Business</option>

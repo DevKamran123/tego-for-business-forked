@@ -63,11 +63,7 @@ const CustomInput = forwardRef<HTMLInputElement, CustomInputProps>(
               duration-200
               placeholder:text-deepMauve/45
               ${StartIcon && "pl-10"}
-              ${
-                error
-                  ? "border-red-500 focus:border-red-500"
-                  : "border-neutral-300 focus:border-blue-600"
-              }
+              ${error ? "border-red-500 focus:border-red-500" : ""}
               ${className}
             `}
             {...props}
