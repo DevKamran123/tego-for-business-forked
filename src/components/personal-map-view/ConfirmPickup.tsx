@@ -39,8 +39,8 @@ const ConfirmPickup: React.FC<ConfirmPickupProps> = ({
 
         <div className="flex items-center justify-between mt-3">
           <div className="flex items-center gap-8">
-            <div className="flex items-center justify-center size-[60px] 2xl:size-[70px] rounded-full bg-[#f8f8f8]">
-              <div className="size-[32px] xl:size-[40px]">
+            <div className="flex items-center justify-center w-[60px] h-[60px] 2xl:w-[70px] 2xl:h-[70px] rounded-full bg-[#f8f8f8]">
+              <div className="w-[32px] h-[32px] xl:w-[40px] xl:h-[40px]">
                 <img
                   src={locationPin}
                   alt="location pin icon"
