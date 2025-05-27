@@ -28,7 +28,7 @@ const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
     open && (
       <div
         ref={ref}
-        className="fixed bg-white border border-black/15 shadow-md shadow-black/5 rounded-3xl px-6 py-5 top-[100px] xl:top-[110px] 2xl:top-[130px] max-w-[360px] xl:max-w-[400px] 2xl:max-w-[428px] w-full right-20 z-30"
+        className="fixed bg-white border border-black/15 shadow-md shadow-black/5 rounded-3xl px-6 py-5 top-[100px] xl:top-[110px] 2xl:top-[130px] max-w-[250px] lg:max-w-[300px] xl:max-w-[330px] 2xl:max-w-[378px] w-full right-20 z-30"
       >
         <div className="flex items-center justify-between pb-2.5">
           <h3 className="text-3xl font-bold max-w-[240px] truncate">{name}</h3>

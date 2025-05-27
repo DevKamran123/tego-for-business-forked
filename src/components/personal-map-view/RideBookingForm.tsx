@@ -14,11 +14,13 @@ type LatLngLiteral = google.maps.LatLngLiteral;
 interface RideBookingFormProps {
   setPickUpPosition: (position: LatLngLiteral) => void;
   setDestinationPosition: (position: LatLngLiteral) => void;
+  handleSubmit: (address: string) => void;
 }
 
 const RideBookingForm: React.FC<RideBookingFormProps> = ({
   setPickUpPosition,
   setDestinationPosition,
+  handleSubmit,
 }) => {
   // const [additionalInputs, setAdditionalInputs] = useState<string[]>([]);
 
@@ -96,7 +98,7 @@ const RideBookingForm: React.FC<RideBookingFormProps> = ({
   };
 
   return (
-    <div className="max-w-[400px] xl:max-w-[450px] 2xl:max-w-[560px] w-full absolute left-8 top-[30px] z-20 bg-personal-ride-form rounded-2xl bg-cover bg-no-repeat bg-center px-8 py-12 max-h-fit">
+    <div className="w-fit absolute left-8 top-[30px] z-20 bg-personal-ride-form rounded-2xl bg-cover bg-no-repeat bg-center p-4 lg:px-8 lg:py-12 max-h-fit">
       <div className="w-full flex flex-col space-y-4">
         <h3 className="text-3xl font-bold text-white">Book a ride</h3>
 
@@ -177,7 +179,7 @@ const RideBookingForm: React.FC<RideBookingFormProps> = ({
           dropDownClassName="bg-white/10 text-base text-white placeholder:text-white border-white/35 !rounded-2xl backdrop-blur-xl"
           optionClassName="text-white"
         />
-        <div className="max-w-[220px] w-full">
+        <div className="w-1/2 xl:max-w-[220px] xl:w-full">
           <CustomSelect
             options={["For me", "For someone"]}
             value={"For me"}
@@ -189,7 +191,11 @@ const RideBookingForm: React.FC<RideBookingFormProps> = ({
       </div>
 
       <div className="w-full px-2.5 mt-10 flex flex-col space-y-4">
-        <CustomButton size="full" variant="secondary">
+        <CustomButton
+          size="full"
+          variant="secondary"
+          onClick={() => handleSubmit(pickUpValue)}
+        >
           Search
         </CustomButton>
         <div className="w-full border border-white rounded-lg md:rounded-xl lg:rounded-2xl">
