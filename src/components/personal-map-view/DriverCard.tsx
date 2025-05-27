@@ -11,7 +11,7 @@ const DriverCard: React.FC<DriverCardProps> = ({ cost }) => {
   return (
     <div className="bg-darkBluish p-4 rounded-xl flex items-start justify-between">
       <div className="flex items-center gap-4">
-        <div className="size-[50px] rounded-full">
+        <div className="w-[50px] h-[50px] rounded-full">
           <img
             src={driverProfilePic}
             alt="driver profile picture"
