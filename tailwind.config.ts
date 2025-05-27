@@ -18,9 +18,9 @@ const config: Config = {
         charcoal: "#38383A",
         grayishBlue: "#292D32",
         darkBluish: "#3E4095",
+        darkIndigo: "#3B3D8F",
 
         // red
-        darkIndigo: "#3B3D8F",
         crimsonRed: "#AF2E2F",
         scarletRed: "#B22D30",
         vividRed: "#EA4335",
@@ -36,6 +36,9 @@ const config: Config = {
         paleSilver: "#D9D9D9",
         pebbleGray: "#A6A6A6",
         chromeSilk: "#C4C4C4",
+
+        // blue
+        deepBlue: "#0020CB",
 
         deepMauve: "#49454F",
         midnightInk: "#1C1B1F",

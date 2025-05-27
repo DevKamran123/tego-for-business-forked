@@ -4,6 +4,9 @@ import RideBookingForm from "./RideBookingForm";
 import ZoomControls from "./ZoomControls";
 import carIcon from "../../assets/svgs/car-driver.svg";
 import MapOverlay from "./MapOverlay";
+import ConfirmPickup from "./ConfirmPickup";
+import AvailableRidesList from "./AvailableRidesList";
+import DriverDetails from "./DriverDetails";
 
 type LatLngLiteral = google.maps.LatLngLiteral;
 type DirectionsResult = google.maps.DirectionsResult;
@@ -16,6 +19,11 @@ const RideMapView = () => {
   const [destination, setDestination] = useState<LatLngLiteral>();
   const [directions, setDirections] = useState<DirectionsResult>();
   const [cars, setCars] = useState<LatLngLiteral[]>([]);
+  const [pickUpAddress, setPickUpAddress] = useState<string>("");
+  const [showPickUpConfirmation, setShowPickUpConfirmation] =
+    useState<boolean>(false);
+  const [showAvailableRides, setShowAvailableRides] = useState<boolean>(false);
+  const [showDriverDetails, setShowDriverDetails] = useState<boolean>(false);
 
   const mapRef = useRef<google.maps.Map | null>(null);
   const center = useMemo<LatLngLiteral>(
@@ -89,6 +97,25 @@ const RideMapView = () => {
     }
   }, [pickUp, destination]);
 
+  const handleBookingFormSubmit = (address: string) => {
+    setPickUpAddress(address);
+    setShowPickUpConfirmation(true);
+  };
+
+  const handlePickupConfirmationClick = () => {
+    setShowAvailableRides(true);
+  };
+
+  const handleBookRideClick = () => {
+    setShowAvailableRides(false);
+    setShowDriverDetails(true);
+  };
+
+  const handleCancelRideClick = () => {
+    setShowDriverDetails(false);
+    setShowAvailableRides(true);
+  };
+
   return (
     <div className="w-screen h-screen overflow-hidden relative">
       <RideBookingForm
@@ -99,7 +126,26 @@ const RideMapView = () => {
         setDestinationPosition={(position) => {
           setDestination(position);
         }}
+        handleSubmit={handleBookingFormSubmit}
       />
+
+      <ConfirmPickup
+        open={showPickUpConfirmation}
+        destination={pickUpAddress}
+        onConfirm={handlePickupConfirmationClick}
+        onClose={() => setShowPickUpConfirmation(false)}
+      />
+
+      <AvailableRidesList
+        open={showAvailableRides}
+        onBook={handleBookRideClick}
+      />
+
+      <DriverDetails
+        open={showDriverDetails}
+        onCancel={handleCancelRideClick}
+      />
+
       <MapOverlay side="left" />
       <MapOverlay side="right" />
       <GoogleMap
