@@ -13,8 +13,8 @@ const PersonalInfo = () => {
   return (
     <div className="w-full h-full flex flex-col">
       <ContentPageHeader title="Personal info." />
-      <div className="max-w-[680px] mx-auto w-full flex flex-col gap-10 mt-6">
-        <UserAvatar size={170} edit />
+      <div className="max-w-[50%] mx-auto w-full flex flex-col gap-10 mt-6">
+        <UserAvatar size={130} edit />
 
         <PersonalInfoList user={userInfo} />
       </div>

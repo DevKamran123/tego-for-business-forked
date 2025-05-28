@@ -13,7 +13,7 @@ interface PersonalInfoListProps {
 const PersonalInfoList: React.FC<PersonalInfoListProps> = ({ user }) => {
   return (
     <div className="w-full mt-5">
-      <div className="w-full flex flex-col gap-10">
+      <div className="w-full flex flex-col gap-8 2xl:gap-10">
         <PersonalInfoItem
           label="Name"
           value={`${user.firstName} ${user.lastName}`}
@@ -26,7 +26,7 @@ const PersonalInfoList: React.FC<PersonalInfoListProps> = ({ user }) => {
           params="phone"
           border
         />
-        <PersonalInfoItem label="Email" value={user.email} params="email" />
+        <PersonalInfoItem label="Email" value={user.email} />
       </div>
     </div>
   );

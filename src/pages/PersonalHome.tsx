@@ -11,7 +11,7 @@ const PersonalHome = () => {
   return (
     <div className="w-full h-full flex flex-col">
       <UserProfileHeader fullName={user.name} email={user.email} />
-      <div className="max-w-screen-lg mx-auto w-full mt-8">
+      <div className="max-w-[80%] mx-auto w-full mt-8">
         <ProfileOptionsCard />
       </div>
     </div>

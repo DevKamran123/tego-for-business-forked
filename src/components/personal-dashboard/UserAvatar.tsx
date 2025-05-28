@@ -14,8 +14,8 @@ const UserAvatar: React.FC<UserAvatarProps> = ({
 }) => {
   const RenderEditBtn = () =>
     edit && (
-      <div className="size-[70px] rounded-full bg-white absolute bottom-0 right-0 border border-pebbleGray/25 cursor-pointer flex items-center justify-center">
-        <div className="size-[40px] relative">
+      <div className="size-[50px] rounded-full bg-white absolute bottom-0 right-0 border border-pebbleGray/25 cursor-pointer flex items-center justify-center">
+        <div className="size-[30px] relative">
           <img src={editIcon} alt="edit icon" className="w-full" />
         </div>
       </div>

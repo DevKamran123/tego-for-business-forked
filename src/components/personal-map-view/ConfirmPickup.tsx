@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import locationPin from "../../assets/svgs/location-pin.svg";
 import PencilIcon from "../icons/PencilIcon";
 import CustomButton from "../buttons/CustomButton";
@@ -6,26 +6,26 @@ import CustomButton from "../buttons/CustomButton";
 interface ConfirmPickupProps {
   open: boolean;
   destination: string;
-  onClose: () => void;
   onConfirm: () => void;
+  isConfirmed: boolean;
+  onEdit: () => void;
+  rideSelected: boolean;
 }
 
 const ConfirmPickup: React.FC<ConfirmPickupProps> = ({
   open,
   destination,
-  onClose,
   onConfirm,
+  isConfirmed,
+  onEdit,
+  rideSelected,
 }) => {
-  const [isConfirmed, setIsConfirmed] = useState(false);
-
   const handleConfirmation = () => {
-    setIsConfirmed(true);
     onConfirm();
   };
 
   const editPickUpDetails = () => {
-    setIsConfirmed(false);
-    onClose();
+    onEdit();
   };
 
   return (
@@ -39,8 +39,8 @@ const ConfirmPickup: React.FC<ConfirmPickupProps> = ({
 
         <div className="flex items-center justify-between mt-3">
           <div className="flex items-center gap-8">
-            <div className="flex items-center justify-center w-[60px] h-[60px] 2xl:w-[70px] 2xl:h-[70px] rounded-full bg-[#f8f8f8]">
-              <div className="w-[32px] h-[32px] xl:w-[40px] xl:h-[40px]">
+            <div className="flex items-center justify-center size-[50px] xl:size-[65px] rounded-full bg-[#f8f8f8]">
+              <div className="size-[30px] xl:size-[35px]">
                 <img
                   src={locationPin}
                   alt="location pin icon"
@@ -50,28 +50,30 @@ const ConfirmPickup: React.FC<ConfirmPickupProps> = ({
             </div>
 
             <div className="flex flex-col">
-              <p className="text-black/60 text-sm md:text-base lg:text-lg xl:text-xl">
+              <p className="text-black/60 text-sm md:text-base lg:text-lg">
                 Pickup location
               </p>
-              <h4 className="text-2xl font-semibold text-black">
+              <h4 className="text-xl font-semibold text-black">
                 {destination}
               </h4>
             </div>
           </div>
 
-          <button
-            onClick={editPickUpDetails}
-            className="hover:bg-[#f8f8f8] rounded-full p-4"
-          >
-            <PencilIcon width={35} height={35} />
-          </button>
+          {!rideSelected && (
+            <button
+              onClick={editPickUpDetails}
+              className="hover:bg-[#f8f8f8] rounded-full p-4"
+            >
+              <PencilIcon width={25} height={25} />
+            </button>
+          )}
         </div>
 
         {!isConfirmed && (
           <div className="mt-4 flex justify-end">
             <CustomButton
               onClick={handleConfirmation}
-              className="!py-4 lg:!w-[300px]"
+              className="!py-3"
             >
               Confirm pickup
             </CustomButton>
