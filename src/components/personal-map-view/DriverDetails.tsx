@@ -40,7 +40,7 @@ const DriverDetails: React.FC<DriverDetailsProps> = ({
         return () => clearTimeout(endTimer);
       }
     }
-  }, [open, tripMode]);
+  }, [open, tripMode, onStart, onComplete]);
 
   return (
     open && (
