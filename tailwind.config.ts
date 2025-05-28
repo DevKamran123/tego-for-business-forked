@@ -36,6 +36,7 @@ const config: Config = {
         paleSilver: "#D9D9D9",
         pebbleGray: "#A6A6A6",
         chromeSilk: "#C4C4C4",
+        linenWhite: "#F8F8F8",
 
         // blue
         deepBlue: "#0020CB",

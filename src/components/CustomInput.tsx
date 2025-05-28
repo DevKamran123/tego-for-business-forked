@@ -48,11 +48,12 @@ const CustomInput = forwardRef<HTMLInputElement, CustomInputProps>(
               w-full
               px-5
               py-2.5
-              text-base
+              text-sm
+              xl:text-base
               font-light
               text-neutral-800
-              placeholder:text-base
-              2xl:placeholder:text-xl
+              placeholder:text-sm
+              xl:placeholder:text-base
               focus:outline-none
               bg-white
               border

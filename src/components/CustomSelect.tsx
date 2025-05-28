@@ -13,6 +13,7 @@ type CustomSelectProps = {
   optionClassName?: string;
   onChange?: (value: string | number) => void;
   hideIcon?: boolean;
+  disabled?: boolean;
   StartIcon?: React.FC<React.SVGProps<SVGSVGElement>>;
 } & Omit<React.HTMLAttributes<HTMLDivElement>, "onChange">;
 
@@ -32,6 +33,7 @@ const CustomSelect = forwardRef<HTMLDivElement, CustomSelectProps>(
       optionClassName,
       hideIcon = false,
       StartIcon,
+      disabled,
       ...props
     },
     ref
@@ -92,25 +94,32 @@ const CustomSelect = forwardRef<HTMLDivElement, CustomSelectProps>(
             w-full
             px-3
             py-2.5
-            text-base
+            xl:text-base
             font-light
             text-neutral-800
             bg-white
             border
             rounded-lg
-            cursor-pointer
             transition-all
             duration-200
             flex
             items-center
             justify-between
+            text-sm
+            ${disabled ? "cursor-not-allowed" : "cursor-pointer"}
             ${
               internalValue === placeholder ? "text-[#251D3580]" : "text-black"
             } text-base
             ${className}
             ${error ? "border-red-500" : "border-neutral-300"}
           `}
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => {
+            if (disabled) {
+              setIsOpen(false);
+            } else {
+              setIsOpen(!isOpen);
+            }
+          }}
           ref={ref}
         >
           <div className="flex items-center gap-2">
@@ -136,6 +145,8 @@ const CustomSelect = forwardRef<HTMLDivElement, CustomSelectProps>(
                   hover:text-white
                   text-[#1445c7]
                   select-none
+                  text-sm
+                  xl:text-base
                   ${optionClassName}
                 `}
                 onClick={() => handleSelect(option)}

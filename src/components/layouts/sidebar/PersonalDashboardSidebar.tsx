@@ -32,10 +32,15 @@ const PersonalDashboardSidebar = () => {
         link: "/personal/dashboard/privacy-and-data",
       },
       {
+        title: "Coupons",
+        slug: "coupons",
+        link: "/personal/dashboard/coupons",
+        gap: true,
+      },
+      {
         title: "Activity",
         slug: "activity",
         link: "/personal/dashboard/activity",
-        gap: true,
       },
       {
         title: "Wallet",
@@ -63,7 +68,7 @@ const PersonalDashboardSidebar = () => {
   }, [menuItem, location]);
 
   return (
-    <div className="max-w-[16.25rem] lg:max-w-[18rem] w-full min-h-screen bg-[#F8F8F8] z-50">
+    <div className="max-w-[16.25rem] w-full min-h-screen bg-[#F8F8F8] z-30">
       <div className="flex flex-col">
         <div className="pl-5 py-9">
           <div className="flex flex-col gap-5">
@@ -73,7 +78,9 @@ const PersonalDashboardSidebar = () => {
                   activeItem === item.slug
                     ? "bg-paleSilver py-2.5 px-3.5 font-semibold"
                     : "font-normal"
-                } ${item.gap && "mt-24"} text-grayishBlue text-xl`}
+                } ${
+                  item.gap && "mt-24"
+                } text-grayishBlue text-base 2xl:text-xl`}
                 key={item.slug}
                 to={item.link}
                 onClick={() => setActiveItem(item.slug)}
@@ -81,7 +88,10 @@ const PersonalDashboardSidebar = () => {
                 {item.title}
               </Link>
             ))}
-            <Link className="text-vividRed text-xl font-normal" to={"/logout"}>
+            <Link
+              className="text-vividRed text-base 2xl:text-xl font-normal"
+              to={"/logout"}
+            >
               Log out
             </Link>
           </div>

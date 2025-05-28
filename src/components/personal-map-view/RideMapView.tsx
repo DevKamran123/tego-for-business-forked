@@ -12,18 +12,32 @@ type LatLngLiteral = google.maps.LatLngLiteral;
 type DirectionsResult = google.maps.DirectionsResult;
 type MapOptions = google.maps.MapOptions;
 const MIN_ZOOM = 4;
+const INITIAL_ZOOM = 10;
 
 const RideMapView = () => {
-  const [zoom, setZoom] = useState(10);
-  const [pickUp, setPickUp] = useState<LatLngLiteral>();
-  const [destination, setDestination] = useState<LatLngLiteral>();
-  const [directions, setDirections] = useState<DirectionsResult>();
-  const [cars, setCars] = useState<LatLngLiteral[]>([]);
+  // manage map zoom
+  const [zoom, setZoom] = useState(INITIAL_ZOOM);
+
+  // manage location
+  const [pickUp, setPickUp] = useState<LatLngLiteral | null>(null);
+  const [destination, setDestination] = useState<LatLngLiteral | null>(null);
+  const [directions, setDirections] = useState<DirectionsResult | undefined>();
+  const [cars, setCars] = useState<LatLngLiteral[] | null>(null);
   const [pickUpAddress, setPickUpAddress] = useState<string>("");
+
+  // manage rider state
+  const [showBookingForm, setShowBookingForm] = useState<boolean>(true);
   const [showPickUpConfirmation, setShowPickUpConfirmation] =
     useState<boolean>(false);
   const [showAvailableRides, setShowAvailableRides] = useState<boolean>(false);
   const [showDriverDetails, setShowDriverDetails] = useState<boolean>(false);
+
+  // manage trip modes
+  const [isSearching, setIsSearching] = useState(false);
+  const [mode, setMode] = useState<"confirmed" | "edit" | "booked" | null>(
+    null
+  );
+  const [tripMode, setTripMode] = useState<"begin" | "end" | null>(null);
 
   const mapRef = useRef<google.maps.Map | null>(null);
   const center = useMemo<LatLngLiteral>(
@@ -97,28 +111,64 @@ const RideMapView = () => {
     }
   }, [pickUp, destination]);
 
+  // on click events
   const handleBookingFormSubmit = (address: string) => {
-    setPickUpAddress(address);
-    setShowPickUpConfirmation(true);
+    if (destination && pickUp && directions) {
+      setPickUpAddress(address);
+      setShowPickUpConfirmation(true);
+      setIsSearching(true);
+    }
   };
 
   const handlePickupConfirmationClick = () => {
     setShowAvailableRides(true);
+    setMode("confirmed");
+  };
+
+  const handleEditPickUpClick = () => {
+    setMode("edit");
+    setShowPickUpConfirmation(false);
+    setShowAvailableRides(false);
+    setIsSearching(false);
   };
 
   const handleBookRideClick = () => {
     setShowAvailableRides(false);
     setShowDriverDetails(true);
+    setMode("booked");
   };
 
   const handleCancelRideClick = () => {
     setShowDriverDetails(false);
-    setShowAvailableRides(true);
+    setShowAvailableRides(false);
+    setMode(null);
+  };
+
+  const onEndTrip = () => {
+    // return all states to null and false
+    setTripMode(null);
+    setMode(null);
+    setIsSearching(false);
+    setShowDriverDetails(false);
+    setShowPickUpConfirmation(false);
+    setShowBookingForm(true);
+    setPickUp(null);
+    setDestination(null);
+    setCars(null);
+    setPickUpAddress("");
+    setZoom(INITIAL_ZOOM);
+  };
+
+  const onStartTrip = () => {
+    setTripMode("begin");
+    setShowBookingForm(false);
+    setShowPickUpConfirmation(false);
   };
 
   return (
     <div className="w-screen h-screen overflow-hidden relative">
       <RideBookingForm
+        open={showBookingForm}
         setPickUpPosition={(position) => {
           setPickUp(position);
           mapRef.current?.panTo(position);
@@ -127,13 +177,19 @@ const RideMapView = () => {
           setDestination(position);
         }}
         handleSubmit={handleBookingFormSubmit}
+        isConfirmed={mode === "confirmed" || mode === "booked"}
+        editMode={mode === "edit"}
+        tripHasEnded={tripMode === "end"}
+        searching={isSearching}
       />
 
       <ConfirmPickup
         open={showPickUpConfirmation}
         destination={pickUpAddress}
         onConfirm={handlePickupConfirmationClick}
-        onClose={() => setShowPickUpConfirmation(false)}
+        isConfirmed={mode === "confirmed" || mode === "booked"}
+        onEdit={handleEditPickUpClick}
+        rideSelected={mode === "booked"}
       />
 
       <AvailableRidesList
@@ -144,6 +200,10 @@ const RideMapView = () => {
       <DriverDetails
         open={showDriverDetails}
         onCancel={handleCancelRideClick}
+        tripMode={tripMode}
+        onComplete={() => setTripMode("end")}
+        onStart={onStartTrip}
+        onEnd={onEndTrip}
       />
 
       <MapOverlay side="left" />
@@ -157,16 +217,17 @@ const RideMapView = () => {
         onZoomChanged={handleZoomChanged}
       >
         {/* Render car markers */}
-        {cars.map((car, index) => (
-          <Marker
-            icon={{
-              url: carIcon,
-              scaledSize: new google.maps.Size(40, 40),
-            }}
-            position={car}
-            key={index}
-          />
-        ))}
+        {cars &&
+          cars.map((car, index) => (
+            <Marker
+              icon={{
+                url: carIcon,
+                scaledSize: new google.maps.Size(40, 40),
+              }}
+              position={car}
+              key={index}
+            />
+          ))}
 
         {pickUp && <Marker position={pickUp} />}
 

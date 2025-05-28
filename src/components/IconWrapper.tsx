@@ -6,7 +6,7 @@ interface IconWrapperProps {
 }
 const IconWrapper: React.FC<IconWrapperProps> = ({
   icon,
-  className = "bg-paleSilver px-2.5 xl:p-3.5 rounded-2xl border border-pebbleGray/50",
+  className = "bg-paleSilver p-2.5 xl:p-3.5 rounded-2xl border border-pebbleGray/50",
 }) => {
   return (
     <div className={className}>

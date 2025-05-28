@@ -8,20 +8,50 @@ import {
   getLocationNameFromCoordinates,
   getUserLocationFromBrowser,
 } from "../../utils/locationUtils";
+import { useEffect, useRef } from "react";
 
 type LatLngLiteral = google.maps.LatLngLiteral;
 
 interface RideBookingFormProps {
+  open: boolean;
   setPickUpPosition: (position: LatLngLiteral) => void;
   setDestinationPosition: (position: LatLngLiteral) => void;
   handleSubmit: (address: string) => void;
+  isConfirmed: boolean;
+  editMode: boolean;
+  searching: boolean;
+  tripHasEnded: boolean;
 }
 
 const RideBookingForm: React.FC<RideBookingFormProps> = ({
+  open,
   setPickUpPosition,
   setDestinationPosition,
   handleSubmit,
+  isConfirmed,
+  editMode,
+  searching,
+  tripHasEnded,
 }) => {
+  const pickUpInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (editMode && pickUpInputRef.current) {
+      pickUpInputRef.current.focus();
+    }
+  }, [editMode]);
+
+  // if trip has ended clear all inputs
+  useEffect(() => {
+    if (tripHasEnded) {
+      setPickUpValue("");
+      setDestinationValue("");
+    }
+    if (pickUpInputRef.current) {
+      pickUpInputRef.current.focus();
+    }
+  }, [tripHasEnded]);
+
   // const [additionalInputs, setAdditionalInputs] = useState<string[]>([]);
 
   // const handleAddInput = () => {
@@ -98,61 +128,65 @@ const RideBookingForm: React.FC<RideBookingFormProps> = ({
   };
 
   return (
-    <div className="w-fit absolute left-8 top-[30px] z-20 bg-personal-ride-form rounded-2xl bg-cover bg-no-repeat bg-center p-4 lg:px-8 lg:py-12 max-h-fit">
-      <div className="w-full flex flex-col space-y-4">
-        <h3 className="text-3xl font-bold text-white">Book a ride</h3>
+    open && (
+      <div className="w-full max-w-[22%] absolute left-8 top-[30px] z-20 bg-personal-ride-form rounded-2xl bg-cover bg-no-repeat bg-center px-4 py-4 lg:px-6 lg:py-10 xl:px-8 max-h-fit">
+        <div className="w-full flex flex-col space-y-3">
+          <h3 className="text-2xl font-bold text-white">Book a ride</h3>
 
-        <div className="relative w-full" ref={pickUpContainerRef}>
-          <CustomInput
-            placeholder="Enter pick up location"
-            className="bg-white/10 text-lg text-white placeholder:text-white placeholder:text-lg border-white/35 py-4 pl-6 pr-14 !rounded-2xl backdrop-blur-xl relative"
-            value={pickUpValue}
-            disabled={!pickUpReady}
-            onChange={(e) => setPickUpValue(e.target.value)}
-          />
+          <div className="relative w-full" ref={pickUpContainerRef}>
+            <CustomInput
+              placeholder="Enter pick up location"
+              className="bg-white/10 text-white placeholder:text-white placeholder:text-lg border-white/35 py-3.5 pl-4 xl:pl-5 pr-10 !rounded-xl backdrop-blur-xl relative"
+              value={pickUpValue}
+              ref={pickUpInputRef}
+              disabled={!pickUpReady || isConfirmed || searching}
+              onChange={(e) => setPickUpValue(e.target.value)}
+            />
 
-          <button
-            onClick={() => {
-              getUserCurrentLocation();
-            }}
-            className="absolute top-5 right-5 size-6 cursor-pointer"
-          >
-            <img src={addCircle} alt="add circle icon" className="w-full" />
-          </button>
+            <button
+              onClick={() => {
+                getUserCurrentLocation();
+              }}
+              className="absolute top-4 right-3.5 size-5 cursor-pointer"
+              disabled={isConfirmed || searching}
+            >
+              <img src={addCircle} alt="add circle icon" className="w-full" />
+            </button>
 
-          <PlacesSuggestions
-            onSelect={handlePickUpSelect}
-            open={pickUpSuggestionsOpen}
-            suggestions={pickUpSuggestionData}
-          />
-        </div>
+            <PlacesSuggestions
+              onSelect={handlePickUpSelect}
+              open={pickUpSuggestionsOpen}
+              suggestions={pickUpSuggestionData}
+            />
+          </div>
 
-        <div className="relative w-full" ref={destinationContainerRef}>
-          <CustomInput
-            placeholder="Enter destination"
-            className="bg-white/10 text-lg text-white placeholder:text-white placeholder:text-lg border-white/35 py-4 pl-6 pr-14 !rounded-2xl backdrop-blur-xl"
-            value={destinationValue}
-            disabled={!destinationReady}
-            onChange={(e) => setDestinationValue(e.target.value)}
-          />
+          <div className="relative w-full" ref={destinationContainerRef}>
+            <CustomInput
+              placeholder="Enter destination"
+              className="bg-white/10 text-white placeholder:text-white placeholder:text-lg border-white/35 py-3.5 pl-4 xl:pl-5 pr-10 !rounded-xl backdrop-blur-xl relative"
+              value={destinationValue}
+              disabled={!destinationReady || isConfirmed || searching}
+              onChange={(e) => setDestinationValue(e.target.value)}
+            />
 
-          <button
-            onClick={() => {
-              console.log("add another input");
-            }}
-            className="absolute top-5 right-5 size-6 cursor-pointer"
-          >
-            <img src={addCircle} alt="add circle icon" className="w-full" />
-          </button>
+            <button
+              onClick={() => {
+                console.log("add another input");
+              }}
+              disabled={isConfirmed || searching}
+              className="absolute top-4 right-3.5 size-5 cursor-pointer"
+            >
+              <img src={addCircle} alt="add circle icon" className="w-full" />
+            </button>
 
-          <PlacesSuggestions
-            onSelect={handleDestinationSelect}
-            open={destinationSuggestionsOpen}
-            suggestions={destinationSuggestions}
-          />
-        </div>
+            <PlacesSuggestions
+              onSelect={handleDestinationSelect}
+              open={destinationSuggestionsOpen}
+              suggestions={destinationSuggestions}
+            />
+          </div>
 
-        {/* {additionalInputs.map((value, index) => (
+          {/* {additionalInputs.map((value, index) => (
           <div className="relative w-full" key={index}>
             <CustomInput
               value={value}
@@ -172,39 +206,49 @@ const RideBookingForm: React.FC<RideBookingFormProps> = ({
           </div>
         ))} */}
 
-        <CustomSelect
-          options={["Pick up now", "Pick up later"]}
-          value={"Pick up now"}
-          className="bg-white/10 text-lg text-white placeholder:text-white border-white/35 py-4 px-6 !rounded-2xl backdrop-blur-xl"
-          dropDownClassName="bg-white/10 text-base text-white placeholder:text-white border-white/35 !rounded-2xl backdrop-blur-xl"
-          optionClassName="text-white"
-        />
-        <div className="w-1/2 xl:max-w-[220px] xl:w-full">
           <CustomSelect
-            options={["For me", "For someone"]}
-            value={"For me"}
-            className="bg-white/10 text-lg text-white placeholder:text-white border-white/35 py-4 px-6 !rounded-full backdrop-blur-xl"
-            dropDownClassName="bg-white/10 text-base text-white placeholder:text-white placeholder:text-xl border-white/35 !rounded-2xl backdrop-blur-xl"
+            options={["Pick up now", "Pick up later"]}
+            value={"Pick up now"}
+            className="bg-white/10 text-white placeholder:text-white border-white/35 pl-4 xl:pl-5 !rounded-xl backdrop-blur-xl"
+            dropDownClassName="bg-white/10 text-base text-white placeholder:text-white border-white/35 !rounded-2xl backdrop-blur-xl"
             optionClassName="text-white"
+            disabled={isConfirmed || searching}
           />
+          <div className="w-3/5">
+            <CustomSelect
+              options={["For me", "For someone"]}
+              value={"For me"}
+              className="bg-white/10 text-white placeholder:text-white border-white/35 pl-4 xl:pl-5 !rounded-full backdrop-blur-xl"
+              dropDownClassName="bg-white/10 text-base text-white placeholder:text-white placeholder:text-xl border-white/35 !rounded-2xl backdrop-blur-xl"
+              optionClassName="text-white"
+              disabled={isConfirmed || searching}
+            />
+          </div>
         </div>
-      </div>
 
-      <div className="w-full px-2.5 mt-10 flex flex-col space-y-4">
-        <CustomButton
-          size="full"
-          variant="secondary"
-          onClick={() => handleSubmit(pickUpValue)}
-        >
-          Search
-        </CustomButton>
-        <div className="w-full border border-white rounded-lg md:rounded-xl lg:rounded-2xl">
-          <CustomButton size="full" variant="outline">
-            Book from previous
+        <div className="w-full px-2.5 mt-10 flex flex-col space-y-4">
+          <CustomButton
+            size="full"
+            variant="secondary"
+            onClick={() => {
+              handleSubmit(pickUpValue);
+            }}
+            disabled={isConfirmed || searching}
+          >
+            Search
           </CustomButton>
+          <div className="w-full border border-white rounded-lg md:rounded-xl lg:rounded-xl">
+            <CustomButton
+              size="full"
+              variant="outline"
+              disabled={isConfirmed || searching}
+            >
+              Book from previous
+            </CustomButton>
+          </div>
         </div>
       </div>
-    </div>
+    )
   );
 };
 
