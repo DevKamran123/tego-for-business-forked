@@ -7,7 +7,7 @@ const PersonalWallet = () => {
   return (
     <div className="w-full h-full flex flex-col">
       <ContentPageHeader title="Wallet" />
-      <div className="max-w-[680px] mx-auto w-full flex flex-col gap-10">
+      <div className="max-w-[50%] mx-auto w-full flex flex-col gap-10">
         <WalletOverview />
         <WalletActions />
         <TransactionHistory />

@@ -18,7 +18,7 @@ const PersonalRideHeader = () => {
   };
 
   return (
-    <div className="flex w-screen justify-between items-center h-[6.25rem] px-20 bg-darkBluish">
+    <div className="flex w-screen justify-between items-center h-[4.77rem] px-20 bg-darkBluish">
       <div className="flex items-center gap-14">
         <div
           onClick={() => navigate("/")}
@@ -52,16 +52,16 @@ const PersonalRideHeader = () => {
       </div>
 
       <div className="flex items-center gap-12">
-        <div className="flex items-center gap-2.5">
-          <BookmarkFlag />
-          <p className="text-white text-xl">Activity</p>
+        <div className="flex items-center gap-1">
+          <BookmarkFlag size={20} />
+          <p className="text-white text-base">Activity</p>
         </div>
 
         <div
-          className="flex items-center gap-2.5 cursor-pointer"
+          className="flex items-center gap-1 cursor-pointer"
           onClick={() => toggleOpen()}
         >
-          <div className="size-14 rounded-full bg-white flex items-center justify-center">
+          <div className="size-10 rounded-full bg-white flex items-center justify-center">
             <AccountCircle />
           </div>
 

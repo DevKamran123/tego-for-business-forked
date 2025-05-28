@@ -32,7 +32,7 @@ export default function Header() {
       </div>
       <div className="responsivePlaceholder"></div>
 
-      <div className="headerCont">
+      <div className="headerCont px-20">
         <div
           onClick={() => navigate("/")}
           className="headerCont_logo cursor-pointer"

@@ -13,7 +13,7 @@ const ContentPageHeader: React.FC<ContentPageHeaderProps> = ({
   title,
   fallBackRoute = "/personal/dashboard",
   showBackBtn = true,
-  className = "max-w-[680px] mx-auto w-full",
+  className = "max-w-[50%] mx-auto w-full",
 }) => {
   const navigate = useNavigate();
 
@@ -36,7 +36,7 @@ const ContentPageHeader: React.FC<ContentPageHeaderProps> = ({
       {showBackBtn && (
         <button
           onClick={goBack}
-          className="absolute left-20 xl:left-24 2xl:left-32 size-[25px] md:size-[35px] xl:size-[50px] cursor-pointer"
+          className="absolute left-[8%] 2xl:left-[10%] size-[30px] 2xl:size-[40px] cursor-pointer"
         >
           <img src={arrowBack} alt="arrow back icon" className="w-full" />
         </button>
@@ -45,7 +45,9 @@ const ContentPageHeader: React.FC<ContentPageHeaderProps> = ({
       <div className={className}>
         {typeof title === "string" ? (
           <div className="w-full">
-            <h1 className="text-4xl font-bold text-grayishBlue">{title}</h1>
+            <h1 className="text-2xl 2xl:text-3xl font-bold text-grayishBlue">
+              {title}
+            </h1>
           </div>
         ) : (
           title

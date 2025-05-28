@@ -66,7 +66,7 @@ const AvailableRidesList: React.FC<AvailableRidesListProps> = ({
 
         <div
           role="button"
-          className="cursor-pointer bg-[#f8f8f8] flex items-center justify-between px-5 py-2.5 rounded-xl mt-4"
+          className="cursor-pointer bg-[#f8f8f8] flex items-center justify-between px-5 py-2.5 rounded-xl mt-4  text-sm xl:text-base"
         >
           <div className="flex items-center gap-2">
             <TbCreditCardFilled />
@@ -76,12 +76,16 @@ const AvailableRidesList: React.FC<AvailableRidesListProps> = ({
           <FaAngleRight />
         </div>
 
-        <div className="mt-4 flex items-center gap-4 justify-between">
-          <button className="text-darkIndigo flex items-center gap-2">
+        <div className="mt-4 flex items-center gap-2 justify-between">
+          <button className="text-darkIndigo w-[90%] flex items-center gap-1.5 xl:gap-2 text-sm xl:text-base">
             Schedule trip
-            <BsClockFill size={20} className="text-darkIndigo" />
+            <BsClockFill size={16} className="text-darkIndigo" />
           </button>
-          <CustomButton className="" onClick={handleBookClick}>
+          <CustomButton
+            disabled={activeIndex === null}
+            className="w-full"
+            onClick={handleBookClick}
+          >
             Book now
           </CustomButton>
         </div>

@@ -35,8 +35,8 @@ const CreditBalanceCard: React.FC<CreditBalanceCardProps> = ({
       <div className="flex flex-col gap-5">
         {/* credit balance */}
         <div className="flex items-center gap-3">
-          <PokerChip size={100} />
-          <h1 className="text-6xl xl:text-7xl font-bold text-grayishBlue">
+          <PokerChip size={75} />
+          <h1 className="text-5xl 2xl:text-6xl font-bold text-grayishBlue">
             {balance}
           </h1>
         </div>

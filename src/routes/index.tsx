@@ -28,6 +28,8 @@ const PersonalInfo = lazy(() => import("../pages/PersonalInfo"));
 const EditPersonalInfo = lazy(() => import("../pages/EditPersonalInfo"));
 const PersonalWallet = lazy(() => import("../pages/PersonalWallet"));
 const PersonalRide = lazy(() => import("../pages/PersonalRide"));
+const PersonalCoupon = lazy(() => import("../pages/PersonalCoupon"));
+const PersonalActivity = lazy(() => import("../pages/PersonalActivity"));
 
 const AppRoutes = () => {
   const activeTab = useRideStore((state) => state.activeTab);
@@ -85,6 +87,8 @@ const AppRoutes = () => {
                       element={<EditPersonalInfo />}
                     />
                     <Route path="/wallet" element={<PersonalWallet />} />
+                    <Route path="/coupons" element={<PersonalCoupon />} />
+                    <Route path="/activity" element={<PersonalActivity />} />
 
                     <Route path="*" element={<PageNotFound />} />
                   </Routes>
