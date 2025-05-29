@@ -14,16 +14,29 @@ type MapOptions = google.maps.MapOptions;
 const MIN_ZOOM = 4;
 const INITIAL_ZOOM = 10;
 
-const RideMapView = () => {
+interface RideMapViewProps {
+  initialPickUp?: LatLngLiteral;
+  initialDestination?: LatLngLiteral;
+  initialPickUpAddress?: string;
+  initialDestinationAddress?: string;
+}
+
+const RideMapView: React.FC<RideMapViewProps> = ({
+  initialPickUp,
+  initialDestination,
+  initialPickUpAddress,
+  initialDestinationAddress,
+}) => {
   // manage map zoom
   const [zoom, setZoom] = useState(INITIAL_ZOOM);
 
   // manage location
-  const [pickUp, setPickUp] = useState<LatLngLiteral | null>(null);
-  const [destination, setDestination] = useState<LatLngLiteral | null>(null);
+  const [pickUp, setPickUp] = useState<LatLngLiteral | null>(initialPickUp || null);
+  const [destination, setDestination] = useState<LatLngLiteral | null>(initialDestination || null);
   const [directions, setDirections] = useState<DirectionsResult | undefined>();
   const [cars, setCars] = useState<LatLngLiteral[] | null>(null);
-  const [pickUpAddress, setPickUpAddress] = useState<string>("");
+  const [pickUpAddress, setPickUpAddress] = useState<string>(initialPickUpAddress || "");
+  const [destinationAddress, setDestinationAddress] = useState<string>(initialDestinationAddress || ""); // Added state for destination address
 
   // manage rider state
   const [showBookingForm, setShowBookingForm] = useState<boolean>(true);
@@ -112,9 +125,10 @@ const RideMapView = () => {
   }, [pickUp, destination]);
 
   // on click events
-  const handleBookingFormSubmit = (address: string) => {
+  const handleBookingFormSubmit = (address: string, destAddress: string) => {
     if (destination && pickUp && directions) {
       setPickUpAddress(address);
+      setDestinationAddress(destAddress);
       setShowPickUpConfirmation(true);
       setIsSearching(true);
     }
@@ -156,6 +170,7 @@ const RideMapView = () => {
     setDestination(null);
     setCars(null);
     setPickUpAddress("");
+    setDestinationAddress("");
     setZoom(INITIAL_ZOOM);
   };
 
@@ -166,7 +181,7 @@ const RideMapView = () => {
   };
 
   return (
-    <div className="w-screen h-screen overflow-hidden relative">
+    <div className="w-full h-screen overflow-hidden relative">
       <RideBookingForm
         open={showBookingForm}
         setPickUpPosition={(position) => {
@@ -181,6 +196,8 @@ const RideMapView = () => {
         editMode={mode === "edit"}
         tripHasEnded={tripMode === "end"}
         searching={isSearching}
+        initialPickUpAddress={pickUpAddress} // Pass down initial address
+        initialDestinationAddress={destinationAddress} // Pass down initial address
       />
 
       <ConfirmPickup

@@ -7,3 +7,22 @@
 @forward "./abstracts/fonts"; // Changed from @use to @forward
 @use "./base/normalize";
 @forward "./abstracts/breakpoints.scss";
+
+// Modal button styles - shared across all modals
+.modal-button {
+  padding: 6px 12px !important;
+  height: auto !important;
+  font-size: 14px !important;
+}
+
+.modal-button-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+  // margin-top: 20px;
+
+  button {
+    border-radius: 8px;
+  }
+}

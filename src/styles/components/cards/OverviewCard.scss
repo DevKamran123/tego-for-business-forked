@@ -1,0 +1,25 @@
+@use "../../abstracts/mixins" as *;
+
+.overview_card {
+  cursor: pointer;
+
+  &_title {
+    font-size: toRem(16);
+    font-weight: 500;
+    line-height: toRem(20);
+    text-align: left;
+    color: var(--text-color);
+
+    &_wrapper{
+      align-items: center;
+    }
+  }
+
+  &_value {
+    color: var(--text-color);
+    font-size: toRem(32);
+    font-weight: 700;
+    line-height: toRem(60);
+    text-align: left;
+  }
+}

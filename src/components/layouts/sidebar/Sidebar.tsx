@@ -32,7 +32,7 @@ const Sidebar: React.FC = () => {
         <div className="sidebar_header">
           <div className="logo_wrapper" onClick={() => navigate("/")}>
             <div className="logo_icon_wrapper">
-              <img src="favicon.svg" className="logo_icon" alt="logo" />
+              <img src="/favicon.svg" className="logo_icon" alt="logo" />
             </div>
             <h1>RideTego</h1>
           </div>
