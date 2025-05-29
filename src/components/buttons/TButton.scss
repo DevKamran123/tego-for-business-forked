@@ -12,28 +12,41 @@
   min-width: toRem(300);
 
   &-primary {
-    background-color: $primary-color;
+    background-color: #3E4095!important;
     color: $white;
-    border: none!important;
+    border: none !important;
 
     &:hover {
-      background-color: $primary-color!important;
+      background-color: darken(#3E4095, 10%) !important;
     }
   }
 
   &-secondary {
-    background-color: $secondary-color;
+    background-color: #af2e2f!important;
     color: $white;
-    border: none!important;
-    
+    border: none !important;
+
     &:hover {
-      background-color: darken(#AF2E2F, 20%)!important;
+      background-color: darken(#af2e2f, 20%) !important;
       color: $white !important;
     }
   }
 
   &-outline {
     background-color: $white;
-    color: $primary-color;
+    color: #3E4095!important;
+  }
+
+  &.rounded {
+    border-radius: 10px;
+  }
+
+  &.small {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17.64px;
+    letter-spacing: 0%;
+    height: 50px;
+    min-width: 0;
   }
 }

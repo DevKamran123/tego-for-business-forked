@@ -22,15 +22,6 @@ const useAppStore = create<AppState>((set) => ({
   },
   showMobileMenu: false,
   setShowMobileMenu: (showMobileMenu) => set({ showMobileMenu: showMobileMenu }),
-  // user: Cookies.get("user") || null,
-  // setUser: (user: string) => {
-  //   Cookies.set("user", user);
-  //   set({ user });
-  // },
-  // clearUser: () => {
-  //   Cookies.remove("user");
-  //   set({ user: null });
-  // },
 }));
 
 export default useAppStore;

@@ -1,0 +1,49 @@
+@use "../abstracts/mixins" as *;
+
+.four-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: toRem(20);
+  
+  @media screen and (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.section-title {
+  font-size: toRem(18);
+  font-weight: 700;
+  margin-bottom: toRem(20)!important;
+  color: var(--text-color);
+}
+
+// Style the deposit form
+.ant-form-item-label > label {
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.ant-radio-button-wrapper {
+  &:first-child {
+    border-radius: 4px 0 0 4px;
+  }
+  
+  &:last-child {
+    border-radius: 0 4px 4px 0;
+  }
+  
+  &-checked {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+    
+    &:hover {
+      color: white;
+      border-color: var(--primary-color);
+    }
+  }
+}

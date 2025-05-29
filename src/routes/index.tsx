@@ -9,6 +9,7 @@ import Loader from "../components/Loader";
 import AcceptInvite from "../pages/AcceptInvite";
 import PersonalDashboardLayout from "../components/layouts/PersonalDashboardLayout";
 import BusinessRide from "../pages/BusinessRide";
+import WalletPage from "../pages/Wallet"; // Added import for WalletPage
 
 // Lazy load all components
 const Home = lazy(() => import("../pages/Home"));
@@ -31,6 +32,7 @@ const PersonalWallet = lazy(() => import("../pages/PersonalWallet"));
 const PersonalRide = lazy(() => import("../pages/PersonalRide"));
 const PersonalCoupon = lazy(() => import("../pages/PersonalCoupon"));
 const PersonalActivity = lazy(() => import("../pages/PersonalActivity"));
+const Wallet = lazy(() => import("../pages/Wallet"));
 
 const AppRoutes = () => {
   const activeTab = useRideStore((state) => state.activeTab);
@@ -68,6 +70,7 @@ const AppRoutes = () => {
                         }
                       />
                       <Route path="/ride" element={<BusinessRide />} />
+                      <Route path="/wallet" element={<Wallet />} />
                       <Route path="/referral-code" element={<Referral />} />
                       <Route path="/coupons" element={<Coupon />} />
                       <Route path="*" element={<PageNotFound />} />
@@ -97,6 +100,8 @@ const AppRoutes = () => {
                 </PersonalDashboardLayout>
               }
             />
+            {/* <Route path="/settings" element={<Settings />} /> */}
+            <Route path="/wallet-page" element={<WalletPage />} /> {/* Added route for WalletPage */}
           </Routes>
         </Suspense>
       </Router>
