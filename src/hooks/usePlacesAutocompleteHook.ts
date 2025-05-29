@@ -9,7 +9,7 @@ type Position = google.maps.LatLngLiteral;
 interface UsePlacesAutocompleteReturn {
   ready: boolean;
   value: string;
-  setValue: (value: string) => void;
+  setValue: (value: string, shouldFetchData?: boolean) => void; // Modified
   suggestions: google.maps.places.AutocompletePrediction[];
   suggestionsOpen: boolean;
   position: Position | null;

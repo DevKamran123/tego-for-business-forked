@@ -7,18 +7,31 @@ import menu from "../assets/icons/menu.png";
 import useMenuStore from "../store/MenuStore";
 import Cookies from "js-cookie";
 
+import { useClickOutside } from "../hooks/useClickOutside";
+import BookmarkFlag from "./icons/BookmarkFlag";
+import AccountCircle from "./icons/AccountCircle";
+import DropdownArrow from "./icons/DropdownArrow";
+import UserProfileMenu from "./personal-map-view/UserProfileMenu";
+
 export default function Header() {
   const navigate = useNavigate();
-  const toggleMenu = useMenuStore((state) => state.toggleMenu);
-  const isOpen = useMenuStore((state) => state.isOpen);
+  const toggleMobileMenu = useMenuStore((state) => state.toggleMenu);
+  const mobileMenuIsOpen = useMenuStore((state) => state.isOpen);
   const session = Cookies.get("session");
+
+  const { openState: userProfileMenuOpen, toggleOpen: toggleUserProfileMenuDirectly, ref: userProfileMenuRef } = useClickOutside(false);
+  const userInfo = {
+    name: "Daniel Victor",
+    token: 648,
+    rating: 5,
+  };
 
   return (
     <>
       <div className="responsiveHeader">
         <div
-          className={`responsiveHeader_menu ${isOpen ? "open" : "normal"}`}
-          onClick={() => toggleMenu()}
+          className={`responsiveHeader_menu ${mobileMenuIsOpen ? "open" : "normal"}`}
+          onClick={() => toggleMobileMenu()}
         >
           <img src={menu} alt="menu" />
         </div>
@@ -42,7 +55,7 @@ export default function Header() {
         </div>
         <div className="headerCont_details">
           <div
-            onClick={() => navigate("/personal/ride")}
+            onClick={() => navigate(session ? "/dashboard/rides" : "/personal/ride")}
             className="headerCont_details_content"
           >
             Ride
@@ -70,32 +83,61 @@ export default function Header() {
             <div className="headerCont_auth_lang_symbol">EN</div>
           </div>
           {!session && (
-            <div
-              className="headerCont_auth_login"
-              onClick={() => navigate("/login")}
-            >
-              Log In
-            </div>
-          )}
-          {!session && (
-            <div
-              className="headerCont_auth_signup"
-              onClick={() => navigate("/signup")}
-            >
-              Sign up
-            </div>
+            <>
+              <div
+                className="headerCont_auth_login"
+                onClick={() => navigate("/login")}
+              >
+                Log In
+              </div>
+              <div
+                className="headerCont_auth_signup"
+                onClick={() => navigate("/signup")}
+              >
+                Sign up
+              </div>
+            </>
           )}
 
           {session && (
-            <div
-              className="headerCont_auth_signup"
-              onClick={() => navigate("/dashboard")}
-            >
-              Dashboard
-            </div>
+            <>
+              <div
+                className="headerCont_auth_signup"
+                onClick={() => navigate("/dashboard")}
+              >
+                Dashboard
+              </div>
+              <div
+                className="headerCont_details_content flex items-center gap-1 cursor-pointer"
+                onClick={() => navigate("/personal/activity")}
+              >
+                <BookmarkFlag size={20} />
+                <p>Activity</p>
+              </div>
+              {/* Profile Dropdown */}
+              <div className="relative flex items-center" ref={userProfileMenuRef}>
+                <div
+                  className="flex items-center gap-1 cursor-pointer"
+                  onClick={() => toggleUserProfileMenuDirectly()} // Modified to call directly
+                >
+                  <div className="size-10 rounded-full bg-gray-200 flex items-center justify-center text-gray-600"> {/* Adjusted for visibility */}
+                    <AccountCircle />
+                  </div>
+                  <DropdownArrow isOpen={!!userProfileMenuOpen} /> {/* Coerce to boolean */} 
+                </div>
+                <UserProfileMenu
+                  open={!!userProfileMenuOpen} // Coerce to boolean
+                  name={userInfo.name}
+                  token={userInfo.token}
+                  rating={userInfo.rating}
+                  ref={userProfileMenuRef} // Pass the ref here
+                />
+              </div>
+            </>
           )}
         </div>
       </div>
     </>
   );
 }
+
