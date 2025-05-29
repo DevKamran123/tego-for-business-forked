@@ -1,28 +1,28 @@
 import RideMapView from "../components/personal-map-view/RideMapView";
-import PersonalRideHeader from "../components/personal-map-view/PersonalRideHeader";
+// import PersonalRideHeader from "../components/personal-map-view/PersonalRideHeader";
 import { useLoadScript } from "@react-google-maps/api";
 import Loader from "../components/Loader";
 import { getGoogleMapsApiKey } from "../utils/env";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom"; // Added
 
-// Define the expected state type from navigation
+// Define the expected state type from navigation - Added
 interface LocationState {
   pickUp?: { lat: number; lng: number };
   destination?: { lat: number; lng: number };
   pickUpAddress?: string;
   destinationAddress?: string;
-  // Add other properties from state if needed, e.g., date, time
 }
 
-const PersonalRide = () => {
-  const location = useLocation();
-  const navigateState = location.state as LocationState | undefined;
+const BusinessRide = () => {
+  const location = useLocation(); // Added
+  const navigateState = location.state as LocationState | undefined; // Added
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: getGoogleMapsApiKey(),
     libraries: ["places"],
   });
 
+  // Added loadError handling
   if (loadError)
     return (
       <div className="w-full h-screen flex items-center justify-center">
@@ -39,17 +39,17 @@ const PersonalRide = () => {
     );
 
   return (
-    <div className="w-full flex flex-col h-screen overflow-hidden">
-      <PersonalRideHeader />
+    <div className="w-full flex flex-col h-full overflow-hidden">
+      {/* Consider adding a BusinessRideHeader if needed */}
       {!isLoaded ? (
         <Loader />
       ) : (
         <div className="w-full overflow-hidden">
           <RideMapView
-            initialPickUp={navigateState?.pickUp}
-            initialDestination={navigateState?.destination}
-            initialPickUpAddress={navigateState?.pickUpAddress}
-            initialDestinationAddress={navigateState?.destinationAddress}
+            initialPickUp={navigateState?.pickUp} // Added
+            initialDestination={navigateState?.destination} // Added
+            initialPickUpAddress={navigateState?.pickUpAddress} // Added
+            initialDestinationAddress={navigateState?.destinationAddress} // Added
           />
         </div>
       )}
@@ -57,4 +57,4 @@ const PersonalRide = () => {
   );
 };
 
-export default PersonalRide;
+export default BusinessRide;

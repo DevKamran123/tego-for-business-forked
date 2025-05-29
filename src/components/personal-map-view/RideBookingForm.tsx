@@ -16,11 +16,13 @@ interface RideBookingFormProps {
   open: boolean;
   setPickUpPosition: (position: LatLngLiteral) => void;
   setDestinationPosition: (position: LatLngLiteral) => void;
-  handleSubmit: (address: string) => void;
+  handleSubmit: (pickUpAddress: string, destinationAddress: string) => void; // Modified
   isConfirmed: boolean;
   editMode: boolean;
   searching: boolean;
   tripHasEnded: boolean;
+  initialPickUpAddress?: string; // Added
+  initialDestinationAddress?: string; // Added
 }
 
 const RideBookingForm: React.FC<RideBookingFormProps> = ({
@@ -32,8 +34,30 @@ const RideBookingForm: React.FC<RideBookingFormProps> = ({
   editMode,
   searching,
   tripHasEnded,
+  initialPickUpAddress, // Added
+  initialDestinationAddress, // Added
 }) => {
   const pickUpInputRef = useRef<HTMLInputElement>(null);
+
+  const {
+    ready: pickUpReady,
+    value: pickUpValue,
+    setValue: setPickUpValue,
+    suggestions: pickUpSuggestionData,
+    suggestionsOpen: pickUpSuggestionsOpen,
+    handleSelect: handlePickUpLocation,
+    containerRef: pickUpContainerRef,
+  } = usePlacesAutocompleteHook();
+
+  const {
+    ready: destinationReady,
+    value: destinationValue,
+    setValue: setDestinationValue,
+    suggestions: destinationSuggestions,
+    suggestionsOpen: destinationSuggestionsOpen,
+    handleSelect: handleDestinationLocation,
+    containerRef: destinationContainerRef,
+  } = usePlacesAutocompleteHook();
 
   useEffect(() => {
     if (editMode && pickUpInputRef.current) {
@@ -47,48 +71,19 @@ const RideBookingForm: React.FC<RideBookingFormProps> = ({
       setPickUpValue("");
       setDestinationValue("");
     }
-    if (pickUpInputRef.current) {
+    if (pickUpInputRef.current && !tripHasEnded) {
       pickUpInputRef.current.focus();
     }
-  }, [tripHasEnded]);
+  }, [tripHasEnded, setPickUpValue, setDestinationValue]);
 
-  // const [additionalInputs, setAdditionalInputs] = useState<string[]>([]);
-
-  // const handleAddInput = () => {
-  //   setAdditionalInputs([...additionalInputs, ""]);
-  // };
-
-  // const handleInputChange = (index: number, value: string) => {
-  //   const newInputs = [...additionalInputs];
-  //   newInputs[index] = value;
-  //   setAdditionalInputs(newInputs);
-  // };
-
-  // const handleRemoveInput = (index: number) => {
-  //   const newInputs = [...additionalInputs];
-  //   newInputs.splice(index, 1);
-  //   setAdditionalInputs(newInputs);
-  // };
-
-  const {
-    ready: destinationReady,
-    value: destinationValue,
-    setValue: setDestinationValue,
-    suggestions: destinationSuggestions,
-    suggestionsOpen: destinationSuggestionsOpen,
-    handleSelect: handleDestinationLocation,
-    containerRef: destinationContainerRef,
-  } = usePlacesAutocompleteHook();
-
-  const {
-    ready: pickUpReady,
-    value: pickUpValue,
-    setValue: setPickUpValue,
-    suggestions: pickUpSuggestionData,
-    suggestionsOpen: pickUpSuggestionsOpen,
-    handleSelect: handlePickUpLocation,
-    containerRef: pickUpContainerRef,
-  } = usePlacesAutocompleteHook();
+  useEffect(() => {
+    if (initialPickUpAddress) {
+      setPickUpValue(initialPickUpAddress, false); // Modified
+    }
+    if (initialDestinationAddress) {
+      setDestinationValue(initialDestinationAddress, false); // Modified
+    }
+  }, [initialPickUpAddress, initialDestinationAddress, setPickUpValue, setDestinationValue]);
 
   // Wrapped handlers to update positions
   const handlePickUpSelect = async (address: string) => {
@@ -231,7 +226,7 @@ const RideBookingForm: React.FC<RideBookingFormProps> = ({
             size="full"
             variant="secondary"
             onClick={() => {
-              handleSubmit(pickUpValue);
+              handleSubmit(pickUpValue, destinationValue); // Modified
             }}
             disabled={isConfirmed || searching}
           >

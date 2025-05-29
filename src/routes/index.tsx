@@ -8,6 +8,7 @@ import PageNotFound from "../components/PageNotFound";
 import Loader from "../components/Loader";
 import AcceptInvite from "../pages/AcceptInvite";
 import PersonalDashboardLayout from "../components/layouts/PersonalDashboardLayout";
+import BusinessRide from "../pages/BusinessRide";
 
 // Lazy load all components
 const Home = lazy(() => import("../pages/Home"));
@@ -66,6 +67,7 @@ const AppRoutes = () => {
                           )
                         }
                       />
+                      <Route path="/ride" element={<BusinessRide />} />
                       <Route path="/referral-code" element={<Referral />} />
                       <Route path="/coupons" element={<Coupon />} />
                       <Route path="*" element={<PageNotFound />} />
