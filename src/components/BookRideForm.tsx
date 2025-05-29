@@ -75,15 +75,14 @@ export default function BookRideForm() {
                     <input 
                         placeholder="Enter pick up location"
                         value={pickUpValue}
-                        onChange={(e) => setPickUpValue(e.target.value)}
-                        disabled={!pickUpReady}
+                        onChange={(e) => setPickUpValue(e.target.value, true)} // Ensure suggestions fetch on change
+                        disabled={!pickUpReady} // Enabled based on hook's readiness
                     />
                     {pickUpSuggestionsOpen && pickUpValue && (
                         <PlacesSuggestions 
                             suggestions={pickUpSuggestionsData} 
                             onSelect={handlePickUpSelect}
-                            open={pickUpSuggestionsOpen} 
-                            // Decide on variant, default or dark
+                            open={pickUpSuggestionsOpen}
                         />
                     )}
                 </div>
@@ -91,21 +90,21 @@ export default function BookRideForm() {
                     <input 
                         placeholder="Enter destination"
                         value={destinationValue}
-                        onChange={(e) => setDestinationValue(e.target.value)}
-                        disabled={!destinationReady}
+                        onChange={(e) => setDestinationValue(e.target.value, true)} // Ensure suggestions fetch on change
+                        disabled={!destinationReady} // Enabled based on hook's readiness
                     />
                     {destinationSuggestionsOpen && destinationValue && (
                         <PlacesSuggestions 
                             suggestions={destinationSuggestionsData} 
                             onSelect={handleDestinationSelect}
                             open={destinationSuggestionsOpen}
-                            // Decide on variant, default or dark
                         />
                     )}
                 </div>
                 <button 
                     type="submit" 
                     className="bookrideformCont_order"
+                    disabled={!pickUpPosition || !destinationPosition} // Disable button if locations not set
                 >
                     Order ride
                 </button>
