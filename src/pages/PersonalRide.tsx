@@ -1,9 +1,10 @@
 import RideMapView from "../components/personal-map-view/RideMapView";
-import PersonalRideHeader from "../components/personal-map-view/PersonalRideHeader";
+// import PersonalRideHeader from "../components/personal-map-view/PersonalRideHeader";
 import { useLoadScript } from "@react-google-maps/api";
 import Loader from "../components/Loader";
 import { getGoogleMapsApiKey } from "../utils/env";
 import { useLocation } from "react-router-dom";
+import Header from "../components/Header";
 
 // Define the expected state type from navigation
 interface LocationState {
@@ -40,7 +41,7 @@ const PersonalRide = () => {
 
   return (
     <div className="w-full flex flex-col h-screen overflow-hidden">
-      <PersonalRideHeader />
+      <Header />
       {!isLoaded ? (
         <Loader />
       ) : (
