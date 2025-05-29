@@ -28,13 +28,13 @@
     left: 0;
     width: 100vw;
     z-index: 100;
+    justify-content: space-between; // Moved declaration
 
     @include media(">=tablet") {
         display: none;
     }
     
 
-    justify-content: space-between;
     // padding: auto toRem(50);
 
     @include media("<=phone-tab") {

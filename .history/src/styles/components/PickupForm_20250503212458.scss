@@ -1,0 +1,172 @@
+// @use "../main.scss" as *;
+
+// .pickupformCont {
+//     margin-top: toRem(42);
+//     margin-bottom: toRem(150);
+//     width: toRem(996);
+//     // height: toRem(577);
+//     padding: toRem(10) toRem(66);
+//     background-color: transparent;
+//     border: toRem(1) solid red;
+//     border-radius: toRem(20);
+//     font-family: $font-plus-jakarta;
+//     color: $white;
+
+//     @include media("<=tablet") {
+//         width: toRem(748);
+//         height: toem(566);
+//     }
+
+//     @include media("<=phone-tab") {
+//         width: toRem(510);
+//     }
+
+//     form {
+//         @include flexbox(column, toRem(20));
+//         align-items: center;
+//         margin: toRem(90) toRem(44) toRem(73) toRem(47);
+//         input, button {
+//             width: toRem(858);
+//             height: toRem(69);
+//             border-radius: toRem(20);
+//             outline: none;
+//             border: none;
+
+//             @include media("<=tablet") {
+//                 width: toRem(533.81);
+//             }
+
+//             @include media("<=phone-tab") {
+//                 width: toRem(433.81);
+//             }
+//         }
+
+//         input {
+//             border: toRem(1) solid rgba(43, 43, 43, 0.14);
+//             background-color: rgba(43, 43, 43, 0.13);
+//             padding-left: toRem(35);
+//             font-size: toRem(20);
+//             font-weight: 400;
+//             line-height: toRem(25.2);
+
+//             &::placeholder {
+//                 color: $white;
+//             }
+//         }
+
+//         button {
+//             margin-top: toRem(50);
+//             border: toRem(1) solid rgba(255, 255, 255, 0.01);
+//             background-color: $secondary-color;
+//             font-size: toRem(20);
+//             font-weight: 400;
+//             line-height: toRem(25.2);
+//         }
+
+//         .pickupformCont_text {
+//             font-size: toRem(13);
+//             font-weight: 400;
+//             line-height: toRem(16.38);
+//             text-align: center;
+//         }
+//     }
+// }
+
+@use "../main.scss" as *;
+
+.pickupformCont {
+  width: 100%;
+  max-width: toRem(800);
+  margin: 0 auto;
+  font-family: $font-plus-jakarta;
+  color: $white;
+
+  form {
+    @include flexbox(column, toRem(20));
+    align-items: center;
+
+    .input-container {
+      width: 100%;
+      margin-bottom: toRem(20);
+
+      input {
+        width: 100%;
+        height: toRem(70);
+        background-color: rgba(239, 239, 239, 0.1);
+        border-radius: toRem(10);
+        border: none;
+        outline: none;
+        padding-left: toRem(35);
+        font-size: toRem(16);
+        color: $white;
+
+        &::placeholder {
+          color: $white;
+        }
+      }
+    }
+
+    .date-time-container {
+      display: flex;
+      width: 100%;
+      gap: toRem(20);
+      margin-bottom: toRem(20);
+
+      .date-field,
+      .time-field {
+        flex: 1;
+        height: toRem(70);
+        background-color: rgba(239, 239, 239, 0.1);
+        border-radius: toRem(10);
+        display: flex;
+        align-items: center;
+        padding: 0 toRem(20);
+        color: $white;
+        font-size: toRem(16);
+
+        .icon {
+          margin-right: toRem(10);
+          color: $white;
+        }
+
+        .dropdown-arrow {
+          margin-left: auto;
+          font-size: toRem(12);
+          color: $white;
+        }
+      }
+    }
+
+    button {
+      width: 100%;
+      height: toRem(70);
+      background-color: #b33e3e;
+      border: none;
+      border-radius: toRem(10);
+      color: $white;
+      font-size: toRem(16);
+      font-weight: 500;
+      cursor: pointer;
+      margin-bottom: toRem(15);
+    }
+
+    .signup-link {
+      width: 100%;
+      text-align: right;
+
+      a {
+        color: $white;
+        text-decoration: none;
+        font-size: toRem(14);
+      }
+    }
+  }
+
+  @include media("<=tablet") {
+    max-width: toRem(700);
+  }
+
+  @include media("<=phone-tab") {
+    max-width: toRem(500);
+  }
+}
