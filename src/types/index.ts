@@ -54,23 +54,37 @@ export interface WalletTransaction {
 export type UserData = {
   accessToken: string;
   refreshToken: string;
+  email: string;
   profile: {
     id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    accountType: string;
+    pimId: string | null;
+    companyDetails?: {
+      companyId: string;
+      isEmployed: boolean;
+    };
+    residentialAddress?: string;
+    city?: string;
+    state?: string;
+    country?: string;
+    postalCode?: string;
+    socialSecurityNumber?: string;
+    profileImage?: string;
+    status: string;
+    isPersonalMode?: boolean;
+    referralLink?: string | null;
     companyName?: string;
     companyDomain?: string;
     companyPhone?: string;
-    domain?: string;
-    email: string;
-    accountType: string;
     companyAddress?: string;
     principalFirstName?: string;
     principalLastName?: string;
     principalEmail?: string;
     taxIdentityNumber?: string;
-    status: string;
-    pimId?: null | string;
-    firstName?: string;
-    lastName?: string;
+    domain?: string;
     createdAt: string;
     updatedAt: string;
   };

@@ -5,6 +5,22 @@ export type DefaultUserProfileData = {
   pimId?: null | string;
   firstName: string;
   lastName: string;
+  companyDetails?: {
+    companyId: string;
+    isEmployed: boolean;
+  };
+  residentialAddress?: string;
+  city?: string;
+  state?: string;
+  country?: string;
+  postalCode?: string;
+  socialSecurityNumber?: string;
+  profileImage?: string;
+  status?: string;
+  isPersonalMode?: boolean;
+  referralLink?: string | null;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export type LoginUserData = {

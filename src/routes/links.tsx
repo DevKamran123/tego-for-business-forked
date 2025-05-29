@@ -6,7 +6,7 @@ import CouponsIcon from "../assets/icons/confirmation_number.png"
 import {
   MdAccountBalanceWallet,
 } from "react-icons/md";
-import { FiSettings, FiCreditCard } from "react-icons/fi";
+import { FiSettings, FiCreditCard, FiUser } from "react-icons/fi"; // Added FiUser
 
 // Define the interface for link items
 interface LinkItem {
@@ -56,7 +56,14 @@ export const DASHBOARD_LINKS: LinkItem[] = [
     LINK: "/dashboard/wallet",
     SLUG: "wallet",
     ISDASHBOARD: true,
-    ICON: () => <MdAccountBalanceWallet color="white" size={24}/>, // Or your preferred icon component
+    ICON: () => <MdAccountBalanceWallet color="white" size={24}/>, 
+  },
+  {
+    TITLE: "Profile",
+    LINK: "/dashboard/profile",
+    SLUG: "profile",
+    ISDASHBOARD: true,
+    ICON: () => <FiUser color="white" size={24}/>, 
   },
 ];
 

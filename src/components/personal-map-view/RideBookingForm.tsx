@@ -4,6 +4,7 @@ import addCircle from "../../assets/icons/add_circle.svg";
 import CustomSelect from "../CustomSelect";
 import PlacesSuggestions from "./PlacesSuggestions";
 import { usePlacesAutocompleteHook } from "../../hooks/usePlacesAutocompleteHook";
+import { Suggestion } from "use-places-autocomplete"; // Import Suggestion
 import {
   getLocationNameFromCoordinates,
   getUserLocationFromBrowser,
@@ -86,18 +87,22 @@ const RideBookingForm: React.FC<RideBookingFormProps> = ({
   }, [initialPickUpAddress, initialDestinationAddress, setPickUpValue, setDestinationValue]);
 
   // Wrapped handlers to update positions
-  const handlePickUpSelect = async (address: string) => {
+  const handlePickUpSelect = async (suggestion: Suggestion) => { // Changed parameter type
+    const address = suggestion.description; // Get address from suggestion
     const position = await handlePickUpLocation(address);
     if (position) {
       setPickUpPosition(position);
     }
+    // setPickUpValue(address, false); // Already handled by handlePickUpLocation
   };
 
-  const handleDestinationSelect = async (address: string) => {
+  const handleDestinationSelect = async (suggestion: Suggestion) => { // Changed parameter type
+    const address = suggestion.description; // Get address from suggestion
     const position = await handleDestinationLocation(address);
     if (position) {
       setDestinationPosition(position);
     }
+    // setDestinationValue(address, false); // Already handled by handleDestinationLocation
   };
 
   const getUserCurrentLocation = async () => {

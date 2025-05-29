@@ -1,9 +1,10 @@
 import React from "react";
+import { Suggestion } from "use-places-autocomplete"; // Import the Suggestion type
 
 interface PlacesSuggestionsProps {
   open: boolean;
-  suggestions: google.maps.places.AutocompletePrediction[];
-  onSelect: (addr: string) => void;
+  suggestions: Suggestion[]; // Changed from google.maps.places.AutocompletePrediction[] to Suggestion[]
+  onSelect: (suggestion: Suggestion) => void; // Changed from (addr: string) to (suggestion: Suggestion)
   variant?: "default" | "dark"; // Added variant prop
 }
 
@@ -23,13 +24,13 @@ const PlacesSuggestions: React.FC<PlacesSuggestionsProps> = ({
         bg-white/10 text-sm placeholder:text-white border-white/35 backdrop-blur-xl
         "
         >
-          {suggestions.map(({ place_id, description }) => (
+          {suggestions.map((suggestion) => (
             <button
-              onClick={() => onSelect(description)}
-              key={place_id}
+              onClick={() => onSelect(suggestion)} // Pass the whole suggestion object
+              key={suggestion.place_id}
               className={`p-3 cursor-pointer hover:bg-darkBluish hover:text-white text-left rounded-xl ${textColorClass}`} // Applied conditional text color
             >
-              {description}
+              {suggestion.description}
             </button>
           ))}
         </div>

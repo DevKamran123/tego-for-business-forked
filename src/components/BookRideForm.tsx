@@ -3,6 +3,7 @@ import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { usePlacesAutocompleteHook } from "../hooks/usePlacesAutocompleteHook";
 import PlacesSuggestions from "./personal-map-view/PlacesSuggestions";
+import { Suggestion } from "use-places-autocomplete"; // Import Suggestion
 
 type LatLngLiteral = { lat: number; lng: number };
 
@@ -33,18 +34,24 @@ export default function BookRideForm() {
         containerRef: destinationContainerRef,
     } = usePlacesAutocompleteHook();
 
-    const handlePickUpSelect = async (address: string) => {
+    const handlePickUpSelect = async (suggestion: Suggestion) => { // Changed parameter type
+        const address = suggestion.description; // Get address from suggestion
         const position = await handlePickUpLocationLogic(address);
         if (position) {
             setPickUpPosition(position);
         }
+        // Optionally, ensure the input field is also updated if handlePickUpLocationLogic doesn't do it.
+        // setPickUpValue(address, false); // Already handled by handlePickUpLocationLogic
     };
 
-    const handleDestinationSelect = async (address: string) => {
+    const handleDestinationSelect = async (suggestion: Suggestion) => { // Changed parameter type
+        const address = suggestion.description; // Get address from suggestion
         const position = await handleDestinationLocationLogic(address);
         if (position) {
             setDestinationPosition(position);
         }
+        // Optionally, ensure the input field is also updated if handleDestinationLocationLogic doesn't do it.
+        // setDestinationValue(address, false); // Already handled by handleDestinationLocationLogic
     };
 
     const handleOrderRide = (e: FormEvent) => {

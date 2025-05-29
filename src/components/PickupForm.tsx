@@ -6,6 +6,7 @@ import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
 import { usePlacesAutocompleteHook } from "../hooks/usePlacesAutocompleteHook"; // Assuming this is the correct path
 import PlacesSuggestions from "./personal-map-view/PlacesSuggestions"; // Assuming this is the correct path
+import { Suggestion } from "use-places-autocomplete"; // Import Suggestion
 
 // Assuming LatLngLiteral is defined, e.g.:
 type LatLngLiteral = { lat: number; lng: number };
@@ -43,18 +44,22 @@ export default function PickupForm() {
   } = usePlacesAutocompleteHook();
 
   // Wrapped handlers to update positions
-  const handlePickUpSelect = async (address: string) => {
+  const handlePickUpSelect = async (suggestion: Suggestion) => { // Changed parameter type
+    const address = suggestion.description; // Get address from suggestion
     const position = await handlePickUpLocationLogic(address);
     if (position) {
       setPickUpPosition(position);
     }
+    // setPickUpValue(address, false); // Already handled by handlePickUpLocationLogic
   };
 
-  const handleDestinationSelect = async (address: string) => {
+  const handleDestinationSelect = async (suggestion: Suggestion) => { // Changed parameter type
+    const address = suggestion.description; // Get address from suggestion
     const position = await handleDestinationLocationLogic(address);
     if (position) {
       setDestinationPosition(position);
     }
+    // setDestinationValue(address, false); // Already handled by handleDestinationLocationLogic
   };
 
   // Format date for display

@@ -61,8 +61,19 @@ const Login: React.FC = () => {
                 const response = await loginUser(values.email, values.password);
                 if (response.success && response.data) {
                   localStorage.setItem("token", response.data?.accessToken);
-                  setSession(JSON.stringify({ ...values, ...response.data }));
-                  navigate("/dashboard");
+                  // Store the entire profile in the session for easy access
+                  const sessionData = { 
+                    email: values.email, // Keep email from form if needed, though profile should have it
+                    ...response.data // This includes the profile object
+                  };
+                  setSession(JSON.stringify(sessionData));
+
+                  // Check user status for redirection
+                  if (response.data.profile?.status === "new") {
+                    navigate("/onboarding");
+                  } else {
+                    navigate("/dashboard");
+                  }
                 } else {
                   toast.error(response.message);
                 }
