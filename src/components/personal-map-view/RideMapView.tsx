@@ -1,5 +1,6 @@
 import { useCallback, useMemo, useRef, useState, useEffect } from "react";
 import { GoogleMap, Marker, DirectionsRenderer } from "@react-google-maps/api";
+import { bookTrip } from "../../lib/trips/bookride";
 import RideBookingForm from "./RideBookingForm";
 import ZoomControls from "./ZoomControls";
 import carIcon from "../../assets/svgs/car-driver.svg";
@@ -7,6 +8,7 @@ import MapOverlay from "./MapOverlay";
 import ConfirmPickup from "./ConfirmPickup";
 import AvailableRidesList from "./AvailableRidesList";
 import DriverDetails from "./DriverDetails";
+import toast from "react-hot-toast";
 
 type LatLngLiteral = google.maps.LatLngLiteral;
 type DirectionsResult = google.maps.DirectionsResult;
@@ -31,12 +33,20 @@ const RideMapView: React.FC<RideMapViewProps> = ({
   const [zoom, setZoom] = useState(INITIAL_ZOOM);
 
   // manage location
-  const [pickUp, setPickUp] = useState<LatLngLiteral | null>(initialPickUp || null);
-  const [destination, setDestination] = useState<LatLngLiteral | null>(initialDestination || null);
+  const [pickUp, setPickUp] = useState<LatLngLiteral | null>(
+    initialPickUp || null
+  );
+  const [destination, setDestination] = useState<LatLngLiteral | null>(
+    initialDestination || null
+  );
   const [directions, setDirections] = useState<DirectionsResult | undefined>();
   const [cars, setCars] = useState<LatLngLiteral[] | null>(null);
-  const [pickUpAddress, setPickUpAddress] = useState<string>(initialPickUpAddress || "");
-  const [destinationAddress, setDestinationAddress] = useState<string>(initialDestinationAddress || ""); // Added state for destination address
+  const [pickUpAddress, setPickUpAddress] = useState<string>(
+    initialPickUpAddress || ""
+  );
+  const [destinationAddress, setDestinationAddress] = useState<string>(
+    initialDestinationAddress || ""
+  ); // Added state for destination address
 
   // manage rider state
   const [showBookingForm, setShowBookingForm] = useState<boolean>(true);
@@ -51,6 +61,10 @@ const RideMapView: React.FC<RideMapViewProps> = ({
     null
   );
   const [tripMode, setTripMode] = useState<"begin" | "end" | null>(null);
+
+  const [bookingType, setBookingType] = useState<"book_now" | "book_later">(
+    "book_now"
+  );
 
   const mapRef = useRef<google.maps.Map | null>(null);
   const center = useMemo<LatLngLiteral>(
@@ -124,13 +138,49 @@ const RideMapView: React.FC<RideMapViewProps> = ({
     }
   }, [pickUp, destination]);
 
-  // on click events
-  const handleBookingFormSubmit = (address: string, destAddress: string) => {
+  const handleBookingFormSubmit = async (
+    address: string,
+    destAddress: string,
+    bookingType: "book_now" | "book_later"
+  ) => {
     if (destination && pickUp && directions) {
       setPickUpAddress(address);
       setDestinationAddress(destAddress);
       setShowPickUpConfirmation(true);
       setIsSearching(true);
+
+      const distanceMeters = directions.routes[0].legs[0]?.distance?.value || 0;
+      const distanceKm = distanceMeters / 1000;
+
+      const payload = {
+        user_id: 3, // TODO: Replace with dynamic user ID from session
+        booking_type: bookingType,
+        rent_type: "taxi" as const,
+        distance: distanceKm,
+        pickup_location: address,
+        dropoff_location: destAddress,
+        pickup_lat: pickUp.lat,
+        pickup_lng: pickUp.lng,
+        dropoff_lat: destination.lat,
+        dropoff_lng: destination.lng,
+        no_of_passenger: 3, // TODO: Make dynamic from user input
+        pickup_date_time: new Date()
+          .toISOString()
+          .slice(0, 19)
+          .replace("T", " "), // "YYYY-MM-DD HH:mm:ss"
+      };
+
+      const result = await bookTrip(payload);
+
+      if (result.success) {
+        toast.success("Trip booked!");
+        console.log("Booking response:", result.data);
+        // You can optionally store this in state or trigger next UI phase
+      } else {
+        toast.error(result.message);
+      }
+
+      setIsSearching(false); // Stop loading
     }
   };
 
@@ -184,6 +234,8 @@ const RideMapView: React.FC<RideMapViewProps> = ({
     <div className="w-full h-screen overflow-hidden relative">
       <RideBookingForm
         open={showBookingForm}
+        bookingType={bookingType}
+        setBookingType={setBookingType}
         setPickUpPosition={(position) => {
           setPickUp(position);
           mapRef.current?.panTo(position);

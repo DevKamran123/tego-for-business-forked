@@ -9,7 +9,7 @@ import {
   getLocationNameFromCoordinates,
   getUserLocationFromBrowser,
 } from "../../utils/locationUtils";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, Dispatch, SetStateAction } from "react";
 
 type LatLngLiteral = google.maps.LatLngLiteral;
 
@@ -17,13 +17,19 @@ interface RideBookingFormProps {
   open: boolean;
   setPickUpPosition: (position: LatLngLiteral) => void;
   setDestinationPosition: (position: LatLngLiteral) => void;
-  handleSubmit: (pickUpAddress: string, destinationAddress: string) => void; // Modified
+  handleSubmit: (
+    pickUpAddress: string,
+    destinationAddress: string,
+    bookingType: "book_now" | "book_later"
+  ) => void; // Modified
   isConfirmed: boolean;
   editMode: boolean;
   searching: boolean;
   tripHasEnded: boolean;
-  initialPickUpAddress?: string; // Added
-  initialDestinationAddress?: string; // Added
+  initialPickUpAddress?: string;
+  initialDestinationAddress?: string;
+  bookingType?: string;
+  setBookingType?: Dispatch<SetStateAction<"book_now" | "book_later">>;
 }
 
 const RideBookingForm: React.FC<RideBookingFormProps> = ({
@@ -35,8 +41,10 @@ const RideBookingForm: React.FC<RideBookingFormProps> = ({
   editMode,
   searching,
   tripHasEnded,
-  initialPickUpAddress, // Added
-  initialDestinationAddress, // Added
+  initialPickUpAddress,
+  initialDestinationAddress,
+  bookingType,
+  setBookingType,
 }) => {
   const pickUpInputRef = useRef<HTMLInputElement>(null);
 
@@ -84,10 +92,16 @@ const RideBookingForm: React.FC<RideBookingFormProps> = ({
     if (initialDestinationAddress) {
       setDestinationValue(initialDestinationAddress, false); // Modified
     }
-  }, [initialPickUpAddress, initialDestinationAddress, setPickUpValue, setDestinationValue]);
+  }, [
+    initialPickUpAddress,
+    initialDestinationAddress,
+    setPickUpValue,
+    setDestinationValue,
+  ]);
 
   // Wrapped handlers to update positions
-  const handlePickUpSelect = async (suggestion: Suggestion) => { // Changed parameter type
+  const handlePickUpSelect = async (suggestion: Suggestion) => {
+    // Changed parameter type
     const address = suggestion.description; // Get address from suggestion
     const position = await handlePickUpLocation(address);
     if (position) {
@@ -96,7 +110,8 @@ const RideBookingForm: React.FC<RideBookingFormProps> = ({
     // setPickUpValue(address, false); // Already handled by handlePickUpLocation
   };
 
-  const handleDestinationSelect = async (suggestion: Suggestion) => { // Changed parameter type
+  const handleDestinationSelect = async (suggestion: Suggestion) => {
+    // Changed parameter type
     const address = suggestion.description; // Get address from suggestion
     const position = await handleDestinationLocation(address);
     if (position) {
@@ -208,12 +223,20 @@ const RideBookingForm: React.FC<RideBookingFormProps> = ({
 
           <CustomSelect
             options={["Pick up now", "Pick up later"]}
-            value={"Pick up now"}
+            value={bookingType === "book_now" ? "Pick up now" : "Pick up later"}
+            onChange={(value) => {
+              if (setBookingType) {
+                setBookingType(
+                  value === "Pick up later" ? "book_later" : "book_now"
+                );
+              }
+            }}
             className="bg-white/10 text-white placeholder:text-white border-white/35 pl-4 xl:pl-5 !rounded-xl backdrop-blur-xl"
             dropDownClassName="bg-white/10 text-base text-white placeholder:text-white border-white/35 !rounded-2xl backdrop-blur-xl"
             optionClassName="text-white"
             disabled={isConfirmed || searching}
           />
+
           <div className="w-3/5">
             <CustomSelect
               options={["For me", "For someone"]}
@@ -231,7 +254,11 @@ const RideBookingForm: React.FC<RideBookingFormProps> = ({
             size="full"
             variant="secondary"
             onClick={() => {
-              handleSubmit(pickUpValue, destinationValue); // Modified
+              handleSubmit(
+                pickUpValue || "",
+                destinationValue || "",
+                (bookingType as "book_now" | "book_later") || "book_now"
+              );
             }}
             disabled={isConfirmed || searching}
           >
