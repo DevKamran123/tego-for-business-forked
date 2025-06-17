@@ -24,6 +24,11 @@ export const getNodeApiUrl = (): string => {
   return getEnv("VITE_PUBLIC_NODE_API_URL");
 };
 
+//  Export the PHP API URL
+export const getPHPApiUrl = (): string => {
+  return getEnv("VITE_PUBLIC_PHP_API_URL");
+};
+
 export const getGoogleMapsApiKey = (): string => {
   return getEnv("VITE_PUBLIC_GOOGLE_MAPS_API_KEY");
 };
