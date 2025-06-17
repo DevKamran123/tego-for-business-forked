@@ -1,4 +1,5 @@
 import axios from "axios";
+// import { COOKIE_NAMES } from "../utils/cookieUtils";
 
 interface ErrorType {
   responseCode: string;
