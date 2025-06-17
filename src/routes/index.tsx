@@ -17,6 +17,9 @@ const Signup = lazy(() => import("../pages/Signup"));
 const ConfirmSignup = lazy(() => import("../pages/ConfirmSignup"));
 const CreatePassword = lazy(() => import("../pages/CreatePassword"));
 const Login = lazy(() => import("../pages/Login"));
+// Dual authentication pages (temporary)
+const DualLogin = lazy(() => import("../pages/DualLogin"));
+const DualSignup = lazy(() => import("../pages/DualSignup"));
 const LogoutHandler = lazy(() => import("../components/LogoutHandler"));
 const Dashboard = lazy(() => import("../pages/Dashboard"));
 const Rides = lazy(() => import("../pages/Rides"));
@@ -48,6 +51,10 @@ const AppRoutes = () => {
             <Route path="*" element={<PageNotFound />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
+            {/* Dual Authentication Routes (Temporary) */}
+            <Route path="/dual-signup" element={<DualSignup />} />
+            <Route path="/dual-login" element={<DualLogin />} />
+            {/* End Dual Auth Routes */}
             <Route path="/onboarding" element={<Onboarding />} /> {/* Added Onboarding route */}
             <Route path="/confirm-signup" element={<ConfirmSignup />} />
             <Route path="/create-password" element={<CreatePassword />} />
@@ -106,6 +113,8 @@ const AppRoutes = () => {
             />
             {/* <Route path="/settings" element={<Settings />} /> */}
             <Route path="/wallet-page" element={<WalletPage />} /> {/* Added route for WalletPage */}
+            <Route path="/dual-login" element={<DualLogin />} /> {/* Added route for DualLogin */}
+            <Route path="/dual-signup" element={<DualSignup />} /> {/* Added route for DualSignup */}
           </Routes>
         </Suspense>
       </Router>

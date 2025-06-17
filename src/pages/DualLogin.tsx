@@ -13,7 +13,7 @@ import TButton from "../components/buttons/TButton";
 import { useNavigate } from "react-router-dom";
 import useAppStore from "../store/AppStore";
 import rideTegoLogo from "../assets/images/rideTegoLogo.png"
-import { loginUser } from "../lib/auth/login";
+import { dualAuthLogin } from "../lib/auth/dualAuth";
 import toast from "react-hot-toast";
 
 const LoginSchema = Yup.object().shape({
@@ -26,10 +26,10 @@ const LoginSchema = Yup.object().shape({
   password: Yup.string().required("Password is required"),
 });
 
-const Login: React.FC = () => {
+const DualLogin: React.FC = () => {
   const [rememberMe, setRememberMe] = React.useState(false);
   const navigate = useNavigate();
-  const {setSession} = useAppStore((state) => state);
+  const { setSession, setPHPToken } = useAppStore((state) => state);
 
   return (
     <>
@@ -39,7 +39,7 @@ const Login: React.FC = () => {
               RideTEGO
           </div>
           <div className="login-head_text">
-              Welcome to RideTEGO
+              Welcome to RideTEGO (Dual Auth)
           </div>
       </div>
       <div className="login_wrapper">
@@ -52,30 +52,64 @@ const Login: React.FC = () => {
           </div>
         </div>
         <div className="login_content">
-          <h2 className="login_header">Sign In</h2>
+          <h2 className="login_header">Sign In (Dual Auth)</h2>
           <div className="login_form_wrapper">
             <Formik
               initialValues={{ email: "", password: "" }}
               validationSchema={LoginSchema}
               onSubmit={async (values) => {
-                const response = await loginUser(values.email, values.password);
-                if (response.success && response.data) {
-                  localStorage.setItem("token", response.data?.accessToken);
-                  // Store the entire profile in the session for easy access
+                const response = await dualAuthLogin({
+                  email: values.email,
+                  password: values.password,
+                });
+
+                if (response.success && response.data?.nodeAuth) {
+                  // Store Node API token
+                  localStorage.setItem("token", response.data.nodeAuth.accessToken);
+                  
+                  // Store PHP token if available
+                  if (response.data.phpAuth) {
+                    setPHPToken(response.data.phpAuth.accessToken);
+                  }
+
+                  // Store the combined profile in the session
                   const sessionData = { 
-                    email: values.email, // Keep email from form if needed, though profile should have it
-                    ...response.data // This includes the profile object
+                    email: values.email,
+                    ...response.data.nodeAuth,
+                    // Add PHP-specific data if available
+                    phpAuth: response.data.phpAuth ? {
+                      hasPhpAuth: true,
+                      phpUserId: response.data.phpAuth.profile.id,
+                    } : { hasPhpAuth: false }
                   };
                   setSession(JSON.stringify(sessionData));
 
+                  // Show appropriate success message
+                  if (response.nodeApiSuccess && response.phpApiSuccess) {
+                    toast.success("Login successful on both APIs!");
+                  } else if (response.nodeApiSuccess && !response.phpApiSuccess) {
+                    toast.success("Login successful! (Note: Ride booking may be limited)");
+                    console.warn("PHP API login failed:", response.errors?.phpError);
+                  }
+
                   // Check user status for redirection
-                  if (response.data.profile?.status === "new") {
+                  if (response.data.nodeAuth.profile?.status === "new") {
                     navigate("/onboarding");
                   } else {
                     navigate("/dashboard");
                   }
                 } else {
-                  toast.error(response.message);
+                  // Show detailed error messages
+                  if (response.errors?.nodeError) {
+                    toast.error(`Login failed: ${response.errors.nodeError}`);
+                  } else {
+                    toast.error(response.message);
+                  }
+                  
+                  // Log PHP error for debugging
+                  if (response.errors?.phpError) {
+                    console.error("PHP API Error:", response.errors.phpError);
+                  }
                 }
               }}
             >
@@ -125,11 +159,16 @@ const Login: React.FC = () => {
                     loading={isSubmitting}
                     tvariant="secondary"
                   >
-                    Login
+                    Login (Dual Auth)
                   </TButton>
 
                   <div className="login_alternative">
-                    Don't have an account? <span onClick={()=>navigate("/signup")}>Signup</span>
+                    Don't have an account? <span onClick={()=>navigate("/dual-signup")}>Signup</span>
+                  </div>
+                  <div className="login_alternative">
+                    <span onClick={()=>navigate("/login")} style={{color: "#666", fontSize: "0.9rem"}}>
+                      Use single API login instead
+                    </span>
                   </div>
                 </Form>
               )}
@@ -141,4 +180,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
+export default DualLogin;

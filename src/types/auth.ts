@@ -22,6 +22,10 @@ export type DefaultUserProfileData = {
   referralLink?: string | null;
   createdAt?: string;
   updatedAt?: string;
+  // Additional fields for PHP API compatibility
+  userType?: string;
+  countryCode?: string;
+  mobileNo?: string;
 };
 
 export type LoginUserData = {
@@ -138,4 +142,40 @@ export type AcceptInvitePayload = {
   email: string;
   password: string;
   accountType?: "admin" | "enterprise" | "enterprise-admin" | "superadmin";
+};
+
+// Dual Authentication Types (Temporary)
+export type DualAuthPayload = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  accountType: "enterprise" | "personal";
+  // PHP API specific fields
+  countryCode?: string;
+  mobileNo?: string;
+};
+
+export type DualAuthResponse = {
+  success: boolean;
+  message: string;
+  nodeApiSuccess: boolean;
+  phpApiSuccess: boolean;
+  data?: {
+    nodeAuth?: LoginUserData;
+    phpAuth?: {
+      accessToken: string;
+      profile: DefaultUserProfileData;
+    };
+    combinedProfile?: DefaultUserProfileData;
+  };
+  errors?: {
+    nodeError?: string;
+    phpError?: string;
+  };
+};
+
+export type DualLoginPayload = {
+  email: string;
+  password: string;
 };

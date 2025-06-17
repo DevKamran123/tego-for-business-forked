@@ -1,4 +1,4 @@
-import { axiosInstance, handleAxiosError } from "../axiosSetup";
+import { phpAxiosInstance, handlePHPAxiosError, hasPHPToken } from "../phpAxiosSetup";
 import { getPHPApiUrl } from "../../utils/env";
 import { PHP_API_VERSION } from "../version";
 
@@ -22,8 +22,16 @@ export async function bookTrip(payload: BookTripPayload): Promise<{
   message: string;
   data?: Record<string, unknown>;
 }> {
+  // Check if PHP token is available
+  if (!hasPHPToken()) {
+    return {
+      success: false,
+      message: "PHP authentication required. Please login with dual authentication to book rides.",
+    };
+  }
+
   try {
-    const response = await axiosInstance.post(
+    const response = await phpAxiosInstance.post(
       `${getPHPApiUrl()}${PHP_API_VERSION}/customer/bookings`,
       payload
     );
@@ -36,7 +44,7 @@ export async function bookTrip(payload: BookTripPayload): Promise<{
   } catch (error) {
     return {
       success: false,
-      message: handleAxiosError(error),
+      message: handlePHPAxiosError(error),
     };
   }
 }
