@@ -1,6 +1,7 @@
 import { useCallback, useMemo, useRef, useState, useEffect } from "react";
 import { GoogleMap, Marker, DirectionsRenderer } from "@react-google-maps/api";
 import { bookTrip } from "../../lib/trips/bookride";
+import { usePHPUser } from "../../hooks/usePHPUser";
 import RideBookingForm from "./RideBookingForm";
 import ZoomControls from "./ZoomControls";
 import carIcon from "../../assets/svgs/car-driver.svg";
@@ -29,6 +30,9 @@ const RideMapView: React.FC<RideMapViewProps> = ({
   initialPickUpAddress,
   initialDestinationAddress,
 }) => {
+  // Get PHP user data for API calls
+  const { phpUserId, hasPHPAuth } = usePHPUser();
+
   // manage map zoom
   const [zoom, setZoom] = useState(INITIAL_ZOOM);
 
@@ -137,13 +141,18 @@ const RideMapView: React.FC<RideMapViewProps> = ({
       setDirections(undefined);
     }
   }, [pickUp, destination]);
-
   const handleBookingFormSubmit = async (
     address: string,
     destAddress: string,
     bookingType: "book_now" | "book_later"
   ) => {
     if (destination && pickUp && directions) {
+      // Check if PHP authentication is available
+      if (!hasPHPAuth || !phpUserId) {
+        toast.error("PHP authentication required for ride booking. Please login with dual authentication.");
+        return;
+      }
+
       setPickUpAddress(address);
       setDestinationAddress(destAddress);
       setShowPickUpConfirmation(true);
@@ -153,7 +162,7 @@ const RideMapView: React.FC<RideMapViewProps> = ({
       const distanceKm = distanceMeters / 1000;
 
       const payload = {
-        user_id: 3, // TODO: Replace with dynamic user ID from session
+        user_id: phpUserId, // Dynamic user ID from PHP authentication
         booking_type: bookingType,
         rent_type: "taxi" as const,
         distance: distanceKm,
