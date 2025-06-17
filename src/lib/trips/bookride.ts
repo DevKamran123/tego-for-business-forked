@@ -1,5 +1,6 @@
 import { axiosInstance, handleAxiosError } from "../axiosSetup";
-import { getNodeApiUrl } from "../../utils/env";
+import { getPHPApiUrl } from "../../utils/env";
+import { PHP_API_VERSION } from "../version";
 
 export interface BookTripPayload {
   user_id: number;
@@ -23,7 +24,7 @@ export async function bookTrip(payload: BookTripPayload): Promise<{
 }> {
   try {
     const response = await axiosInstance.post(
-      `${getNodeApiUrl()}/api/v3/customer/bookings`,
+      `${getPHPApiUrl()}${PHP_API_VERSION}/customer/bookings`,
       payload
     );
 
