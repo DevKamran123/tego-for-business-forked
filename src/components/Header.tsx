@@ -12,12 +12,15 @@ import BookmarkFlag from "./icons/BookmarkFlag";
 import AccountCircle from "./icons/AccountCircle";
 import DropdownArrow from "./icons/DropdownArrow";
 import UserProfileMenu from "./personal-map-view/UserProfileMenu";
+import useAppStore from "../store/AppStore";
 
 export default function Header() {
   const navigate = useNavigate();
   const toggleMobileMenu = useMenuStore((state) => state.toggleMenu);
   const mobileMenuIsOpen = useMenuStore((state) => state.isOpen);
   const session = Cookies.get("session");
+  const {session: userSessionString} = useAppStore((state) => state);
+  const userSession = userSessionString ? JSON.parse(userSessionString) : null;
 
   const { openState: userProfileMenuOpen, toggleOpen: toggleUserProfileMenuDirectly, ref: userProfileMenuRef } = useClickOutside(false);
   const userInfo = {
@@ -55,7 +58,7 @@ export default function Header() {
         </div>
         <div className="headerCont_details">
           <div
-            onClick={() => navigate(session ? "/dashboard/rides" : "/personal/ride")}
+            onClick={() => navigate(session && userSession && userSession?.profile?.accountType !== "personal" ? "/dashboard/rides" : "/personal/ride")}
             className="headerCont_details_content"
           >
             Ride
