@@ -29,7 +29,7 @@ const transformLoginResponse = (
 
   return {
     accessToken: token.accessToken,
-    refreshToken: token.accessToken || "", // Provide fallback empty string
+    refreshToken: token.refreshToken || undefined, // Use actual refreshToken or fallback to undefined
     profile: {
       id: user.id.toString(),
       email: user.email,
