@@ -49,17 +49,6 @@ const Login: React.FC = () => {
 
       if (response.success && response.data) {
         // Store session data using utility function
-        setSession(
-          JSON.stringify({
-            email: values.email,
-            accessToken: response.data.accessToken,
-            refreshToken: response.data.refreshToken,
-            profile: response.data.profile,
-            accountType,
-            rememberMe,
-          })
-        );
-
         // Set session in Zustand store
         const sessionData = {
           email: values.email,
@@ -67,6 +56,7 @@ const Login: React.FC = () => {
           refreshToken: response.data.refreshToken,
           profile: response.data.profile,
           accountType,
+          rememberMe,
         };
         setSession(JSON.stringify(sessionData));
 
