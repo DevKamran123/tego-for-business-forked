@@ -24,6 +24,13 @@ interface RideMapViewProps {
   initialDestinationAddress?: string;
 }
 
+interface PendingBookingData {
+  address: string;
+  destAddress: string;
+  bookingType: "book_now" | "book_later";
+  passengerCount: number;
+}
+
 const RideMapView: React.FC<RideMapViewProps> = ({
   initialPickUp,
   initialDestination,
@@ -71,12 +78,7 @@ const RideMapView: React.FC<RideMapViewProps> = ({
   );
 
   // Store booking data temporarily
-  const [pendingBookingData, setPendingBookingData] = useState<{
-    address: string;
-    destAddress: string;
-    bookingType: "book_now" | "book_later";
-    passengerCount: number;
-  } | null>(null);
+  const [pendingBookingData, setPendingBookingData] = useState<PendingBookingData | null>(null);
 
   const mapRef = useRef<google.maps.Map | null>(null);
   const center = useMemo<LatLngLiteral>(
