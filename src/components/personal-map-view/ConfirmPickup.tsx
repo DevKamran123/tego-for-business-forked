@@ -10,6 +10,7 @@ interface ConfirmPickupProps {
   isConfirmed: boolean;
   onEdit: () => void;
   rideSelected: boolean;
+  loading?: boolean;
 }
 
 const ConfirmPickup: React.FC<ConfirmPickupProps> = ({
@@ -19,6 +20,7 @@ const ConfirmPickup: React.FC<ConfirmPickupProps> = ({
   isConfirmed,
   onEdit,
   rideSelected,
+  loading = false,
 }) => {
   const handleConfirmation = () => {
     onConfirm();
@@ -74,8 +76,9 @@ const ConfirmPickup: React.FC<ConfirmPickupProps> = ({
             <CustomButton
               onClick={handleConfirmation}
               className="!py-3"
+              disabled={loading}
             >
-              Confirm pickup
+              {loading ? "Booking..." : "Confirm pickup"}
             </CustomButton>
           </div>
         )}

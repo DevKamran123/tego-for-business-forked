@@ -24,6 +24,13 @@ interface RideMapViewProps {
   initialDestinationAddress?: string;
 }
 
+interface PendingBookingData {
+  address: string;
+  destAddress: string;
+  bookingType: "book_now" | "book_later";
+  passengerCount: number;
+}
+
 const RideMapView: React.FC<RideMapViewProps> = ({
   initialPickUp,
   initialDestination,
@@ -69,6 +76,9 @@ const RideMapView: React.FC<RideMapViewProps> = ({
   const [bookingType, setBookingType] = useState<"book_now" | "book_later">(
     "book_now"
   );
+
+  // Store booking data temporarily
+  const [pendingBookingData, setPendingBookingData] = useState<PendingBookingData | null>(null);
 
   const mapRef = useRef<google.maps.Map | null>(null);
   const center = useMemo<LatLngLiteral>(
@@ -144,7 +154,8 @@ const RideMapView: React.FC<RideMapViewProps> = ({
   const handleBookingFormSubmit = async (
     address: string,
     destAddress: string,
-    bookingType: "book_now" | "book_later"
+    bookingType: "book_now" | "book_later",
+    passengerCount: number
   ) => {
     if (destination && pickUp && directions) {
       // Check if PHP authentication is available
@@ -155,47 +166,62 @@ const RideMapView: React.FC<RideMapViewProps> = ({
 
       setPickUpAddress(address);
       setDestinationAddress(destAddress);
+      
+      // Store booking data for later use
+      setPendingBookingData({
+        address,
+        destAddress,
+        bookingType,
+        passengerCount
+      });
+      
       setShowPickUpConfirmation(true);
-      setIsSearching(true);
-
-      const distanceMeters = directions.routes[0].legs[0]?.distance?.value || 0;
-      const distanceKm = distanceMeters / 1000;
-
-      const payload = {
-        user_id: phpUserId, // Dynamic user ID from PHP authentication
-        booking_type: bookingType,
-        rent_type: "taxi" as const,
-        distance: distanceKm,
-        pickup_location: address,
-        dropoff_location: destAddress,
-        pickup_lat: pickUp.lat,
-        pickup_lng: pickUp.lng,
-        dropoff_lat: destination.lat,
-        dropoff_lng: destination.lng,
-        no_of_passenger: 3, // TODO: Make dynamic from user input
-        pickup_date_time: new Date()
-          .toISOString()
-          .slice(0, 19)
-          .replace("T", " "), // "YYYY-MM-DD HH:mm:ss"
-      };
-
-      const result = await bookTrip(payload);
-
-      if (result.success) {
-        toast.success("Trip booked!");
-        console.log("Booking response:", result.data);
-        // You can optionally store this in state or trigger next UI phase
-      } else {
-        toast.error(result.message);
-      }
-
-      setIsSearching(false); // Stop loading
+      setIsSearching(false); // Don't show loading for search
     }
   };
 
-  const handlePickupConfirmationClick = () => {
-    setShowAvailableRides(true);
-    setMode("confirmed");
+  const handlePickupConfirmationClick = async () => {
+    if (!pendingBookingData || !destination || !pickUp || !directions) {
+      toast.error("Booking data not found. Please try again.");
+      return;
+    }
+
+    setIsSearching(true); // Show loading for actual booking
+
+    const distanceMeters = directions.routes[0].legs[0]?.distance?.value || 0;
+    const distanceKm = distanceMeters / 1000;
+
+    const payload = {
+      user_id: phpUserId!, // We know it exists because we checked in handleBookingFormSubmit
+      booking_type: pendingBookingData.bookingType,
+      rent_type: "taxi" as const,
+      distance: distanceKm,
+      pickup_location: pendingBookingData.address,
+      dropoff_location: pendingBookingData.destAddress,
+      pickup_lat: pickUp.lat,
+      pickup_lng: pickUp.lng,
+      dropoff_lat: destination.lat,
+      dropoff_lng: destination.lng,
+      no_of_passenger: pendingBookingData.passengerCount,
+      pickup_date_time: new Date()
+        .toISOString()
+        .slice(0, 19)
+        .replace("T", " "), // "YYYY-MM-DD HH:mm:ss"
+    };
+
+    const result = await bookTrip(payload);
+
+    if (result.success) {
+      toast.success("Trip booked!");
+      console.log("Booking response:", result.data);
+      setShowAvailableRides(true);
+      setMode("confirmed");
+    } else {
+      toast.error(result.message);
+    }
+
+    setIsSearching(false);
+    setPendingBookingData(null); // Clear pending data
   };
 
   const handleEditPickUpClick = () => {
@@ -203,6 +229,7 @@ const RideMapView: React.FC<RideMapViewProps> = ({
     setShowPickUpConfirmation(false);
     setShowAvailableRides(false);
     setIsSearching(false);
+    setPendingBookingData(null); // Clear pending booking data
   };
 
   const handleBookRideClick = () => {
@@ -231,6 +258,7 @@ const RideMapView: React.FC<RideMapViewProps> = ({
     setPickUpAddress("");
     setDestinationAddress("");
     setZoom(INITIAL_ZOOM);
+    setPendingBookingData(null); // Clear pending booking data
   };
 
   const onStartTrip = () => {
@@ -268,6 +296,7 @@ const RideMapView: React.FC<RideMapViewProps> = ({
         isConfirmed={mode === "confirmed" || mode === "booked"}
         onEdit={handleEditPickUpClick}
         rideSelected={mode === "booked"}
+        loading={isSearching}
       />
 
       <AvailableRidesList
