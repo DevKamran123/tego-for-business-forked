@@ -4,12 +4,12 @@ import addCircle from "../../assets/icons/add_circle.svg";
 import CustomSelect from "../CustomSelect";
 import PlacesSuggestions from "./PlacesSuggestions";
 import { usePlacesAutocompleteHook } from "../../hooks/usePlacesAutocompleteHook";
-import { Suggestion } from "use-places-autocomplete"; // Import Suggestion
+import { Suggestion } from "use-places-autocomplete";
 import {
   getLocationNameFromCoordinates,
   getUserLocationFromBrowser,
 } from "../../utils/locationUtils";
-import { useEffect, useRef, Dispatch, SetStateAction } from "react";
+import { useEffect, useRef, Dispatch, SetStateAction, useState } from "react";
 
 type LatLngLiteral = google.maps.LatLngLiteral;
 
@@ -20,8 +20,9 @@ interface RideBookingFormProps {
   handleSubmit: (
     pickUpAddress: string,
     destinationAddress: string,
-    bookingType: "book_now" | "book_later"
-  ) => void; // Modified
+    bookingType: "book_now" | "book_later",
+    passengerCount: number
+  ) => void;
   isConfirmed: boolean;
   editMode: boolean;
   searching: boolean;
@@ -47,6 +48,7 @@ const RideBookingForm: React.FC<RideBookingFormProps> = ({
   setBookingType,
 }) => {
   const pickUpInputRef = useRef<HTMLInputElement>(null);
+  const [passengerCount, setPassengerCount] = useState<number>(1);
 
   const {
     ready: pickUpReady,
@@ -79,6 +81,7 @@ const RideBookingForm: React.FC<RideBookingFormProps> = ({
     if (tripHasEnded) {
       setPickUpValue("");
       setDestinationValue("");
+      setPassengerCount(1);
     }
     if (pickUpInputRef.current && !tripHasEnded) {
       pickUpInputRef.current.focus();
@@ -247,6 +250,24 @@ const RideBookingForm: React.FC<RideBookingFormProps> = ({
               disabled={isConfirmed || searching}
             />
           </div>
+
+          <div className="relative w-full">
+            <CustomInput
+              type="number"
+              placeholder="Number of passengers"
+              className="bg-white/10 text-white placeholder:text-white placeholder:text-lg border-white/35 py-3.5 pl-4 xl:pl-5 pr-10 !rounded-xl backdrop-blur-xl relative"
+              value={passengerCount}
+              disabled={isConfirmed || searching}
+              onChange={(e) => {
+                const value = parseInt(e.target.value);
+                if (value > 0 && value <= 10) {
+                  setPassengerCount(value);
+                }
+              }}
+              min={1}
+              max={10}
+            />
+          </div>
         </div>
 
         <div className="w-full px-2.5 mt-10 flex flex-col space-y-4">
@@ -257,7 +278,8 @@ const RideBookingForm: React.FC<RideBookingFormProps> = ({
               handleSubmit(
                 pickUpValue || "",
                 destinationValue || "",
-                (bookingType as "book_now" | "book_later") || "book_now"
+                (bookingType as "book_now" | "book_later") || "book_now",
+                passengerCount
               );
             }}
             disabled={isConfirmed || searching}
