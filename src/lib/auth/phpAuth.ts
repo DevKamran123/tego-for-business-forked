@@ -1,6 +1,6 @@
 import axios from "axios";
 import { getPHPApiUrl } from "../../utils/env";
-// import { PHP_API_VERSION } from "../version";
+import { PHP_API_VERSION } from "../version";
 import {
   PHPRegisterPayload,
   PHPLoginPayload,
@@ -9,7 +9,7 @@ import {
   PHPAuthResponse,
 } from "../../types/phpAuth";
 
-const PHP_AUTH_BASE_URL = `${getPHPApiUrl()}auth/customer`;
+const PHP_AUTH_BASE_URL = `${getPHPApiUrl()}${PHP_API_VERSION}/auth/customer`;
 
 /**
  * Register a new user with the PHP API
