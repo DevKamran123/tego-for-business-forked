@@ -39,7 +39,7 @@ const DualLogin: React.FC = () => {
               RideTEGO
           </div>
           <div className="login-head_text">
-              Welcome to RideTEGO (Dual Auth)
+              Welcome to RideTEGO 
           </div>
       </div>
       <div className="login_wrapper">
@@ -52,7 +52,7 @@ const DualLogin: React.FC = () => {
           </div>
         </div>
         <div className="login_content">
-          <h2 className="login_header">Sign In (Dual Auth)</h2>
+          <h2 className="login_header">Sign In </h2>
           <div className="login_form_wrapper">
             <Formik
               initialValues={{ email: "", password: "" }}
@@ -177,16 +177,11 @@ const DualLogin: React.FC = () => {
                     loading={isSubmitting}
                     tvariant="secondary"
                   >
-                    Login (Dual Auth)
+                    Login 
                   </TButton>
 
                   <div className="login_alternative">
-                    Don't have an account? <span onClick={()=>navigate("/dual-signup")}>Signup</span>
-                  </div>
-                  <div className="login_alternative">
-                    <span onClick={()=>navigate("/login")} style={{color: "#666", fontSize: "0.9rem"}}>
-                      Use single API login instead
-                    </span>
+                    Don't have an account? <span onClick={()=>navigate("/signup")}>Signup</span>
                   </div>
                 </Form>
               )}
