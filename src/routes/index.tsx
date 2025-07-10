@@ -13,10 +13,8 @@ import WalletPage from "../pages/Wallet"; // Added import for WalletPage
 
 // Lazy load all components
 const Home = lazy(() => import("../pages/Home"));
-const Signup = lazy(() => import("../pages/Signup"));
 const ConfirmSignup = lazy(() => import("../pages/ConfirmSignup"));
 const CreatePassword = lazy(() => import("../pages/CreatePassword"));
-const Login = lazy(() => import("../pages/Login"));
 // Dual authentication pages (temporary)
 const DualLogin = lazy(() => import("../pages/DualLogin"));
 const DualSignup = lazy(() => import("../pages/DualSignup"));
@@ -49,11 +47,8 @@ const AppRoutes = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="*" element={<PageNotFound />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/login" element={<Login />} />
-            {/* Dual Authentication Routes (Temporary) */}
-            <Route path="/dual-signup" element={<DualSignup />} />
-            <Route path="/dual-login" element={<DualLogin />} />
+            <Route path="/signup" element={<DualSignup />} />
+            <Route path="/login" element={<DualLogin />} />
             {/* End Dual Auth Routes */}
             <Route path="/onboarding" element={<Onboarding />} /> {/* Added Onboarding route */}
             <Route path="/confirm-signup" element={<ConfirmSignup />} />
@@ -90,7 +85,14 @@ const AppRoutes = () => {
                 </ProtectedRoute>
               }
             />
-            <Route path="/personal/ride" element={<PersonalRide />} />
+            <Route
+              path="/personal/ride"
+              element={
+                <ProtectedRoute>
+                  <PersonalRide />
+                </ProtectedRoute>
+              }
+            />
             <Route
               path="/personal/dashboard/*"
               element={
@@ -113,8 +115,8 @@ const AppRoutes = () => {
             />
             {/* <Route path="/settings" element={<Settings />} /> */}
             <Route path="/wallet-page" element={<WalletPage />} /> {/* Added route for WalletPage */}
-            <Route path="/dual-login" element={<DualLogin />} /> {/* Added route for DualLogin */}
-            <Route path="/dual-signup" element={<DualSignup />} /> {/* Added route for DualSignup */}
+            <Route path="/login" element={<DualLogin />} /> {/* Added route for DualLogin */}
+            <Route path="/signup" element={<DualSignup />} /> {/* Added route for DualSignup */}
           </Routes>
         </Suspense>
       </Router>

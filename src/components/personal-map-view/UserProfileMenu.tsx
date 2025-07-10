@@ -6,10 +6,10 @@ import { IoPersonSharp } from "react-icons/io5";
 import { IoMdPricetag } from "react-icons/io";
 import UserMenuItems from "./UserMenuItems";
 import { useNavigate } from "react-router-dom";
+import { useUserData } from "../../hooks/useUserData";
 
 interface UserProfileMenuProps {
   open: boolean;
-  name: string;
   token: number;
   rating: number;
   ref: React.RefObject<HTMLDivElement | null>;
@@ -17,21 +17,21 @@ interface UserProfileMenuProps {
 
 const UserProfileMenu: React.FC<UserProfileMenuProps> = ({
   open,
-  name,
   token,
   rating,
   ref,
 }) => {
   const navigate = useNavigate();
+  const { fullName } = useUserData();
 
   return (
     open && (
       <div
         ref={ref}
-        className="fixed bg-white border border-black/15 shadow-md shadow-black/5 rounded-3xl px-6 py-5 top-[90px] w-fit right-20 z-30"
+        className="fixed bg-white text-black border border-black/15 shadow-md shadow-black/5 rounded-3xl px-6 py-5 top-[90px] w-fit right-20 z-30"
       >
         <div className="flex items-center justify-between pb-2.5">
-          <h3 className="text-2xl font-bold max-w-[240px] truncate">{name}</h3>
+          <h3 className="text-2xl font-bold max-w-[240px] truncate">{fullName}</h3>
 
           <AccountCircle size={50} />
         </div>

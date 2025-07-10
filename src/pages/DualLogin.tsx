@@ -39,7 +39,7 @@ const DualLogin: React.FC = () => {
               RideTEGO
           </div>
           <div className="login-head_text">
-              Welcome to RideTEGO (Dual Auth)
+              Welcome to RideTEGO 
           </div>
       </div>
       <div className="login_wrapper">
@@ -52,7 +52,7 @@ const DualLogin: React.FC = () => {
           </div>
         </div>
         <div className="login_content">
-          <h2 className="login_header">Sign In (Dual Auth)</h2>
+          <h2 className="login_header">Sign In </h2>
           <div className="login_form_wrapper">
             <Formik
               initialValues={{ email: "", password: "" }}
@@ -96,7 +96,25 @@ const DualLogin: React.FC = () => {
                   if (response.data.nodeAuth.profile?.status === "new") {
                     navigate("/onboarding");
                   } else {
-                    navigate("/dashboard");
+                    // Route based on userType from PHP user data
+                    const phpUserData = localStorage.getItem('php_user_data');
+                    if (phpUserData) {
+                      try {
+                        const userData = JSON.parse(phpUserData);
+                        if (userData.userType === "individual") {
+                          navigate("/personal/dashboard/");
+                        } else {
+                          navigate("/dashboard");
+                        }
+                      } catch (error) {
+                        console.error('Error parsing PHP user data:', error);
+                        // Fallback to dashboard if parsing fails
+                        navigate("/dashboard");
+                      }
+                    } else {
+                      // Fallback to dashboard if no PHP user data
+                      navigate("/dashboard");
+                    }
                   }
                 } else {
                   // Show detailed error messages
@@ -159,16 +177,11 @@ const DualLogin: React.FC = () => {
                     loading={isSubmitting}
                     tvariant="secondary"
                   >
-                    Login (Dual Auth)
+                    Login 
                   </TButton>
 
                   <div className="login_alternative">
-                    Don't have an account? <span onClick={()=>navigate("/dual-signup")}>Signup</span>
-                  </div>
-                  <div className="login_alternative">
-                    <span onClick={()=>navigate("/login")} style={{color: "#666", fontSize: "0.9rem"}}>
-                      Use single API login instead
-                    </span>
+                    Don't have an account? <span onClick={()=>navigate("/signup")}>Signup</span>
                   </div>
                 </Form>
               )}
