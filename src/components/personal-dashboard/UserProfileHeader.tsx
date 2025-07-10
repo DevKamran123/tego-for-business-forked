@@ -1,17 +1,14 @@
 import React from "react";
 import UserAvatar from "./UserAvatar";
+import { useUserData } from "../../hooks/useUserData";
 
 interface UserProfileHeaderProps {
   photo?: string;
-  fullName: string;
-  email: string;
 }
 
-const UserProfileHeader: React.FC<UserProfileHeaderProps> = ({
-  photo,
-  fullName,
-  email,
-}) => {
+const UserProfileHeader: React.FC<UserProfileHeaderProps> = ({ photo }) => {
+  const { fullName, email } = useUserData();
+
   return (
     <div className="w-full pt-16">
       <div className="flex flex-col w-full items-center gap-6 2xl:gap-8">

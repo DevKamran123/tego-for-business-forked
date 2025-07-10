@@ -71,7 +71,6 @@ const PersonalRideHeader = () => {
 
       <UserProfileMenu
         open={isOpen as boolean}
-        name={userInfo.name}
         token={userInfo.token}
         rating={userInfo.rating}
         ref={ref}

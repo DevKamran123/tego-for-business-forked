@@ -130,7 +130,6 @@ export default function Header() {
                 </div>
                 <UserProfileMenu
                   open={!!userProfileMenuOpen} // Coerce to boolean
-                  name={userInfo.name}
                   token={userInfo.token}
                   rating={userInfo.rating}
                   ref={userProfileMenuRef} // Pass the ref here

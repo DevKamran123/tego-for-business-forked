@@ -51,7 +51,10 @@ const SignupSchema = Yup.object().shape({
   countryCode: Yup.string(),
   mobileNo: Yup.string().when("countryCode", {
     is: (countryCode: string) => countryCode && countryCode.length > 0,
-    then: (schema) => schema.required("Mobile number is required when country code is provided"),
+    then: (schema) =>
+      schema.required(
+        "Mobile number is required when country code is provided"
+      ),
     otherwise: (schema) => schema,
   }),
 });
@@ -64,7 +67,7 @@ export default function DualSignup() {
   return (
     <div className="signupCont">
       <div className="signupCont_side">
-        <div className="signupCont_side_text">Welcome to RideTEGO (Dual Auth)</div>
+        <div className="signupCont_side_text">Welcome to RideTEGO </div>
         <div className="signupCont_side_bg"></div>
       </div>
 
@@ -74,12 +77,14 @@ export default function DualSignup() {
             <img src={rideTegoLogo} alt="logo" />
             RideTEGO
           </div>
-          <div className="signupCont_main_head_text">Welcome to RideTEGO (Dual Auth)</div>
+          <div className="signupCont_main_head_text">Welcome to RideTEGO </div>
         </div>
         <div className="signupCont_main_content">
-          <div className="signupCont_main_content_title">Sign up (Dual Auth)</div>
+          <div className="signupCont_main_content_title">Sign up </div>
 
-          <div className="signupCont_main_content_option">            <div
+          <div className="signupCont_main_content_option">
+            {" "}
+            <div
               className={`signupCont_main_content_option_one ${
                 activeTab === "personal"
                   ? "signupCont_main_content_option_one_selected"
@@ -123,7 +128,6 @@ export default function DualSignup() {
                 </div>
               )}
             </div>
-
             <div
               className={`signupCont_main_content_option_one ${
                 activeTab === "enterprise"
@@ -172,13 +176,13 @@ export default function DualSignup() {
 
           <div className="signupCont_main_content_register">
             <Formik
-              initialValues={{ 
-                email: "", 
-                firstName: "", 
-                lastName: "", 
+              initialValues={{
+                email: "",
+                firstName: "",
+                lastName: "",
                 password: "",
                 countryCode: "+234", // Default country code
-                mobileNo: ""
+                mobileNo: "",
               }}
               validationSchema={SignupSchema}
               onSubmit={async (values, { setSubmitting }) => {
@@ -193,7 +197,7 @@ export default function DualSignup() {
                 };
 
                 const response = await dualAuthRegister(payload);
-                  if (response.success) {
+                if (response.success) {
                   toast.success(
                     "Signup successful. Please check your email to confirm your account."
                   );
@@ -203,17 +207,29 @@ export default function DualSignup() {
                 } else {
                   // Show detailed error messages
                   if (response.nodeApiSuccess && !response.phpApiSuccess) {
-                    toast.error("Registration successful on main system, but failed on booking system. Please contact support.");
+                    toast.error(
+                      "Registration successful on main system, but failed on booking system. Please contact support."
+                    );
                     console.error("PHP API Error:", response.errors?.phpError);
-                  } else if (!response.nodeApiSuccess && response.phpApiSuccess) {
-                    toast.error("Registration failed on main system. Please try again.");
-                    console.error("Node API Error:", response.errors?.nodeError);
+                  } else if (
+                    !response.nodeApiSuccess &&
+                    response.phpApiSuccess
+                  ) {
+                    toast.error(
+                      "Registration failed on main system. Please try again."
+                    );
+                    console.error(
+                      "Node API Error:",
+                      response.errors?.nodeError
+                    );
                   } else {
-                    toast.error("Registration failed on both systems. Please try again.");
+                    toast.error(
+                      "Registration failed on both systems. Please try again."
+                    );
                     console.error("Registration errors:", response.errors);
                   }
                 }
-                  setSubmitting(false);
+                setSubmitting(false);
               }}
             >
               {({ isSubmitting, isValid }) => (
@@ -305,49 +321,49 @@ export default function DualSignup() {
                     />
                   </div>
 
-                    <div className="field-cont">
-                      <label htmlFor="countryCode" className="input-label">
-                        Country Code
-                      </label>
-                      <Field name="countryCode">
-                        {({ field }: { field: InputProps }) => (
-                          <Input
-                            {...field}
-                            type="text"
-                            id="countryCode"
-                            className="input_text"
-                            placeholder="+234"
-                          />
-                        )}
-                      </Field>
-                      <ErrorMessage
-                        name="countryCode"
-                        component="p"
-                        className="input-error"
-                      />
-                    </div>
+                  <div className="field-cont">
+                    <label htmlFor="countryCode" className="input-label">
+                      Country Code
+                    </label>
+                    <Field name="countryCode">
+                      {({ field }: { field: InputProps }) => (
+                        <Input
+                          {...field}
+                          type="text"
+                          id="countryCode"
+                          className="input_text"
+                          placeholder="+234"
+                        />
+                      )}
+                    </Field>
+                    <ErrorMessage
+                      name="countryCode"
+                      component="p"
+                      className="input-error"
+                    />
+                  </div>
 
-                    <div className="field-cont">
-                      <label htmlFor="mobileNo" className="input-label">
-                        Mobile Number
-                      </label>
-                      <Field name="mobileNo">
-                        {({ field }: { field: InputProps }) => (
-                          <Input
-                            {...field}
-                            type="text"
-                            id="mobileNo"
-                            className="input_text"
-                            placeholder="Enter your mobile number"
-                          />
-                        )}
-                      </Field>
-                      <ErrorMessage
-                        name="mobileNo"
-                        component="p"
-                        className="input-error"
-                      />
-                    </div>
+                  <div className="field-cont">
+                    <label htmlFor="mobileNo" className="input-label">
+                      Mobile Number
+                    </label>
+                    <Field name="mobileNo">
+                      {({ field }: { field: InputProps }) => (
+                        <Input
+                          {...field}
+                          type="text"
+                          id="mobileNo"
+                          className="input_text"
+                          placeholder="Enter your mobile number"
+                        />
+                      )}
+                    </Field>
+                    <ErrorMessage
+                      name="mobileNo"
+                      component="p"
+                      className="input-error"
+                    />
+                  </div>
                   {/* <div style={{ display: "flex", gap: "1rem" }}>
                   </div> */}
 
@@ -361,30 +377,21 @@ export default function DualSignup() {
                     loading={isSubmitting}
                     tvariant="secondary"
                   >
-                    Get started (Dual Auth)
+                    Get started
                   </TButton>
                 </Form>
               )}
             </Formik>
-
             <div className="signupCont_main_content_register_alternative">
               Already have an account?{" "}
-              <span 
-                onClick={() => navigate("/dual-login")}
+              <span
+                onClick={() => navigate("/login")}
                 style={{ cursor: "pointer", color: "#007bff" }}
               >
                 Login
               </span>
             </div>
-
-            <div className="signupCont_main_content_register_alternative">
-              <span 
-                onClick={() => navigate("/signup")} 
-                style={{ cursor: "pointer", color: "#666", fontSize: "0.9rem" }}
-              >
-                Use single API signup instead
-              </span>
-            </div>            <Divider
+            <Divider
               plain
               className="signupCont_main_content_register_or"
               style={{
@@ -394,7 +401,6 @@ export default function DualSignup() {
             >
               Or
             </Divider>
-
             <div className="signupCont_main_content_register_allPlatforms">
               {authBoxes.map((details) => (
                 <AuthCards details={details} key={details.text} />
