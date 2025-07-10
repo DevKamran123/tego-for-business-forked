@@ -90,7 +90,14 @@ const AppRoutes = () => {
                 </ProtectedRoute>
               }
             />
-            <Route path="/personal/ride" element={<PersonalRide />} />
+            <Route
+              path="/personal/ride"
+              element={
+                <ProtectedRoute>
+                  <PersonalRide />
+                </ProtectedRoute>
+              }
+            />
             <Route
               path="/personal/dashboard/*"
               element={

@@ -89,13 +89,13 @@ export default function Header() {
             <>
               <div
                 className="headerCont_auth_login"
-                onClick={() => navigate("/login")}
+                onClick={() => navigate("/dual-login")}
               >
                 Log In
               </div>
               <div
                 className="headerCont_auth_signup"
-                onClick={() => navigate("/signup")}
+                onClick={() => navigate("/dual-signup")}
               >
                 Sign up
               </div>
@@ -130,7 +130,6 @@ export default function Header() {
                 </div>
                 <UserProfileMenu
                   open={!!userProfileMenuOpen} // Coerce to boolean
-                  name={userInfo.name}
                   token={userInfo.token}
                   rating={userInfo.rating}
                   ref={userProfileMenuRef} // Pass the ref here

@@ -96,7 +96,25 @@ const DualLogin: React.FC = () => {
                   if (response.data.nodeAuth.profile?.status === "new") {
                     navigate("/onboarding");
                   } else {
-                    navigate("/dashboard");
+                    // Route based on userType from PHP user data
+                    const phpUserData = localStorage.getItem('php_user_data');
+                    if (phpUserData) {
+                      try {
+                        const userData = JSON.parse(phpUserData);
+                        if (userData.userType === "individual") {
+                          navigate("/personal/dashboard/");
+                        } else {
+                          navigate("/dashboard");
+                        }
+                      } catch (error) {
+                        console.error('Error parsing PHP user data:', error);
+                        // Fallback to dashboard if parsing fails
+                        navigate("/dashboard");
+                      }
+                    } else {
+                      // Fallback to dashboard if no PHP user data
+                      navigate("/dashboard");
+                    }
                   }
                 } else {
                   // Show detailed error messages

@@ -1,13 +1,16 @@
 import ContentPageHeader from "../components/personal-dashboard/ContentPageHeader";
 import PersonalInfoList from "../components/personal-dashboard/PersonalInfoList";
 import UserAvatar from "../components/personal-dashboard/UserAvatar";
+import { useUserData } from "../hooks/useUserData";
 
 const PersonalInfo = () => {
+  const { userData } = useUserData();
+
   const userInfo = {
-    firstName: "Daniel",
-    lastName: "Victor",
-    phone: "+23456789012",
-    email: "daniel.victor@anymail.com",
+    firstName: userData?.firstName || '',
+    lastName: userData?.lastName || '',
+    phone: userData ? `${userData.countryCode}${userData.mobileNo}` : '',
+    email: userData?.email || '',
   };
 
   return (
