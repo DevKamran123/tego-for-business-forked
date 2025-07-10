@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import useAppStore from '../store/AppStore';
+import { DefaultUserProfileData } from '../types/auth';
 
 interface UserData {
   firstName: string;
@@ -35,6 +37,7 @@ export const useUserData = (): UseUserDataReturn => {
   const [userData, setUserData] = useState<UserData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const {session} = useAppStore(state => state);
 
   const loadUserData = () => {
     try {
@@ -42,7 +45,9 @@ export const useUserData = (): UseUserDataReturn => {
       setError(null);
       
       const phpUserData = localStorage.getItem('php_user_data');
-      if (phpUserData) {
+      const nodeUserData: DefaultUserProfileData | null = session ? JSON.parse(session) : null;
+      console.log('Loading user data from localStorage:', JSON.parse(phpUserData ?? '{}'), nodeUserData);
+      if (phpUserData && nodeUserData) {
         const parsedData = JSON.parse(phpUserData);
         setUserData({
           firstName: parsedData.firstName || '',
